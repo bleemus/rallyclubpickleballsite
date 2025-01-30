@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pickleball Court Information</title>
+  <style>
+    /* Basic Reset & Typography */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background: #f2f2f2;
+      line-height: 1.6;
+      color: #333;
+    }
+    header {
+      background: #28a745;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.1rem;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+      background: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    }
+    .content {
+      padding: 20px;
+    }
+
+    .content h2 {
+      margin-bottom: 10px;
+      font-size: 1.4rem;
+    }
+    .court-info {
+      margin-bottom: 20px;
+    }
+    .court-info p {
+      margin-bottom: 10px;
+    }
+
+    /* Sample section with an embedded map (optional) */
+    .map-container {
+      margin: 20px 0;
+      text-align: center;
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 350px;
+      border: 0;
+      border-radius: 5px;
+    }
+
+    /* Reservation Link Button */
+    .reservation-link {
+      display: block;
+      text-align: center;
+      margin: 30px auto;
+      background: #28a745;
+      color: #fff;
+      padding: 15px 20px;
+      width: 200px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+    .reservation-link:hover {
+      background: #218838;
+    }
+
+    footer {
+      text-align: center;
+      margin: 20px 0;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Pickleball Courts at Sunshine Park</h1>
+    <p>Enjoy our top-quality courts in a friendly and fun environment</p>
+  </header>
+
+  <main>
+    <div class="content">
+      <!-- Court Information Section -->
+      <section class="court-info">
+        <h2>Location & Hours</h2>
+        <p>
+          <strong>Address:</strong> 123 Sunshine Avenue, Pleasantville<br />
+          <strong>Hours:</strong> Mon-Sat: 7am – 9pm, Sun: 8am – 8pm
+        </p>
+      </section>
+
+      <section class="court-info">
+        <h2>What We Offer</h2>
+        <p>
+          - 4 Outdoor Pickleball Courts with LED lighting<br />
+          - Equipment rentals (paddles, balls)<br />
+          - Spectator seating area<br />
+          - On-site restrooms and water fountains<br />
+          - Friendly staff and community events
+        </p>
+      </section>
+
+      <!-- Optional: Embedded Map -->
+      <section class="map-container">
+        <!-- Replace the "src" below with your actual Google Maps embed link if you like -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093737!2d144.95373531589223!3d-37.81627977975144!2m3!1f0!2f0!3f0!
+               3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d49fdcb5b17%3A0x5045675218cec7e!2z77iP5qCq77iP5LiB55uu77iP77iZ!
+               5e0!3m2!1sen!2sus!4v1601223111234!5m2!1sen!2sus"
+          allowfullscreen=""
+          loading="lazy"
+        ></iframe>
+      </section>
+
+      <!-- Link to Reservation Page -->
+      <!-- Change "reservation.html" to the actual reservation site URL or local file name -->
+      <a class="reservation-link" href="reservation.html">Reserve a Court</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Sunshine Park | All rights reserved</p>
+  </footer>
+</body>
+</html>
