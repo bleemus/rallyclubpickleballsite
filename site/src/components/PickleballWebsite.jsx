@@ -3,6 +3,10 @@ import { motion } from "framer-motion"
 import { Card, CardContent } from "./ui/card"
 import { Button } from "./ui/button"
 
+import pickleballImage1 from "../assets/pickleball1.jpg";
+import pickleballImage2 from "../assets/pickleball2.jpg";
+import pickleballImage3 from "../assets/pickleball3.jpg";
+
 export default function PickleballWebsite() {
   return (
     <div className="flex flex-col min-h-screen bg-gray-900 text-gray-100">
@@ -77,17 +81,17 @@ export default function PickleballWebsite() {
           <h2 className="text-3xl font-bold mb-6 text-center">Gallery</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <img
-              src="https://source.unsplash.com/featured/?pickleball"
+              src={pickleballImage1}
               alt="Pickleball 1"
               className="w-full h-48 object-cover rounded-2xl"
             />
             <img
-              src="https://source.unsplash.com/featured/?tenniscourt"
+              src={pickleballImage2}
               alt="Pickleball 2"
               className="w-full h-48 object-cover rounded-2xl"
             />
             <img
-              src="https://source.unsplash.com/featured/?sports"
+              src={pickleballImage3}
               alt="Pickleball 3"
               className="w-full h-48 object-cover rounded-2xl"
             />
