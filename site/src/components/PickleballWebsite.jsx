@@ -48,28 +48,23 @@ export default function PickleballWebsite() {
             <CardContent>
               <h2 className="text-2xl font-bold mb-4">About Our Courts</h2>
               <p>
-                We offer well-maintained pickleball courts designed for players
-                of all levels. Our facility includes ample seating, shaded
-                areas, and restrooms. Come experience the fastest growing
-                sport in a friendly and vibrant environment!
+                We offer well-maintained pickleball courts designed for players of all levels.
+                Our facility includes ample seating, shaded areas, and restrooms. Come experience
+                the fastest growing sport in a friendly and vibrant environment!
               </p>
             </CardContent>
           </Card>
           <Card className="rounded-2xl bg-gray-800 text-gray-100 shadow-lg">
             <CardContent>
-              <h2 className="text-2xl font-bold mb-4">
-                Location &amp; Amenities
-              </h2>
+              <h2 className="text-2xl font-bold mb-4">Location &amp; Amenities</h2>
               <p>
-                Conveniently located near downtown, our courts are easy to reach
-                by public transport or car. Enjoy free parking, equipment
-                rentals, and a small pro shop. After your game, relax at nearby
-                cafes and restaurants.
+                Conveniently located near downtown, our courts are easy to reach by public
+                transport or car. Enjoy free parking, equipment rentals, and a small pro shop.
+                After your game, relax at nearby cafes and restaurants.
               </p>
             </CardContent>
           </Card>
         </motion.div>
-      </section>
 
       {/* Image Gallery Section */}
       <section className="container mx-auto px-4 py-8">
@@ -100,23 +95,50 @@ export default function PickleballWebsite() {
         </motion.div>
       </section>
 
+      {/* Embedded Google Map Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mt-8"
+        >
+          <h2 className="text-3xl font-bold mb-6 text-center">Find Us</h2>
+          <div className="relative w-full h-96">
+            <iframe
+              title="Google Map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093045!2d144.95565191557364!3d-37.817209579751914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4522fa4b37%3A0xb05178e3a111a62b!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1633217167147!5m2!1sen!2sus"
+              width="100%"
+              height="100%"
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="border-0 w-full h-full rounded-2xl shadow-lg"
+            />
+          </div>
+        </motion.div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-green-800 text-white py-6 mt-auto">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
-          <p className="text-sm">
-            &copy; {new Date().getFullYear()} Pickleball Courts. All rights
-            reserved.
-          </p>
+          <p className="text-sm">&copy; {new Date().getFullYear()} Pickleball Courts. All rights reserved.</p>
           <div className="flex space-x-4 mt-4 md:mt-0">
-            <a href="#" className="hover:text-gray-300 transition-colors">
+            <a
+              href="#"
+              className="hover:text-gray-300 transition-colors"
+            >
               Terms of Service
             </a>
-            <a href="#" className="hover:text-gray-300 transition-colors">
+            <a
+              href="#"
+              className="hover:text-gray-300 transition-colors"
+            >
               Privacy Policy
             </a>
           </div>
         </div>
       </footer>
     </div>
-  )
+  );
 }
