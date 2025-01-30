@@ -45,7 +45,7 @@ export default function PickleballWebsite() {
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
           <Card className="rounded-2xl bg-gray-800 text-gray-100 shadow-lg">
-            <CardContent>
+            <CardContent className="p-6">
               <h2 className="text-2xl font-bold mb-4">About Our Courts</h2>
               <p>
                 We offer well-maintained pickleball courts designed for players of all levels.
@@ -55,7 +55,7 @@ export default function PickleballWebsite() {
             </CardContent>
           </Card>
           <Card className="rounded-2xl bg-gray-800 text-gray-100 shadow-lg">
-            <CardContent>
+            <CardContent className="p-6">
               <h2 className="text-2xl font-bold mb-4">Location &amp; Amenities</h2>
               <p>
                 Conveniently located near downtown, our courts are easy to reach by public
