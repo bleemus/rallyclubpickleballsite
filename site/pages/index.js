@@ -1,102 +1,8 @@
 // pages/index.js
 import Head from 'next/head';
+import Image from 'next/image';
 
 export default function Home() {
-  // Common inline style for full-screen sections
-  const sectionStyle = {
-    position: 'relative',
-    height: '100vh',
-    width: '100%',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundAttachment: 'fixed',
-  };
-
-  // Home section content style (centered text)
-  const homeContentStyle = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    textAlign: 'center',
-  };
-
-  // Home section text styles using Bebas Neue with expanded stretch
-  const homeHeadingStyle = {
-    fontSize: '4rem',
-    margin: '0',
-    fontFamily: '"Bebas Neue", sans-serif',
-    color: '#fff',
-    fontStretch: 'expanded',
-  };
-
-  const homeParagraphStyle = {
-    fontSize: '1.5rem',
-    marginTop: '20px',
-    fontFamily: '"Bebas Neue", sans-serif',
-    color: '#fff',
-    fontStretch: 'expanded',
-  };
-
-  // Glassmorphic card style for About and Membership sections
-  const glassCardStyle = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    background: 'rgba(255, 255, 255, 0.5)',
-    padding: '3rem',
-    borderRadius: '12px',
-    maxWidth: '800px',
-    width: '90%',
-    boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
-    backdropFilter: 'blur(8px)',
-    WebkitBackdropFilter: 'blur(8px)',
-    textAlign: 'left',
-  };
-
-  // About section text styles
-  const aboutHeadingStyle = {
-    fontSize: '2.5rem',
-    marginBottom: '1rem',
-    fontFamily: '"Bebas Neue", sans-serif',
-    color: '#333',
-  };
-
-  const aboutParagraphStyle = {
-    fontSize: '1rem',
-    marginBottom: '1rem',
-    fontFamily: 'Roboto, sans-serif',
-    lineHeight: 1.6,
-    color: '#333',
-  };
-
-  const aboutSubHeadingStyle = {
-    fontSize: '1.75rem',
-    marginTop: '1.5rem',
-    marginBottom: '0.5rem',
-    fontFamily: '"Bebas Neue", sans-serif',
-    color: '#333',
-  };
-
-  const listStyle = {
-    marginLeft: '1.5rem',
-    color: '#333',
-  };
-
-  const membershipSectionStyle = {
-    ...sectionStyle,
-    backgroundImage: "url('/membership.jpg')",
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  };
-
-  // Location section background (you can customize the gradient colors as needed)
-  const locationSectionStyle = {
-    ...sectionStyle,
-    background: 'linear-gradient(to right, #a1c4fd, #c2e9fb)',
-  };
-
   return (
     <>
       <Head>
@@ -113,60 +19,55 @@ export default function Home() {
           rel="stylesheet"
         />
       </Head>
-      <div style={{ overflowX: 'hidden' }}>
+      <div className="container">
         {/* Home Section */}
         <section
           id="home"
-          style={{
-            ...sectionStyle,
-            backgroundImage: "url('/home.jpg')",
-          }}
+          className="section home-section"
+          style={{ backgroundImage: "url('/home.jpg')" }}
         >
-          <div style={homeContentStyle}>
-            {/* Transparent Logo */}
-            <img
+          <div className="home-content">
+            {/* Using Next.js Image component for optimized image loading */}
+            <Image
               src="/logo-transparent.png"
-              alt="Logo"
-              style={{ maxWidth: '300px', marginBottom: '20px' }}
+              alt="Rally Club Pickleball Logo"
+              width={300}
+              height={100}
+              priority
             />
-            {/* Home Section Text */}
-            <h1 style={homeHeadingStyle}>RALLY CLUB PICKLEBALL</h1>
-            <p style={homeParagraphStyle}>
-              Where pickleball never sleeps!
-            </p>
+            <h1 className="home-heading">RALLY CLUB PICKLEBALL</h1>
+            <p className="home-paragraph">Where pickleball never sleeps!</p>
           </div>
         </section>
 
-{/* About Section */}
+        {/* About Section */}
         <section
           id="about"
-          style={{
-            ...sectionStyle,
-            backgroundImage: "url('/R-6.png')",
-          }}
+          className="section"
+          style={{ backgroundImage: "url('/R-6.png')" }}
         >
-          <div style={glassCardStyle}>
-            <h2 style={aboutHeadingStyle}>About Our Court</h2>
-            <p style={aboutParagraphStyle}>
+          <div className="glass-card">
+            <h2 className="section-heading">About Our Court</h2>
+            <p className="section-text">
               2 professionally painted concrete courts with semi-permanent nets.
             </p>
-            <p style={aboutParagraphStyle}>
+            <p className="section-text">
               Enjoy round-the-clock access to two indoor, temperature-controlled courts built
               to official regulation standards with top-quality surfaces for the ultimate
               playing experience.
             </p>
-            <p style={aboutParagraphStyle}>
+            <p className="section-text">
               Rally Club is a state-of-the-art indoor pickleball facility located in Glen Carbon,
               offering two high-quality courts available for rent 24 hours a day, 365 days a year.
               Our mission is to provide pickleball enthusiasts with a premier playing experience in
               a convenient and accessible environment.
             </p>
-            <h3 style={aboutSubHeadingStyle}>Facility Overview</h3>
-            <p style={aboutParagraphStyle}>
+            <h3 className="sub-heading">Facility Overview</h3>
+            <p className="section-text">
               Location: Centrally located, easily accessible building in Glen Carbon, IL.
             </p>
-            <h3 style={aboutSubHeadingStyle}>Features:</h3>
-            <ul style={listStyle}>
+            <h3 className="sub-heading">Features:</h3>
+            <ul>
               <li>Two indoor, regulation-size pickleball courts.</li>
               <li>Temperature-controlled environment.</li>
               <li>High-tech court reservation system.</li>
@@ -177,32 +78,36 @@ export default function Home() {
         </section>
 
         {/* Membership Section */}
-        <section id="membership" style={membershipSectionStyle}>
-          <div style={glassCardStyle}>
-            <h2 style={aboutHeadingStyle}>Becoming a Member</h2>
-            <p style={aboutParagraphStyle}>
+        <section
+          id="membership"
+          className="section membership-section"
+          style={{ backgroundImage: "url('/membership.jpg')" }}
+        >
+          <div className="glass-card">
+            <h2 className="section-heading">Becoming a Member</h2>
+            <p className="section-text">
               Becoming a member of The Rally Club is your gateway to 24/7 access to premier indoor
               pickleball courts, exclusive amenities, and a welcoming community of passionate
               players. Whether you’re a casual enthusiast or a competitive player, our membership
               options make it simple to join the fun and elevate your game.
             </p>
-            <h3 style={aboutSubHeadingStyle}>Membership Plans</h3>
-            <p style={aboutParagraphStyle}>
+            <h3 className="sub-heading">Membership Plans</h3>
+            <p className="section-text">
               With flexible plans tailored to your playing style, signing up is quick and hassle-free.
               From online registration to reserving your first court with our high-tech PicklePlanner
               system, we’ve made every step straightforward. Start enjoying priority booking,
               discounted rates, and the ultimate pickleball experience in no time!
             </p>
-            <h3 style={aboutSubHeadingStyle}>Standard Member (Single Booking Member)</h3>
-            <ul style={listStyle}>
+            <h3 className="sub-heading">Standard Member (Single Booking Member)</h3>
+            <ul>
               <li>$10 per month / $50 activation (charged through Square)</li>
               <li>$30 month minimum charge (charged through PP)</li>
               <li>$40 per hour (prime) charged to booking member with PP</li>
               <li>$30 per hour (non-prime) charged to booking member with PP</li>
               <li>Book 5 days in advance</li>
             </ul>
-            <h3 style={aboutSubHeadingStyle}>Premium Member</h3>
-            <ul style={listStyle}>
+            <h3 className="sub-heading">Premium Member</h3>
+            <ul>
               <li>$1,200 annual, prepaid (charged through Square)</li>
               <li>No activation</li>
               <li>No minimum</li>
@@ -215,8 +120,8 @@ export default function Home() {
               <li>12 month commitment (charged through PP)</li>
               <li>Book courts 10 days in advance</li>
             </ul>
-            <h3 style={aboutSubHeadingStyle}>Founder Member</h3>
-            <ul style={listStyle}>
+            <h3 className="sub-heading">Founder Member</h3>
+            <ul>
               <li>$2,500 annual</li>
               <li>No court fees, 1 hour of prime per day reservation</li>
               <li>Unlimited use during non-booked time</li>
@@ -225,10 +130,14 @@ export default function Home() {
         </section>
 
         {/* Location Section */}
-        <section id="location" style={locationSectionStyle}>
-          <div style={glassCardStyle}>
-            <h2 style={aboutHeadingStyle}>Our Location</h2>
-            <div style={{ marginTop: '1rem' }}>
+        <section
+          id="location"
+          className="section location-section"
+          style={{ background: 'linear-gradient(to right, #a1c4fd, #c2e9fb)' }}
+        >
+          <div className="glass-card">
+            <h2 className="section-heading">Our Location</h2>
+            <div className="map-container">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3110.881133630271!2d-89.93912662344177!3d38.76643025442009!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8875f97015a39d8b%3A0x3adb3ff7059d0e8d!2s1%20Cottonwood%20Industrial%20Pk%2C%20Glen%20Carbon%2C%20IL%2062034!5e0!3m2!1sen!2sus!4v1738436140332!5m2!1sen!2sus"
                 width="100%"
@@ -245,24 +154,10 @@ export default function Home() {
         {/* Services Section */}
         <section
           id="services"
-          style={{
-            ...sectionStyle,
-            backgroundImage: "url('/services.jpg')",
-          }}
+          className="section"
+          style={{ backgroundImage: "url('/services.jpg')" }}
         >
-          <div
-            style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              background: 'rgba(255, 255, 255, 0.85)',
-              padding: '2rem',
-              borderRadius: '8px',
-              maxWidth: '80%',
-              textAlign: 'center',
-            }}
-          >
+          <div className="center-card">
             <h2>Our Offerings</h2>
             <p>
               From memberships to private lessons and court rentals, we have everything you need
@@ -274,24 +169,10 @@ export default function Home() {
         {/* Contact Section */}
         <section
           id="contact"
-          style={{
-            ...sectionStyle,
-            backgroundImage: "url('/contact.jpg')",
-          }}
+          className="section"
+          style={{ backgroundImage: "url('/contact.jpg')" }}
         >
-          <div
-            style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              background: 'rgba(255, 255, 255, 0.85)',
-              padding: '2rem',
-              borderRadius: '8px',
-              maxWidth: '80%',
-              textAlign: 'center',
-            }}
-          >
+          <div className="center-card">
             <h2>Contact Us</h2>
             <p>
               Ready to play? Get in touch to book a court or learn more about our programs.
@@ -299,6 +180,148 @@ export default function Home() {
           </div>
         </section>
       </div>
+
+      {/* Styled JSX for component-specific styling and responsiveness */}
+      <style jsx>{`
+        .container {
+          overflow-x: hidden;
+        }
+        .section {
+          position: relative;
+          min-height: 100vh;
+          width: 100%;
+          background-size: cover;
+          background-position: center;
+          background-attachment: fixed;
+        }
+        /* Disable fixed background on smaller screens */
+        @media (max-width: 768px) {
+          .section {
+            background-attachment: scroll;
+          }
+        }
+        .home-content {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+        }
+        .home-heading {
+          font-size: 4rem;
+          margin: 0;
+          font-family: 'Bebas Neue', sans-serif;
+          color: #fff;
+          font-stretch: expanded;
+        }
+        .home-paragraph {
+          font-size: 1.5rem;
+          margin-top: 20px;
+          font-family: 'Bebas Neue', sans-serif;
+          color: #fff;
+          font-stretch: expanded;
+        }
+        .glass-card {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background: rgba(255, 255, 255, 0.5);
+          padding: 3rem;
+          border-radius: 12px;
+          max-width: 800px;
+          width: 90%;
+          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          text-align: left;
+        }
+        .section-heading {
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+          font-family: 'Bebas Neue', sans-serif;
+          color: #333;
+        }
+        .section-text {
+          font-size: 1rem;
+          margin-bottom: 1rem;
+          font-family: 'Roboto', sans-serif;
+          line-height: 1.6;
+          color: #333;
+        }
+        .sub-heading {
+          font-size: 1.75rem;
+          margin-top: 1.5rem;
+          margin-bottom: 0.5rem;
+          font-family: 'Bebas Neue', sans-serif;
+          color: #333;
+        }
+        ul {
+          margin-left: 1.5rem;
+          color: #333;
+        }
+        .map-container {
+          margin-top: 1rem;
+        }
+        .center-card {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background: rgba(255, 255, 255, 0.85);
+          padding: 2rem;
+          border-radius: 8px;
+          max-width: 80%;
+          text-align: center;
+        }
+        /* Responsive adjustments for tablets and mobile devices */
+        @media (max-width: 768px) {
+          .home-heading {
+            font-size: 2.5rem;
+          }
+          .home-paragraph {
+            font-size: 1rem;
+          }
+          .glass-card {
+            padding: 1.5rem;
+          }
+          .section-heading {
+            font-size: 2rem;
+          }
+          .section-text {
+            font-size: 0.9rem;
+          }
+          .sub-heading {
+            font-size: 1.5rem;
+          }
+          .center-card {
+            padding: 1.5rem;
+          }
+        }
+        @media (max-width: 480px) {
+          .home-heading {
+            font-size: 2rem;
+          }
+          .home-paragraph {
+            font-size: 0.9rem;
+          }
+          .glass-card {
+            padding: 1rem;
+          }
+          .section-heading {
+            font-size: 1.75rem;
+          }
+          .section-text {
+            font-size: 0.85rem;
+          }
+          .sub-heading {
+            font-size: 1.25rem;
+          }
+          .center-card {
+            padding: 1rem;
+          }
+        }
+      `}</style>
     </>
   );
 }
