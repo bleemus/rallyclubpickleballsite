@@ -27,14 +27,15 @@ export default function Home() {
           style={{ backgroundImage: "url('/home.jpg')" }}
         >
           <div className="home-content">
-            {/* Using Next.js Image component for optimized image loading */}
-            <Image
-              src="/logo-transparent.png"
-              alt="Rally Club Pickleball Logo"
-              width={300}
-              height={100}
-              priority
-            />
+            <div className="logo-container">
+              <Image
+                src="/logo-transparent.png"
+                alt="Rally Club Pickleball Logo"
+                fill
+                style={{ objectFit: 'contain' }}
+                priority
+              />
+            </div>
             <h1 className="home-heading">RALLY CLUB PICKLEBALL</h1>
             <p className="home-paragraph">Where pickleball never sleeps!</p>
           </div>
@@ -83,7 +84,7 @@ export default function Home() {
           className="section membership-section"
           style={{ backgroundImage: "url('/membership.jpg')" }}
         >
-          <div className="glass-card">
+          <div className="glass-card membership-card">
             <h2 className="section-heading">Becoming a Member</h2>
             <p className="section-text">
               Becoming a member of The Rally Club is your gateway to 24/7 access to premier indoor
@@ -181,10 +182,16 @@ export default function Home() {
         </section>
       </div>
 
-      {/* Styled JSX for component-specific styling and responsiveness */}
       <style jsx>{`
         .container {
           overflow-x: hidden;
+        }
+        .logo-container {
+          position: relative;
+          width: 100%;
+          max-width: 300px; /* adjust as needed */
+          height: 100px;    /* adjust as needed to match aspect ratio */
+          margin: 0 auto;
         }
         .section {
           position: relative;
@@ -193,6 +200,8 @@ export default function Home() {
           background-size: cover;
           background-position: center;
           background-attachment: fixed;
+          /* Use padding so content isn’t flush with the viewport edge */
+          padding: 2rem 1rem;
         }
         /* Disable fixed background on smaller screens */
         @media (max-width: 768px) {
@@ -221,6 +230,7 @@ export default function Home() {
           color: #fff;
           font-stretch: expanded;
         }
+        /* Default styling for glass cards */
         .glass-card {
           position: absolute;
           top: 50%;
@@ -235,6 +245,14 @@ export default function Home() {
           backdrop-filter: blur(8px);
           -webkit-backdrop-filter: blur(8px);
           text-align: left;
+        }
+        /* Override for the membership section to let the content flow */
+        .membership-section .membership-card {
+          position: relative;
+          top: auto;
+          left: auto;
+          transform: none;
+          margin: 3rem auto;
         }
         .section-heading {
           font-size: 2.5rem;
