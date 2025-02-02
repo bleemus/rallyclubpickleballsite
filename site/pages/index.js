@@ -12,12 +12,6 @@ export default function Home() {
           content="Experience top‑notch pickleball courts, community events, and endless fun at Rally Club Pickleball!"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
-          rel="stylesheet"
-        />
       </Head>
       <div className="container">
         {/* Home Section */}
@@ -85,48 +79,34 @@ export default function Home() {
           style={{ backgroundImage: "url('/membership.jpg')" }}
         >
           <div className="glass-card membership-card">
-            <h2 className="section-heading">Becoming a Member</h2>
-            <p className="section-text">
-              Becoming a member of The Rally Club is your gateway to 24/7 access to premier indoor
-              pickleball courts, exclusive amenities, and a welcoming community of passionate
-              players. Whether you’re a casual enthusiast or a competitive player, our membership
-              options make it simple to join the fun and elevate your game.
-            </p>
-            <h3 className="sub-heading">Membership Plans</h3>
-            <p className="section-text">
-              With flexible plans tailored to your playing style, signing up is quick and hassle-free.
-              From online registration to reserving your first court with our high-tech PicklePlanner
-              system, we’ve made every step straightforward. Start enjoying priority booking,
-              discounted rates, and the ultimate pickleball experience in no time!
-            </p>
-            <h3 className="sub-heading">Standard Member (Single Booking Member)</h3>
+            <h2 className="section-heading">Membership Information</h2>
+            <p className="section-text">$40 per month or $360 annually</p>
+
+            <h3 className="sub-heading">
+              To become a MONTHLY member: <a href="https://square.link/u/ARDYg1em">CLICK HERE</a>
+            </h3>
+            
+            <h3 className="sub-heading">
+              To become an ANNUAL member: <a href="https://square.link/u/qVTr6dLI">CLICK HERE</a>
+            </h3>
+
+            <h3 className="sub-heading">Members can:</h3>
             <ul>
-              <li>$10 per month / $50 activation (charged through Square)</li>
-              <li>$30 month minimum charge (charged through PP)</li>
-              <li>$40 per hour (prime) charged to booking member with PP</li>
-              <li>$30 per hour (non-prime) charged to booking member with PP</li>
-              <li>Book 5 days in advance</li>
+              <li>Reserve courts 5 days in advance, starting at 7:00 am</li>
+              <li>Unlimited reservations per week</li>
+              <li>Guest fee (per day): $10</li>
             </ul>
-            <h3 className="sub-heading">Premium Member</h3>
+
+            <h3 className="sub-heading">Court Hourly Rates:</h3>
             <ul>
-              <li>$1,200 annual, prepaid (charged through Square)</li>
-              <li>No activation</li>
-              <li>No minimum</li>
-              <li>2-person membership</li>
-              <li>
-                2 free hours of prime per month ($80) – no rollover, must be used by paying member (credit
-                on PP)
-              </li>
-              <li>$10/hr non-prime drop-in (open courts, not reserved)</li>
-              <li>12 month commitment (charged through PP)</li>
-              <li>Book courts 10 days in advance</li>
+              <li>Base rate: $30</li>
+              <li>Su, Sa (5:30 am - 11:00 am): $40</li>
+              <li>M, T, W, R, F (4:30 pm - 8:30 pm): $40</li>
             </ul>
-            <h3 className="sub-heading">Founder Member</h3>
-            <ul>
-              <li>$2,500 annual</li>
-              <li>No court fees, 1 hour of prime per day reservation</li>
-              <li>Unlimited use during non-booked time</li>
-            </ul>
+
+            <h3 className="sub-heading">
+              Already a member? <a href="https://rallyclub.pickleplanner.com">Reserve your court here!</a>
+            </h3>
           </div>
         </section>
 
@@ -151,46 +131,21 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* Services Section */}
-        <section
-          id="services"
-          className="section"
-          style={{ backgroundImage: "url('/services.jpg')" }}
-        >
-          <div className="center-card">
-            <h2>Our Offerings</h2>
-            <p>
-              From memberships to private lessons and court rentals, we have everything you need
-              to enjoy your pickleball game.
-            </p>
-          </div>
-        </section>
-
-        {/* Contact Section */}
-        <section
-          id="contact"
-          className="section"
-          style={{ backgroundImage: "url('/contact.jpg')" }}
-        >
-          <div className="center-card">
-            <h2>Contact Us</h2>
-            <p>
-              Ready to play? Get in touch to book a court or learn more about our programs.
-            </p>
-          </div>
-        </section>
       </div>
 
       <style jsx>{`
+        /* Global box-sizing reset for consistent sizing */
+        * {
+          box-sizing: border-box;
+        }
         .container {
           overflow-x: hidden;
         }
         .logo-container {
           position: relative;
-          width: 100%;
-          max-width: 300px; /* adjust as needed */
-          height: 100px;    /* adjust as needed to match aspect ratio */
+          width: clamp(600px, 80vw, 900px);
+          max-width: 600px;
+          height: 200px;
           margin: 0 auto;
         }
         .section {
@@ -200,7 +155,6 @@ export default function Home() {
           background-size: cover;
           background-position: center;
           background-attachment: fixed;
-          /* Use padding so content isn’t flush with the viewport edge */
           padding: 2rem 1rem;
         }
         /* Disable fixed background on smaller screens */
@@ -230,7 +184,6 @@ export default function Home() {
           color: #fff;
           font-stretch: expanded;
         }
-        /* Default styling for glass cards */
         .glass-card {
           position: absolute;
           top: 50%;
@@ -246,7 +199,11 @@ export default function Home() {
           -webkit-backdrop-filter: blur(8px);
           text-align: left;
         }
-        /* Override for the membership section to let the content flow */
+        /* Set the location card to 80% width on desktop */
+        #location .glass-card {
+          width: 80%;
+        }
+        /* Allow membership card content to flow naturally */
         .membership-section .membership-card {
           position: relative;
           top: auto;
@@ -274,7 +231,8 @@ export default function Home() {
           font-family: 'Bebas Neue', sans-serif;
           color: #333;
         }
-        ul {
+        ul,
+        ol {
           margin-left: 1.5rem;
           color: #333;
         }
@@ -299,6 +257,15 @@ export default function Home() {
           }
           .home-paragraph {
             font-size: 1rem;
+          }
+          .glass-card,
+          .center-card {
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: none;
+            margin: 2rem auto;
+            width: calc(100% - 2rem);
           }
           .glass-card {
             padding: 1.5rem;
