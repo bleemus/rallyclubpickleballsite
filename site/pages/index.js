@@ -39,7 +39,7 @@ export default function Home() {
         <section
           id="about"
           className="section"
-          style={{ backgroundImage: "url('/R-6.png')" }}
+          style={{ backgroundImage: "url('/about.jpg')" }}
         >
           <div className="glass-card">
             <h2 className="section-heading">About Our Court</h2>
