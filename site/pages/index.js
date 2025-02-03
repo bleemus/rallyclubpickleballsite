@@ -83,11 +83,25 @@ export default function Home() {
             <p className="section-text">$40 per month or $360 annually</p>
 
             <h3 className="sub-heading">
-              To become a MONTHLY member: <a href="https://square.link/u/ARDYg1em">CLICK HERE</a>
+              To become a MONTHLY member:{' '}
+              <a
+                href="https://square.link/u/ARDYg1em"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                CLICK HERE
+              </a>
             </h3>
             
             <h3 className="sub-heading">
-              To become an ANNUAL member: <a href="https://square.link/u/qVTr6dLI">CLICK HERE</a>
+              To become an ANNUAL member:{' '}
+              <a
+                href="https://square.link/u/qVTr6dLI"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                CLICK HERE
+              </a>
             </h3>
 
             <h3 className="sub-heading">Members can:</h3>
@@ -105,7 +119,14 @@ export default function Home() {
             </ul>
 
             <h3 className="sub-heading">
-              Already a member? <a href="https://rallyclub.pickleplanner.com">Reserve your court here!</a>
+              Already a member?{' '}
+              <a
+                href="https://rallyclub.pickleplanner.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Reserve your court here!
+              </a>
             </h3>
           </div>
         </section>
@@ -144,7 +165,6 @@ export default function Home() {
         .logo-container {
           position: relative;
           width: clamp(600px, 80vw, 900px);
-          max-width: 600px;
           height: 200px;
           margin: 0 auto;
         }
