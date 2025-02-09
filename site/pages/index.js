@@ -1,8 +1,10 @@
-// pages/index.js
+import { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 
 export default function Home() {
+  const [modalImage, setModalImage] = useState(null);
+
   return (
     <>
       <Head>
@@ -42,7 +44,7 @@ export default function Home() {
           style={{ backgroundImage: "url('/R-6.png')" }}
         >
           <div className="glass-card">
-            <h2 className="section-heading">About Our Court</h2>
+            <h2 className="section-heading">About Our Club</h2>
             <p className="section-text">
               2 professionally painted concrete courts with semi-permanent nets.
             </p>
@@ -62,7 +64,7 @@ export default function Home() {
               Location: Centrally located, easily accessible building in Glen Carbon, IL.
             </p>
             <h3 className="sub-heading">Features:</h3>
-            <ul>
+            <ul className="section-text">
               <li>Two indoor, regulation-size pickleball courts.</li>
               <li>Temperature-controlled environment.</li>
               <li>High-tech court reservation system.</li>
@@ -78,35 +80,115 @@ export default function Home() {
           className="section membership-section"
           style={{ backgroundImage: "url('/membership.jpg')" }}
         >
-          <div className="glass-card membership-card">
-            <h2 className="section-heading">Membership Information</h2>
-            <p className="section-text">$40 per month or $360 annually</p>
+          <div className="membership-container">
+            {/* The Rally "A" List Box */}
+            <div className="glass-card membership-box beta-box">
+              <h2 className="section-heading">The Rally "A" List</h2>
+              <p className="section-text">
+                $100 one-time payment for 3-month membership. Starting from your first rally!
+              </p>
+              <ul className="section-text">
+                <li>No contract</li>
+                <li>24 hour access*</li>
+                <li>Reserve 5 days in advance</li>
+                <li>Minimum 1 hour reservation</li>
+                <li>Base rate $20/hour ($5 per player)</li>
+                <li>Prime rate $24 ($6 per player)</li>
+                <li>Non Rally "A" List players add $10 per guest, per booking</li>
+              </ul>
+              <p className="section-text">To become a BETA member:</p>
+              <ol className="section-text">
+                <li>
+                  Purchase a membership on Square:{" "}
+                  <a
+                    href="https://rallyclub.pickleplanner.com/dashboard/membership/join"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    CLICK HERE
+                  </a>
+                </li>
+                <li>Come back to this page and click join button below</li>
+              </ol>
+              <p className="section-text">
+                <a
+                  className="join-button"
+                  href="https://rallyclub.pickleplanner.com/dashboard/membership/join"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Join Now
+                </a>
+              </p>
+            </div>
 
-            <h3 className="sub-heading">
-              To become a MONTHLY member: <a href="https://square.link/u/ARDYg1em">CLICK HERE</a>
-            </h3>
-            
-            <h3 className="sub-heading">
-              To become an ANNUAL member: <a href="https://square.link/u/qVTr6dLI">CLICK HERE</a>
-            </h3>
+            {/* Rally Reserve (Guest acc) Box */}
+            <div className="glass-card membership-box nonmember-box">
+              <h2 className="section-heading">Rally Reserve (Guest acc)</h2>
+              <p className="section-text">
+                The Rally Reserve is a way for players to be part of the Rally Club without the commitment.
+                This allows you to save your registration, signed waiver, and to participate in joinable events.
+                Players on the Rally Reserve cannot make reservations but can be added to games by Rally "A" List members.
+                Converting to the "A" List is simple!
+              </p>
+              <p className="section-text">
+                <strong>Note:</strong> Each Reserve guest added to a reservation adds $10 to the court fees.
+              </p>
+              <p className="section-text">
+                <a
+                  className="join-button"
+                  href="https://rallyclub.pickleplanner.com/dashboard/membership/join"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Get Your FREE Rally Reserve Account
+                </a>
+              </p>
+            </div>
+          </div>
+        </section>
 
-            <h3 className="sub-heading">Members can:</h3>
-            <ul>
-              <li>Reserve courts 5 days in advance, starting at 7:00 am</li>
-              <li>Unlimited reservations per week</li>
-              <li>Guest fee (per day): $10</li>
-            </ul>
-
-            <h3 className="sub-heading">Court Hourly Rates:</h3>
-            <ul>
-              <li>Base rate: $30</li>
-              <li>Su, Sa (5:30 am - 11:00 am): $40</li>
-              <li>M, T, W, R, F (4:30 pm - 8:30 pm): $40</li>
-            </ul>
-
-            <h3 className="sub-heading">
-              Already a member? <a href="https://rallyclub.pickleplanner.com">Reserve your court here!</a>
-            </h3>
+        {/* Facility Gallery Section */}
+        <section
+          id="facility-gallery"
+          className="section facility-section"
+          style={{ backgroundImage: "url('/facility.jpg')" }}
+        >
+          <div className="facility-container">
+            {/* Floor Plan Card */}
+            <div
+              className="glass-card facility-card"
+              onClick={() => setModalImage('/facility-layout.jpg')}
+            >
+              <h2 className="section-heading">Floor Plan</h2>
+              <div className="image-container">
+                <Image
+                  src="/facility-layout.jpg"
+                  alt="Floor Plan"
+                  width={500}
+                  height={300}
+                  style={{ width: '100%', height: 'auto', cursor: 'pointer' }}
+                />
+              </div>
+              <p className="enlarge-text">click to enlarge</p>
+            </div>
+            {/* Outside Facility Card */}
+            <div
+              className="glass-card facility-card"
+              onClick={() => setModalImage('/facility-outside.jpg')}
+            >
+              <h2 className="section-heading">Outside View</h2>
+              <div className="image-container">
+                <Image
+                  src="/facility-outside.jpg"
+                  alt="Outside of Facility"
+                  width={500}
+                  height={300}
+                  style={{ width: '100%', height: 'auto', cursor: 'pointer' }}
+                />
+              </div>
+              <p className="enlarge-text">click to enlarge</p>
+            </div>
           </div>
         </section>
 
@@ -132,6 +214,28 @@ export default function Home() {
           </div>
         </section>
       </div>
+
+      {/* Modal for Enlarged Facility Image */}
+      {modalImage && (
+        <div className="modal" onClick={() => setModalImage(null)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="close-button" onClick={() => setModalImage(null)}>
+              X
+            </button>
+            <Image
+              src={modalImage}
+              alt="Enlarged view"
+              width={1000}
+              height={600}
+              style={{
+                maxWidth: '90vw',
+                maxHeight: '90vh',
+                objectFit: 'contain',
+              }}
+            />
+          </div>
+        </div>
+      )}
 
       <style jsx>{`
         /* Global box-sizing reset for consistent sizing */
@@ -184,7 +288,9 @@ export default function Home() {
           color: #fff;
           font-stretch: expanded;
         }
+        /* Default glass-card styling (used in Home, About, and Location) */
         .glass-card {
+          /* Note: This default absolute positioning is overridden in sections that need relative positioning */
           position: absolute;
           top: 50%;
           left: 50%;
@@ -203,13 +309,49 @@ export default function Home() {
         #location .glass-card {
           width: 80%;
         }
-        /* Allow membership card content to flow naturally */
-        .membership-section .membership-card {
+        /* Membership Section - Two Floating Boxes */
+        /* Center the membership container vertically and horizontally */
+        .membership-section {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          background-size: cover;
+          background-position: center;
+        }
+        .membership-container {
+          display: flex;
+          justify-content: space-around;
+          flex-wrap: wrap;
+          gap: 2rem;
+          max-width: 1200px;
+          width: 100%;
+          margin: 0 auto;
+        }
+        /* Override absolute positioning for membership boxes */
+        .membership-box {
+          flex: 1 1 45%;
+          max-width: 45%;
           position: relative;
           top: auto;
           left: auto;
           transform: none;
-          margin: 3rem auto;
+          background: rgba(255, 255, 255, 0.5);
+          padding: 3rem;
+          border-radius: 12px;
+          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          text-align: left;
+        }
+        .join-button {
+          display: inline-block;
+          background-color: #333;
+          color: #fff;
+          padding: 0.75rem 1.5rem;
+          border-radius: 4px;
+          text-decoration: none;
+          font-weight: bold;
         }
         .section-heading {
           font-size: 2.5rem;
@@ -239,19 +381,81 @@ export default function Home() {
         .map-container {
           margin-top: 1rem;
         }
-        .center-card {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          background: rgba(255, 255, 255, 0.85);
-          padding: 2rem;
-          border-radius: 8px;
-          max-width: 80%;
-          text-align: center;
+        /* Facility Gallery Section - Stack facility cards vertically, make them wider, and override default glass-card positioning */
+        .facility-section .glass-card {
+          position: relative;
+          top: auto;
+          left: auto;
+          transform: none;
         }
-        /* Responsive adjustments for tablets and mobile devices */
+        .facility-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 2rem;
+          margin: 3rem auto;
+          max-width: 1200px;
+          width: 100%;
+        }
+        .facility-card {
+          width: 80%;
+          background: rgba(255, 255, 255, 0.5);
+          padding: 3rem;
+          border-radius: 12px;
+          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          text-align: center;
+          cursor: pointer;
+          margin: 0 auto;
+        }
+        .enlarge-text {
+          font-size: 1rem;
+          color: #333;
+          margin-top: 0.5rem;
+          font-style: italic;
+        }
+        .image-container {
+          margin-top: 1rem;
+        }
+        /* Modal Styles */
+        .modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.8);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 9999;
+        }
+        .modal-content {
+          position: relative;
+        }
+        .close-button {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          font-size: 2rem;
+          background: transparent;
+          border: none;
+          color: #fff;
+          cursor: pointer;
+          z-index: 10000;
+        }
+        /* Mobile adjustments: make membership section auto-height so cards fit inside */
         @media (max-width: 768px) {
+          .membership-section {
+            height: auto;
+            padding: 2rem 1rem;
+          }
+          .membership-box,
+          .facility-card {
+            flex: 1 1 100%;
+            max-width: 100%;
+          }
           .home-heading {
             font-size: 2.5rem;
           }
