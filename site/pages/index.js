@@ -41,7 +41,7 @@ export default function Home() {
         <section
           id="about"
           className="section"
-          style={{ backgroundImage: "url('/R-6.png')" }}
+          style={{ backgroundImage: "url('/about.jpg')" }}
         >
           <div className="glass-card">
             <h2 className="section-heading">About Our Club</h2>
@@ -80,6 +80,7 @@ export default function Home() {
           className="section membership-section"
           style={{ backgroundImage: "url('/membership.jpg')" }}
         >
+
           <div className="membership-container">
             {/* The Rally "A" List Box */}
             <div className="glass-card membership-box beta-box">
@@ -248,7 +249,6 @@ export default function Home() {
         .logo-container {
           position: relative;
           width: clamp(600px, 80vw, 900px);
-          max-width: 600px;
           height: 200px;
           margin: 0 auto;
         }
