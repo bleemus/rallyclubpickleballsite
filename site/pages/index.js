@@ -33,7 +33,7 @@ export default function Home() {
               />
             </div>
             <h1 className="home-heading">RALLY CLUB PICKLEBALL</h1>
-            <p className="home-paragraph">Where pickleball never sleeps!</p>
+            <p className="home-paragraph">Your Court. Your Crew. Your Rally.</p>
           </div>
         </section>
 
@@ -44,35 +44,58 @@ export default function Home() {
           style={{ backgroundImage: "url('/about.jpg')" }}
         >
           <div className="glass-card">
-            <h2 className="section-heading">About Our Club</h2>
+            <h2 className="section-heading">Rally like a pro</h2>
             <p className="section-text">
-              2 professionally painted concrete courts with semi-permanent nets.
+              Welcome to Glen Carbon's premier indoor pickleball venue, designed for
+              players who demand the best. Our 2 court facility offers premium lighting
+              for better visibility, tournament-grade court surfaces for optimal play,
+              spacious layouts for uninterrupted games, and the ability to play whenever
+              you want. Every detail—from court spacing to acoustics—focuses on elevating
+              your pickleball experience. This is a space dedicated entirely to the game,
+              with no distractions—just get your crew and RALLY.
             </p>
+
+            <h3 className="sub-heading">How To Rally</h3>
+
             <p className="section-text">
-              Enjoy round-the-clock access to two indoor, temperature-controlled courts built
-              to official regulation standards with top-quality surfaces for the ultimate
-              playing experience.
+              <strong>Step 1</strong>
+              <br />
+              Go to{" "}
+              <a
+                href="https://rallyclub.pickleplanner.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                rallyclub.pickleplanner.com
+              </a>{" "}
+              and find the Rally tier that best suits you. Follow the instructions to set
+              up your profile and start making reservations.
             </p>
+
             <p className="section-text">
-              Rally Club is a state-of-the-art indoor pickleball facility located in Glen Carbon,
-              offering two high-quality courts available for rent 24 hours a day, 365 days a year.
-              Our mission is to provide pickleball enthusiasts with a premier playing experience in
-              a convenient and accessible environment.
+              <strong>Step 2</strong>
+              <br />
+              Click &quot;reserve court&quot; and pick a court and time for your Rally.
             </p>
-            <h3 className="sub-heading">Facility Overview</h3>
+
             <p className="section-text">
-              Location: Centrally located, easily accessible building in Glen Carbon, IL.
+              <strong>Step 3</strong>
+              <br />
+              Pick your &quot;Rally crew&quot; from the drop down menu. All players MUST
+              be registered with Pickleplanner &amp; Rally Club to play. See pricing
+              options below for details.
             </p>
-            <h3 className="sub-heading">Features:</h3>
-            <ul className="section-text">
-              <li>Two indoor, regulation-size pickleball courts.</li>
-              <li>Temperature-controlled environment.</li>
-              <li>High-tech court reservation system.</li>
-              <li>Secure access system allowing 24/7 entry.</li>
-              <li>Additional Amenities: Spectator seating, restrooms, and vending machines.</li>
-            </ul>
+
+            <p className="section-text">
+              <strong>Step 4</strong>
+              <br />
+              Complete the transaction and look for an email or text with the door code
+              to enter the facility. Your code will work 20 minutes before your court is
+              ready. Proceed to your assigned court and start your RALLY!
+            </p>
           </div>
         </section>
+
 
         {/* Membership Section */}
         <section
@@ -90,42 +113,52 @@ export default function Home() {
               </p>
               <ul className="section-text">
                 <li>No contract</li>
-                <li>24 hour access*</li>
+                <li>24 hour access</li>
                 <li>Reserve 5 days in advance</li>
                 <li>Minimum 1 hour reservation</li>
                 <li>Base rate $20/hour ($5 per player)</li>
-                <li>Prime rate $24 ($6 per player)</li>
+                <li>Prime rate $24/hour ($6 per player)</li>
                 <li>Non Rally "A" List players add $10 per guest, per booking</li>
               </ul>
-              <p className="section-text">To become a BETA member:</p>
+
+              {/* Make this paragraph bold & slightly larger */}
+              <p className="section-text become-beta">To become a BETA member:</p>
+
               <ol className="section-text">
                 <li>
-                  Purchase a membership on Square:{" "}
-                  <a
-                    href="https://rallyclub.pickleplanner.com/dashboard/membership/join"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    CLICK HERE
-                  </a>
+                  Click on the <strong>Purchase Membership</strong> button and buy your
+                  membership on Square.
+                  <div className="button-container first-button-container">
+                    <a
+                      className="join-button"
+                      href="https://square.link/u/LjZZkfht"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Purchase Rally A-List Membership
+                    </a>
+                  </div>
                 </li>
-                <li>Come back to this page and click join button below</li>
+                <li>
+                  Come back here and click the <strong>Join Now</strong> button to get
+                  access to the reservation site on Pickleplanner.
+                  <div className="button-container">
+                    <a
+                      className="join-button"
+                      href="https://rallyclub.pickleplanner.com/dashboard/membership/join"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Join Now
+                    </a>
+                  </div>
+                </li>
               </ol>
-              <p className="section-text">
-                <a
-                  className="join-button"
-                  href="https://rallyclub.pickleplanner.com/dashboard/membership/join"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Join Now
-                </a>
-              </p>
             </div>
 
             {/* Rally Reserve (Guest acc) Box */}
             <div className="glass-card membership-box nonmember-box">
-              <h2 className="section-heading">Rally Reserve (Guest acc)</h2>
+              <h2 className="section-heading">Rally Reserve (Guests)</h2>
               <p className="section-text">
                 The Rally Reserve is a way for players to be part of the Rally Club without the commitment.
                 This allows you to save your registration, signed waiver, and to participate in joinable events.
@@ -135,7 +168,7 @@ export default function Home() {
               <p className="section-text">
                 <strong>Note:</strong> Each Reserve guest added to a reservation adds $10 to the court fees.
               </p>
-              <p className="section-text">
+              <div className="button-container">
                 <a
                   className="join-button"
                   href="https://rallyclub.pickleplanner.com/dashboard/membership/join"
@@ -144,7 +177,7 @@ export default function Home() {
                 >
                   Get Your FREE Rally Reserve Account
                 </a>
-              </p>
+              </div>
             </div>
           </div>
         </section>
@@ -197,20 +230,39 @@ export default function Home() {
         <section
           id="location"
           className="section location-section"
-          style={{ background: 'linear-gradient(to right, #a1c4fd, #c2e9fb)' }}
         >
-          <div className="glass-card">
-            <h2 className="section-heading">Our Location</h2>
-            <div className="map-container">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3110.881133630271!2d-89.93912662344177!3d38.76643025442009!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8875f97015a39d8b%3A0x3adb3ff7059d0e8d!2s1%20Cottonwood%20Industrial%20Pk%2C%20Glen%20Carbon%2C%20IL%2062034!5e0!3m2!1sen!2sus!4v1738436140332!5m2!1sen!2sus"
-                width="100%"
-                height="450"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
+          <div className="location-container">
+            {/* Card 1: Map Card */}
+            <div className="glass-card map-card">
+              <h2 className="section-heading">Our Location</h2>
+              <div className="map-container">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3110.881133630271!2d-89.93912662344177!3d38.76643025442009!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8875f97015a39d8b%3A0x3adb3ff7059d0e8d!2s1%20Cottonwood%20Industrial%20Pk%2C%20Glen%20Carbon%2C%20IL%2062034!5e0!3m2!1sen!2sus!4v1738436140332!5m2!1sen!2sus"
+                  width="100%"
+                  height="450"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
+
+            {/* Card 2: Facebook Contact Card */}
+            <div className="glass-card contact-card">
+              <h3 className="section-heading">Need Assistance?</h3>
+              <p className="section-text">
+                Have questions or need help? <br />
+                Reach out to us on{" "}
+                <a
+                  href="https://www.facebook.com/profile.php?id=61572523900750"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Facebook
+                </a>
+                !
+              </p>
             </div>
           </div>
         </section>
@@ -248,8 +300,8 @@ export default function Home() {
         }
         .logo-container {
           position: relative;
-          width: clamp(600px, 80vw, 900px);
-          height: 200px;
+          width: clamp(750px, 80vw, 1125px);
+          height: 250px;
           margin: 0 auto;
         }
         .section {
@@ -328,7 +380,6 @@ export default function Home() {
           width: 100%;
           margin: 0 auto;
         }
-        /* Override absolute positioning for membership boxes */
         .membership-box {
           flex: 1 1 45%;
           max-width: 45%;
@@ -344,14 +395,36 @@ export default function Home() {
           -webkit-backdrop-filter: blur(8px);
           text-align: left;
         }
+        .membership-box ol,
+        .membership-box ul {
+          margin-left: 0;   /* Remove indentation entirely */
+          padding-left: 1rem; /* Or any smaller indentation */
+        }
+        li .join-button {
+          display: block;
+          margin: 0.5rem auto 0 auto; /* top and horizontal auto */
+        }
+        .become-beta {
+          font-size: 1.2rem;   /* or any size that looks “slightly larger” to you */
+          font-weight: bold;
+          margin-bottom: 1rem; /* optional extra spacing below the line */
+        }
+        .first-button-container {
+          margin-bottom: 1rem; /* adjust as needed (0.5rem, 1rem, etc.) */
+        }
+        .button-container {
+          text-align: center; 
+          margin-top: 0.5rem; /* spacing above the button */
+        }
         .join-button {
-          display: inline-block;
+          display: inline-block;  /* or block, both work with text-align: center on parent */
           background-color: #333;
           color: #fff;
           padding: 0.75rem 1.5rem;
           border-radius: 4px;
           text-decoration: none;
           font-weight: bold;
+          width: fit-content;
         }
         .section-heading {
           font-size: 2.5rem;
@@ -373,6 +446,37 @@ export default function Home() {
           font-family: 'Bebas Neue', sans-serif;
           color: #333;
         }
+        /* LOCATION SECTION as a flex container for vertical & horizontal centering */
+        .location-section {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 100vh; /* ensures there's enough height to center content */
+          background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+          padding: 2rem 1rem; /* add some padding so the cards aren’t cramped */
+        }
+
+        /* LOCATION CONTAINER stacks cards vertically */
+        .location-container {
+          display: flex;
+          flex-direction: column;  /* vertical stacking */
+          align-items: center;
+          gap: 2rem;               /* space between the two cards */
+          width: 100%;
+          max-width: 1200px;       /* optional max width */
+          margin: 0 auto;          /* center container in the section (horizontal) */
+        }
+
+        /* OVERRIDE default .glass-card absolute positioning */
+        .location-container .glass-card {
+          position: relative;  /* override any absolute defaults */
+          top: auto;
+          left: auto;
+          transform: none;
+          width: 80%;          /* or whatever width you prefer for each card */
+          max-width: 800px;    /* optional maximum width for each card */
+          margin: 0 auto;      /* center horizontally if smaller than container width */
+        }
         ul,
         ol {
           margin-left: 1.5rem;
@@ -381,7 +485,6 @@ export default function Home() {
         .map-container {
           margin-top: 1rem;
         }
-        /* Facility Gallery Section - Stack facility cards vertically, make them wider, and override default glass-card positioning */
         .facility-section .glass-card {
           position: relative;
           top: auto;
@@ -508,6 +611,9 @@ export default function Home() {
           }
           .center-card {
             padding: 1rem;
+          }
+          .membership-box {
+            padding: 1.5rem;
           }
         }
       `}</style>
