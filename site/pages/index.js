@@ -105,7 +105,6 @@ export default function Home() {
         >
 
           <div className="membership-container">
-            {/* The Rally "A" List Box */}
             <div className="glass-card membership-box beta-box">
               <h2 className="section-heading">The Rally "A" List</h2>
               <p className="section-text">
@@ -116,13 +115,10 @@ export default function Home() {
                 <li>24 hour access</li>
                 <li>Reserve 5 days in advance</li>
                 <li>Minimum 1 hour reservation</li>
-                <li>Base rate $20/hour ($5 per player)</li>
-                <li>Prime rate $24/hour ($6 per player)</li>
-                <li>Non Rally "A" List players add $10 per guest, per booking</li>
+                <li>Base rate $20/hr ($5/player if all 4 players are A-List)</li>
+                <li>Prime rate $24/hr ($6/player is all 4 players are A-List)</li>
               </ul>
-
-              {/* Make this paragraph bold & slightly larger */}
-              <p className="section-text become-beta">To become a BETA member:</p>
+              <p className="section-text become-beta">To become a member:</p>
 
               <ol className="section-text">
                 <li>
@@ -160,14 +156,21 @@ export default function Home() {
             <div className="glass-card membership-box nonmember-box">
               <h2 className="section-heading">Rally Reserve (Guests)</h2>
               <p className="section-text">
-                The Rally Reserve is a way for players to be part of the Rally Club without the commitment.
-                This allows you to save your registration, signed waiver, and to participate in joinable events.
-                Players on the Rally Reserve cannot make reservations but can be added to games by Rally "A" List members.
-                Converting to the "A" List is simple!
+                The Rally Reserve is a way for players to be part of the Rally Club without the commitment. 
+                This allows you to save your registration, signed waiver, and to participate in joinable events. 
+                Players on the Rally Reserve can make reservations and can be added to games by Rally "A-List" members. 
+                PicklePlanner does the math for you to show what each player owes. 
+                Players will be charged per the terms of their membership tier. 
+                Converting to the "A-List" is simple!
               </p>
-              <p className="section-text">
-                <strong>Note:</strong> Each Reserve guest added to a reservation adds $10 to the court fees.
-              </p>
+              <ul className="section-text">
+                <li>No contract</li>
+                <li>Pay as you go</li>
+                <li>Reserve 2 days in advance</li>
+                <li>Minimum 1 hour reservation</li>
+                <li>Base rate $40/hr ($10/player if all 4 players are Rally Reserve)</li>
+                <li>Prime rate $50/hr ($6/player is all 4 players are Rally Reserve)</li>
+              </ul>
               <div className="button-container">
                 <a
                   className="join-button"
@@ -175,7 +178,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Get Your FREE Rally Reserve Account
+                  Click here for your FREE Rally Reserve Account
                 </a>
               </div>
             </div>
@@ -246,6 +249,15 @@ export default function Home() {
                   referrerPolicy="no-referrer-when-downgrade"
                 ></iframe>
               </div>
+              <h2 className="section-heading">Our Hours</h2>
+              <div className="section-text">
+                Available 24 hours per day with reservation! <br />
+                Prime time hours:
+                <ul>
+                  <li>weekdays 4:30pm - 9:00pm</li>
+                  <li>weekends 5:30am - midnight</li>
+                </ul>
+              </div>
             </div>
 
             {/* Card 2: Facebook Contact Card */}
@@ -260,8 +272,15 @@ export default function Home() {
                   rel="noopener noreferrer"
                 >
                   Facebook
-                </a>
-                !
+                </a>{" "}
+                or send us an{" "}
+                <a
+                  href="mailto:rally.club618@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  e-mail
+                </a>            
               </p>
             </div>
           </div>
@@ -291,7 +310,6 @@ export default function Home() {
       )}
 
       <style jsx>{`
-        /* Global box-sizing reset for consistent sizing */
         * {
           box-sizing: border-box;
         }
@@ -313,7 +331,6 @@ export default function Home() {
           background-attachment: fixed;
           padding: 2rem 1rem;
         }
-        /* Disable fixed background on smaller screens */
         @media (max-width: 768px) {
           .section {
             background-attachment: scroll;
@@ -340,9 +357,7 @@ export default function Home() {
           color: #fff;
           font-stretch: expanded;
         }
-        /* Default glass-card styling (used in Home, About, and Location) */
         .glass-card {
-          /* Note: This default absolute positioning is overridden in sections that need relative positioning */
           position: absolute;
           top: 50%;
           left: 50%;
@@ -357,12 +372,10 @@ export default function Home() {
           -webkit-backdrop-filter: blur(8px);
           text-align: left;
         }
-        /* Set the location card to 80% width on desktop */
         #location .glass-card {
           width: 80%;
         }
-        /* Membership Section - Two Floating Boxes */
-        /* Center the membership container vertically and horizontally */
+        /* Membership Section - Two Floating Boxes */        
         .membership-section {
           display: flex;
           align-items: center;
@@ -397,27 +410,27 @@ export default function Home() {
         }
         .membership-box ol,
         .membership-box ul {
-          margin-left: 0;   /* Remove indentation entirely */
-          padding-left: 1rem; /* Or any smaller indentation */
+          margin-left: 0;   
+          padding-left: 1rem; 
         }
         li .join-button {
           display: block;
-          margin: 0.5rem auto 0 auto; /* top and horizontal auto */
+          margin: 0.5rem auto 0 auto; 
         }
         .become-beta {
-          font-size: 1.2rem;   /* or any size that looks “slightly larger” to you */
+          font-size: 1.2rem;   
           font-weight: bold;
-          margin-bottom: 1rem; /* optional extra spacing below the line */
+          margin-bottom: 1rem; 
         }
         .first-button-container {
-          margin-bottom: 1rem; /* adjust as needed (0.5rem, 1rem, etc.) */
+          margin-bottom: 1rem; 
         }
         .button-container {
           text-align: center; 
-          margin-top: 0.5rem; /* spacing above the button */
+          margin-top: 0.5rem; 
         }
         .join-button {
-          display: inline-block;  /* or block, both work with text-align: center on parent */
+          display: inline-block;  
           background-color: #333;
           color: #fff;
           padding: 0.75rem 1.5rem;
@@ -446,36 +459,31 @@ export default function Home() {
           font-family: 'Bebas Neue', sans-serif;
           color: #333;
         }
-        /* LOCATION SECTION as a flex container for vertical & horizontal centering */
         .location-section {
           display: flex;
           align-items: center;
           justify-content: center;
-          min-height: 100vh; /* ensures there's enough height to center content */
+          min-height: 100vh; 
           background: linear-gradient(to right, #a1c4fd, #c2e9fb);
-          padding: 2rem 1rem; /* add some padding so the cards aren’t cramped */
+          padding: 2rem 1rem; 
         }
-
-        /* LOCATION CONTAINER stacks cards vertically */
         .location-container {
           display: flex;
-          flex-direction: column;  /* vertical stacking */
+          flex-direction: column;  
           align-items: center;
-          gap: 2rem;               /* space between the two cards */
+          gap: 2rem;               
           width: 100%;
-          max-width: 1200px;       /* optional max width */
-          margin: 0 auto;          /* center container in the section (horizontal) */
+          max-width: 1200px;       
+          margin: 0 auto;          
         }
-
-        /* OVERRIDE default .glass-card absolute positioning */
         .location-container .glass-card {
-          position: relative;  /* override any absolute defaults */
+          position: relative;  
           top: auto;
           left: auto;
           transform: none;
-          width: 80%;          /* or whatever width you prefer for each card */
-          max-width: 800px;    /* optional maximum width for each card */
-          margin: 0 auto;      /* center horizontally if smaller than container width */
+          width: 80%;          
+          max-width: 800px;    
+          margin: 0 auto;      
         }
         ul,
         ol {
@@ -619,4 +627,5 @@ export default function Home() {
       `}</style>
     </>
   );
+
 }
