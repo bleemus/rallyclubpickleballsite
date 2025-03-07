@@ -116,7 +116,21 @@ export default function Home() {
                 <li>Reserve 5 days in advance</li>
                 <li>Minimum 1 hour reservation</li>
                 <li>Base rate $20/hr ($5/player if all 4 players are A-List)</li>
-                <li>Prime rate $24/hr ($6/player is all 4 players are A-List)</li>
+                <li>
+                  <span className="tooltip-trigger">
+                    Prime rate $24/hr
+                    <span className="tooltip-text">
+                      <u>Prime time hours</u>
+                      <br />
+                      <i>Weekdays</i><br />
+                      4:30pm – 9:00pm
+                      <br />
+                      <i>Weekends</i><br />
+                      5:30am – midnight
+                    </span>
+                  </span>
+                  {" "}($6/player is all 4 players are A-List)
+                </li>
               </ul>
               <p className="section-text become-beta">To become a member:</p>
 
@@ -156,11 +170,11 @@ export default function Home() {
             <div className="glass-card membership-box nonmember-box">
               <h2 className="section-heading">Rally Reserve (Guests)</h2>
               <p className="section-text">
-                The Rally Reserve is a way for players to be part of the Rally Club without the commitment. 
-                This allows you to save your registration, signed waiver, and to participate in joinable events. 
-                Players on the Rally Reserve can make reservations and can be added to games by Rally "A-List" members. 
-                PicklePlanner does the math for you to show what each player owes. 
-                Players will be charged per the terms of their membership tier. 
+                The Rally Reserve is a way for players to be part of the Rally Club without the commitment.
+                This allows you to save your registration, signed waiver, and to participate in joinable events.
+                Players on the Rally Reserve can make reservations and can be added to games by Rally "A-List" members.
+                PicklePlanner does the math for you to show what each player owes.
+                Players will be charged per the terms of their membership tier.
                 Converting to the "A-List" is simple!
               </p>
               <ul className="section-text">
@@ -169,7 +183,21 @@ export default function Home() {
                 <li>Reserve 2 days in advance</li>
                 <li>Minimum 1 hour reservation</li>
                 <li>Base rate $40/hr ($10/player if all 4 players are Rally Reserve)</li>
-                <li>Prime rate $50/hr ($6/player is all 4 players are Rally Reserve)</li>
+                <li>
+                  <span className="tooltip-trigger">
+                    Prime rate $50/hr
+                    <span className="tooltip-text">
+                      <u>Prime time hours</u>
+                      <br />
+                      <i>Weekdays</i><br />
+                      4:30pm – 9:00pm
+                      <br />
+                      <i>Weekends</i><br />
+                      5:30am – midnight
+                    </span>
+                  </span>
+                  {" "}($12.50/player if all 4 players are Rally Reserve)
+                </li>
               </ul>
               <div className="button-container">
                 <a
@@ -238,6 +266,10 @@ export default function Home() {
             {/* Card 1: Map Card */}
             <div className="glass-card map-card">
               <h2 className="section-heading">Our Location</h2>
+              <div className="section-text">
+                Rally Club Pickleball is located at 1 Cottonwood Industrial Pk, Glen Carbon, IL 62034.
+                We are conveniently located a short drive from the intersection of IL-159 and Cottonwood Rd.
+              </div>
               <div className="map-container">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3110.881133630271!2d-89.93912662344177!3d38.76643025442009!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8875f97015a39d8b%3A0x3adb3ff7059d0e8d!2s1%20Cottonwood%20Industrial%20Pk%2C%20Glen%20Carbon%2C%20IL%2062034!5e0!3m2!1sen!2sus!4v1738436140332!5m2!1sen!2sus"
@@ -280,7 +312,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                 >
                   e-mail
-                </a>            
+                </a>
               </p>
             </div>
           </div>
@@ -624,6 +656,39 @@ export default function Home() {
             padding: 1.5rem;
           }
         }
+      .tooltip-trigger {
+        position: relative;
+        cursor: pointer;
+        text-decoration: underline;
+        color: #333;
+      }
+
+      .tooltip-text {
+        visibility: hidden;
+        opacity: 0;
+        width: 220px; /* adjust to fit your text */
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        text-align: center;
+        padding: 0.75rem;
+        border-radius: 6px;
+
+        /* Position the tooltip */
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 125%;  /* or top: 125%; depending on where you want it */
+        z-index: 10;
+
+        /* Smooth transition */
+        transition: visibility 0.2s, opacity 0.2s;
+      }
+
+      /* When hovering over the trigger, show the tooltip */
+      .tooltip-trigger:hover .tooltip-text {
+        visibility: visible;
+        opacity: 1;
+      }
       `}</style>
     </>
   );
