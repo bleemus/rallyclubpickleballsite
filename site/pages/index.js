@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Home() {
   const [modalImage, setModalImage] = useState(null);
@@ -267,7 +268,7 @@ export default function Home() {
             <div className="glass-card map-card">
               <h2 className="section-heading">Our Location</h2>
               <div className="section-text">
-                Rally Club Pickleball is located at 1 Cottonwood Industrial Pk, Glen Carbon, IL 62034.
+                Rally Club Pickleball is located at 1 Cottonwood Industrial Park, Glen Carbon, IL 62034.<br />
                 We are conveniently located a short drive from the intersection of IL-159 and Cottonwood Rd.
               </div>
               <div className="map-container">
@@ -297,6 +298,11 @@ export default function Home() {
               <h3 className="section-heading">Need Assistance?</h3>
               <p className="section-text">
                 Have questions or need help? <br />
+                <Link href="/faq" style={{ textDecoration: 'underline', color: '#333' }}>
+                  Check out our FAQ
+                </Link>
+                <br /><br />
+                Still have questions?<br />
                 Reach out to us on{" "}
                 <a
                   href="https://www.facebook.com/profile.php?id=61572523900750"
