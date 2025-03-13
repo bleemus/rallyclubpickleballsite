@@ -46,8 +46,8 @@ export default function FAQ() {
             <div className="faq-question">
               <h3>Q: How do I reserve a court?</h3>
               <p>
-                A: All court reservations are made through PicklePlanner, our
-                online booking system.
+                A: All court reservations are made through <a href="https://rallyclub.pickleplanner.com">rallyclub.pickleplanner.com</a>,
+                our online booking system.
               </p>
             </div>
 
