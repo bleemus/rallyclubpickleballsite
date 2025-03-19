@@ -9,12 +9,37 @@ export default function Home() {
   return (
     <>
       <Head>
+        {/* Primary SEO tags */}
         <title>Rally Club Pickleball</title>
         <meta
           name="description"
-          content="Experience top‑notch pickleball courts, community events, and endless fun at Rally Club Pickleball!"
+          content="Play pickleball anytime at Rally Club Pickleball in Glen Carbon, IL. Enjoy 24-hour facility access, top-notch courts, and fun community events."
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://www.rallyclubpickleball.com/" />
+
+        {/* Additional SEO tags */}
+        <meta
+          name="keywords"
+          content="pickleball, indoor courts, Glen Carbon IL, membership, rally club, sports facility"
+        />
+
+        {/* Open Graph for social sharing */}
+        <meta property="og:title" content="Rally Club Pickleball" />
+        <meta
+          property="og:description"
+          content="Join Glen Carbon's premier 24/7 indoor pickleball facility. Reserve courts, play with friends, and be part of the Rally Club community!"
+        />
+        <meta property="og:image" content="/logo-transparent.png" />
+        <meta property="og:url" content="https://www.rallyclubpickleball.com/" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Rally Club Pickleball" />
+        <meta
+          name="twitter:description"
+          content="Your Court. Your Crew. Your Rally. Discover the best indoor pickleball experience in Glen Carbon, IL."
+        />
+        <meta name="twitter:image" content="/logo-transparent.png" />
       </Head>
       <div className="container">
         {/* Home Section */}
