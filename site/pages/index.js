@@ -158,8 +158,8 @@ export default function Home() {
                   {" "}($6/player is all 4 players are A-List)
                 </li>
               </ul>
+              {/* Removing A-list stuff for now 
               <p className="section-text become-beta">To become a member:</p>
-
               <ol className="section-text">
                 <li>
                   Click on the <strong>Purchase Membership</strong> button and buy your
@@ -190,6 +190,12 @@ export default function Home() {
                   </div>
                 </li>
               </ol>
+              */}
+              <p className="section-text become-beta">
+                The A-List is officially closed! Join the waitlist for your opportunity to get in next time it opens! <br /> 
+                <br />
+                E-mail us at <a href="mailto:join@rallyclubpickleball.com">join@rallyclubpickleball.com</a> with your name and contact information to be added to the waitlist for your opportunity to get in next time it opens!
+              </p>
             </div>
 
             {/* Rally Reserve (Guest acc) Box */}
@@ -201,7 +207,7 @@ export default function Home() {
                 Players on the Rally Reserve can make reservations and can be added to games by Rally "A-List" members.
                 PicklePlanner does the math for you to show what each player owes.
                 Players will be charged per the terms of their membership tier.
-                Converting to the "A-List" is simple!
+                {/* Converting to the "A-List" is simple! */}
               </p>
               <ul className="section-text">
                 <li>No contract</li>
