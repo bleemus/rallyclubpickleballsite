@@ -10,7 +10,7 @@ export default function Home() {
     <>
       <Head>
         {/* Primary SEO tags */}
-        <title>Rally Club Pickleball</title>
+        <title>Rally Club Pickleball | Metro East Premier Indoor Pickleball Club</title>
         <meta
           name="description"
           content="Play pickleball anytime at Rally Club Pickleball in Glen Carbon, IL. Enjoy 24-hour facility access, top-notch courts, and fun community events."
