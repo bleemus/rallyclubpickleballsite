@@ -133,15 +133,12 @@ export default function Home() {
           <div className="membership-container">
             <div className="glass-card membership-box beta-box">
               <h2 className="section-heading">The Rally "A" List</h2>
-              <p className="section-text">
-                $100 one-time payment for 3-month membership. Starting from your first rally!
-              </p>
               <ul className="section-text">
                 <li>No contract</li>
                 <li>24 hour access</li>
                 <li>Reserve 5 days in advance</li>
                 <li>Minimum 1 hour reservation</li>
-                <li>Base rate $20/hr ($5/player if all 4 players are A-List)</li>
+                <li>Base rate $20/hr ($5/hr for you)</li>
                 <li>
                   <span className="tooltip-trigger">
                     Prime rate $24/hr
@@ -155,7 +152,7 @@ export default function Home() {
                       5:30am – midnight
                     </span>
                   </span>
-                  {" "}($6/player is all 4 players are A-List)
+                  {" "}($6/hr for you)
                 </li>
               </ul>
               {/* Removing A-list stuff for now 
