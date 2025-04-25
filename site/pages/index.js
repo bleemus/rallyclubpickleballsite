@@ -136,23 +136,25 @@ export default function Home() {
               <ul className="section-text">
                 <li>No contract</li>
                 <li>24 hour access</li>
-                <li>Reserve 5 days in advance</li>
+                <li>Reserve 10 days in advance</li>
                 <li>Minimum 1 hour reservation</li>
                 <li>Base rate $20/hr ($5/hr for you)</li>
                 <li>
-                  <span className="tooltip-trigger">
+                  <span
+                    className="tooltip-trigger"
+                    style={{ textDecoration: 'line-through' }}
+                  >
                     Prime rate $24/hr
-                    <span className="tooltip-text">
-                      <u>Prime time hours</u>
-                      <br />
-                      <i>Weekdays</i><br />
-                      4:30pm – 9:00pm
-                      <br />
-                      <i>Weekends</i><br />
-                      5:30am – midnight
+                    <span
+                      className="tooltip-text"
+                      style={{ textDecoration: 'line-through' }}
+                    >
+                      <u>Prime time hours</u><br />
+                      <i>Weekdays</i><br />4:30pm – 9:00pm<br />
+                      <i>Weekends</i><br />5:30am – midnight
                     </span>
                   </span>
-                  {" "}($6/hr for you)
+                  <em>&nbsp;All hours will be base rate for the summer!</em>
                 </li>
               </ul>
               {/* Removing A-list stuff for now 
@@ -207,25 +209,26 @@ export default function Home() {
                 {/* Converting to the "A-List" is simple! */}
               </p>
               <ul className="section-text">
-                <li>No contract</li>
                 <li>Pay as you go</li>
-                <li>Reserve 2 days in advance</li>
+                <li>Reserve 5 days in advance</li>
                 <li>Minimum 1 hour reservation</li>
                 <li>Base rate $40/hr ($10/player if all 4 players are Rally Reserve)</li>
                 <li>
-                  <span className="tooltip-trigger">
+                  <span
+                    className="tooltip-trigger"
+                    style={{ textDecoration: 'line-through' }}
+                  >
                     Prime rate $50/hr
-                    <span className="tooltip-text">
-                      <u>Prime time hours</u>
-                      <br />
-                      <i>Weekdays</i><br />
-                      4:30pm – 9:00pm
-                      <br />
-                      <i>Weekends</i><br />
-                      5:30am – midnight
+                    <span
+                      className="tooltip-text"
+                      style={{ textDecoration: 'line-through' }}
+                    >
+                      <u>Prime time hours</u><br />
+                      <i>Weekdays</i><br />4:30pm – 9:00pm<br />
+                      <i>Weekends</i><br />5:30am – midnight
                     </span>
                   </span>
-                  {" "}($12.50/player if all 4 players are Rally Reserve)
+                  <em>&nbsp;All hours will be base rate for the summer!</em>
                 </li>
               </ul>
               <div className="button-container">
