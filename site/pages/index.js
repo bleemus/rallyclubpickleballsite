@@ -304,7 +304,7 @@ export default function Home() {
               </div>
               <div className="map-container">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3110.881133630271!2d-89.93912662344177!3d38.76643025442009!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8875f97015a39d8b%3A0x3adb3ff7059d0e8d!2s1%20Cottonwood%20Industrial%20Pk%2C%20Glen%20Carbon%2C%20IL%2062034!5e0!3m2!1sen!2sus!4v1738436140332!5m2!1sen!2sus"
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d799.5860377841626!2d-89.93756610367085!3d38.76633662956965!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8875f9f92112c085%3A0x4217965f56847a5e!2sThe%20Rally%20Club!5e0!3m2!1sen!2sus!4v1746223485153!5m2!1sen!2sus"
                   width="100%"
                   height="450"
                   style={{ border: 0 }}
@@ -315,12 +315,7 @@ export default function Home() {
               </div>
               <h2 className="section-heading">Our Hours</h2>
               <div className="section-text">
-                Available 24 hours per day with reservation! <br />
-                Prime time hours:
-                <ul>
-                  <li>weekdays 4:30pm - 9:00pm</li>
-                  <li>weekends 5:30am - midnight</li>
-                </ul>
+                <b>Available 24 hours per day with <a href="https://rallyclub.pickleplanner.com/dashboard/reservation/make">reservation</a>!</b>
               </div>
             </div>
 
