@@ -14,6 +14,18 @@ return (
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
         rel="stylesheet"
         />
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-P07QFV8R94"></script>
+        <script
+            dangerouslySetInnerHTML={{
+            __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-P07QFV8R94');
+            `,
+            }}
+        />
     </Head>
     <body>
         <Main />
