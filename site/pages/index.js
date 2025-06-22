@@ -129,7 +129,6 @@ export default function Home() {
           className="section membership-section"
           style={{ backgroundImage: "url('/membership.jpg')" }}
         >
-
           <div className="membership-container">
             <div className="glass-card membership-box beta-box">
               <h2 className="section-heading">The Rally "A" List</h2>
@@ -157,46 +156,53 @@ export default function Home() {
                   <em>&nbsp;All hours will be base rate for the summer!</em>
                 </li>
               </ul>
-              {/* Removing A-list stuff for now 
-              <p className="section-text become-beta">To become a member:</p>
-              <ol className="section-text">
-                <li>
-                  Click on the <strong>Purchase Membership</strong> button and buy your
-                  membership on Square.
-                  <div className="button-container first-button-container">
-                    <a
-                      className="join-button"
-                      href="https://square.link/u/LjZZkfht"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Purchase Rally A-List Membership
-                    </a>
-                  </div>
-                </li>
-                <li>
-                  Come back here and click the <strong>Join Now</strong> button to get
-                  access to the reservation site on Pickleplanner.
-                  <div className="button-container">
-                    <a
-                      className="join-button"
-                      href="https://rallyclub.pickleplanner.com/dashboard/membership/join"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Join Now
-                    </a>
-                  </div>
-                </li>
-              </ol>
-              */}
-              <p className="section-text become-beta">
-                The A-List is officially closed! Join the waitlist for your opportunity to get in next time it opens! <br /> 
-                <br />
-                E-mail us at <a href="mailto:join@rallyclubpickleball.com">join@rallyclubpickleball.com</a> with your name and contact information to be added to the waitlist for your opportunity to get in next time it opens!
+              <h3>Renew Your A-List Membership</h3>
+              <strong>Annual Membership</strong>
+              <ul className="section-text">
+                <li>$350/yr</li>
+                <li>Play FREE all of July</li>
+                <li>Get $25 in Rally Bucks</li>
+                <li>Renew before July 1 and save an additional $25</li>
+              </ul>
+              <div className="button-container">
+                <a
+                  className="join-button"
+                  href="https://checkout.square.site/merchant/MLRWNHWZVQE4S/checkout/BHEKDUEFWAYCHDLQEVD45LQV"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Annual Renewal Before July 1, 2025
+                </a>
+                <a
+                  className="join-button"
+                  href="https://checkout.square.site/merchant/MLRWNHWZVQE4S/checkout/XMJLSNSRTRPJZZV3Q5WTYCEG"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ marginTop: '0.5rem' }}
+                >
+                  Annual Renewal After July 1, 2025
+                </a>
+              </div>
+              <br />
+              <strong>Prefer monthly?</strong><br />
+              <ul className="section-text">
+                <li>$35/month</li>
+                <li>Includes $25 Rally Bucks</li>
+              </ul>
+              <div className="button-container" style={{ marginTop: '0.5rem' }}>
+                <a
+                  className="join-button"
+                  href="https://checkout.square.site/merchant/MLRWNHWZVQE4S/checkout/ZPZHAIKDZ2D5K7JVUP2C25YQ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Monthly Renewal
+                </a>
+              </div>
+              <p className="section-text">
+                Rally Reserve members may claim remaining A-List spots starting June 27. Open to public July 1.
               </p>
             </div>
-
             {/* Rally Reserve (Guest acc) Box */}
             <div className="glass-card membership-box nonmember-box">
               <h2 className="section-heading">Rally Reserve (Guests)</h2>
@@ -206,7 +212,6 @@ export default function Home() {
                 Players on the Rally Reserve can make reservations and can be added to games by Rally "A-List" members.
                 PicklePlanner does the math for you to show what each player owes.
                 Players will be charged per the terms of their membership tier.
-                {/* Converting to the "A-List" is simple! */}
               </p>
               <ul className="section-text">
                 <li>Pay as you go</li>
