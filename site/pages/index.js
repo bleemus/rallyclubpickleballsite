@@ -5,9 +5,18 @@ import Link from 'next/link';
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState(null);
+  const [lightboxImage, setLightboxImage] = useState(null);
 
   const toggleFaq = (index) => {
     setOpenFaq(openFaq === index ? null : index);
+  };
+
+  const openLightbox = (imageSrc, imageAlt, heading, caption) => {
+    setLightboxImage({ src: imageSrc, alt: imageAlt, heading, caption });
+  };
+
+  const closeLightbox = () => {
+    setLightboxImage(null);
   };
 
   return (
@@ -44,6 +53,13 @@ export default function Home() {
         <header className="header">
           <div className="header-content">
             <div className="logo">
+              <Image
+                src="/logo-transparent.png"
+                alt="Rally Club Pickleball Logo"
+                width={40}
+                height={40}
+                style={{ marginRight: '0.5rem', objectFit: 'contain' }}
+              />
               Rally Club Pickleball
             </div>
             <nav className="nav">
@@ -132,23 +148,35 @@ export default function Home() {
         <section id="facility" className="facility">
           <h2 className="section-title">Facility Overview</h2>
           <div className="facility-grid">
-            <div className="facility-image">
-              <Image
-                src="/facility-layout.jpg"
-                alt="Facility Layout"
-                width={400}
-                height={300}
-                style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '12px' }}
-              />
+            <div className="facility-item">
+              <div className="facility-image" onClick={() => openLightbox('/facility-layout.jpg', 'Facility Layout', 'Floor Plan', "Here's your future HQ.")}>
+                <Image
+                  src="/facility-layout.jpg"
+                  alt="Facility Layout"
+                  width={400}
+                  height={300}
+                  style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '12px', cursor: 'pointer' }}
+                />
+              </div>
+              <div className="facility-caption">
+                <h3>Floor Plan</h3>
+                <p>Here's your future HQ.</p>
+              </div>
             </div>
-            <div className="facility-image">
-              <Image
-                src="/facility-outside.jpg"
-                alt="Facility Exterior"
-                width={400}
-                height={300}
-                style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '12px' }}
-              />
+            <div className="facility-item">
+              <div className="facility-image" onClick={() => openLightbox('/facility-outside.jpg', 'Facility Exterior', 'Outside View', 'Pull up. Walk in. Rally begins.')}>
+                <Image
+                  src="/facility-outside.jpg"
+                  alt="Facility Exterior"
+                  width={400}
+                  height={300}
+                  style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '12px', cursor: 'pointer' }}
+                />
+              </div>
+              <div className="facility-caption">
+                <h3>Outside View</h3>
+                <p>Pull up. Walk in. Rally begins.</p>
+              </div>
             </div>
           </div>
         </section>
@@ -180,6 +208,35 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Location Section */}
+        <section id="location" className="location">
+          <h2 className="section-title">Our Location</h2>
+          <div className="location-content">
+            <div className="location-info">
+              <div className="address">
+                <h3>Visit Us</h3>
+                <p>1 Cottonwood Industrial Park<br />Glen Carbon, IL 62034</p>
+                <p>Conveniently located a short drive from the intersection of IL-159 and Cottonwood Rd.</p>
+              </div>
+              <div className="hours">
+                <h3>Our Hours</h3>
+                <p><strong>Available 24 hours per day with <a href="https://rallyclub.pickleplanner.com/dashboard/reservation/make" target="_blank" rel="noopener noreferrer">reservation</a>!</strong></p>
+              </div>
+            </div>
+            <div className="map-container">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d799.5860377841626!2d-89.93756610367085!3d38.76633662956965!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8875f9f92112c085%3A0x4217965f56847a5e!2sThe%20Rally%20Club!5e0!3m2!1sen!2sus!4v1746223485153!5m2!1sen!2sus"
+                width="100%"
+                height="400"
+                style={{ border: 0, borderRadius: '12px' }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </section>
+
         {/* FAQ */}
         <section className="faq">
           <h2 className="section-title">Frequently Asked Questions</h2>
@@ -189,12 +246,12 @@ export default function Home() {
                 className={`faq-question ${openFaq === 0 ? 'active' : ''}`}
                 onClick={() => toggleFaq(0)}
               >
-                What are the membership options?
+                Do I need a membership to book?
                 <span className="faq-arrow">{openFaq === 0 ? '−' : '+'}</span>
               </button>
               {openFaq === 0 && (
                 <div className="faq-answer">
-                  We offer A-List membership for $99/month with unlimited access, and Rally Reserve for $49/month with standard booking options. Both include member events and gear discounts.
+                  No. A-List members get the best rate and earlier booking windows. Rally Reserve guests can still book and play pay-as-you-go.
                 </div>
               )}
             </div>
@@ -203,12 +260,12 @@ export default function Home() {
                 className={`faq-question ${openFaq === 1 ? 'active' : ''}`}
                 onClick={() => toggleFaq(1)}
               >
-                How do I book a court?
+                How does the door code work?
                 <span className="faq-arrow">{openFaq === 1 ? '−' : '+'}</span>
               </button>
               {openFaq === 1 && (
                 <div className="faq-answer">
-                  Simply visit our booking platform at rallyclub.pickleplanner.com, select your preferred court and time, choose your playing partners, and complete your reservation. You'll receive a door code 20 minutes before your scheduled time.
+                  After checkout you'll receive a unique code via email/text. It activates 20 minutes before your reservation.
                 </div>
               )}
             </div>
@@ -217,12 +274,40 @@ export default function Home() {
                 className={`faq-question ${openFaq === 2 ? 'active' : ''}`}
                 onClick={() => toggleFaq(2)}
               >
-                What are the court specifications?
+                What's the pricing for members vs guests?
                 <span className="faq-arrow">{openFaq === 2 ? '−' : '+'}</span>
               </button>
               {openFaq === 2 && (
                 <div className="faq-answer">
-                  Our facility features 2 tournament-grade courts with premium lighting, spacious layouts, and optimal acoustics designed specifically for pickleball. Courts meet all official tournament standards.
+                  A-List: $20/hr (~$5/player). Rally Reserve: $40/hr (~$10/player if four players).
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button
+                className={`faq-question ${openFaq === 3 ? 'active' : ''}`}
+                onClick={() => toggleFaq(3)}
+              >
+                Can I bring friends who aren't registered?
+                <span className="faq-arrow">{openFaq === 3 ? '−' : '+'}</span>
+              </button>
+              {openFaq === 3 && (
+                <div className="faq-answer">
+                  All players must be registered with PicklePlanner & Rally Club before playing.
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button
+                className={`faq-question ${openFaq === 4 ? 'active' : ''}`}
+                onClick={() => toggleFaq(4)}
+              >
+                How do I cancel or reschedule?
+                <span className="faq-arrow">{openFaq === 4 ? '−' : '+'}</span>
+              </button>
+              {openFaq === 4 && (
+                <div className="faq-answer">
+                  Manage your booking in PicklePlanner. Policies may apply based on timing.
                 </div>
               )}
             </div>
@@ -244,6 +329,28 @@ export default function Home() {
             </div>
           </div>
         </footer>
+
+        {/* Lightbox Modal */}
+        {lightboxImage && (
+          <div className="lightbox-overlay" onClick={closeLightbox}>
+            <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+              <button className="lightbox-close" onClick={closeLightbox}>&times;</button>
+              <div className="lightbox-header">
+                <h3 className="lightbox-heading">{lightboxImage.heading}</h3>
+              </div>
+              <Image
+                src={lightboxImage.src}
+                alt={lightboxImage.alt}
+                width={1200}
+                height={800}
+                style={{ maxWidth: '90vw', maxHeight: '70vh', objectFit: 'contain' }}
+              />
+              <div className="lightbox-footer">
+                <p className="lightbox-caption">{lightboxImage.caption}</p>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
       <style jsx>{`
@@ -283,6 +390,8 @@ export default function Home() {
           font-size: 1.5rem;
           font-weight: bold;
           color: #333;
+          display: flex;
+          align-items: center;
         }
 
         .nav {
@@ -511,6 +620,26 @@ export default function Home() {
           gap: 3rem;
         }
 
+        .facility-item {
+          text-align: center;
+        }
+
+        .facility-caption {
+          margin-top: 1rem;
+        }
+
+        .facility-caption h3 {
+          font-size: 1.25rem;
+          margin-bottom: 0.5rem;
+          color: #333;
+        }
+
+        .facility-caption p {
+          color: #666;
+          font-style: italic;
+          margin: 0;
+        }
+
         /* Booking */
         .booking {
           padding: 2.5rem 2rem;
@@ -551,10 +680,61 @@ export default function Home() {
           font-size: 0.9rem;
         }
 
+        /* Location */
+        .location {
+          padding: 2.5rem 2rem 4rem;
+          background: #f8f9fa;
+        }
+
+        .location-content {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 3rem;
+          align-items: start;
+        }
+
+        .location-info {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+        }
+
+        .address h3,
+        .hours h3 {
+          font-size: 1.5rem;
+          margin-bottom: 1rem;
+          color: #333;
+        }
+
+        .address p,
+        .hours p {
+          color: #666;
+          line-height: 1.6;
+          margin-bottom: 0.5rem;
+        }
+
+        .hours a {
+          color: #e74c3c;
+          text-decoration: none;
+        }
+
+        .hours a:hover {
+          text-decoration: underline;
+        }
+
+        .map-container {
+          height: 400px;
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
         /* FAQ */
         .faq {
-          padding: 2.5rem 2rem;
-          background: #f8f9fa;
+          padding: 3.5rem 2rem 2.5rem;
+          background: white;
           max-width: 800px;
           margin: 0 auto;
         }
@@ -566,6 +746,7 @@ export default function Home() {
         .faq-item {
           margin-bottom: 1rem;
           background: white;
+          border: 1px solid #e0e0e0;
           border-radius: 8px;
           overflow: hidden;
         }
@@ -657,6 +838,69 @@ export default function Home() {
           color: #e74c3c;
         }
 
+        /* Lightbox */
+        .lightbox-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.9);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 2000;
+          cursor: pointer;
+        }
+
+        .lightbox-content {
+          position: relative;
+          max-width: 90vw;
+          max-height: 90vh;
+          cursor: default;
+        }
+
+        .lightbox-close {
+          position: absolute;
+          top: -40px;
+          right: -10px;
+          background: none;
+          border: none;
+          color: white;
+          font-size: 3rem;
+          cursor: pointer;
+          z-index: 2001;
+          line-height: 1;
+        }
+
+        .lightbox-close:hover {
+          color: #e74c3c;
+        }
+
+        .lightbox-header {
+          text-align: center;
+          margin-bottom: 1.5rem;
+        }
+
+        .lightbox-footer {
+          text-align: center;
+          margin-top: 1.5rem;
+        }
+
+        .lightbox-heading {
+          color: white;
+          font-size: 2rem;
+          margin: 0;
+          font-weight: bold;
+        }
+
+        .lightbox-caption {
+          color: #ccc;
+          font-size: 1.1rem;
+          font-style: italic;
+          margin: 0;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
           .nav {
@@ -685,6 +929,11 @@ export default function Home() {
 
           .facility-grid {
             grid-template-columns: 1fr;
+          }
+
+          .location-content {
+            grid-template-columns: 1fr;
+            gap: 2rem;
           }
 
           .booking-steps {
