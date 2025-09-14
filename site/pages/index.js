@@ -4,26 +4,25 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Home() {
-  const [modalImage, setModalImage] = useState(null);
+  const [openFaq, setOpenFaq] = useState(null);
+
+  const toggleFaq = (index) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
 
   return (
     <>
       <Head>
-        {/* Primary SEO tags */}
         <title>Rally Club Pickleball | Metro East Premier Indoor Pickleball Club</title>
         <meta
           name="description"
           content="Play pickleball anytime at Rally Club Pickleball in Glen Carbon, IL. Enjoy 24-hour facility access, top-notch courts, and fun community events."
         />
         <link rel="canonical" href="https://www.rallyclubpickleball.com/" />
-
-        {/* Additional SEO tags */}
         <meta
           name="keywords"
           content="pickleball, indoor courts, Glen Carbon IL, membership, rally club, sports facility"
         />
-
-        {/* Open Graph for social sharing */}
         <meta property="og:title" content="Rally Club Pickleball" />
         <meta
           property="og:description"
@@ -31,8 +30,6 @@ export default function Home() {
         />
         <meta property="og:image" content="/logo-transparent.png" />
         <meta property="og:url" content="https://www.rallyclubpickleball.com/" />
-
-        {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Rally Club Pickleball" />
         <meta
@@ -41,693 +38,682 @@ export default function Home() {
         />
         <meta name="twitter:image" content="/logo-transparent.png" />
       </Head>
+
       <div className="container">
-        {/* Home Section */}
-        <section
-          id="home"
-          className="section home-section"
-          style={{ backgroundImage: "url('/home.jpg')" }}
-        >
-          <div className="home-content">
-            <div className="logo-container">
+        {/* Header */}
+        <header className="header">
+          <div className="header-content">
+            <div className="logo">
+              Rally Club Pickleball
+            </div>
+            <nav className="nav">
+              <a href="#booking" className="nav-link">Book a Court</a>
+              <a href="#membership" className="nav-link">Membership</a>
+              <a href="#facility" className="nav-link">About us</a>
+              <a href="#contact" className="nav-link">Contact</a>
+              <a href="https://rallyclub.pickleplanner.com" className="sign-in-btn" target="_blank" rel="noopener noreferrer">Sign In</a>
+            </nav>
+          </div>
+        </header>
+
+        {/* Hero Section */}
+        <section className="hero">
+          <div className="hero-content">
+            <h1 className="hero-title">Play When You Want, With Who You Want Anytime.</h1>
+            <p className="hero-subtitle">Glen Carbon's exclusive indoor pickleball facility with premium courts, tournament-grade courts.</p>
+            <a href="https://rallyclub.pickleplanner.com/dashboard/reservation/make" className="cta-button" target="_blank" rel="noopener noreferrer">
+              Book Your First Rally in 60 Seconds
+            </a>
+          </div>
+        </section>
+
+        {/* Membership Benefits */}
+        <section id="benefits" className="benefits">
+          <h2 className="section-title">Membership Benefits</h2>
+          <div className="benefits-grid">
+            <div className="benefit-item">
+              <div className="benefit-icon">⚡</div>
+              <h3>Flexibility</h3>
+              <p>24/7 access to courts when you want to play</p>
+            </div>
+            <div className="benefit-item">
+              <div className="benefit-icon">💰</div>
+              <h3>Pricing</h3>
+              <p>Competitive rates with member discounts</p>
+            </div>
+            <div className="benefit-item">
+              <div className="benefit-icon">👥</div>
+              <h3>Perks</h3>
+              <p>Member events and community access</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Membership Tiers */}
+        <section id="membership" className="membership">
+          <h2 className="section-title">Membership Tiers</h2>
+          <div className="membership-grid">
+            <div className="membership-card">
+              <h3 className="membership-title">A-List</h3>
+              <div className="membership-price">
+                <span className="price">$99</span>
+                <span className="period">/month</span>
+              </div>
+              <div className="membership-cta">
+                <a href="https://checkout.square.site/merchant/MLRWNHWZVQE4S/checkout/ZPZHAIKDZ2D5K7JVUP2C25YQ" className="membership-button" target="_blank" rel="noopener noreferrer">Join A-List</a>
+              </div>
+              <ul className="membership-features">
+                <li>✓ Unlimited court access</li>
+                <li>✓ 24 hour booking</li>
+                <li>✓ Member events</li>
+                <li>✓ Discounts on gear</li>
+              </ul>
+            </div>
+            <div className="membership-card">
+              <h3 className="membership-title">Rally Reserve</h3>
+              <div className="membership-price">
+                <span className="price">$49</span>
+                <span className="period">/month</span>
+              </div>
+              <div className="membership-cta">
+                <a href="https://rallyclub.pickleplanner.com/dashboard/membership/join" className="membership-button secondary" target="_blank" rel="noopener noreferrer">Join Rally Reserve</a>
+              </div>
+              <ul className="membership-features">
+                <li>✓ Limited court access</li>
+                <li>✓ Standard booking</li>
+                <li>✓ Member events</li>
+                <li>✓ Discounts on gear</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Facility Overview */}
+        <section id="facility" className="facility">
+          <h2 className="section-title">Facility Overview</h2>
+          <div className="facility-grid">
+            <div className="facility-image">
               <Image
-                src="/logo-transparent.png"
-                alt="Rally Club Pickleball Logo"
-                fill
-                style={{ objectFit: 'contain' }}
-                priority
+                src="/facility-layout.jpg"
+                alt="Facility Layout"
+                width={400}
+                height={300}
+                style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '12px' }}
               />
             </div>
-            <h1 className="home-heading">RALLY CLUB PICKLEBALL</h1>
-            <p className="home-paragraph">Your Court. Your Crew. Your Rally.</p>
+            <div className="facility-image">
+              <Image
+                src="/facility-outside.jpg"
+                alt="Facility Exterior"
+                width={400}
+                height={300}
+                style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '12px' }}
+              />
+            </div>
           </div>
         </section>
 
-        {/* About Section */}
-        <section
-          id="about"
-          className="section"
-          style={{ backgroundImage: "url('/about.jpg')" }}
-        >
-          <div className="glass-card">
-            <h2 className="section-heading">Rally like a pro</h2>
-            <p className="section-text">
-              Welcome to Glen Carbon's premier indoor pickleball venue, designed for
-              players who demand the best. Our 2 court facility offers premium lighting
-              for better visibility, tournament-grade court surfaces for optimal play,
-              spacious layouts for uninterrupted games, and the ability to play whenever
-              you want. Every detail—from court spacing to acoustics—focuses on elevating
-              your pickleball experience. This is a space dedicated entirely to the game,
-              with no distractions—just get your crew and RALLY.
-            </p>
+        {/* Booking Process */}
+        <section id="booking" className="booking">
+          <h2 className="section-title">Booking Process</h2>
+          <div className="booking-steps">
+            <div className="step">
+              <div className="step-number">1</div>
+              <h3>Select Court</h3>
+              <p>Instant door code, 20 minutes before play</p>
+            </div>
+            <div className="step">
+              <div className="step-number">2</div>
+              <h3>Choose Time</h3>
+              <p>Flexible slots available</p>
+            </div>
+            <div className="step">
+              <div className="step-number">3</div>
+              <h3>Confirm Booking</h3>
+              <p>No contracts, pay as you go</p>
+            </div>
+            <div className="step">
+              <div className="step-number">4</div>
+              <h3>Play</h3>
+              <p>24/7 access</p>
+            </div>
+          </div>
+        </section>
 
-            <h3 className="sub-heading">How To Rally</h3>
-
-            <p className="section-text">
-              <strong>Step 1</strong>
-              <br />
-              Go to{" "}
-              <a
-                href="https://rallyclub.pickleplanner.com"
-                target="_blank"
-                rel="noopener noreferrer"
+        {/* FAQ */}
+        <section className="faq">
+          <h2 className="section-title">Frequently Asked Questions</h2>
+          <div className="faq-list">
+            <div className="faq-item">
+              <button
+                className={`faq-question ${openFaq === 0 ? 'active' : ''}`}
+                onClick={() => toggleFaq(0)}
               >
-                rallyclub.pickleplanner.com
-              </a>{" "}
-              and find the Rally tier that best suits you. Follow the instructions to set
-              up your profile and start making reservations.
-            </p>
-
-            <p className="section-text">
-              <strong>Step 2</strong>
-              <br />
-              Click &quot;reserve court&quot; and pick a court and time for your Rally.
-            </p>
-
-            <p className="section-text">
-              <strong>Step 3</strong>
-              <br />
-              Pick your &quot;Rally crew&quot; from the drop down menu. All players MUST
-              be registered with Pickleplanner &amp; Rally Club to play. See pricing
-              options below for details.
-            </p>
-
-            <p className="section-text">
-              <strong>Step 4</strong>
-              <br />
-              Complete the transaction and look for an email or text with the door code
-              to enter the facility. Your code will work 20 minutes before your court is
-              ready. Proceed to your assigned court and start your RALLY!
-            </p>
-          </div>
-        </section>
-
-
-        {/* Membership Section */}
-        <section
-          id="membership"
-          className="section membership-section"
-          style={{ backgroundImage: "url('/membership.jpg')" }}
-        >
-          <div className="membership-container">
-            <div className="glass-card membership-box beta-box">
-              <h2 className="section-heading">The Rally "A" List</h2>
-              <ul className="section-text">
-                <li>No contract</li>
-                <li>24 hour access</li>
-                <li>Reserve 10 days in advance</li>
-                <li>Minimum 1 hour reservation</li>
-                <li>Base rate $20/hr ($5/hr for you)</li>
-                <li>
-                  <span
-                    className="tooltip-trigger"
-                    style={{ textDecoration: 'line-through' }}
-                  >
-                    Prime rate $24/hr
-                    <span
-                      className="tooltip-text"
-                      style={{ textDecoration: 'line-through' }}
-                    >
-                      <u>Prime time hours</u><br />
-                      <i>Weekdays</i><br />4:30pm – 9:00pm<br />
-                      <i>Weekends</i><br />5:30am – midnight
-                    </span>
-                  </span>
-                  <em>&nbsp;All hours will be base rate for the summer!</em>
-                </li>
-              </ul>
-              <h3>Renew Your A-List Membership</h3>
-              <strong>Annual Membership</strong>
-              <ul className="section-text">
-                <li>$350/yr</li>
-                <li>Play FREE all of July</li>
-                <li>Get $25 in Rally Bucks</li>
-                <li>Renew before July 1 and save an additional $25</li>
-              </ul>
-              <div className="button-container">
-                <a
-                  className="join-button"
-                  href="https://checkout.square.site/merchant/MLRWNHWZVQE4S/checkout/BHEKDUEFWAYCHDLQEVD45LQV"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Annual Renewal Before July 1, 2025
-                </a>
-                <a
-                  className="join-button"
-                  href="https://checkout.square.site/merchant/MLRWNHWZVQE4S/checkout/XMJLSNSRTRPJZZV3Q5WTYCEG"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ marginTop: '0.5rem' }}
-                >
-                  Annual Renewal After July 1, 2025
-                </a>
-              </div>
-              <br />
-              <strong>Prefer monthly?</strong><br />
-              <ul className="section-text">
-                <li>$35/month</li>
-                <li>Includes $25 Rally Bucks</li>
-              </ul>
-              <div className="button-container" style={{ marginTop: '0.5rem' }}>
-                <a
-                  className="join-button"
-                  href="https://checkout.square.site/merchant/MLRWNHWZVQE4S/checkout/ZPZHAIKDZ2D5K7JVUP2C25YQ"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Monthly Renewal
-                </a>
-              </div>
-              <p className="section-text">
-                Rally Reserve members may claim remaining A-List spots starting June 27. Open to public July 1.
-              </p>
+                What are the membership options?
+                <span className="faq-arrow">{openFaq === 0 ? '−' : '+'}</span>
+              </button>
+              {openFaq === 0 && (
+                <div className="faq-answer">
+                  We offer A-List membership for $99/month with unlimited access, and Rally Reserve for $49/month with standard booking options. Both include member events and gear discounts.
+                </div>
+              )}
             </div>
-            {/* Rally Reserve (Guest acc) Box */}
-            <div className="glass-card membership-box nonmember-box">
-              <h2 className="section-heading">Rally Reserve (Guests)</h2>
-              <p className="section-text">
-                The Rally Reserve is a way for players to be part of the Rally Club without the commitment.
-                This allows you to save your registration, signed waiver, and to participate in joinable events.
-                Players on the Rally Reserve can make reservations and can be added to games by Rally "A-List" members.
-                PicklePlanner does the math for you to show what each player owes.
-                Players will be charged per the terms of their membership tier.
-              </p>
-              <ul className="section-text">
-                <li>Pay as you go</li>
-                <li>Reserve 5 days in advance</li>
-                <li>Minimum 1 hour reservation</li>
-                <li>Base rate $40/hr ($10/player if all 4 players are Rally Reserve)</li>
-                <li>
-                  <span
-                    className="tooltip-trigger"
-                    style={{ textDecoration: 'line-through' }}
-                  >
-                    Prime rate $50/hr
-                    <span
-                      className="tooltip-text"
-                      style={{ textDecoration: 'line-through' }}
-                    >
-                      <u>Prime time hours</u><br />
-                      <i>Weekdays</i><br />4:30pm – 9:00pm<br />
-                      <i>Weekends</i><br />5:30am – midnight
-                    </span>
-                  </span>
-                  <em>&nbsp;All hours will be base rate for the summer!</em>
-                </li>
-              </ul>
-              <div className="button-container">
-                <a
-                  className="join-button"
-                  href="https://rallyclub.pickleplanner.com/dashboard/membership/join"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Click here for your FREE Rally Reserve Account
-                </a>
-              </div>
+            <div className="faq-item">
+              <button
+                className={`faq-question ${openFaq === 1 ? 'active' : ''}`}
+                onClick={() => toggleFaq(1)}
+              >
+                How do I book a court?
+                <span className="faq-arrow">{openFaq === 1 ? '−' : '+'}</span>
+              </button>
+              {openFaq === 1 && (
+                <div className="faq-answer">
+                  Simply visit our booking platform at rallyclub.pickleplanner.com, select your preferred court and time, choose your playing partners, and complete your reservation. You'll receive a door code 20 minutes before your scheduled time.
+                </div>
+              )}
+            </div>
+            <div className="faq-item">
+              <button
+                className={`faq-question ${openFaq === 2 ? 'active' : ''}`}
+                onClick={() => toggleFaq(2)}
+              >
+                What are the court specifications?
+                <span className="faq-arrow">{openFaq === 2 ? '−' : '+'}</span>
+              </button>
+              {openFaq === 2 && (
+                <div className="faq-answer">
+                  Our facility features 2 tournament-grade courts with premium lighting, spacious layouts, and optimal acoustics designed specifically for pickleball. Courts meet all official tournament standards.
+                </div>
+              )}
             </div>
           </div>
         </section>
 
-        {/* Facility Gallery Section */}
-        <section
-          id="facility-gallery"
-          className="section facility-section"
-          style={{ backgroundImage: "url('/facility.jpg')" }}
-        >
-          <div className="facility-container">
-            {/* Floor Plan Card */}
-            <div
-              className="glass-card facility-card"
-              onClick={() => setModalImage('/facility-layout.jpg')}
-            >
-              <h2 className="section-heading">Floor Plan</h2>
-              <div className="image-container">
-                <Image
-                  src="/facility-layout.jpg"
-                  alt="Floor Plan"
-                  width={500}
-                  height={300}
-                  style={{ width: '100%', height: 'auto', cursor: 'pointer' }}
-                />
-              </div>
-              <p className="enlarge-text">click to enlarge</p>
-            </div>
-            {/* Outside Facility Card */}
-            <div
-              className="glass-card facility-card"
-              onClick={() => setModalImage('/facility-outside.jpg')}
-            >
-              <h2 className="section-heading">Outside View</h2>
-              <div className="image-container">
-                <Image
-                  src="/facility-outside.jpg"
-                  alt="Outside of Facility"
-                  width={500}
-                  height={300}
-                  style={{ width: '100%', height: 'auto', cursor: 'pointer' }}
-                />
-              </div>
-              <p className="enlarge-text">click to enlarge</p>
-            </div>
-          </div>
+        {/* Contact */}
+        <section id="contact" className="contact">
+          <h2 className="contact-title">Have more questions? Contact us!</h2>
+          <a href="mailto:rally.club618@gmail.com" className="contact-button">Contact Us</a>
         </section>
 
-        {/* Location Section */}
-        <section
-          id="location"
-          className="section location-section"
-        >
-          <div className="location-container">
-            {/* Card 1: Map Card */}
-            <div className="glass-card map-card">
-              <h2 className="section-heading">Our Location</h2>
-              <div className="section-text">
-                Rally Club Pickleball is located at 1 Cottonwood Industrial Park, Glen Carbon, IL 62034.<br />
-                We are conveniently located a short drive from the intersection of IL-159 and Cottonwood Rd.
-              </div>
-              <div className="map-container">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d799.5860377841626!2d-89.93756610367085!3d38.76633662956965!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8875f9f92112c085%3A0x4217965f56847a5e!2sThe%20Rally%20Club!5e0!3m2!1sen!2sus!4v1746223485153!5m2!1sen!2sus"
-                  width="100%"
-                  height="450"
-                  style={{ border: 0 }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
-              </div>
-              <h2 className="section-heading">Our Hours</h2>
-              <div className="section-text">
-                <b>Available 24 hours per day with <a href="https://rallyclub.pickleplanner.com/dashboard/reservation/make">reservation</a>!</b>
-              </div>
-            </div>
-
-            {/* Card 2: Facebook Contact Card */}
-            <div className="glass-card contact-card">
-              <h3 className="section-heading">Need Assistance?</h3>
-              <p className="section-text">
-                Have questions or need help? <br />
-                <Link href="/faq" style={{ textDecoration: 'underline', color: '#333' }}>
-                  Check out our FAQ
-                </Link>
-                <br /><br />
-                Still have questions?<br />
-                Reach out to us on{" "}
-                <a
-                  href="https://www.facebook.com/profile.php?id=61572523900750"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Facebook
-                </a>{" "}
-                or send us an{" "}
-                <a
-                  href="mailto:rally.club618@gmail.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  e-mail
-                </a>
-              </p>
+        {/* Footer */}
+        <footer className="footer">
+          <div className="footer-content">
+            <p>© 2025 Rally Club Pickleball. All rights reserved.</p>
+            <div className="footer-links">
+              <a href="https://www.facebook.com/profile.php?id=61572523900750" target="_blank" rel="noopener noreferrer">Facebook</a>
             </div>
           </div>
-        </section>
+        </footer>
       </div>
-
-      {/* Modal for Enlarged Facility Image */}
-      {modalImage && (
-        <div className="modal" onClick={() => setModalImage(null)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="close-button" onClick={() => setModalImage(null)}>
-              X
-            </button>
-            <Image
-              src={modalImage}
-              alt="Enlarged view"
-              width={1000}
-              height={600}
-              style={{
-                maxWidth: '90vw',
-                maxHeight: '90vh',
-                objectFit: 'contain',
-              }}
-            />
-          </div>
-        </div>
-      )}
 
       <style jsx>{`
         * {
+          margin: 0;
+          padding: 0;
           box-sizing: border-box;
         }
+
         .container {
-          overflow-x: hidden;
-        }
-        .logo-container {
-          position: relative;
-          width: clamp(750px, 80vw, 1125px);
-          height: 250px;
-          margin: 0 auto;
-        }
-        .section {
-          position: relative;
-          min-height: 100vh;
-          width: 100%;
-          background-size: cover;
-          background-position: center;
-          background-attachment: fixed;
-          padding: 2rem 1rem;
-        }
-        @media (max-width: 768px) {
-          .section {
-            background-attachment: scroll;
-          }
-        }
-        .home-content {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          text-align: center;
-        }
-        .home-heading {
-          font-size: 4rem;
-          margin: 0;
-          font-family: 'Bebas Neue', sans-serif;
-          color: #fff;
-          font-stretch: expanded;
-        }
-        .home-paragraph {
-          font-size: 1.5rem;
-          margin-top: 20px;
-          font-family: 'Bebas Neue', sans-serif;
-          color: #fff;
-          font-stretch: expanded;
-        }
-        .glass-card {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          background: rgba(255, 255, 255, 0.5);
-          padding: 3rem;
-          border-radius: 12px;
-          max-width: 800px;
-          width: 90%;
-          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
-          text-align: left;
-        }
-        #location .glass-card {
-          width: 80%;
-        }
-        /* Membership Section - Two Floating Boxes */        
-        .membership-section {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          height: 100vh;
-          background-size: cover;
-          background-position: center;
-        }
-        .membership-container {
-          display: flex;
-          justify-content: space-around;
-          flex-wrap: wrap;
-          gap: 2rem;
-          max-width: 1200px;
-          width: 100%;
-          margin: 0 auto;
-        }
-        .membership-box {
-          flex: 1 1 45%;
-          max-width: 45%;
-          position: relative;
-          top: auto;
-          left: auto;
-          transform: none;
-          background: rgba(255, 255, 255, 0.5);
-          padding: 3rem;
-          border-radius: 12px;
-          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
-          text-align: left;
-        }
-        .membership-box ol,
-        .membership-box ul {
-          margin-left: 0;   
-          padding-left: 1rem; 
-        }
-        li .join-button {
-          display: block;
-          margin: 0.5rem auto 0 auto; 
-        }
-        .become-beta {
-          font-size: 1.2rem;   
-          font-weight: bold;
-          margin-bottom: 1rem; 
-        }
-        .first-button-container {
-          margin-bottom: 1rem; 
-        }
-        .button-container {
-          text-align: center; 
-          margin-top: 0.5rem; 
-        }
-        .join-button {
-          display: inline-block;  
-          background-color: #333;
-          color: #fff;
-          padding: 0.75rem 1.5rem;
-          border-radius: 4px;
-          text-decoration: none;
-          font-weight: bold;
-          width: fit-content;
-        }
-        .section-heading {
-          font-size: 2.5rem;
-          margin-bottom: 1rem;
-          font-family: 'Bebas Neue', sans-serif;
-          color: #333;
-        }
-        .section-text {
-          font-size: 1rem;
-          margin-bottom: 1rem;
-          font-family: 'Roboto', sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           line-height: 1.6;
           color: #333;
         }
-        .sub-heading {
-          font-size: 1.75rem;
-          margin-top: 1.5rem;
-          margin-bottom: 0.5rem;
-          font-family: 'Bebas Neue', sans-serif;
-          color: #333;
-        }
-        .location-section {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          min-height: 100vh; 
-          background: linear-gradient(to right, #a1c4fd, #c2e9fb);
-          padding: 2rem 1rem; 
-        }
-        .location-container {
-          display: flex;
-          flex-direction: column;  
-          align-items: center;
-          gap: 2rem;               
-          width: 100%;
-          max-width: 1200px;       
-          margin: 0 auto;          
-        }
-        .location-container .glass-card {
-          position: relative;  
-          top: auto;
-          left: auto;
-          transform: none;
-          width: 80%;          
-          max-width: 800px;    
-          margin: 0 auto;      
-        }
-        ul,
-        ol {
-          margin-left: 1.5rem;
-          color: #333;
-        }
-        .map-container {
-          margin-top: 1rem;
-        }
-        .facility-section .glass-card {
-          position: relative;
-          top: auto;
-          left: auto;
-          transform: none;
-        }
-        .facility-container {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 2rem;
-          margin: 3rem auto;
-          max-width: 1200px;
-          width: 100%;
-        }
-        .facility-card {
-          width: 80%;
-          background: rgba(255, 255, 255, 0.5);
-          padding: 3rem;
-          border-radius: 12px;
-          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
-          text-align: center;
-          cursor: pointer;
-          margin: 0 auto;
-        }
-        .enlarge-text {
-          font-size: 1rem;
-          color: #333;
-          margin-top: 0.5rem;
-          font-style: italic;
-        }
-        .image-container {
-          margin-top: 1rem;
-        }
-        /* Modal Styles */
-        .modal {
+
+        /* Header */
+        .header {
+          background: white;
+          padding: 1rem 0;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
           position: fixed;
           top: 0;
-          left: 0;
           width: 100%;
-          height: 100%;
-          background-color: rgba(0, 0, 0, 0.8);
+          z-index: 1000;
+        }
+
+        .header-content {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 2rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .logo {
+          font-size: 1.5rem;
+          font-weight: bold;
+          color: #333;
+        }
+
+        .nav {
+          display: flex;
+          align-items: center;
+          gap: 2rem;
+        }
+
+        .nav-link {
+          text-decoration: none;
+          color: #666;
+          font-weight: 500;
+          transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+          color: #e74c3c;
+        }
+
+        .sign-in-btn {
+          background: #e74c3c;
+          color: white;
+          padding: 0.5rem 1rem;
+          border-radius: 6px;
+          text-decoration: none;
+          font-weight: 500;
+          transition: background 0.3s;
+        }
+
+        .sign-in-btn:hover {
+          background: #c0392b;
+        }
+
+        /* Hero */
+        .hero {
+          margin-top: 80px;
+          height: 500px;
+          background-image: url('/about.jpg');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
           display: flex;
           align-items: center;
           justify-content: center;
-          z-index: 9999;
-        }
-        .modal-content {
           position: relative;
         }
-        .close-button {
+
+        .hero::before {
+          content: '';
           position: absolute;
-          top: 10px;
-          right: 10px;
-          font-size: 2rem;
-          background: transparent;
-          border: none;
-          color: #fff;
-          cursor: pointer;
-          z-index: 10000;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.4);
         }
-        /* Mobile adjustments: make membership section auto-height so cards fit inside */
+
+        .hero-content {
+          position: relative;
+          z-index: 1;
+          text-align: center;
+          color: white;
+          max-width: 800px;
+          padding: 0 2rem;
+        }
+
+        .hero-title {
+          font-size: 3rem;
+          font-weight: bold;
+          margin-bottom: 1rem;
+          line-height: 1.2;
+          color: white;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-subtitle {
+          font-size: 1.2rem;
+          color: white;
+          margin-bottom: 2rem;
+          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .cta-button {
+          background: #e74c3c;
+          color: white;
+          padding: 1rem 2rem;
+          border-radius: 8px;
+          text-decoration: none;
+          font-weight: bold;
+          display: inline-block;
+          transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+          background: #c0392b;
+        }
+
+        /* Benefits */
+        .benefits {
+          padding: 1.5rem 2rem 2.5rem;
+          background: #f8f9fa;
+        }
+
+        .section-title {
+          text-align: center;
+          font-size: 2.5rem;
+          margin-bottom: 2rem;
+          font-weight: bold;
+        }
+
+        .benefits-grid {
+          max-width: 1000px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2rem;
+        }
+
+        .benefit-item {
+          text-align: center;
+        }
+
+        .benefit-icon {
+          font-size: 3rem;
+          margin-bottom: 1rem;
+        }
+
+        .benefit-item h3 {
+          font-size: 1.5rem;
+          margin-bottom: 1rem;
+        }
+
+        .benefit-item p {
+          color: #666;
+        }
+
+        /* Membership */
+        .membership {
+          padding: 2.5rem 2rem;
+          max-width: 1000px;
+          margin: 0 auto;
+        }
+
+        .membership-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 3rem;
+        }
+
+        .membership-card {
+          background: white;
+          padding: 3rem;
+          border-radius: 12px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+          text-align: center;
+        }
+
+        .membership-title {
+          font-size: 1.5rem;
+          margin-bottom: 1rem;
+        }
+
+        .membership-price {
+          margin-bottom: 2rem;
+        }
+
+        .price {
+          font-size: 3rem;
+          font-weight: bold;
+        }
+
+        .period {
+          font-size: 1rem;
+          color: #666;
+        }
+
+        .membership-cta {
+          margin-bottom: 2rem;
+        }
+
+        .membership-button {
+          background: #e74c3c;
+          color: white;
+          padding: 0.75rem 2rem;
+          border-radius: 8px;
+          text-decoration: none;
+          font-weight: bold;
+          display: inline-block;
+          transition: background 0.3s;
+        }
+
+        .membership-button.secondary {
+          background: #95a5a6;
+        }
+
+        .membership-button:hover {
+          background: #c0392b;
+        }
+
+        .membership-button.secondary:hover {
+          background: #7f8c8d;
+        }
+
+        .membership-features {
+          list-style: none;
+          text-align: left;
+        }
+
+        .membership-features li {
+          padding: 0.5rem 0;
+          color: #666;
+        }
+
+        /* Facility */
+        .facility {
+          padding: 2.5rem 2rem;
+          background: #f8f9fa;
+        }
+
+        .facility-grid {
+          max-width: 1000px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 3rem;
+        }
+
+        /* Booking */
+        .booking {
+          padding: 2.5rem 2rem;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+
+        .booking-steps {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 2rem;
+        }
+
+        .step {
+          text-align: center;
+        }
+
+        .step-number {
+          width: 60px;
+          height: 60px;
+          background: #e74c3c;
+          color: white;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.5rem;
+          font-weight: bold;
+          margin: 0 auto 1rem;
+        }
+
+        .step h3 {
+          margin-bottom: 0.5rem;
+        }
+
+        .step p {
+          color: #666;
+          font-size: 0.9rem;
+        }
+
+        /* FAQ */
+        .faq {
+          padding: 2.5rem 2rem;
+          background: #f8f9fa;
+          max-width: 800px;
+          margin: 0 auto;
+        }
+
+        .faq-list {
+          margin-top: 2rem;
+        }
+
+        .faq-item {
+          margin-bottom: 1rem;
+          background: white;
+          border-radius: 8px;
+          overflow: hidden;
+        }
+
+        .faq-question {
+          width: 100%;
+          padding: 1.5rem;
+          background: none;
+          border: none;
+          text-align: left;
+          font-size: 1.1rem;
+          font-weight: 500;
+          cursor: pointer;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .faq-question:hover {
+          background: #f8f9fa;
+        }
+
+        .faq-arrow {
+          font-size: 1.5rem;
+          font-weight: bold;
+        }
+
+        .faq-answer {
+          padding: 0 1.5rem 1.5rem;
+          color: #666;
+          line-height: 1.6;
+        }
+
+        /* Contact */
+        .contact {
+          padding: 2.5rem 2rem;
+          text-align: center;
+          max-width: 800px;
+          margin: 0 auto;
+        }
+
+        .contact-title {
+          font-size: 2rem;
+          margin-bottom: 2rem;
+        }
+
+        .contact-button {
+          background: #e74c3c;
+          color: white;
+          padding: 1rem 2rem;
+          border-radius: 8px;
+          text-decoration: none;
+          font-weight: bold;
+          display: inline-block;
+          transition: background 0.3s;
+        }
+
+        .contact-button:hover {
+          background: #c0392b;
+        }
+
+        /* Footer */
+        .footer {
+          background: #333;
+          color: white;
+          padding: 2rem;
+          text-align: center;
+        }
+
+        .footer-content {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .footer-links {
+          display: flex;
+          gap: 2rem;
+        }
+
+        .footer-links a {
+          color: white;
+          text-decoration: none;
+        }
+
+        .footer-links a:hover {
+          color: #e74c3c;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-          .membership-section {
-            height: auto;
-            padding: 2rem 1rem;
+          .nav {
+            display: none;
           }
-          .membership-box,
-          .facility-card {
-            flex: 1 1 100%;
-            max-width: 100%;
+
+          .hero {
+            height: 400px;
           }
-          .home-heading {
-            font-size: 2.5rem;
-          }
-          .home-paragraph {
-            font-size: 1rem;
-          }
-          .glass-card,
-          .center-card {
-            position: relative;
-            top: auto;
-            left: auto;
-            transform: none;
-            margin: 2rem auto;
-            width: calc(100% - 2rem);
-          }
-          .glass-card {
-            padding: 1.5rem;
-          }
-          .section-heading {
+
+          .hero-title {
             font-size: 2rem;
           }
-          .section-text {
-            font-size: 0.9rem;
+
+          .section-title {
+            font-size: 2rem;
           }
-          .sub-heading {
+
+          .benefits-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .membership-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .facility-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .booking-steps {
+            grid-template-columns: repeat(2, 1fr);
+          }
+
+          .footer-content {
+            flex-direction: column;
+            gap: 1rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .hero-title {
             font-size: 1.5rem;
           }
-          .center-card {
-            padding: 1.5rem;
+
+          .section-title {
+            font-size: 1.5rem;
+          }
+
+          .contact-title {
+            font-size: 1.5rem;
+          }
+
+          .booking-steps {
+            grid-template-columns: 1fr;
           }
         }
-        @media (max-width: 480px) {
-          .home-heading {
-            font-size: 2rem;
-          }
-          .home-paragraph {
-            font-size: 0.9rem;
-          }
-          .glass-card {
-            padding: 1rem;
-          }
-          .section-heading {
-            font-size: 1.75rem;
-          }
-          .section-text {
-            font-size: 0.85rem;
-          }
-          .sub-heading {
-            font-size: 1.25rem;
-          }
-          .center-card {
-            padding: 1rem;
-          }
-          .membership-box {
-            padding: 1.5rem;
-          }
-        }
-      .tooltip-trigger {
-        position: relative;
-        cursor: pointer;
-        text-decoration: underline;
-        color: #333;
-      }
-
-      .tooltip-text {
-        visibility: hidden;
-        opacity: 0;
-        width: 220px; /* adjust to fit your text */
-        background-color: rgba(0, 0, 0, 0.8);
-        color: #fff;
-        text-align: center;
-        padding: 0.75rem;
-        border-radius: 6px;
-
-        /* Position the tooltip */
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: 125%;  /* or top: 125%; depending on where you want it */
-        z-index: 10;
-
-        /* Smooth transition */
-        transition: visibility 0.2s, opacity 0.2s;
-      }
-
-      /* When hovering over the trigger, show the tooltip */
-      .tooltip-trigger:hover .tooltip-text {
-        visibility: visible;
-        opacity: 1;
-      }
       `}</style>
     </>
   );
-
 }
