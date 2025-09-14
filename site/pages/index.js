@@ -59,8 +59,8 @@ export default function Home() {
         {/* Hero Section */}
         <section className="hero">
           <div className="hero-content">
-            <h1 className="hero-title">Play When You Want, With Who You Want Anytime.</h1>
-            <p className="hero-subtitle">Glen Carbon's exclusive indoor pickleball facility with premium courts, tournament-grade courts.</p>
+            <h1 className="hero-title">Play When You Want, with Who You Want &mdash; Anytime.</h1>
+            <p className="hero-subtitle">Glen Carbon's exclusive indoor pickleball hub &mdash; no contracts, 24/7 access, tournament grade courts.</p>
             <a href="https://rallyclub.pickleplanner.com/dashboard/reservation/make" className="cta-button" target="_blank" rel="noopener noreferrer">
               Book Your First Rally in 60 Seconds
             </a>
@@ -345,7 +345,8 @@ export default function Home() {
           z-index: 1;
           text-align: center;
           color: white;
-          max-width: 800px;
+          max-width: 1200px;
+          width: 100%;
           padding: 0 2rem;
         }
 
@@ -421,7 +422,7 @@ export default function Home() {
 
         /* Membership */
         .membership {
-          padding: 2.5rem 2rem;
+          padding: 1.5rem 2rem;
           max-width: 1000px;
           margin: 0 auto;
         }
@@ -429,12 +430,12 @@ export default function Home() {
         .membership-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 3rem;
+          gap: 2rem;
         }
 
         .membership-card {
           background: white;
-          padding: 3rem;
+          padding: 2rem;
           border-radius: 12px;
           box-shadow: 0 10px 30px rgba(0,0,0,0.1);
           text-align: center;
