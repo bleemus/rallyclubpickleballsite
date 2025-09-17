@@ -109,37 +109,53 @@ export default function Home() {
         <section id="membership" className="membership">
           <h2 className="section-title">Membership Tiers</h2>
           <div className="membership-grid">
-            <div className="membership-card">
+            <div className="membership-card featured">
+              <div className="best-value-badge">BEST VALUE</div>
               <h3 className="membership-title">A-List</h3>
               <div className="membership-price">
-                <span className="price">$99</span>
+                <span className="price">$35</span>
                 <span className="period">/month</span>
               </div>
               <div className="membership-cta">
                 <a href="https://checkout.square.site/merchant/MLRWNHWZVQE4S/checkout/ZPZHAIKDZ2D5K7JVUP2C25YQ" className="membership-button" target="_blank" rel="noopener noreferrer">Join A-List</a>
               </div>
               <ul className="membership-features">
-                <li>✓ Unlimited court access</li>
-                <li>✓ 24 hour booking</li>
+                <li>✓ Reserve 10 days in advance</li>
+                <li>✓ $8/hr base rate ($2/hr per player)</li>
+                <li>✓ $20/hr prime time* ($5/hr per player)</li>
                 <li>✓ Member events</li>
-                <li>✓ Discounts on gear</li>
               </ul>
             </div>
             <div className="membership-card">
+              <div className="no-commitment-badge">NO COMMITMENT</div>
               <h3 className="membership-title">Rally Reserve</h3>
               <div className="membership-price">
-                <span className="price">$49</span>
+                <span className="price">$0</span>
                 <span className="period">/month</span>
               </div>
               <div className="membership-cta">
                 <a href="https://rallyclub.pickleplanner.com/dashboard/membership/join" className="membership-button secondary" target="_blank" rel="noopener noreferrer">Join Rally Reserve</a>
               </div>
               <ul className="membership-features">
-                <li>✓ Limited court access</li>
-                <li>✓ Standard booking</li>
+                <li>✓ Reserve 5 days in advance</li>
+                <li>✓ $16/hr base rate ($4/hr per player)</li>
+                <li>✓ $28/hr prime time* ($7/hr per player)</li>
                 <li>✓ Member events</li>
-                <li>✓ Discounts on gear</li>
               </ul>
+            </div>
+          </div>
+          <div className="pricing-note">
+            <p><strong>*Prime Time:</strong> Monday - Friday 4:30 pm - 9:00 pm, all day Saturday & Sunday</p>
+            <div className="pricing-highlights">
+              <div className="highlight-box registration">
+                <p>All Players must register an account with <strong>PicklePlanner</strong> and sign waivers. Unregistered guests are <span className="not-permitted">NOT</span> permitted</p>
+              </div>
+              <div className="highlight-box mixed-play">
+                <p>Mix & match <strong>A-List</strong> members and <strong>Rally Reserve</strong> players - the court rate is set by the membership tier</p>
+              </div>
+              <div className="highlight-box payment">
+                <p>Reserving player pays court costs & fees up front, it is up to them how their playing partners reimburse them</p>
+              </div>
             </div>
           </div>
         </section>
@@ -279,7 +295,7 @@ export default function Home() {
               </button>
               {openFaq === 2 && (
                 <div className="faq-answer">
-                  A-List: $20/hr (~$5/player). Rally Reserve: $40/hr (~$10/player if four players).
+                  A-List: $8/hr base ($2/player), $20/hr prime time ($5/player). Rally Reserve: $16/hr base ($4/player), $28/hr prime time ($7/player).
                 </div>
               )}
             </div>
@@ -540,6 +556,7 @@ export default function Home() {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           gap: 2rem;
+          align-items: stretch;
         }
 
         .membership-card {
@@ -548,6 +565,9 @@ export default function Home() {
           border-radius: 12px;
           box-shadow: 0 10px 30px rgba(0,0,0,0.1);
           text-align: center;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
         }
 
         .membership-title {
@@ -598,12 +618,132 @@ export default function Home() {
 
         .membership-features {
           list-style: none;
-          text-align: left;
+          text-align: center;
+          flex-grow: 1;
         }
 
         .membership-features li {
           padding: 0.5rem 0;
           color: #666;
+        }
+
+        /* Membership badges */
+        .best-value-badge {
+          position: absolute;
+          top: -10px;
+          left: 20px;
+          background: linear-gradient(45deg, #ff6b35, #f7931e);
+          color: white;
+          padding: 5px 15px;
+          border-radius: 15px;
+          font-size: 0.8rem;
+          font-weight: bold;
+          transform: rotate(-15deg);
+          box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .no-commitment-badge {
+          position: absolute;
+          top: -10px;
+          left: 20px;
+          background: #3498db;
+          color: white;
+          padding: 5px 15px;
+          border-radius: 15px;
+          font-size: 0.8rem;
+          font-weight: bold;
+          transform: rotate(-15deg);
+          box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .membership-card.featured {
+          position: relative;
+          border: 2px solid #ff6b35;
+        }
+
+        .membership-card {
+          position: relative;
+        }
+
+        .membership-annual {
+          font-size: 0.9rem;
+          color: #666;
+          font-style: italic;
+          margin-bottom: 1.5rem;
+          margin-top: -0.5rem;
+        }
+
+        /* Pricing note section */
+        .pricing-note {
+          max-width: 1000px;
+          margin: 3rem auto 0;
+          padding: 2rem;
+          background: #f8f9fa;
+          border-radius: 12px;
+          border-left: 4px solid #e74c3c;
+        }
+
+        .pricing-note > p {
+          font-size: 1.1rem;
+          margin-bottom: 1.5rem;
+          text-align: center;
+        }
+
+        .pricing-highlights {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 1rem;
+          margin-bottom: 2rem;
+        }
+
+        .highlight-box {
+          padding: 1rem;
+          border-radius: 8px;
+          border-left: 4px solid;
+        }
+
+        .highlight-box.registration {
+          background: #e3f2fd;
+          border-left-color: #2196f3;
+        }
+
+        .highlight-box.mixed-play {
+          background: #fff3e0;
+          border-left-color: #ff9800;
+        }
+
+        .highlight-box.payment {
+          background: #e8f5e8;
+          border-left-color: #4caf50;
+        }
+
+        .highlight-box p {
+          margin: 0;
+          font-size: 0.95rem;
+          line-height: 1.5;
+        }
+
+        .not-permitted {
+          color: #e74c3c;
+          font-weight: bold;
+        }
+
+        .join-info {
+          text-align: center;
+          background: #fff;
+          padding: 1.5rem;
+          border-radius: 8px;
+          border: 2px solid #e74c3c;
+        }
+
+        .join-info p {
+          margin: 0.25rem 0;
+          font-size: 1rem;
+        }
+
+        .join-info p:first-child {
+          font-size: 1.2rem;
+          margin-bottom: 0.5rem;
         }
 
         /* Facility */
