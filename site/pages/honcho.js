@@ -73,7 +73,7 @@ export default function Honcho() {
               The premier amateur pickleball community sweeping the nation with two exciting ways to compete
             </p>
             <div className="honcho-hero-cta">
-              <a href="#registration" className="honcho-cta-button">Register Now</a>
+              <a href="https://honchopickleball.com/register/" className="honcho-cta-button" target="_blank" rel="noopener noreferrer">Register Now (Use Code: RALLYCLUB)</a>
               <span className="honcho-hashtag">#HonchoFam</span>
             </div>
           </div>
@@ -188,8 +188,9 @@ export default function Honcho() {
           <div className="cta-content">
             <h2>Ready to Join the #HonchoFam?</h2>
             <p>Registration is open now through November 16th. Don't miss your chance to be part of the premier amateur pickleball community!</p>
+            <p style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#C8F560', marginTop: '-1rem', marginBottom: '2rem' }}>Use discount code: RALLYCLUB</p>
             <div className="cta-buttons">
-              <a href="#" className="honcho-button primary large">Register for League</a>
+              <a href="https://honchopickleball.com/register/" className="honcho-button primary large" target="_blank" rel="noopener noreferrer">Register for League</a>
             </div>
           </div>
         </section>

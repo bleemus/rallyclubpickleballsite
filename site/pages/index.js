@@ -216,8 +216,11 @@ export default function Home() {
               </div>
 
               <div className="honcho-cta">
-                <a href="/honcho" className="honcho-button primary">
-                  Learn More & Join the #HonchoFam
+                <a href="https://honchopickleball.com/register/" className="honcho-button primary" target="_blank" rel="noopener noreferrer">
+                  Register Now (Use Code: RALLYCLUB)
+                </a>
+                <a href="/honcho" className="honcho-button secondary">
+                  Learn More
                 </a>
               </div>
             </div>
@@ -946,6 +949,25 @@ export default function Home() {
           background: #B8E550;
           color: #2D5A27;
           text-decoration: none;
+        }
+
+        .honcho-button.secondary {
+          background: transparent;
+          color: white;
+          border: 2px solid #C8F560;
+          margin-left: 1rem;
+        }
+
+        .honcho-button.secondary:hover {
+          background: rgba(200, 245, 96, 0.1);
+          border-color: #B8E550;
+        }
+
+        .honcho-cta {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          flex-wrap: wrap;
         }
 
         /* Facility */
