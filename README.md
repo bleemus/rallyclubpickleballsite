@@ -1,28 +1,34 @@
 # Rally Club Pickleball Website
 
-A modern, responsive website for Rally Club Pickleball, Glen Carbon's premier indoor pickleball facility.
+Official website for Rally Club Pickleball - Glen Carbon's premier 24/7 indoor pickleball facility.
+
+🌐 **Live Site**: [https://www.rallyclubpickleball.com/](https://www.rallyclubpickleball.com/)
 
 ## Overview
 
-This is a Next.js-based website that showcases Rally Club Pickleball's facility, membership options, and booking system. The site features a clean, modern design with responsive layouts optimized for all devices.
+This is a Next.js-based website that showcases Rally Club Pickleball's facility, membership options, court reservations, and Honcho Pickleball League registration. The site features a modern design with video hero section, responsive layouts, and optimized performance.
 
 ## Features
 
-- **Responsive Design** - Optimized for desktop, tablet, and mobile devices
-- **Hero Section** - Full-width background image with overlaid text and call-to-action
-- **Membership Tiers** - A-List and Rally Reserve options with integrated Square checkout
-- **Facility Overview** - Image gallery showcasing courts and amenities
-- **Booking Integration** - Direct links to PicklePlanner booking system
-- **FAQ Section** - Interactive accordion-style frequently asked questions
-- **SEO optimized** - Meta tags, Open Graph, and Twitter Card support
+- 🎥 **Video Hero Section** - Reversed and optimized club interior footage as background
+- 💳 **Membership Tiers** - A-List ($35/mo) and Rally Reserve (free) with integrated Square checkout
+- 🏆 **Honcho League Integration** - Dedicated page for Honcho Pickleball League with exclusive RALLYCLUB discount code
+- 🛍️ **Merchandise Shop** - Embedded Square Shop for Rally Club apparel and gear
+- 🏐 **Facility Overview** - Interactive image gallery with lightbox modal
+- 📅 **Booking Integration** - Direct links to PicklePlanner 24/7 booking system
+- 📍 **Location & Hours** - Google Maps integration with facility information
+- ❓ **FAQ Section** - Interactive collapsible frequently asked questions
+- 🔍 **SEO Optimized** - Meta tags, Open Graph, Twitter Card, sitemap, and robots.txt
+- 📱 **Fully Responsive** - Mobile-optimized design with breakpoints at 768px and 480px
 
 ## Technology Stack
 
 - **Framework**: Next.js 15.1.6 with React 19
-- **Styling**: CSS-in-JS with CSS modules
+- **Styling**: Styled JSX (inline component-scoped styles)
 - **Deployment**: Azure Static Web Apps
 - **Build**: Static export for optimal performance
-- **Booking System**: Integration with PicklePlanner
+- **Video Optimization**: ffmpeg (H.264, CRF 28, faststart)
+- **Booking System**: PicklePlanner integration
 - **Payments**: Square checkout integration
 
 ## Getting Started
@@ -78,38 +84,64 @@ npm run start
 ```
 site/
 ├── pages/
-│   ├── index.js          # Main landing page
-│   ├── faq.js           # FAQ page
-│   ├── _app.js          # App wrapper
-│   └── _document.js     # HTML document structure
-├── public/              # Static assets
-│   ├── images/          # Facility images
-│   ├── logo-transparent.png
-│   ├── robots.txt
-│   └── sitemap.xml
+│   ├── index.js          # Main landing page with video hero
+│   ├── honcho.js         # Honcho Pickleball League details
+│   ├── merch.js          # Merchandise shop (embedded Square)
+│   ├── faq.js            # FAQ page
+│   ├── _app.js           # App wrapper
+│   └── _document.js      # HTML document structure
+├── public/               # Static assets
+│   ├── club_interior_reversed_optimized.mp4  # Hero video (6MB)
+│   ├── *.jpg, *.png      # Facility images and logos
+│   ├── robots.txt        # SEO
+│   └── sitemap.xml       # SEO
 ├── styles/
-│   ├── globals.css      # Global styles
-│   └── Home.module.css  # Component-specific styles
-└── out/                 # Build output (generated)
+│   ├── globals.css       # Global styles
+│   └── Home.module.css   # Module styles
+└── out/                  # Build output (gitignored)
 ```
 
 ## Key Sections
 
 ### Hero Section
-Full-width background image with centered text overlay featuring the main value proposition and primary call-to-action button.
+Full-width reversed video background (`club_interior_reversed_optimized.mp4`) with dark overlay and centered text featuring the main value proposition and primary call-to-action button.
+
+**Video Optimization:**
+```bash
+ffmpeg -i club_interior.mp4 \
+  -vf "reverse,scale=1920:1080:flags=lanczos" \
+  -c:v libx264 -preset slow -crf 28 \
+  -movflags +faststart -an \
+  club_interior_reversed_optimized.mp4
+```
+Result: 71MB → 6MB (91% reduction)
 
 ### Membership Benefits
-Three-column grid showcasing flexibility, pricing, and member perks.
+Three-column grid showcasing flexibility, competitive pricing, and member perks.
 
 ### Membership Tiers
-- **A-List ($99/month)**: Unlimited access with premium features
-- **Rally Reserve ($49/month)**: Limited access with standard features
+- **A-List ($35/month)**: Reserve 10 days in advance, $8/hr base rate ($2/hr per player), $20/hr prime time, member events
+- **Rally Reserve (Free)**: Reserve 5 days in advance, $16/hr base rate ($4/hr per player), $28/hr prime time, member events
+
+### Honcho Pickleball League
+Dedicated page (`/honcho`) featuring:
+- Two competition formats: Doubles League and Ladder League
+- Registration information with dates and early bird pricing
+- Community benefits and season structure
+- Discount code: **RALLYCLUB** for Rally Club members
+
+### Merchandise Shop
+Full-page embedded Square Shop (`/merch`) featuring:
+- Rally Club branded apparel and accessories
+- Minimal header with "Back to Rally Club" navigation
+- Direct integration with Square Shop for checkout and payment
+- Seamless shopping experience
 
 ### Facility Overview
-Image gallery displaying court layouts and facility exteriors.
+Interactive image gallery with lightbox modal displaying court layouts and facility exteriors.
 
 ### Booking Process
-Four-step process guide for court reservations.
+Four-step process guide for court reservations with PicklePlanner integration.
 
 ## Deployment
 
@@ -123,10 +155,13 @@ The site is automatically deployed to Azure Static Web Apps via GitHub Actions w
 No environment variables required for basic functionality.
 
 ### External Integrations
-- **PicklePlanner**: Court booking system
-- **Square**: Payment processing for memberships
-- **Google Analytics**: Site tracking and analytics
+- **PicklePlanner**: Court booking system (https://rallyclub.pickleplanner.com)
+- **Honcho Pickleball**: League registration (https://honchopickleball.com/register/) - Use code: **RALLYCLUB**
+- **Square**: Payment processing for A-List membership and merchandise shop
+- **Square Shop**: Embedded merchandise store (https://the-rally-club-llc.square.site)
+- **Google Maps**: Location and directions
 - **Google Fonts**: Bebas Neue font family
+- **Facebook**: Social media integration
 
 ## SEO & Analytics
 

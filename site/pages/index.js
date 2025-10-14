@@ -65,6 +65,7 @@ export default function Home() {
             <nav className="nav">
               <a href="#booking" className="nav-link">Book a Court</a>
               <a href="#membership" className="nav-link">Membership</a>
+              <a href="/merch" className="nav-link">Merch</a>
               <a href="#facility" className="nav-link">About us</a>
               <a href="#contact" className="nav-link">Contact</a>
               <a href="/honcho" className="nav-link honcho-nav-link">Honcho League</a>
