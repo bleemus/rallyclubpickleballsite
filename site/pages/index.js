@@ -67,6 +67,7 @@ export default function Home() {
               <a href="#membership" className="nav-link">Membership</a>
               <a href="#facility" className="nav-link">About us</a>
               <a href="#contact" className="nav-link">Contact</a>
+              <a href="/honcho" className="nav-link honcho-nav-link">Honcho League</a>
               <a href="https://rallyclub.pickleplanner.com" className="sign-in-btn" target="_blank" rel="noopener noreferrer">Sign In</a>
             </nav>
           </div>
@@ -74,6 +75,15 @@ export default function Home() {
 
         {/* Hero Section */}
         <section className="hero">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="hero-video"
+          >
+            <source src="/club_interior_reversed_optimized.mp4" type="video/mp4" />
+          </video>
           <div className="hero-content">
             <h1 className="hero-title">Play When You Want, with Who You Want &mdash; Anytime.</h1>
             <p className="hero-subtitle">Glen Carbon's exclusive indoor pickleball hub &mdash; no contracts, 24/7 access, tournament grade courts.</p>
@@ -155,6 +165,60 @@ export default function Home() {
               </div>
               <div className="highlight-box payment">
                 <p>Reserving player pays court costs & fees up front, it is up to them how their playing partners reimburse them</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Honcho Pickleball League */}
+        <section id="honcho" className="honcho-league">
+          <div className="honcho-content">
+            <div className="honcho-header">
+              <Image
+                src="/honcho-logo-small.png"
+                alt="Honcho Pickleball Logo"
+                width={120}
+                height={58}
+                style={{ marginBottom: '1rem' }}
+              />
+              <h2 className="honcho-title">Join the Honcho Pickleball League</h2>
+              <p className="honcho-subtitle">The premier amateur pickleball community sweeping the nation</p>
+            </div>
+
+            <div className="honcho-summary">
+              <p className="honcho-description">
+                Two exciting ways to compete: partner up for Doubles or rise through the ranks in our Ladder League.
+                Enjoy guaranteed weekly court time, championship prizes, and community events across an 8-week season.
+              </p>
+
+              <div className="honcho-highlights">
+                <div className="highlight-item">
+                  <span className="highlight-icon">📅</span>
+                  <div>
+                    <strong>Registration Open:</strong><br />
+                    Oct 13 - Nov 16 (Early bird ends Oct 26)
+                  </div>
+                </div>
+                <div className="highlight-item">
+                  <span className="highlight-icon">🏆</span>
+                  <div>
+                    <strong>Season Starts:</strong><br />
+                    December 1st
+                  </div>
+                </div>
+                <div className="highlight-item">
+                  <span className="highlight-icon">🤝</span>
+                  <div>
+                    <strong>Community:</strong><br />
+                    All skill levels welcome
+                  </div>
+                </div>
+              </div>
+
+              <div className="honcho-cta">
+                <a href="/honcho" className="honcho-button primary">
+                  Learn More & Join the #HonchoFam
+                </a>
               </div>
             </div>
           </div>
@@ -427,6 +491,15 @@ export default function Home() {
           color: #e74c3c;
         }
 
+        .honcho-nav-link {
+          color: #2D5A27 !important;
+          font-weight: 600;
+        }
+
+        .honcho-nav-link:hover {
+          color: #3E7B3E !important;
+        }
+
         .sign-in-btn {
           background: #e74c3c;
           color: white;
@@ -445,14 +518,24 @@ export default function Home() {
         .hero {
           margin-top: 80px;
           height: 500px;
-          background-image: url('/about.jpg');
-          background-size: cover;
-          background-position: center;
-          background-repeat: no-repeat;
           display: flex;
           align-items: center;
           justify-content: center;
           position: relative;
+          overflow: hidden;
+        }
+
+        .hero-video {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          min-width: 100%;
+          min-height: 100%;
+          width: auto;
+          height: auto;
+          transform: translate(-50%, -50%);
+          object-fit: cover;
+          z-index: 0;
         }
 
         .hero::before {
@@ -463,11 +546,12 @@ export default function Home() {
           right: 0;
           bottom: 0;
           background: rgba(0, 0, 0, 0.4);
+          z-index: 1;
         }
 
         .hero-content {
           position: relative;
-          z-index: 1;
+          z-index: 2;
           text-align: center;
           color: white;
           max-width: 1200px;
@@ -744,6 +828,124 @@ export default function Home() {
         .join-info p:first-child {
           font-size: 1.2rem;
           margin-bottom: 0.5rem;
+        }
+
+        /* Honcho League */
+        .honcho-league {
+          padding: 2.5rem 2rem;
+          background: linear-gradient(135deg, #2D5A27 0%, #3E7B3E 100%);
+          color: white;
+          position: relative;
+        }
+
+        .honcho-league::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+          opacity: 0.3;
+        }
+
+        .honcho-content {
+          max-width: 1000px;
+          margin: 0 auto;
+          position: relative;
+          z-index: 1;
+        }
+
+        .honcho-header {
+          text-align: center;
+          margin-bottom: 2rem;
+        }
+
+        .honcho-title {
+          font-size: 2.2rem;
+          font-weight: bold;
+          margin-bottom: 0.5rem;
+          color: white;
+        }
+
+        .honcho-subtitle {
+          font-size: 1.1rem;
+          color: #E8F5E8;
+          max-width: 600px;
+          margin: 0 auto;
+        }
+
+        .honcho-summary {
+          text-align: center;
+        }
+
+        .honcho-description {
+          font-size: 1.1rem;
+          color: #E8F5E8;
+          margin-bottom: 2rem;
+          max-width: 800px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .honcho-highlights {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.5rem;
+          margin-bottom: 2rem;
+        }
+
+        .highlight-item {
+          background: rgba(255, 255, 255, 0.1);
+          padding: 1.5rem;
+          border-radius: 12px;
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(200, 245, 96, 0.3);
+          text-align: center;
+        }
+
+        .highlight-icon {
+          font-size: 2rem;
+          margin-bottom: 1rem;
+          display: block;
+        }
+
+        .highlight-item strong {
+          color: #C8F560;
+        }
+
+        .honcho-cta {
+          margin-top: 2rem;
+        }
+
+        .honcho-button {
+          background: #C8F560;
+          color: #2D5A27;
+          padding: 1rem 2rem;
+          border-radius: 8px;
+          text-decoration: none;
+          font-weight: bold;
+          transition: all 0.3s ease;
+          font-size: 1.1rem;
+          display: inline-block;
+        }
+
+        .honcho-button:hover {
+          background: #B8E550;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 25px rgba(200, 245, 96, 0.3);
+        }
+
+        .honcho-button:visited {
+          background: #C8F560;
+          color: #2D5A27;
+          text-decoration: none;
+        }
+
+        .honcho-button:visited:hover {
+          background: #B8E550;
+          color: #2D5A27;
+          text-decoration: none;
         }
 
         /* Facility */
@@ -1080,6 +1282,11 @@ export default function Home() {
             grid-template-columns: repeat(2, 1fr);
           }
 
+          .honcho-highlights {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+          }
+
           .footer-content {
             flex-direction: column;
             gap: 1rem;
@@ -1101,6 +1308,10 @@ export default function Home() {
 
           .booking-steps {
             grid-template-columns: 1fr;
+          }
+
+          .honcho-title {
+            font-size: 2rem;
           }
         }
       `}</style>
