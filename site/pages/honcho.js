@@ -54,7 +54,6 @@ export default function Honcho() {
               <a href="/#facility" className="nav-link">About us</a>
               <a href="/#contact" className="nav-link">Contact</a>
               <a href="/honcho" className="nav-link honcho-nav-link active">Honcho League</a>
-              <a href="https://rallyclub.pickleplanner.com" className="sign-in-btn" target="_blank" rel="noopener noreferrer">Sign In</a>
             </nav>
           </div>
         </header>
@@ -74,7 +73,7 @@ export default function Honcho() {
               The premier amateur pickleball community sweeping the nation with two exciting ways to compete
             </p>
             <div className="honcho-hero-cta">
-              <a href="https://honchopickleball.com/register/" className="honcho-cta-button" target="_blank" rel="noopener noreferrer">Register Now (Use Code: RALLYCLUB)</a>
+              <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-winter-2026/" className="honcho-cta-button" target="_blank" rel="noopener noreferrer">Register Now (Use Code: RALLYCLUB)</a>
               <span className="honcho-hashtag">#HonchoFam</span>
             </div>
           </div>
@@ -191,7 +190,7 @@ export default function Honcho() {
             <p>Registration is open now through November 16th. Don't miss your chance to be part of the premier amateur pickleball community!</p>
             <p style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#C8F560', marginTop: '-1rem', marginBottom: '2rem' }}>Use discount code: RALLYCLUB</p>
             <div className="cta-buttons">
-              <a href="https://honchopickleball.com/register/" className="honcho-button primary large" target="_blank" rel="noopener noreferrer">Register for League</a>
+              <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-winter-2026/" className="honcho-button primary large" target="_blank" rel="noopener noreferrer">Register for League</a>
             </div>
           </div>
         </section>
@@ -278,19 +277,6 @@ export default function Honcho() {
           color: #3E7B3E !important;
         }
 
-        .sign-in-btn {
-          background: #e74c3c;
-          color: white;
-          padding: 0.5rem 1rem;
-          border-radius: 6px;
-          text-decoration: none;
-          font-weight: 500;
-          transition: background 0.3s;
-        }
-
-        .sign-in-btn:hover {
-          background: #c0392b;
-        }
 
         /* Hero Section */
         .honcho-hero {

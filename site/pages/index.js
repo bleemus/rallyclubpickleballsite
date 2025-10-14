@@ -69,7 +69,6 @@ export default function Home() {
               <a href="#facility" className="nav-link">About us</a>
               <a href="#contact" className="nav-link">Contact</a>
               <a href="/honcho" className="nav-link honcho-nav-link">Honcho League</a>
-              <a href="https://rallyclub.pickleplanner.com" className="sign-in-btn" target="_blank" rel="noopener noreferrer">Sign In</a>
             </nav>
           </div>
         </header>
@@ -217,7 +216,7 @@ export default function Home() {
               </div>
 
               <div className="honcho-cta">
-                <a href="https://honchopickleball.com/register/" className="honcho-button primary" target="_blank" rel="noopener noreferrer">
+                <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-winter-2026/" className="honcho-button primary" target="_blank" rel="noopener noreferrer">
                   Register Now (Use Code: RALLYCLUB)
                 </a>
                 <a href="/honcho" className="honcho-button secondary">
@@ -289,6 +288,11 @@ export default function Home() {
               <h3>Play</h3>
               <p>24/7 access</p>
             </div>
+          </div>
+          <div className="booking-cta">
+            <a href="https://rallyclub.pickleplanner.com/dashboard/reservation/make" className="cta-button" target="_blank" rel="noopener noreferrer">
+              Book Your Court Now
+            </a>
           </div>
         </section>
 
@@ -504,19 +508,6 @@ export default function Home() {
           color: #3E7B3E !important;
         }
 
-        .sign-in-btn {
-          background: #e74c3c;
-          color: white;
-          padding: 0.5rem 1rem;
-          border-radius: 6px;
-          text-decoration: none;
-          font-weight: 500;
-          transition: background 0.3s;
-        }
-
-        .sign-in-btn:hover {
-          background: #c0392b;
-        }
 
         /* Hero */
         .hero {
@@ -1043,6 +1034,11 @@ export default function Home() {
         .step p {
           color: #666;
           font-size: 0.9rem;
+        }
+
+        .booking-cta {
+          text-align: center;
+          margin-top: 3rem;
         }
 
         /* Location */

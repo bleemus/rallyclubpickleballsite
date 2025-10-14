@@ -6,9 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This is a Next.js website for Rally Club Pickleball, a premier indoor pickleball facility in Glen Carbon, IL. The site provides information about the facility, membership options, Honcho Pickleball League registration, and includes functionality for court reservations and community features.
 
 ## Development Commands
-All development work is in the root directory (the repository was restructured from `/site`).
+All development work is in the `site/` directory.
 
 ```bash
+cd site          # Navigate to the project directory
 npm run dev      # Start development server (http://localhost:3000)
 npm run build    # Build for production
 npm run start    # Start production server (serves from /out directory)
@@ -21,12 +22,16 @@ npm run start    # Start production server (serves from /out directory)
 - **Images**: Unoptimized for static hosting compatibility
 - **Video**: Optimized MP4 with web-friendly settings (H.264, faststart)
 - **Deployment**: Azure Static Web Apps with GitHub Actions
+- **Dependencies**: Minimal dependencies (only Next.js, React, React-DOM)
+- **No External CSS Framework**: Uses only styled-jsx and global CSS
 
 ### Project Structure
 ```
+site/                    # Main project directory
 ├── pages/               # Next.js pages
 │   ├── index.js         # Main landing page with video hero
 │   ├── honcho.js        # Honcho Pickleball League details
+│   ├── merch.js         # Merchandise shop (embedded Square)
 │   ├── faq.js           # FAQ page
 │   ├── _app.js          # App wrapper
 │   └── _document.js     # HTML document structure
@@ -38,6 +43,8 @@ npm run start    # Start production server (serves from /out directory)
 ├── styles/              # CSS files
 │   ├── globals.css      # Global styles
 │   └── Home.module.css  # Module styles
+├── package.json         # Dependencies and scripts
+├── next.config.js       # Next.js configuration
 └── out/                 # Build output directory (gitignored)
 ```
 
@@ -56,7 +63,13 @@ npm run start    # Start production server (serves from /out directory)
 - Detailed information about Honcho Pickleball League
 - Two competition formats: Doubles and Ladder League
 - Registration information with discount code RALLYCLUB
-- External registration link: https://honchopickleball.com/register/
+- External registration link: https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-winter-2026/
+
+#### Merchandise Page (`pages/merch.js`)
+- Embedded Square Shop for Rally Club branded merchandise
+- Apparel, accessories, and pickleball gear
+- Minimal header with "Back to Rally Club" navigation
+- Direct integration with Square Shop for checkout and payment
 
 ### Styling Approach
 - Inline JSX styles using `<style jsx>` for component-scoped CSS
@@ -74,18 +87,20 @@ Hero video was optimized using ffmpeg:
 
 ## External Integrations
 - **PicklePlanner**: Court reservation system (https://rallyclub.pickleplanner.com)
-- **Honcho Pickleball**: League registration (https://honchopickleball.com/register/)
-- **Square**: Payment processing for A-List membership
+- **Honcho Pickleball**: League registration (https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-winter-2026/)
+- **Square**: Payment processing for A-List membership and merchandise shop
+- **Square Shop**: Embedded merchandise store (https://the-rally-club-llc.square.site)
 - **Google Maps**: Location and directions
 - **Facebook**: Social media presence
 
 ## Deployment
 - **Platform**: Azure Static Web Apps
 - **Build**: Automatic via GitHub Actions on push to `main`
+- **App Location**: `/site` (configured in GitHub Actions workflow)
 - **URL**: https://www.rallyclubpickleball.com/
-- **Build Output**: Static HTML/CSS/JS exported to `/out` directory
+- **Build Output**: Static HTML/CSS/JS exported to `site/out/` directory
 
-The site uses static export for optimal performance and hosting compatibility. All assets are stored in `/public/` and referenced with relative paths.
+The site uses static export for optimal performance and hosting compatibility. All assets are stored in `site/public/` and referenced with relative paths.
 
 ## SEO Configuration
 The site includes comprehensive SEO setup with:
@@ -99,5 +114,8 @@ The site includes comprehensive SEO setup with:
 ## Important Notes
 - All players must be registered with PicklePlanner before playing
 - Discount code for Honcho League: **RALLYCLUB**
-- Video files in `/public/` are large - ensure they're optimized before committing
+- Video files in `site/public/` are large - ensure they're optimized before committing
 - The `.claude/` directory is gitignored (contains Claude Code workspace data)
+- Development work should be done in the `site/` directory, not the repository root
+- No testing framework is currently configured
+- No linting tools are currently configured
