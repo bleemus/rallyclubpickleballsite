@@ -187,30 +187,29 @@ export default function Home() {
 
             <div className="honcho-summary">
               <p className="honcho-description">
-                Two exciting ways to compete: partner up for Doubles or rise through the ranks in our Ladder League.
-                Enjoy guaranteed weekly court time, championship prizes, and community events across an 8-week season.
+                Team up with 2-4 players and compete in 7 DUPR-eligible match-ups plus playoffs over 8 weeks. Battle for the Head Honcho Championship with a prize package worth over $500!
               </p>
 
               <div className="honcho-highlights">
                 <div className="highlight-item">
-                  <span className="highlight-icon">📅</span>
+                  <span className="highlight-icon">👥</span>
                   <div>
-                    <strong>Registration Open:</strong><br />
-                    Oct 13 - Nov 16 (Early bird ends Oct 26)
+                    <strong>Flexible Teams:</strong><br />
+                    2-4 players, no gender requirements
                   </div>
                 </div>
                 <div className="highlight-item">
                   <span className="highlight-icon">🏆</span>
                   <div>
-                    <strong>Season Starts:</strong><br />
-                    December 1st
+                    <strong>Compete & Win:</strong><br />
+                    7 matches + playoffs, $500+ prizes
                   </div>
                 </div>
                 <div className="highlight-item">
-                  <span className="highlight-icon">🤝</span>
+                  <span className="highlight-icon">📊</span>
                   <div>
-                    <strong>Community:</strong><br />
-                    All skill levels welcome
+                    <strong>DUPR Eligible:</strong><br />
+                    Track your progress
                   </div>
                 </div>
               </div>
