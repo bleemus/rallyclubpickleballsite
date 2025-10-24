@@ -302,7 +302,7 @@ export default function CorporateEvents() {
             </div>
             <p className="cta-tagline">Let's get your team on the court—and out of their comfort zone—in the best way possible.</p>
             <div className="cta-buttons">
-              <a href="mailto:info@rallyclubpickleball.com?subject=Rally%20Experiences%20Inquiry" className="cta-button-primary">Contact Us for Booking</a>
+              <a href="mailto:rental@rallyclubpickleball.com?subject=Rally%20Experiences%20Inquiry" className="cta-button-primary">Contact Us for Booking</a>
               <a href="tel:+16189310015" className="cta-button-secondary">Call: (618) 931-0015</a>
             </div>
           </div>
@@ -313,7 +313,7 @@ export default function CorporateEvents() {
           <div className="footer-content">
             <div className="footer-section">
               <h3>Contact Us</h3>
-              <p>Email: info@rallyclubpickleball.com</p>
+              <p>Email: rental@rallyclubpickleball.com</p>
               <p>Phone: (618) 931-0015</p>
             </div>
             <div className="footer-section">
