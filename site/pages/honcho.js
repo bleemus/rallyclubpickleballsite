@@ -54,6 +54,7 @@ export default function Honcho() {
               <a href="/#facility" className="nav-link">About us</a>
               <a href="/#contact" className="nav-link">Contact</a>
               <a href="/honcho" className="nav-link honcho-nav-link active">Honcho League</a>
+              <a href="/corporate-events" className="nav-link">Corporate Events</a>
             </nav>
           </div>
         </header>
