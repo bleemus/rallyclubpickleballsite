@@ -3,7 +3,9 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function CorporateEvents() {
+export default function RallyExperiences() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <>
       <Head>
@@ -12,10 +14,10 @@ export default function CorporateEvents() {
           name="description"
           content="Rally Experiences - Guided pickleball events for corporate teams and private groups. Professional facilitation, all equipment included, and turnkey event management."
         />
-        <link rel="canonical" href="https://www.rallyclubpickleball.com/corporate-events" />
+        <link rel="canonical" href="https://www.rallyclubpickleball.com/rally-experiences" />
         <meta
           name="keywords"
-          content="corporate events, team building, pickleball events, corporate team building, private events, glen carbon, rally club"
+          content="rally experiences, team building, pickleball events, corporate team building, private events, glen carbon, rally club"
         />
         <meta property="og:title" content="Rally Experiences | Corporate Team Building" />
         <meta
@@ -23,7 +25,7 @@ export default function CorporateEvents() {
           content="Where Teams Come to Play. Guided pickleball experiences for corporate teams and private events at Rally Club Pickleball."
         />
         <meta property="og:image" content="/logo-transparent.png" />
-        <meta property="og:url" content="https://www.rallyclubpickleball.com/corporate-events" />
+        <meta property="og:url" content="https://www.rallyclubpickleball.com/rally-experiences" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Rally Experiences | Corporate Team Building" />
         <meta
@@ -54,10 +56,34 @@ export default function CorporateEvents() {
               <a href="/#facility" className="nav-link">About us</a>
               <a href="/#contact" className="nav-link">Contact</a>
               <a href="/honcho" className="nav-link honcho-nav-link">Honcho League</a>
-              <a href="/corporate-events" className="nav-link active">Corporate Events</a>
+              <a href="/rally-experiences" className="nav-link active">Rally Experiences</a>
             </nav>
+            <button
+              className="mobile-menu-button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              <div className={`hamburger ${mobileMenuOpen ? 'open' : ''}`}>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </button>
           </div>
         </header>
+
+        {/* Mobile Menu */}
+        <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
+          <nav className="mobile-nav">
+            <a href="/#booking" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Book a Court</a>
+            <a href="/#membership" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Membership</a>
+            <a href="/merch" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Merch</a>
+            <a href="/#facility" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>About us</a>
+            <a href="/#contact" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Contact</a>
+            <a href="/honcho" className="mobile-nav-link honcho-link" onClick={() => setMobileMenuOpen(false)}>Honcho League</a>
+            <a href="/rally-experiences" className="mobile-nav-link active" onClick={() => setMobileMenuOpen(false)}>Rally Experiences</a>
+          </nav>
+        </div>
 
         {/* Hero Section */}
         <section className="events-hero">
@@ -325,7 +351,7 @@ export default function CorporateEvents() {
               <a href="/" className="footer-link">Home</a>
               <a href="/#membership" className="footer-link">Membership</a>
               <a href="/honcho" className="footer-link">Honcho League</a>
-              <a href="/corporate-events" className="footer-link">Corporate Events</a>
+              <a href="/rally-experiences" className="footer-link">Rally Experiences</a>
             </div>
           </div>
           <div className="footer-bottom">
@@ -399,6 +425,108 @@ export default function CorporateEvents() {
           background: linear-gradient(135deg, #2D5A27 0%, #3E7B3E 100%);
           padding: 0.5rem 1rem;
           border-radius: 4px;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-button {
+          display: none;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 0.5rem;
+          z-index: 1001;
+        }
+
+        .hamburger {
+          width: 25px;
+          height: 20px;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+
+        .hamburger span {
+          display: block;
+          height: 3px;
+          width: 100%;
+          background: #C8F560;
+          border-radius: 2px;
+          transition: all 0.3s ease;
+        }
+
+        .hamburger.open span:nth-child(1) {
+          transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.open span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+          transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+          position: fixed;
+          top: 70px;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(26, 26, 26, 0.98);
+          backdrop-filter: blur(10px);
+          z-index: 999;
+          transform: translateX(100%);
+          transition: transform 0.3s ease;
+          overflow-y: auto;
+          display: none;
+        }
+
+        @media (max-width: 768px) {
+          .mobile-menu {
+            display: block;
+          }
+        }
+
+        .mobile-menu.open {
+          transform: translateX(0);
+        }
+
+        .mobile-nav {
+          display: flex;
+          flex-direction: column;
+          padding: 2rem;
+          gap: 0.5rem;
+        }
+
+        .mobile-nav-link {
+          color: #fff;
+          text-decoration: none;
+          font-weight: 500;
+          padding: 1rem;
+          border-radius: 8px;
+          transition: all 0.3s ease;
+          text-align: center;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-nav-link:hover,
+        .mobile-nav-link:active {
+          background: rgba(200, 245, 96, 0.1);
+          border-color: #C8F560;
+          color: #C8F560;
+        }
+
+        .mobile-nav-link.active {
+          background: rgba(200, 245, 96, 0.2);
+          border-color: #C8F560;
+          color: #C8F560;
+        }
+
+        .mobile-nav-link.honcho-link {
+          background: linear-gradient(135deg, #2D5A27 0%, #3E7B3E 100%);
+          border-color: #3E7B3E;
         }
 
         /* Hero Section */
@@ -852,9 +980,12 @@ export default function CorporateEvents() {
 
         .cta-steps {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          grid-template-columns: repeat(3, 1fr);
           gap: 2rem;
           margin-bottom: 3rem;
+          max-width: 900px;
+          margin-left: auto;
+          margin-right: auto;
         }
 
         .cta-step {
@@ -941,9 +1072,10 @@ export default function CorporateEvents() {
           max-width: 1200px;
           margin: 0 auto;
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 2rem;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 3rem;
           margin-bottom: 2rem;
+          text-align: center;
         }
 
         .footer-section h3 {
@@ -982,6 +1114,10 @@ export default function CorporateEvents() {
             display: none;
           }
 
+          .mobile-menu-button {
+            display: block;
+          }
+
           .events-hero-title {
             font-size: 2.5rem;
           }
@@ -1009,6 +1145,11 @@ export default function CorporateEvents() {
 
           .cta-steps {
             grid-template-columns: 1fr;
+          }
+
+          .footer-content {
+            grid-template-columns: 1fr;
+            text-align: left;
           }
         }
       `}</style>
