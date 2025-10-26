@@ -1411,8 +1411,31 @@ export default function Home() {
             font-size: 2rem;
           }
 
+          .benefits {
+            padding: 1rem 1rem 1.5rem;
+          }
+
           .benefits-grid {
             grid-template-columns: 1fr;
+            gap: 1rem;
+          }
+
+          .benefit-item {
+            padding: 0.5rem;
+          }
+
+          .benefit-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+          }
+
+          .benefit-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+          }
+
+          .benefit-item p {
+            font-size: 0.9rem;
           }
 
           .membership-grid {
