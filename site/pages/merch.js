@@ -45,7 +45,7 @@ export default function Merch() {
               <a href="/#facility" className="nav-link">About us</a>
               <a href="/#contact" className="nav-link">Contact</a>
               <a href="/honcho" className="nav-link honcho-nav-link">Honcho League</a>
-              <a href="/rally-experiences" className="nav-link">Rally Experiences</a>
+              <a href="/rally-experiences" className="nav-link rally-nav-link">Rally Experiences</a>
             </nav>
             <button
               className="mobile-menu-button"
@@ -70,7 +70,7 @@ export default function Merch() {
             <a href="/#facility" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>About us</a>
             <a href="/#contact" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Contact</a>
             <a href="/honcho" className="mobile-nav-link honcho-link" onClick={() => setMobileMenuOpen(false)}>Honcho League</a>
-            <a href="/rally-experiences" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Rally Experiences</a>
+            <a href="/rally-experiences" className="mobile-nav-link rally-link" onClick={() => setMobileMenuOpen(false)}>Rally Experiences</a>
           </nav>
         </div>
 
@@ -144,7 +144,7 @@ export default function Merch() {
 
         .nav-link:hover,
         .nav-link.active {
-          color: #e74c3c;
+          color: #FF6600;
         }
 
         .honcho-nav-link {
@@ -154,6 +154,27 @@ export default function Merch() {
 
         .honcho-nav-link:hover {
           color: #3E7B3E !important;
+        }
+
+        .rally-nav-link {
+          color: #FF6600 !important;
+          font-weight: 600;
+        }
+
+        .rally-nav-link:hover {
+          color: #E65100 !important;
+        }
+
+        .mobile-nav-link.rally-link {
+          background: #FF6600;
+          color: white !important;
+          padding: 0.75rem 1rem;
+          border-radius: 6px;
+          font-weight: 600;
+        }
+
+        .mobile-nav-link.rally-link:hover {
+          background: #E65100;
         }
 
         /* Mobile Menu Button */
@@ -179,7 +200,7 @@ export default function Merch() {
           display: block;
           height: 3px;
           width: 100%;
-          background: #e74c3c;
+          background: #FF6600;
           border-radius: 2px;
           transition: all 0.3s ease;
         }
@@ -243,14 +264,14 @@ export default function Merch() {
         .mobile-nav-link:hover,
         .mobile-nav-link:active {
           background: rgba(231, 76, 60, 0.1);
-          border-color: #e74c3c;
-          color: #e74c3c;
+          border-color: #FF6600;
+          color: #FF6600;
         }
 
         .mobile-nav-link.active {
           background: rgba(231, 76, 60, 0.2);
-          border-color: #e74c3c;
-          color: #e74c3c;
+          border-color: #FF6600;
+          color: #FF6600;
         }
 
         .mobile-nav-link.honcho-link {

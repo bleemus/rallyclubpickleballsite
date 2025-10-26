@@ -56,7 +56,7 @@ export default function RallyExperiences() {
               <a href="/#facility" className="nav-link">About us</a>
               <a href="/#contact" className="nav-link">Contact</a>
               <a href="/honcho" className="nav-link honcho-nav-link">Honcho League</a>
-              <a href="/rally-experiences" className="nav-link active">Rally Experiences</a>
+              <a href="/rally-experiences" className="nav-link rally-nav-link active">Rally Experiences</a>
             </nav>
             <button
               className="mobile-menu-button"
@@ -81,7 +81,7 @@ export default function RallyExperiences() {
             <a href="/#facility" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>About us</a>
             <a href="/#contact" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Contact</a>
             <a href="/honcho" className="mobile-nav-link honcho-link" onClick={() => setMobileMenuOpen(false)}>Honcho League</a>
-            <a href="/rally-experiences" className="mobile-nav-link active" onClick={() => setMobileMenuOpen(false)}>Rally Experiences</a>
+            <a href="/rally-experiences" className="mobile-nav-link rally-link active" onClick={() => setMobileMenuOpen(false)}>Rally Experiences</a>
           </nav>
         </div>
 
@@ -394,7 +394,7 @@ export default function RallyExperiences() {
         .logo {
           display: flex;
           align-items: center;
-          font-size: 1.2rem;
+          font-size: 1.5rem;
           font-weight: 700;
           color: #C8F560;
         }
@@ -425,6 +425,35 @@ export default function RallyExperiences() {
           background: linear-gradient(135deg, #2D5A27 0%, #3E7B3E 100%);
           padding: 0.5rem 1rem;
           border-radius: 4px;
+        }
+
+        .rally-nav-link {
+          color: #FF6600 !important;
+          font-weight: 600;
+          border-bottom: none !important;
+        }
+
+        .rally-nav-link:hover {
+          color: #E65100 !important;
+          border-bottom: none !important;
+        }
+
+        .rally-nav-link.active {
+          color: #FFA500 !important;
+          border-bottom: none !important;
+        }
+
+        .mobile-nav-link.rally-link {
+          background: #FF6600;
+          color: white !important;
+          padding: 0.75rem 1rem;
+          border-radius: 6px;
+          font-weight: 600;
+        }
+
+        .mobile-nav-link.rally-link:hover,
+        .mobile-nav-link.rally-link.active {
+          background: #E65100;
         }
 
         /* Mobile Menu Button */

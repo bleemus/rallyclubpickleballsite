@@ -70,7 +70,7 @@ export default function Home() {
               <a href="#facility" className="nav-link">About us</a>
               <a href="#contact" className="nav-link">Contact</a>
               <a href="/honcho" className="nav-link honcho-nav-link">Honcho League</a>
-              <a href="/rally-experiences" className="nav-link">Rally Experiences</a>
+              <a href="/rally-experiences" className="nav-link rally-nav-link">Rally Experiences</a>
             </nav>
             <button
               className="mobile-menu-button"
@@ -95,7 +95,7 @@ export default function Home() {
             <a href="#facility" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>About us</a>
             <a href="#contact" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Contact</a>
             <a href="/honcho" className="mobile-nav-link honcho-link" onClick={() => setMobileMenuOpen(false)}>Honcho League</a>
-            <a href="/rally-experiences" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Rally Experiences</a>
+            <a href="/rally-experiences" className="mobile-nav-link rally-link" onClick={() => setMobileMenuOpen(false)}>Rally Experiences</a>
           </nav>
         </div>
 
@@ -521,7 +521,7 @@ export default function Home() {
         }
 
         .nav-link:hover {
-          color: #e74c3c;
+          color: #FF6600;
         }
 
         .honcho-nav-link {
@@ -531,6 +531,27 @@ export default function Home() {
 
         .honcho-nav-link:hover {
           color: #3E7B3E !important;
+        }
+
+        .rally-nav-link {
+          color: #FF6600 !important;
+          font-weight: 600;
+        }
+
+        .rally-nav-link:hover {
+          color: #E65100 !important;
+        }
+
+        .mobile-nav-link.rally-link {
+          background: #FF6600;
+          color: white !important;
+          padding: 0.75rem 1rem;
+          border-radius: 6px;
+          font-weight: 600;
+        }
+
+        .mobile-nav-link.rally-link:hover {
+          background: #E65100;
         }
 
         /* Mobile Menu Button */
@@ -556,7 +577,7 @@ export default function Home() {
           display: block;
           height: 3px;
           width: 100%;
-          background: #e74c3c;
+          background: #FF6600;
           border-radius: 2px;
           transition: all 0.3s ease;
         }
@@ -620,14 +641,14 @@ export default function Home() {
         .mobile-nav-link:hover,
         .mobile-nav-link:active {
           background: rgba(231, 76, 60, 0.1);
-          border-color: #e74c3c;
-          color: #e74c3c;
+          border-color: #FF6600;
+          color: #FF6600;
         }
 
         .mobile-nav-link.active {
           background: rgba(231, 76, 60, 0.2);
-          border-color: #e74c3c;
-          color: #e74c3c;
+          border-color: #FF6600;
+          color: #FF6600;
         }
 
         .mobile-nav-link.honcho-link {
@@ -698,7 +719,7 @@ export default function Home() {
         }
 
         .cta-button {
-          background: #e74c3c;
+          background: #FF6600;
           color: white;
           padding: 1rem 2rem;
           border-radius: 8px;
@@ -709,7 +730,7 @@ export default function Home() {
         }
 
         .cta-button:hover {
-          background: #c0392b;
+          background: #E65100;
         }
 
         /* Benefits */
@@ -800,7 +821,7 @@ export default function Home() {
         }
 
         .membership-button {
-          background: #e74c3c;
+          background: #FF6600;
           color: white;
           padding: 0.75rem 2rem;
           border-radius: 8px;
@@ -815,7 +836,7 @@ export default function Home() {
         }
 
         .membership-button:hover {
-          background: #c0392b;
+          background: #E65100;
         }
 
         .membership-button.secondary:hover {
@@ -886,7 +907,7 @@ export default function Home() {
           padding: 2rem;
           background: #f8f9fa;
           border-radius: 12px;
-          border-left: 4px solid #e74c3c;
+          border-left: 4px solid #FF6600;
         }
 
         .pricing-note > p {
@@ -930,7 +951,7 @@ export default function Home() {
         }
 
         .not-permitted {
-          color: #e74c3c;
+          color: #FF6600;
           font-weight: bold;
         }
 
@@ -939,7 +960,7 @@ export default function Home() {
           background: #fff;
           padding: 1.5rem;
           border-radius: 8px;
-          border: 2px solid #e74c3c;
+          border: 2px solid #FF6600;
         }
 
         .join-info p {
@@ -1143,7 +1164,7 @@ export default function Home() {
         .step-number {
           width: 60px;
           height: 60px;
-          background: #e74c3c;
+          background: #FF6600;
           color: white;
           border-radius: 50%;
           display: flex;
@@ -1204,7 +1225,7 @@ export default function Home() {
         }
 
         .hours a {
-          color: #e74c3c;
+          color: #FF6600;
           text-decoration: none;
         }
 
@@ -1282,7 +1303,7 @@ export default function Home() {
         }
 
         .contact-button {
-          background: #e74c3c;
+          background: #FF6600;
           color: white;
           padding: 1rem 2rem;
           border-radius: 8px;
@@ -1293,7 +1314,7 @@ export default function Home() {
         }
 
         .contact-button:hover {
-          background: #c0392b;
+          background: #E65100;
         }
 
         /* Footer */
@@ -1323,7 +1344,7 @@ export default function Home() {
         }
 
         .footer-links a:hover {
-          color: #e74c3c;
+          color: #FF6600;
         }
 
         /* Lightbox */
@@ -1362,7 +1383,7 @@ export default function Home() {
         }
 
         .lightbox-close:hover {
-          color: #e74c3c;
+          color: #FF6600;
         }
 
         .lightbox-header {
