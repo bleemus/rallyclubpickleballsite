@@ -4,6 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Honcho() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <>
       <Head>
@@ -54,9 +56,34 @@ export default function Honcho() {
               <a href="/#facility" className="nav-link">About us</a>
               <a href="/#contact" className="nav-link">Contact</a>
               <a href="/honcho" className="nav-link honcho-nav-link active">Honcho League</a>
+              <a href="/rally-experiences" className="nav-link rally-nav-link">Rally Experiences</a>
             </nav>
+            <button
+              className="mobile-menu-button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              <div className={`hamburger ${mobileMenuOpen ? 'open' : ''}`}>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </button>
           </div>
         </header>
+
+        {/* Mobile Menu */}
+        <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
+          <nav className="mobile-nav">
+            <a href="/#booking" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Book a Court</a>
+            <a href="/#membership" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Membership</a>
+            <a href="/merch" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Merch</a>
+            <a href="/#facility" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>About us</a>
+            <a href="/#contact" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Contact</a>
+            <a href="/honcho" className="mobile-nav-link honcho-link active" onClick={() => setMobileMenuOpen(false)}>Honcho League</a>
+            <a href="/rally-experiences" className="mobile-nav-link rally-link" onClick={() => setMobileMenuOpen(false)}>Rally Experiences</a>
+          </nav>
+        </div>
 
         {/* Hero Section */}
         <section className="honcho-hero">
@@ -68,130 +95,110 @@ export default function Honcho() {
               height={145}
               style={{ marginBottom: '2rem' }}
             />
-            <h1 className="honcho-hero-title">Join the Honcho Pickleball League</h1>
+            <h1 className="honcho-hero-title">Same-Partner Doubles League</h1>
             <p className="honcho-hero-subtitle">
-              The premier amateur pickleball community sweeping the nation with two exciting ways to compete
+              Team up with 2-4 players and compete in 7 DUPR-eligible matches plus playoffs. Battle for the Head Honcho Championship and win over $500 in prizes!
             </p>
             <div className="honcho-hero-cta">
-              <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-winter-2026/" className="honcho-cta-button" target="_blank" rel="noopener noreferrer">Register Now (Use Code: RALLYCLUB)</a>
+              <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-winter-2026/" className="honcho-cta-button" target="_blank" rel="noopener noreferrer">Register Now</a>
               <span className="honcho-hashtag">#HonchoFam</span>
             </div>
+            <p style={{ marginTop: '1rem', fontSize: '1rem', color: '#E8F5E8' }}>Use code <strong style={{ color: '#C8F560' }}>RALLYCLUB</strong> for extra savings!</p>
           </div>
         </section>
 
-        {/* Registration Info */}
-        <section id="registration" className="registration-section">
-          <h2 className="section-title">Registration Information</h2>
-          <div className="registration-grid">
-            <div className="registration-card featured">
-              <h3>Early Bird Registration</h3>
-              <div className="registration-dates">
-                <div className="date-range">October 13th - October 26th</div>
-                <div className="early-bird-benefit">Save with early registration!</div>
+        {/* League Details */}
+        <section id="league-details" className="league-details-section">
+          <h2 className="section-title">League Format</h2>
+          <div className="details-grid">
+            <div className="detail-card">
+              <div className="detail-icon">👥</div>
+              <h3>Team Structure</h3>
+              <p>2–4 players per team for flexibility. Two players compete each week as doubles partners. No gender requirements.</p>
+            </div>
+            <div className="detail-card">
+              <div className="detail-icon">📅</div>
+              <h3>Season Schedule</h3>
+              <p>8-week season starting December 1st. 7 guaranteed match-ups with a league break Dec 22 - Jan 4.</p>
+            </div>
+            <div className="detail-card">
+              <div className="detail-icon">🏆</div>
+              <h3>Playoffs & Prizes</h3>
+              <p>Standings lead to single-elimination playoffs. Champions win over $500 including cash, free Early-Spring Entry & Sponsor Gear.</p>
+            </div>
+            <div className="detail-card">
+              <div className="detail-icon">📊</div>
+              <h3>Skill Divisions</h3>
+              <p><strong>Intermediate:</strong> DUPR 3.0-3.5<br /><strong>Upper-Intermediate:</strong> DUPR 3.5-4.25</p>
+            </div>
+            <div className="detail-card">
+              <div className="detail-icon">✅</div>
+              <h3>What's Included</h3>
+              <p>DUPR eligible matches, weekly gameplay fully administered, court costs included, standings tracking.</p>
+            </div>
+            <div className="detail-card">
+              <div className="detail-icon">📆</div>
+              <h3>Registration</h3>
+              <p><strong>Early Bird:</strong> Oct 13-26<br /><strong>Regular:</strong> Oct 13 - Nov 16<br /><br /><strong>Code RALLYCLUB:</strong> Extra savings on top of early bird pricing!</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Why Join */}
+        <section className="why-join-section">
+          <h2 className="section-title">Why Join the #HonchoFam?</h2>
+          <div className="why-join-content">
+            <p className="why-join-intro">Join thousands of players across the nation in the premier amateur pickleball community. The ideal league for busy players who want consistent partners, flexible rosters, competitive rallies, and a shot at glory!</p>
+            <div className="benefits-grid-compact">
+              <div className="benefit-item-compact">
+                <span className="benefit-icon-compact">🤝</span>
+                <div>
+                  <strong>Build Community</strong>
+                  <p>Connect with like-minded players nationwide</p>
+                </div>
+              </div>
+              <div className="benefit-item-compact">
+                <span className="benefit-icon-compact">📈</span>
+                <div>
+                  <strong>Track Progress</strong>
+                  <p>DUPR eligible matches show your improvement</p>
+                </div>
+              </div>
+              <div className="benefit-item-compact">
+                <span className="benefit-icon-compact">⚡</span>
+                <div>
+                  <strong>No Hassle</strong>
+                  <p>Fully administered gameplay, court costs included</p>
+                </div>
               </div>
             </div>
-            <div className="registration-card">
-              <h3>Regular Registration</h3>
-              <div className="registration-dates">
-                <div className="date-range">October 13th - November 16th</div>
-                <div className="season-info">Season kicks off December 1st</div>
-              </div>
-            </div>
-          </div>
-          <div className="league-break-info">
-            <h3>League Break</h3>
-            <p>December 22nd - January 4th</p>
-            <p>Enjoy the holidays and come back refreshed for the new year!</p>
           </div>
         </section>
 
-        {/* What's Included */}
-        <section className="whats-included">
-          <h2 className="section-title">What's Included</h2>
-          <div className="included-grid">
-            <div className="included-item">
-              <div className="included-icon">⏰</div>
-              <h3>Guaranteed Weekly Court Time</h3>
-              <p>Secure your spot with guaranteed weekly court time across an 8-week season</p>
-            </div>
-            <div className="included-item">
-              <div className="included-icon">🏆</div>
-              <h3>Championship Prizes</h3>
-              <p>Compete for exciting prizes and recognition as league champions</p>
-            </div>
-            <div className="included-item">
-              <div className="included-icon">🎉</div>
-              <h3>End-of-Season Social Hour</h3>
-              <p>Celebrate the season with fellow players at our exclusive social event</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Competition Formats */}
-        <section className="competition-formats">
-          <h2 className="section-title">Two Ways to Compete</h2>
-          <div className="format-grid">
-            <div className="format-card">
-              <div className="format-icon">👥</div>
-              <h3>Doubles League</h3>
-              <p>Partner up with a friend or teammate and compete together throughout the season. Build chemistry and strategy as a team while facing other dynamic duos.</p>
-              <ul className="format-features">
-                <li>Team-based competition</li>
-                <li>Consistent partnerships</li>
-                <li>Strategic gameplay development</li>
-                <li>Social team building</li>
-              </ul>
-            </div>
-            <div className="format-card">
-              <div className="format-icon">📊</div>
-              <h3>Ladder League</h3>
-              <p>Rise through the ranks in our individual ladder system. Challenge players above you and defend your position as you climb toward the top of the ladder.</p>
-              <ul className="format-features">
-                <li>Individual skill ranking</li>
-                <li>Flexible challenge system</li>
-                <li>Continuous improvement tracking</li>
-                <li>Self-paced competition</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        {/* Community Benefits */}
-        <section className="community-benefits">
-          <h2 className="section-title">More Than Just a Game</h2>
-          <div className="benefits-grid">
-            <div className="benefit-card">
-              <div className="benefit-icon">🌟</div>
-              <h3>A Community for All Levels</h3>
-              <p>Whether you're just starting out or you're a seasoned player, Honcho welcomes players of all skill levels. Our inclusive environment helps everyone improve and have fun.</p>
-            </div>
-            <div className="benefit-card">
-              <div className="benefit-icon">🤝</div>
-              <h3>Build Lasting Connections</h3>
-              <p>Form friendships that extend beyond the court. Our league creates opportunities to meet like-minded players and build a strong pickleball community.</p>
-            </div>
-            <div className="benefit-card">
-              <div className="benefit-icon">📅</div>
-              <h3>Structured, Dependable Play</h3>
-              <p>No more wondering when you'll get to play. Our league provides consistent, organized gameplay that fits into your schedule with reliable weekly matches.</p>
-            </div>
-            <div className="benefit-card">
-              <div className="benefit-icon">📈</div>
-              <h3>A Space to Grow Your Game</h3>
-              <p>Challenge yourself against different opponents and playing styles. Our league environment provides the perfect setting to develop your skills and strategy.</p>
-            </div>
+        {/* Referral Perks */}
+        <section className="referral-section">
+          <div className="referral-content">
+            <div className="referral-icon">🎁</div>
+            <h2 className="referral-title">Referral Perks</h2>
+            <p className="referral-text">Recruit 3+ friends and earn rewards like a free JOOLA paddle, free entry & more (just have them list you during registration!)</p>
           </div>
         </section>
 
         {/* Call to Action */}
         <section className="final-cta">
           <div className="cta-content">
-            <h2>Ready to Join the #HonchoFam?</h2>
-            <p>Registration is open now through November 16th. Don't miss your chance to be part of the premier amateur pickleball community!</p>
-            <p style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#C8F560', marginTop: '-1rem', marginBottom: '2rem' }}>Use discount code: RALLYCLUB</p>
+            <h2>Ready to Compete?</h2>
+            <p style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#C8F560', marginBottom: '2rem' }}>Use discount code <span style={{ fontSize: '1.3rem' }}>RALLYCLUB</span> for extra savings on top of early bird pricing!</p>
             <div className="cta-buttons">
               <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-winter-2026/" className="honcho-button primary large" target="_blank" rel="noopener noreferrer">Register for League</a>
             </div>
+          </div>
+        </section>
+
+        {/* Honcho Contact */}
+        <section className="honcho-contact">
+          <div className="honcho-contact-content">
+            <p>Questions? Reach out to Honcho at <a href="mailto:support@honchopickle.com">support@honchopickle.com</a> — they've got your back.</p>
           </div>
         </section>
 
@@ -264,7 +271,7 @@ export default function Honcho() {
 
         .nav-link:hover,
         .nav-link.active {
-          color: #e74c3c;
+          color: #FF6600;
         }
 
         .honcho-nav-link {
@@ -277,6 +284,129 @@ export default function Honcho() {
           color: #3E7B3E !important;
         }
 
+        .rally-nav-link {
+          color: #FF6600 !important;
+          font-weight: 600;
+        }
+
+        .rally-nav-link:hover {
+          color: #E65100 !important;
+        }
+
+        .mobile-nav-link.rally-link {
+          background: #FF6600;
+          color: white !important;
+          padding: 0.75rem 1rem;
+          border-radius: 6px;
+          font-weight: 600;
+        }
+
+        .mobile-nav-link.rally-link:hover {
+          background: #E65100;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-button {
+          display: none;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 0.5rem;
+          z-index: 1001;
+        }
+
+        .hamburger {
+          width: 25px;
+          height: 20px;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+
+        .hamburger span {
+          display: block;
+          height: 3px;
+          width: 100%;
+          background: #2D5A27;
+          border-radius: 2px;
+          transition: all 0.3s ease;
+        }
+
+        .hamburger.open span:nth-child(1) {
+          transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.open span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+          transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+          position: fixed;
+          top: 70px;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(255, 255, 255, 0.98);
+          backdrop-filter: blur(10px);
+          z-index: 999;
+          transform: translateX(100%);
+          transition: transform 0.3s ease;
+          overflow-y: auto;
+          display: none;
+        }
+
+        @media (max-width: 768px) {
+          .mobile-menu {
+            display: block;
+          }
+        }
+
+        .mobile-menu.open {
+          transform: translateX(0);
+        }
+
+        .mobile-nav {
+          display: flex;
+          flex-direction: column;
+          padding: 2rem;
+          gap: 0.5rem;
+        }
+
+        .mobile-nav-link {
+          color: #333;
+          text-decoration: none;
+          font-weight: 500;
+          padding: 1rem;
+          border-radius: 8px;
+          transition: all 0.3s ease;
+          text-align: center;
+          border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-nav-link:hover,
+        .mobile-nav-link:active {
+          background: rgba(231, 76, 60, 0.1);
+          border-color: #FF6600;
+          color: #FF6600;
+        }
+
+        .mobile-nav-link.active {
+          background: rgba(45, 90, 39, 0.2);
+          border-color: #2D5A27;
+          color: #2D5A27;
+        }
+
+        .mobile-nav-link.honcho-link {
+          background: linear-gradient(135deg, #2D5A27 0%, #3E7B3E 100%);
+          color: white;
+          border-color: #3E7B3E;
+        }
 
         /* Hero Section */
         .honcho-hero {
@@ -360,110 +490,53 @@ export default function Honcho() {
           color: #2D5A27;
         }
 
-        /* Registration Section */
-        .registration-section {
+        /* League Details Section */
+        .league-details-section {
           padding: 4rem 2rem;
           background: #f8f9fa;
         }
 
-        .registration-grid {
-          max-width: 1000px;
-          margin: 0 auto 3rem;
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 2rem;
-        }
-
-        .registration-card {
-          background: white;
-          padding: 2.5rem;
-          border-radius: 12px;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-          text-align: center;
-          border: 2px solid transparent;
-        }
-
-        .registration-card.featured {
-          border-color: #C8F560;
-          background: linear-gradient(135deg, #2D5A27 0%, #3E7B3E 100%);
-          color: white;
-        }
-
-        .registration-card h3 {
-          font-size: 1.8rem;
-          margin-bottom: 1.5rem;
-        }
-
-        .registration-card.featured h3 {
-          color: #C8F560;
-        }
-
-        .date-range {
-          font-size: 1.3rem;
-          font-weight: bold;
-          margin-bottom: 1rem;
-        }
-
-        .registration-card.featured .date-range {
-          color: #C8F560;
-        }
-
-        .early-bird-benefit,
-        .season-info {
-          font-size: 1rem;
-          opacity: 0.8;
-        }
-
-        .league-break-info {
-          max-width: 600px;
-          margin: 0 auto;
-          text-align: center;
-          background: rgba(45, 90, 39, 0.1);
-          padding: 2rem;
-          border-radius: 12px;
-          border-left: 4px solid #2D5A27;
-        }
-
-        .league-break-info h3 {
-          color: #2D5A27;
-          margin-bottom: 1rem;
-        }
-
-        /* What's Included */
-        .whats-included {
-          padding: 4rem 2rem;
-          background: white;
-        }
-
-        .included-grid {
+        .details-grid {
           max-width: 1200px;
           margin: 0 auto;
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 2.5rem;
+          gap: 2rem;
         }
 
-        .included-item {
-          text-align: center;
+        .detail-card {
+          background: white;
           padding: 2rem;
           border-radius: 12px;
-          background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+          box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+          text-align: center;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .included-icon {
-          font-size: 3.5rem;
-          margin-bottom: 1.5rem;
-          filter: grayscale(100%) sepia(100%) hue-rotate(90deg) saturate(200%);
+        .detail-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 25px rgba(0,0,0,0.12);
         }
 
-        .included-item h3 {
+        .detail-icon {
+          font-size: 3rem;
+          margin-bottom: 1rem;
+        }
+
+        .detail-card h3 {
           font-size: 1.3rem;
           margin-bottom: 1rem;
           color: #2D5A27;
         }
 
-        .included-item p {
+        .detail-card p {
           color: #666;
+          line-height: 1.6;
+          font-size: 0.95rem;
+        }
+
+        .detail-card p strong {
+          color: #2D5A27;
         }
 
         /* Competition Formats */
@@ -480,9 +553,22 @@ export default function Honcho() {
           gap: 3rem;
         }
 
+        .format-single {
+          max-width: 900px;
+          margin: 0 auto;
+        }
+
         .format-card {
           background: white;
           padding: 3rem;
+          border-radius: 16px;
+          box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+          text-align: center;
+        }
+
+        .format-card-large {
+          background: white;
+          padding: 3.5rem;
           border-radius: 16px;
           box-shadow: 0 15px 40px rgba(0,0,0,0.1);
           text-align: center;
@@ -529,42 +615,94 @@ export default function Honcho() {
           font-weight: bold;
         }
 
-        /* Community Benefits */
-        .community-benefits {
+        /* Why Join Section */
+        .why-join-section {
           padding: 4rem 2rem;
           background: white;
         }
 
-        .benefits-grid {
-          max-width: 1200px;
+        .why-join-content {
+          max-width: 1000px;
           margin: 0 auto;
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 2.5rem;
         }
 
-        .benefit-card {
-          padding: 2.5rem;
-          border-radius: 12px;
-          background: linear-gradient(135deg, rgba(45, 90, 39, 0.05) 0%, rgba(62, 123, 62, 0.05) 100%);
-          border: 1px solid rgba(45, 90, 39, 0.1);
-        }
-
-        .benefit-icon {
-          font-size: 3rem;
-          margin-bottom: 1.5rem;
-          display: block;
-        }
-
-        .benefit-card h3 {
-          font-size: 1.4rem;
-          margin-bottom: 1rem;
-          color: #2D5A27;
-        }
-
-        .benefit-card p {
-          color: #666;
+        .why-join-intro {
+          text-align: center;
+          font-size: 1.2rem;
+          color: #555;
+          margin-bottom: 3rem;
           line-height: 1.7;
+        }
+
+        .benefits-grid-compact {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2rem;
+        }
+
+        .benefit-item-compact {
+          display: flex;
+          align-items: flex-start;
+          gap: 1rem;
+          padding: 1.5rem;
+          background: linear-gradient(135deg, rgba(45, 90, 39, 0.05) 0%, rgba(62, 123, 62, 0.05) 100%);
+          border-radius: 12px;
+          border-left: 4px solid #2D5A27;
+        }
+
+        .benefit-icon-compact {
+          font-size: 2rem;
+          flex-shrink: 0;
+        }
+
+        .benefit-item-compact strong {
+          display: block;
+          color: #2D5A27;
+          font-size: 1.1rem;
+          margin-bottom: 0.25rem;
+        }
+
+        .benefit-item-compact p {
+          color: #666;
+          font-size: 0.9rem;
+          margin: 0;
+          line-height: 1.4;
+        }
+
+        /* Referral Section */
+        .referral-section {
+          padding: 3rem 2rem;
+          background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .referral-content {
+          max-width: 800px;
+          margin: 0 auto;
+          text-align: center;
+          padding: 2.5rem;
+          background: white;
+          border-radius: 16px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+          border: 3px solid #C8F560;
+        }
+
+        .referral-icon {
+          font-size: 4rem;
+          margin-bottom: 1rem;
+        }
+
+        .referral-title {
+          font-size: 2rem;
+          color: #2D5A27;
+          margin-bottom: 1rem;
+          font-weight: bold;
+        }
+
+        .referral-text {
+          font-size: 1.1rem;
+          color: #555;
+          line-height: 1.7;
+          margin: 0;
         }
 
         /* Final CTA */
@@ -597,6 +735,36 @@ export default function Honcho() {
           justify-content: center;
           gap: 2rem;
           flex-wrap: wrap;
+        }
+
+        /* Honcho Contact */
+        .honcho-contact {
+          padding: 2rem 2rem;
+          background: #f8f9fa;
+          text-align: center;
+        }
+
+        .honcho-contact-content {
+          max-width: 800px;
+          margin: 0 auto;
+        }
+
+        .honcho-contact-content p {
+          font-size: 1.1rem;
+          color: #555;
+          line-height: 1.6;
+        }
+
+        .honcho-contact-content a {
+          color: #2D5A27;
+          font-weight: bold;
+          text-decoration: none;
+          transition: color 0.3s;
+        }
+
+        .honcho-contact-content a:hover {
+          color: #3E7B3E;
+          text-decoration: underline;
         }
 
         .honcho-button {
@@ -671,6 +839,10 @@ export default function Honcho() {
             display: none;
           }
 
+          .mobile-menu-button {
+            display: block;
+          }
+
           .honcho-hero-title {
             font-size: 2.5rem;
           }
@@ -679,13 +851,12 @@ export default function Honcho() {
             font-size: 2rem;
           }
 
-          .registration-grid,
-          .format-grid,
-          .benefits-grid {
-            grid-template-columns: 1fr;
+          .details-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
           }
 
-          .included-grid {
+          .benefits-grid-compact {
             grid-template-columns: 1fr;
           }
 
@@ -716,6 +887,14 @@ export default function Honcho() {
 
           .cta-content h2 {
             font-size: 2rem;
+          }
+
+          .details-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .detail-card {
+            padding: 1.5rem;
           }
         }
       `}</style>
