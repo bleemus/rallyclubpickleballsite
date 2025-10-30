@@ -4,6 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Merch() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <>
       <Head>
@@ -277,6 +279,17 @@ export default function Merch() {
           .footer-content {
             flex-direction: column;
             gap: 1rem;
+          }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+          .nav {
+            display: none;
+          }
+
+          .mobile-menu-button {
+            display: block;
           }
         }
 
