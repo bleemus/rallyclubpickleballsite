@@ -110,36 +110,21 @@ export default function Honcho() {
         {/* League Details */}
         <section id="league-details" className="league-details-section">
           <h2 className="section-title">League Format</h2>
-          <div className="details-grid">
+          <div className="details-grid-compact">
             <div className="detail-card">
               <div className="detail-icon">👥</div>
-              <h3>Team Structure</h3>
-              <p>2–4 players per team for flexibility. Two players compete each week as doubles partners. No gender requirements.</p>
-            </div>
-            <div className="detail-card">
-              <div className="detail-icon">📅</div>
-              <h3>Season Schedule</h3>
-              <p>8-week season starting December 1st. 7 guaranteed match-ups with a league break Dec 22 - Jan 4.</p>
+              <h3>Format & Schedule</h3>
+              <p>2–4 players per team, 2 compete weekly. 8-week season (Dec 1 start) with 7 DUPR-eligible matches + playoffs. Break: Dec 22 - Jan 4.</p>
             </div>
             <div className="detail-card">
               <div className="detail-icon">🏆</div>
-              <h3>Playoffs & Prizes</h3>
-              <p>Standings lead to single-elimination playoffs. Champions win over $500 including cash, free Early-Spring Entry & Sponsor Gear.</p>
-            </div>
-            <div className="detail-card">
-              <div className="detail-icon">📊</div>
-              <h3>Skill Divisions</h3>
-              <p><strong>Intermediate:</strong> DUPR 3.0-3.5<br /><strong>Upper-Intermediate:</strong> DUPR 3.5-4.25</p>
+              <h3>Divisions & Prizes</h3>
+              <p><strong>Intermediate:</strong> 3.0-3.5 DUPR<br /><strong>Upper-Int:</strong> 3.5-4.25 DUPR<br />Champions win $500+ in prizes!</p>
             </div>
             <div className="detail-card">
               <div className="detail-icon">✅</div>
-              <h3>What's Included</h3>
-              <p>DUPR eligible matches, weekly gameplay fully administered, court costs included, standings tracking.</p>
-            </div>
-            <div className="detail-card">
-              <div className="detail-icon">📆</div>
               <h3>Registration</h3>
-              <p><strong>Early Bird:</strong> Oct 13-26<br /><strong>Regular:</strong> Oct 13 - Nov 16<br /><br /><strong>Code RALLYCLUB:</strong> Extra savings on top of early bird pricing!</p>
+              <p><strong>Open through Nov 16</strong><br />Fully administered gameplay, court costs included<br /><strong>Use code RALLYCLUB</strong> for savings!</p>
             </div>
           </div>
         </section>
@@ -496,6 +481,14 @@ export default function Honcho() {
           background: #f8f9fa;
         }
 
+        .details-grid-compact {
+          max-width: 1100px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2rem;
+        }
+
         .registration-info-centered {
           max-width: 700px;
           margin: 0 auto 3rem;
@@ -503,11 +496,23 @@ export default function Honcho() {
 
         .detail-card {
           background: white;
-          padding: 3rem;
+          padding: 2rem;
           border-radius: 12px;
           box-shadow: 0 5px 15px rgba(0,0,0,0.08);
           text-align: center;
           transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .detail-card h3 {
+          font-size: 1.4rem;
+          color: #2D5A27;
+          margin-bottom: 1rem;
+        }
+
+        .detail-card p {
+          font-size: 0.95rem;
+          line-height: 1.6;
+          color: #666;
         }
 
         .registration-card h3 {
@@ -926,8 +931,9 @@ export default function Honcho() {
             font-size: 2rem;
           }
 
-          .details-grid {
+          .details-grid-compact {
             grid-template-columns: 1fr;
+            gap: 1.5rem;
           }
 
           .detail-card {
