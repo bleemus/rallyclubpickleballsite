@@ -70,7 +70,7 @@ export default function Honcho() {
             />
             <h1 className="honcho-hero-title">Join the Honcho Pickleball League</h1>
             <p className="honcho-hero-subtitle">
-              The premier amateur pickleball community sweeping the nation with two exciting ways to compete
+              The premier amateur pickleball community sweeping the nation
             </p>
             <div className="honcho-hero-cta">
               <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-winter-2026/" className="honcho-cta-button" target="_blank" rel="noopener noreferrer">Register Now (Use Code: RALLYCLUB)</a>
@@ -82,19 +82,13 @@ export default function Honcho() {
         {/* Registration Info */}
         <section id="registration" className="registration-section">
           <h2 className="section-title">Registration Information</h2>
-          <div className="registration-grid">
+          <div className="registration-info-centered">
             <div className="registration-card featured">
-              <h3>Early Bird Registration</h3>
+              <h3>Winter 2026 Season</h3>
               <div className="registration-dates">
-                <div className="date-range">October 13th - October 26th</div>
-                <div className="early-bird-benefit">Save with early registration!</div>
-              </div>
-            </div>
-            <div className="registration-card">
-              <h3>Regular Registration</h3>
-              <div className="registration-dates">
-                <div className="date-range">October 13th - November 16th</div>
-                <div className="season-info">Season kicks off December 1st</div>
+                <div className="date-range">Season kicks off December 1st</div>
+                <div className="season-info">Registration open now through November 16th</div>
+                <div className="discount-highlight">Use code <strong>RALLYCLUB</strong> for your discount!</div>
               </div>
             </div>
           </div>
@@ -129,8 +123,8 @@ export default function Honcho() {
 
         {/* Competition Formats */}
         <section className="competition-formats">
-          <h2 className="section-title">Two Ways to Compete</h2>
-          <div className="format-grid">
+          <h2 className="section-title">Doubles League Format</h2>
+          <div className="format-single">
             <div className="format-card">
               <div className="format-icon">👥</div>
               <h3>Doubles League</h3>
@@ -140,17 +134,6 @@ export default function Honcho() {
                 <li>Consistent partnerships</li>
                 <li>Strategic gameplay development</li>
                 <li>Social team building</li>
-              </ul>
-            </div>
-            <div className="format-card">
-              <div className="format-icon">📊</div>
-              <h3>Ladder League</h3>
-              <p>Rise through the ranks in our individual ladder system. Challenge players above you and defend your position as you climb toward the top of the ladder.</p>
-              <ul className="format-features">
-                <li>Individual skill ranking</li>
-                <li>Flexible challenge system</li>
-                <li>Continuous improvement tracking</li>
-                <li>Self-paced competition</li>
               </ul>
             </div>
           </div>
@@ -366,17 +349,14 @@ export default function Honcho() {
           background: #f8f9fa;
         }
 
-        .registration-grid {
-          max-width: 1000px;
+        .registration-info-centered {
+          max-width: 700px;
           margin: 0 auto 3rem;
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 2rem;
         }
 
         .registration-card {
           background: white;
-          padding: 2.5rem;
+          padding: 3rem;
           border-radius: 12px;
           box-shadow: 0 10px 30px rgba(0,0,0,0.1);
           text-align: center;
@@ -390,7 +370,7 @@ export default function Honcho() {
         }
 
         .registration-card h3 {
-          font-size: 1.8rem;
+          font-size: 2rem;
           margin-bottom: 1.5rem;
         }
 
@@ -399,19 +379,31 @@ export default function Honcho() {
         }
 
         .date-range {
-          font-size: 1.3rem;
+          font-size: 1.4rem;
           font-weight: bold;
           margin-bottom: 1rem;
-        }
-
-        .registration-card.featured .date-range {
           color: #C8F560;
         }
 
-        .early-bird-benefit,
         .season-info {
-          font-size: 1rem;
-          opacity: 0.8;
+          font-size: 1.1rem;
+          opacity: 0.9;
+          margin-bottom: 1.5rem;
+        }
+
+        .discount-highlight {
+          font-size: 1.3rem;
+          margin-top: 1.5rem;
+          padding: 1rem;
+          background: rgba(200, 245, 96, 0.2);
+          border-radius: 8px;
+          color: #C8F560;
+        }
+
+        .discount-highlight strong {
+          font-size: 1.5rem;
+          color: #C8F560;
+          letter-spacing: 1px;
         }
 
         .league-break-info {
@@ -472,12 +464,9 @@ export default function Honcho() {
           background: #f8f9fa;
         }
 
-        .format-grid {
-          max-width: 1200px;
+        .format-single {
+          max-width: 700px;
           margin: 0 auto;
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 3rem;
         }
 
         .format-card {
@@ -679,10 +668,16 @@ export default function Honcho() {
             font-size: 2rem;
           }
 
-          .registration-grid,
-          .format-grid,
           .benefits-grid {
             grid-template-columns: 1fr;
+          }
+
+          .registration-info-centered {
+            padding: 0 1rem;
+          }
+
+          .registration-card {
+            padding: 2rem;
           }
 
           .included-grid {
