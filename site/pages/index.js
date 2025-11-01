@@ -183,6 +183,60 @@ export default function Home() {
               </div>
             </div>
             <div className="membership-card">
+              <div className="approval-badge">REQUIRES APPROVAL</div>
+              <h3 className="membership-title">A-List Silver</h3>
+              <div className="membership-price">
+                <span className="price">$0</span>
+                <span className="period">/month</span>
+              </div>
+              <p className="membership-summary">Reserve 7 days in advance. Requires Silver Sneakers eligibility.</p>
+              <div className="membership-cta">
+                <a href="https://tools.silversneakers.com/Eligibility/CheckEligibility" className="membership-button" target="_blank" rel="noopener noreferrer">Check Eligibility</a>
+              </div>
+              <div className="pricing-details">
+                <h4>Court Rates:</h4>
+                <div className="rate-item">
+                  <span className="rate-time">Peak times</span>
+                  <span className="rate-price">$28/hr</span>
+                </div>
+                <div className="rate-item">
+                  <span className="rate-time">Off-peak times</span>
+                  <span className="rate-price">$20/hr</span>
+                </div>
+                <div className="rate-item base-rate">
+                  <span className="rate-time">All other times</span>
+                  <span className="rate-price">FREE</span>
+                </div>
+              </div>
+            </div>
+            <div className="membership-card">
+              <div className="approval-badge">REQUIRES APPROVAL</div>
+              <h3 className="membership-title">A-List Active</h3>
+              <div className="membership-price">
+                <span className="price">$0</span>
+                <span className="period">/month</span>
+              </div>
+              <p className="membership-summary">Reserve 7 days in advance. Requires Renew Active eligibility.</p>
+              <div className="membership-cta">
+                <a href="https://www.uhcrenewactive.com/home" className="membership-button" target="_blank" rel="noopener noreferrer">Check Eligibility</a>
+              </div>
+              <div className="pricing-details">
+                <h4>Court Rates:</h4>
+                <div className="rate-item">
+                  <span className="rate-time">Peak times</span>
+                  <span className="rate-price">$28/hr</span>
+                </div>
+                <div className="rate-item">
+                  <span className="rate-time">Off-peak times</span>
+                  <span className="rate-price">$20/hr</span>
+                </div>
+                <div className="rate-item base-rate">
+                  <span className="rate-time">All other times</span>
+                  <span className="rate-price">FREE</span>
+                </div>
+              </div>
+            </div>
+            <div className="membership-card rally-reserve">
               <div className="no-commitment-badge">NO COMMITMENT</div>
               <h3 className="membership-title">Rally Reserve</h3>
               <div className="membership-price">
@@ -220,6 +274,9 @@ export default function Home() {
               </div>
               <div className="highlight-box payment">
                 <p>Reserving player pays court costs & fees up front, it is up to them how their playing partners reimburse them</p>
+              </div>
+              <div className="highlight-box special-programs">
+                <p><strong>Special Programs:</strong> A-List Silver (Silver Sneakers) and A-List Active (Renew Active) require eligibility verification and admin approval. Check eligibility through the respective program websites.</p>
               </div>
             </div>
           </div>
@@ -808,15 +865,22 @@ export default function Home() {
         /* Membership */
         .membership {
           padding: 1.5rem 2rem;
-          max-width: 1000px;
+          max-width: 1200px;
           margin: 0 auto;
         }
 
         .membership-grid {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(3, 1fr);
           gap: 2rem;
           align-items: start;
+        }
+
+        .membership-card.rally-reserve {
+          grid-column: 1 / -1;
+          max-width: calc(33.333% - 1.333rem);
+          margin: 0 auto;
+          width: 100%;
         }
 
         .membership-card {
@@ -976,6 +1040,20 @@ export default function Home() {
           box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
+        .approval-badge {
+          position: absolute;
+          top: -10px;
+          left: 20px;
+          background: #9b59b6;
+          color: white;
+          padding: 5px 15px;
+          border-radius: 15px;
+          font-size: 0.8rem;
+          font-weight: bold;
+          transform: rotate(-15deg);
+          box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
         .membership-card.featured {
           position: relative;
           border: 2px solid #ff6b35;
@@ -1034,6 +1112,11 @@ export default function Home() {
         .highlight-box.payment {
           background: #e8f5e8;
           border-left-color: #4caf50;
+        }
+
+        .highlight-box.special-programs {
+          background: #f3e5f5;
+          border-left-color: #9b59b6;
         }
 
         .highlight-box p {
@@ -1503,6 +1586,16 @@ export default function Home() {
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+          .membership-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+
+          .membership-card.rally-reserve {
+            grid-column: 1 / -1;
+          }
+        }
+
         @media (max-width: 768px) {
           .nav {
             display: none;
@@ -1510,6 +1603,14 @@ export default function Home() {
 
           .mobile-menu-button {
             display: block;
+          }
+
+          .membership-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .membership-card.rally-reserve {
+            grid-column: 1;
           }
 
           .hero {
