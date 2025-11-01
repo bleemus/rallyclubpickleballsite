@@ -159,8 +159,8 @@ export default function Home() {
               </div>
               <p className="membership-summary">Reserve 10 days in advance.</p>
               <div className="membership-cta">
-                <a href="https://square.link/u/LcxQzlsY" className="membership-button" target="_blank" rel="noopener noreferrer">Join Monthly ($35/mo)</a>
-                <a href="https://square.link/u/EU8yAr7I" className="membership-button" target="_blank" rel="noopener noreferrer" style={{ marginTop: '0.5rem' }}>Join Yearly ($350/yr)</a>
+                <a href="https://square.link/u/LcxQzlsY" className="membership-button" target="_blank" rel="noopener noreferrer">Join Monthly</a>
+                <a href="https://square.link/u/EU8yAr7I" className="membership-button" target="_blank" rel="noopener noreferrer">Join Yearly</a>
               </div>
               <div className="pricing-details">
                 <h4>Court Rates:</h4>
@@ -859,6 +859,9 @@ export default function Home() {
 
         .membership-cta {
           margin-bottom: 2rem;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
         }
 
         .membership-button {
