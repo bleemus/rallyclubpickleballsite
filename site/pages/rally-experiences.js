@@ -53,7 +53,6 @@ export default function RallyExperiences() {
               <a href="/#booking" className="nav-link">Book a Court</a>
               <a href="/#membership" className="nav-link">Membership</a>
               <a href="/merch" className="nav-link">Merch</a>
-              <a href="/#facility" className="nav-link">About us</a>
               <a href="/#contact" className="nav-link">Contact</a>
               <a href="/honcho" className="nav-link honcho-nav-link">Honcho League</a>
               <a href="/rally-experiences" className="nav-link rally-nav-link active">Rally Experiences</a>
@@ -78,7 +77,6 @@ export default function RallyExperiences() {
             <a href="/#booking" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Book a Court</a>
             <a href="/#membership" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Membership</a>
             <a href="/merch" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Merch</a>
-            <a href="/#facility" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>About us</a>
             <a href="/#contact" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Contact</a>
             <a href="/honcho" className="mobile-nav-link honcho-link" onClick={() => setMobileMenuOpen(false)}>Honcho League</a>
             <a href="/rally-experiences" className="mobile-nav-link rally-link active" onClick={() => setMobileMenuOpen(false)}>Rally Experiences</a>
