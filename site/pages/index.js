@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import styles from '../styles/Index.module.css';
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState(null);
@@ -49,11 +50,11 @@ export default function Home() {
         <meta name="twitter:image" content="/logo-transparent.png" />
       </Head>
 
-      <div className="container">
+      <div>
         {/* Header */}
-        <header className="header">
-          <div className="header-content">
-            <div className="logo">
+        <header className={styles.header}>
+          <div className={styles.headerContent}>
+            <div className={styles.logo}>
               <Image
                 src="/logo-transparent.png"
                 alt="Rally Club Pickleball Logo"
@@ -63,21 +64,20 @@ export default function Home() {
               />
               Rally Club Pickleball
             </div>
-            <nav className="nav">
-              <a href="#booking" className="nav-link">Book a Court</a>
-              <a href="#membership" className="nav-link">Membership</a>
-              <a href="/merch" className="nav-link">Merch</a>
-              <a href="#facility" className="nav-link">About us</a>
-              <a href="#contact" className="nav-link">Contact</a>
-              <a href="/honcho" className="nav-link honcho-nav-link">Honcho League</a>
-              <a href="/rally-experiences" className="nav-link rally-nav-link">Rally Experiences</a>
+            <nav className={styles.nav}>
+              <a href="#booking" className={styles.navLink}>Book a Court</a>
+              <a href="#membership" className={styles.navLink}>Membership</a>
+              <a href="/merch" className={styles.navLink}>Merch</a>
+              <a href="#contact" className={styles.navLink}>Contact</a>
+              <a href="/honcho" className={`${styles.navLink} ${styles.honchoNavLink}`}>Honcho League</a>
+              <a href="/rally-experiences" className={`${styles.navLink} ${styles.rallyNavLink}`}>Rally Experiences</a>
             </nav>
             <button
-              className="mobile-menu-button"
+              className={styles.mobileMenuButton}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
-              <div className={`hamburger ${mobileMenuOpen ? 'open' : ''}`}>
+              <div className={`${styles.hamburger} ${mobileMenuOpen ? styles.open : ""}`}>
                 <span></span>
                 <span></span>
                 <span></span>
@@ -87,54 +87,53 @@ export default function Home() {
         </header>
 
         {/* Mobile Menu */}
-        <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
-          <nav className="mobile-nav">
-            <a href="#booking" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Book a Court</a>
-            <a href="#membership" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Membership</a>
-            <a href="/merch" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Merch</a>
-            <a href="#facility" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>About us</a>
-            <a href="#contact" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Contact</a>
-            <a href="/honcho" className="mobile-nav-link honcho-link" onClick={() => setMobileMenuOpen(false)}>Honcho League</a>
-            <a href="/rally-experiences" className="mobile-nav-link rally-link" onClick={() => setMobileMenuOpen(false)}>Rally Experiences</a>
+        <div className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.open : ""}`}>
+          <nav className={styles.mobileNav}>
+            <a href="#booking" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Book a Court</a>
+            <a href="#membership" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Membership</a>
+            <a href="/merch" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Merch</a>
+            <a href="#contact" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Contact</a>
+            <a href="/honcho" className={`${styles.mobileNavLink} ${styles.honchoLink}`} onClick={() => setMobileMenuOpen(false)}>Honcho League</a>
+            <a href="/rally-experiences" className={`${styles.mobileNavLink} ${styles.rallyLink}`} onClick={() => setMobileMenuOpen(false)}>Rally Experiences</a>
           </nav>
         </div>
 
         {/* Hero Section */}
-        <section className="hero">
+        <section className={styles.hero}>
           <video
             autoPlay
             loop
             muted
             playsInline
-            className="hero-video"
+            className={styles.heroVideo}
           >
             <source src="/club_interior_reversed_optimized.mp4" type="video/mp4" />
           </video>
-          <div className="hero-content">
-            <h1 className="hero-title">Play When You Want, with Who You Want &mdash; Anytime.</h1>
-            <p className="hero-subtitle">Glen Carbon's exclusive indoor pickleball hub &mdash; no contracts, 24/7 access, tournament grade courts.</p>
-            <a href="https://rallyclub.pickleplanner.com/dashboard/reservation/make" className="cta-button" target="_blank" rel="noopener noreferrer">
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>Play When You Want, with Who You Want &mdash; Anytime.</h1>
+            <p className={styles.heroSubtitle}>Glen Carbon's exclusive indoor pickleball hub &mdash; no contracts, 24/7 access, tournament grade courts.</p>
+            <a href="https://rallyclub.pickleplanner.com/dashboard/reservation/make" className={styles.ctaButton} target="_blank" rel="noopener noreferrer">
               Book Your First Rally in 60 Seconds
             </a>
           </div>
         </section>
 
         {/* Membership Benefits */}
-        <section id="benefits" className="benefits">
-          <h2 className="section-title">Membership Benefits</h2>
-          <div className="benefits-grid">
-            <div className="benefit-item">
-              <div className="benefit-icon">⚡</div>
+        <section id="benefits" className={styles.benefits}>
+          <h2 className={styles.sectionTitle}>Membership Benefits</h2>
+          <div className={styles.benefitsGrid}>
+            <div className={styles.benefitItem}>
+              <div className={styles.benefitIcon}>⚡</div>
               <h3>Flexibility</h3>
               <p>24/7 access to courts when you want to play</p>
             </div>
-            <div className="benefit-item">
-              <div className="benefit-icon">💰</div>
+            <div className={styles.benefitItem}>
+              <div className={styles.benefitIcon}>💰</div>
               <h3>Pricing</h3>
               <p>Competitive rates with member discounts</p>
             </div>
-            <div className="benefit-item">
-              <div className="benefit-icon">👥</div>
+            <div className={styles.benefitItem}>
+              <div className={styles.benefitIcon}>👥</div>
               <h3>Perks</h3>
               <p>Member events and community access</p>
             </div>
@@ -142,69 +141,172 @@ export default function Home() {
         </section>
 
         {/* Membership Tiers */}
-        <section id="membership" className="membership">
-          <h2 className="section-title">Membership Tiers</h2>
-          <div className="membership-grid">
-            <div className="membership-card featured">
-              <div className="best-value-badge">BEST VALUE</div>
-              <h3 className="membership-title">A-List</h3>
-              <div className="membership-price">
+        <section id="membership" className={styles.membership}>
+          <h2 className={styles.sectionTitle}>Membership Tiers</h2>
+          <div className={styles.membershipGrid}>
+            <div className={`${styles.membershipCard} ${styles.featured}`}>
+              <div className={styles.bestValueBadge}>BEST VALUE</div>
+              <h3 className={styles.membershipTitle}>A-List</h3>
+              <div className={styles.membershipPrice}>
                 <div style={{ marginBottom: '0.5rem' }}>
-                  <span className="price">$35</span>
-                  <span className="period">/month</span>
+                  <span className={styles.price}>$35</span>
+                  <span className={styles.period}>/month</span>
                 </div>
                 <div style={{ fontSize: '1.2rem', color: '#666' }}>
                   or <span style={{ fontWeight: 'bold', color: '#333' }}>$350</span>/year
                 </div>
               </div>
-              <div className="membership-cta">
-                <a href="https://square.link/u/LcxQzlsY" className="membership-button" target="_blank" rel="noopener noreferrer">Join Monthly ($35/mo)</a>
-                <a href="https://square.link/u/EU8yAr7I" className="membership-button" target="_blank" rel="noopener noreferrer" style={{ marginTop: '0.5rem' }}>Join Yearly ($350/yr)</a>
+              <p className={styles.membershipSummary}>Reserve 10 days in advance.</p>
+              <div className={styles.membershipCta}>
+                <a href="https://square.link/u/LcxQzlsY" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Join Monthly</a>
+                <a href="https://square.link/u/EU8yAr7I" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Join Yearly</a>
               </div>
-              <ul className="membership-features">
-                <li>✓ Reserve 10 days in advance</li>
-                <li>✓ $8/hr base rate ($2/hr per player)</li>
-                <li>✓ $20/hr prime time* ($5/hr per player)</li>
-                <li>✓ Member events</li>
-              </ul>
+              <div className={styles.pricingDetails}>
+                <h4>Court Rates:</h4>
+                <div className={styles.rateItem}>
+                  <span className={styles.rateTime}>Weekdays 9am - 4pm</span>
+                  <span className={styles.ratePrice}>FREE</span>
+                </div>
+                <div className={styles.rateItem}>
+                  <span className={styles.rateTime}>Weekdays 4pm - midnight</span>
+                  <span className={styles.ratePrice}>$20/hr</span>
+                </div>
+                <div className={styles.rateItem}>
+                  <span className={styles.rateTime}>Weekends 3pm - midnight</span>
+                  <span className={styles.ratePrice}>$20/hr</span>
+                </div>
+                <div className={`${styles.rateItem} ${styles.baseRate}`}>
+                  <span className={styles.rateTime}>All other times</span>
+                  <span className={styles.ratePrice}>$8/hr</span>
+                </div>
+              </div>
             </div>
-            <div className="membership-card">
-              <div className="no-commitment-badge">NO COMMITMENT</div>
-              <h3 className="membership-title">Rally Reserve</h3>
-              <div className="membership-price">
-                <span className="price">$0</span>
-                <span className="period">/month</span>
+            <div className={`${styles.membershipCard} ${styles.rallyReserve}`}>
+              <div className={styles.noCommitmentBadge}>NO COMMITMENT</div>
+              <h3 className={styles.membershipTitle}>Rally Reserve</h3>
+              <div className={styles.membershipPrice}>
+                <span className={styles.price}>$0</span>
+                <span className={styles.period}>/month</span>
               </div>
-              <div className="membership-cta">
-                <a href="https://rallyclub.pickleplanner.com/dashboard/membership/join" className="membership-button secondary" target="_blank" rel="noopener noreferrer">Join Rally Reserve</a>
+              <p className={styles.membershipSummary}>Reserve 5 days in advance.</p>
+              <div className={styles.membershipCta}>
+                <a href="https://rallyclub.pickleplanner.com/dashboard/membership/join" className={`${styles.membershipButton} ${styles.secondary}`} target="_blank" rel="noopener noreferrer">Join Rally Reserve</a>
               </div>
-              <ul className="membership-features">
-                <li>✓ Reserve 5 days in advance</li>
-                <li>✓ $16/hr base rate ($4/hr per player)</li>
-                <li>✓ $28/hr prime time* ($7/hr per player)</li>
-              </ul>
+              <div className={styles.pricingDetails}>
+                <h4>Court Rates:</h4>
+                <div className={styles.rateItem}>
+                  <span className={styles.rateTime}>Weekdays 4:30pm - 10pm</span>
+                  <span className={styles.ratePrice}>$40/hr</span>
+                </div>
+                <div className={styles.rateItem}>
+                  <span className={styles.rateTime}>All day Sat & Sun</span>
+                  <span className={styles.ratePrice}>$40/hr</span>
+                </div>
+                <div className={`${styles.rateItem} ${styles.baseRate}`}>
+                  <span className={styles.rateTime}>All other times</span>
+                  <span className={styles.ratePrice}>$16/hr</span>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="pricing-note">
-            <p><strong>*Prime Time:</strong> Monday - Friday 4:30 pm - 9:00 pm, all day Saturday & Sunday</p>
-            <div className="pricing-highlights">
-              <div className="highlight-box registration">
-                <p>All Players must register an account with <strong>PicklePlanner</strong> and sign waivers. Unregistered guests are <span className="not-permitted">NOT</span> permitted</p>
+          <div className={styles.pricingNote}>
+            <div className={styles.pricingHighlights}>
+              <div className={`${styles.highlightBox} ${styles.registration}`}>
+                <p>All Players must register an account with <strong>PicklePlanner</strong> and sign waivers. Unregistered guests are <span className={styles.notPermitted}>NOT</span> permitted</p>
               </div>
-              <div className="highlight-box mixed-play">
+              <div className={`${styles.highlightBox} ${styles.mixedPlay}`}>
                 <p>Mix & match <strong>A-List</strong> members and <strong>Rally Reserve</strong> players - the court rate is set by the membership tier</p>
               </div>
-              <div className="highlight-box payment">
+              <div className={`${styles.highlightBox} ${styles.payment}`}>
                 <p>Reserving player pays court costs & fees up front, it is up to them how their playing partners reimburse them</p>
               </div>
             </div>
           </div>
         </section>
 
+        {/* Special Programs */}
+        <section className={styles.specialProgramsSection}>
+          <h2 className={styles.sectionTitle}>Special Programs</h2>
+          <div className={styles.specialProgramsIntro}>
+            <p>Rally Club partners with Medicare and Medicaid programs to make pickleball accessible to more players. These special membership tiers require eligibility verification and admin approval.</p>
+          </div>
+          <div className={styles.specialProgramsPricing}>
+            <h3>Court Rates for Special Programs</h3>
+            <p className={styles.membershipSummary}>Reserve 7 days in advance.</p>
+            <div className={styles.specialPricingGrid}>
+              <div className={styles.rateItem}>
+                <span className={styles.rateTime}>Peak times</span>
+                <span className={styles.ratePrice}>$28/hr</span>
+              </div>
+              <div className={styles.rateItem}>
+                <span className={styles.rateTime}>Off-peak times</span>
+                <span className={styles.ratePrice}>$20/hr</span>
+              </div>
+              <div className={`${styles.rateItem} ${styles.baseRate}`}>
+                <span className={styles.rateTime}>All other times</span>
+                <span className={styles.ratePrice}>FREE</span>
+              </div>
+            </div>
+            <div className={styles.peakTimesLink}>
+              <a href="#peak-times-faq" onClick={(e) => { e.preventDefault(); document.getElementById('peak-times-faq')?.scrollIntoView({ behavior: 'smooth' }); toggleFaq(5); }}>
+                What are peak and off-peak times?
+              </a>
+            </div>
+          </div>
+          <div className={styles.specialProgramsGrid}>
+            <div className={styles.membershipCard}>
+              <div className={styles.approvalBadge}>REQUIRES APPROVAL</div>
+              <div className={styles.programLogo}>
+                <Image
+                  src="/silver_sneakers.png"
+                  alt="Silver Sneakers Logo"
+                  width={300}
+                  height={100}
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
+              <h3 className={styles.membershipTitle}>A-List Silver</h3>
+              <div className={styles.membershipPrice}>
+                <span className={styles.price}>$0</span>
+                <span className={styles.period}>/month</span>
+              </div>
+              <div className={styles.specialProgramDescription}>
+                <p>The A-List Silver program is for members that wish to use Silver Sneakers offered by their Medicare or Medicaid plan.</p>
+              </div>
+              <div className={styles.membershipCta}>
+                <a href="https://tools.silversneakers.com/Eligibility/CheckEligibility" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Check Eligibility</a>
+              </div>
+            </div>
+            <div className={styles.membershipCard}>
+              <div className={styles.approvalBadge}>REQUIRES APPROVAL</div>
+              <div className={styles.programLogo}>
+                <Image
+                  src="/renew_active.svg"
+                  alt="Renew Active Logo"
+                  width={180}
+                  height={60}
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
+              <h3 className={styles.membershipTitle}>A-List Active</h3>
+              <div className={styles.membershipPrice}>
+                <span className={styles.price}>$0</span>
+                <span className={styles.period}>/month</span>
+              </div>
+              <div className={styles.specialProgramDescription}>
+                <p>The A-List Active tier is for members that wish to use Renew Active with either their participating One Pass Medicare, One Pass Select, or Aaptiv Access plan. These programs are offered through qualifying United Health Care, Medicare, & Medicaid plans.</p>
+              </div>
+              <div className={styles.membershipCta}>
+                <a href="https://www.uhcrenewactive.com/home" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Check Eligibility</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Honcho Pickleball League */}
-        <section id="honcho" className="honcho-league">
-          <div className="honcho-content">
-            <div className="honcho-header">
+        <section id="honcho" className={styles.honchoLeague}>
+          <div className={styles.honchoContent}>
+            <div className={styles.honchoHeader}>
               <Image
                 src="/honcho-logo-small.png"
                 alt="Honcho Pickleball Logo"
@@ -212,32 +314,32 @@ export default function Home() {
                 height={58}
                 style={{ marginBottom: '1rem' }}
               />
-              <h2 className="honcho-title">Join the Honcho Pickleball League</h2>
-              <p className="honcho-subtitle">The premier amateur pickleball community sweeping the nation</p>
+              <h2 className={styles.honchoTitle}>Join the Honcho Pickleball League</h2>
+              <p className={styles.honchoSubtitle}>The premier amateur pickleball community sweeping the nation</p>
             </div>
 
-            <div className="honcho-summary">
-              <p className="honcho-description">
+            <div className={styles.honchoSummary}>
+              <p className={styles.honchoDescription}>
                 Team up with 2-4 players and compete in 7 DUPR-eligible match-ups plus playoffs over 8 weeks. Battle for the Head Honcho Championship with a prize package worth over $500!
               </p>
 
-              <div className="honcho-highlights">
-                <div className="highlight-item">
-                  <span className="highlight-icon">👥</span>
+              <div className={styles.honchoHighlights}>
+                <div className={styles.highlightItem}>
+                  <span className={styles.highlightIcon}>👥</span>
                   <div>
                     <strong>Flexible Teams:</strong><br />
                     2-4 players, no gender requirements
                   </div>
                 </div>
-                <div className="highlight-item">
-                  <span className="highlight-icon">🏆</span>
+                <div className={styles.highlightItem}>
+                  <span className={styles.highlightIcon}>🏆</span>
                   <div>
                     <strong>Compete & Win:</strong><br />
                     7 matches + playoffs, $500+ prizes
                   </div>
                 </div>
-                <div className="highlight-item">
-                  <span className="highlight-icon">📊</span>
+                <div className={styles.highlightItem}>
+                  <span className={styles.highlightIcon}>📊</span>
                   <div>
                     <strong>DUPR Eligible:</strong><br />
                     Track your progress
@@ -245,11 +347,11 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="honcho-cta">
-                <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-winter-2026/" className="honcho-button primary" target="_blank" rel="noopener noreferrer">
+              <div className={styles.honchoCta}>
+                <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-winter-2026/" className={styles.honchoButton} target="_blank" rel="noopener noreferrer">
                   Register Now (Use Code: RALLYCLUB)
                 </a>
-                <a href="/honcho" className="honcho-button secondary">
+                <a href="/honcho" className={`${styles.honchoButton} ${styles.secondary}`}>
                   Learn More
                 </a>
               </div>
@@ -258,10 +360,10 @@ export default function Home() {
         </section>
 
         {/* Facility Overview */}
-        <section id="facility" className="facility">
-          <h2 className="section-title">Facility Overview</h2>
-          <div className="facility-grid">
-            <div className="facility-item">
+        <section id="facility" className={styles.facility}>
+          <h2 className={styles.sectionTitle}>Facility Overview</h2>
+          <div className={styles.facilityGrid}>
+            <div className={styles.facilityItem}>
               <div className="facility-image" onClick={() => openLightbox('/facility-layout.jpg', 'Facility Layout', 'Floor Plan', "Here's your future HQ.")}>
                 <Image
                   src="/facility-layout.jpg"
@@ -271,12 +373,12 @@ export default function Home() {
                   style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '12px', cursor: 'pointer' }}
                 />
               </div>
-              <div className="facility-caption">
+              <div className={styles.facilityCaption}>
                 <h3>Floor Plan</h3>
                 <p>Here's your future HQ.</p>
               </div>
             </div>
-            <div className="facility-item">
+            <div className={styles.facilityItem}>
               <div className="facility-image" onClick={() => openLightbox('/facility-outside.jpg', 'Facility Exterior', 'Outside View', 'Pull up. Walk in. Rally begins.')}>
                 <Image
                   src="/facility-outside.jpg"
@@ -286,7 +388,7 @@ export default function Home() {
                   style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '12px', cursor: 'pointer' }}
                 />
               </div>
-              <div className="facility-caption">
+              <div className={styles.facilityCaption}>
                 <h3>Outside View</h3>
                 <p>Pull up. Walk in. Rally begins.</p>
               </div>
@@ -295,53 +397,53 @@ export default function Home() {
         </section>
 
         {/* Booking Process */}
-        <section id="booking" className="booking">
-          <h2 className="section-title">Booking Process</h2>
-          <div className="booking-steps">
-            <div className="step">
-              <div className="step-number">1</div>
+        <section id="booking" className={styles.booking}>
+          <h2 className={styles.sectionTitle}>Booking Process</h2>
+          <div className={styles.bookingSteps}>
+            <div className={styles.step}>
+              <div className={styles.stepNumber}>1</div>
               <h3>Select Court</h3>
               <p>Instant door code, 20 minutes before play</p>
             </div>
-            <div className="step">
-              <div className="step-number">2</div>
+            <div className={styles.step}>
+              <div className={styles.stepNumber}>2</div>
               <h3>Choose Time</h3>
               <p>Flexible slots available</p>
             </div>
-            <div className="step">
-              <div className="step-number">3</div>
+            <div className={styles.step}>
+              <div className={styles.stepNumber}>3</div>
               <h3>Confirm Booking</h3>
               <p>No contracts, pay as you go</p>
             </div>
-            <div className="step">
-              <div className="step-number">4</div>
+            <div className={styles.step}>
+              <div className={styles.stepNumber}>4</div>
               <h3>Play</h3>
               <p>24/7 access</p>
             </div>
           </div>
-          <div className="booking-cta">
-            <a href="https://rallyclub.pickleplanner.com/dashboard/reservation/make" className="cta-button" target="_blank" rel="noopener noreferrer">
+          <div className={styles.bookingCta}>
+            <a href="https://rallyclub.pickleplanner.com/dashboard/reservation/make" className={styles.ctaButton} target="_blank" rel="noopener noreferrer">
               Book Your Court Now
             </a>
           </div>
         </section>
 
         {/* Location Section */}
-        <section id="location" className="location">
-          <h2 className="section-title">Our Location</h2>
-          <div className="location-content">
-            <div className="location-info">
-              <div className="address">
+        <section id="location" className={styles.location}>
+          <h2 className={styles.sectionTitle}>Our Location</h2>
+          <div className={styles.locationContent}>
+            <div className={styles.locationInfo}>
+              <div className={styles.address}>
                 <h3>Visit Us</h3>
                 <p>1 Cottonwood Industrial Park<br />Glen Carbon, IL 62034</p>
                 <p>Conveniently located a short drive from the intersection of IL-159 and Cottonwood Rd.</p>
               </div>
-              <div className="hours">
+              <div className={styles.hours}>
                 <h3>Our Hours</h3>
                 <p><strong>Available 24 hours per day with <a href="https://rallyclub.pickleplanner.com/dashboard/reservation/make" target="_blank" rel="noopener noreferrer">reservation</a>!</strong></p>
               </div>
             </div>
-            <div className="map-container">
+            <div className={styles.mapContainer}>
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d799.5860377841626!2d-89.93756610367085!3d38.76633662956965!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8875f9f92112c085%3A0x4217965f56847a5e!2sThe%20Rally%20Club!5e0!3m2!1sen!2sus!4v1746223485153!5m2!1sen!2sus"
                 width="100%"
@@ -356,76 +458,98 @@ export default function Home() {
         </section>
 
         {/* FAQ */}
-        <section className="faq">
-          <h2 className="section-title">Frequently Asked Questions</h2>
-          <div className="faq-list">
-            <div className="faq-item">
+        <section className={styles.faq}>
+          <h2 className={styles.sectionTitle}>Frequently Asked Questions</h2>
+          <div className={styles.faqList}>
+            <div className={styles.faqItem}>
               <button
-                className={`faq-question ${openFaq === 0 ? 'active' : ''}`}
+                className={styles.faqQuestion}
                 onClick={() => toggleFaq(0)}
               >
                 Do I need a membership to book?
-                <span className="faq-arrow">{openFaq === 0 ? '−' : '+'}</span>
+                <span className={styles.faqArrow}>{openFaq === 0 ? '−' : '+'}</span>
               </button>
               {openFaq === 0 && (
-                <div className="faq-answer">
+                <div className={styles.faqAnswer}>
                   No. A-List members get the best rate and earlier booking windows. Rally Reserve guests can still book and play pay-as-you-go.
                 </div>
               )}
             </div>
-            <div className="faq-item">
+            <div className={styles.faqItem}>
               <button
-                className={`faq-question ${openFaq === 1 ? 'active' : ''}`}
+                className={styles.faqQuestion}
                 onClick={() => toggleFaq(1)}
               >
                 How does the door code work?
-                <span className="faq-arrow">{openFaq === 1 ? '−' : '+'}</span>
+                <span className={styles.faqArrow}>{openFaq === 1 ? '−' : '+'}</span>
               </button>
               {openFaq === 1 && (
-                <div className="faq-answer">
+                <div className={styles.faqAnswer}>
                   After checkout you'll receive a unique code via email/text. It activates 20 minutes before your reservation.
                 </div>
               )}
             </div>
-            <div className="faq-item">
+            <div className={styles.faqItem}>
               <button
-                className={`faq-question ${openFaq === 2 ? 'active' : ''}`}
+                className={styles.faqQuestion}
                 onClick={() => toggleFaq(2)}
               >
                 What's the pricing for members vs guests?
-                <span className="faq-arrow">{openFaq === 2 ? '−' : '+'}</span>
+                <span className={styles.faqArrow}>{openFaq === 2 ? '−' : '+'}</span>
               </button>
               {openFaq === 2 && (
-                <div className="faq-answer">
-                  A-List: $8/hr base ($2/player), $20/hr prime time ($5/player). Rally Reserve: $16/hr base ($4/player), $28/hr prime time ($7/player).
+                <div className={styles.faqAnswer}>
+                  <strong>A-List:</strong> Weekdays 9am-4pm are FREE, $20/hr for evenings and weekends, $8/hr all other times.
+                  <br/><br/>
+                  <strong>Rally Reserve:</strong> $40/hr for all day weekends and weekday evenings (4:30-10pm), $16/hr all other times.
+                  <br/><br/>
+                  See membership details above for complete pricing breakdown.
                 </div>
               )}
             </div>
-            <div className="faq-item">
+            <div className={styles.faqItem}>
               <button
-                className={`faq-question ${openFaq === 3 ? 'active' : ''}`}
+                className={styles.faqQuestion}
                 onClick={() => toggleFaq(3)}
               >
                 Can I bring friends who aren't registered?
-                <span className="faq-arrow">{openFaq === 3 ? '−' : '+'}</span>
+                <span className={styles.faqArrow}>{openFaq === 3 ? '−' : '+'}</span>
               </button>
               {openFaq === 3 && (
-                <div className="faq-answer">
+                <div className={styles.faqAnswer}>
                   All players must be registered with PicklePlanner & Rally Club before playing.
                 </div>
               )}
             </div>
-            <div className="faq-item">
+            <div className={styles.faqItem}>
               <button
-                className={`faq-question ${openFaq === 4 ? 'active' : ''}`}
+                className={styles.faqQuestion}
                 onClick={() => toggleFaq(4)}
               >
                 How do I cancel or reschedule?
-                <span className="faq-arrow">{openFaq === 4 ? '−' : '+'}</span>
+                <span className={styles.faqArrow}>{openFaq === 4 ? '−' : '+'}</span>
               </button>
               {openFaq === 4 && (
-                <div className="faq-answer">
+                <div className={styles.faqAnswer}>
                   Manage your booking in PicklePlanner. Policies may apply based on timing.
+                </div>
+              )}
+            </div>
+            <div className={styles.faqItem} id="peak-times-faq">
+              <button
+                className={styles.faqQuestion}
+                onClick={() => toggleFaq(5)}
+              >
+                What are peak and off-peak times for Special Programs?
+                <span className={styles.faqArrow}>{openFaq === 5 ? '−' : '+'}</span>
+              </button>
+              {openFaq === 5 && (
+                <div className={styles.faqAnswer}>
+                  <strong>Peak times ($28/hr):</strong> Weekdays 4:30pm-10pm and all day Saturday & Sunday
+                  <br/><br/>
+                  <strong>Off-peak times ($20/hr):</strong> Weekdays 9am-4pm
+                  <br/><br/>
+                  <strong>All other times (FREE):</strong> Weekdays midnight-9am and 10pm-midnight
                 </div>
               )}
             </div>
@@ -433,16 +557,16 @@ export default function Home() {
         </section>
 
         {/* Contact */}
-        <section id="contact" className="contact">
-          <h2 className="contact-title">Have more questions? Contact us!</h2>
-          <a href="mailto:rally.club618@gmail.com" className="contact-button">Contact Us</a>
+        <section id="contact" className={styles.contact}>
+          <h2 className={styles.contactTitle}>Have more questions? Contact us!</h2>
+          <a href="mailto:rally.club618@gmail.com" className={styles.contactButton}>Contact Us</a>
         </section>
 
         {/* Footer */}
-        <footer className="footer">
-          <div className="footer-content">
+        <footer className={styles.footer}>
+          <div className={styles.footerContent}>
             <p>© 2025 Rally Club Pickleball. All rights reserved.</p>
-            <div className="footer-links">
+            <div className={styles.footerLinks}>
               <a href="https://www.facebook.com/profile.php?id=61572523900750" target="_blank" rel="noopener noreferrer">Facebook</a>
             </div>
           </div>
@@ -450,11 +574,11 @@ export default function Home() {
 
         {/* Lightbox Modal */}
         {lightboxImage && (
-          <div className="lightbox-overlay" onClick={closeLightbox}>
-            <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-              <button className="lightbox-close" onClick={closeLightbox}>&times;</button>
-              <div className="lightbox-header">
-                <h3 className="lightbox-heading">{lightboxImage.heading}</h3>
+          <div className={styles.lightboxOverlay} onClick={closeLightbox}>
+            <div className={styles.lightboxContent} onClick={(e) => e.stopPropagation()}>
+              <button className={styles.lightboxClose} onClick={closeLightbox}>&times;</button>
+              <div className={styles.lightboxHeader}>
+                <h3 className={styles.lightboxHeading}>{lightboxImage.heading}</h3>
               </div>
               <Image
                 src={lightboxImage.src}
@@ -463,1057 +587,13 @@ export default function Home() {
                 height={800}
                 style={{ maxWidth: '90vw', maxHeight: '70vh', objectFit: 'contain' }}
               />
-              <div className="lightbox-footer">
-                <p className="lightbox-caption">{lightboxImage.caption}</p>
+              <div className={styles.lightboxFooter}>
+                <p className={styles.lightboxCaption}>{lightboxImage.caption}</p>
               </div>
             </div>
           </div>
         )}
       </div>
-
-      <style jsx>{`
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        }
-
-        .container {
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-          line-height: 1.6;
-          color: #333;
-        }
-
-        /* Header */
-        .header {
-          background: white;
-          padding: 1rem 0;
-          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-          position: fixed;
-          top: 0;
-          width: 100%;
-          z-index: 1000;
-        }
-
-        .header-content {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 2rem;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-
-        .logo {
-          font-size: 1.5rem;
-          font-weight: bold;
-          color: #333;
-          display: flex;
-          align-items: center;
-        }
-
-        .nav {
-          display: flex;
-          align-items: center;
-          gap: 2rem;
-        }
-
-        .nav-link {
-          text-decoration: none;
-          color: #666;
-          font-weight: 500;
-          transition: color 0.3s;
-        }
-
-        .nav-link:hover {
-          color: #FF6600;
-        }
-
-        .honcho-nav-link {
-          color: #2D5A27 !important;
-          font-weight: 600;
-        }
-
-        .honcho-nav-link:hover {
-          color: #3E7B3E !important;
-        }
-
-        .rally-nav-link {
-          color: #FF6600 !important;
-          font-weight: 600;
-        }
-
-        .rally-nav-link:hover {
-          color: #E65100 !important;
-        }
-
-        .mobile-nav-link.rally-link {
-          background: #FF6600;
-          color: white !important;
-          padding: 0.75rem 1rem;
-          border-radius: 6px;
-          font-weight: 600;
-        }
-
-        .mobile-nav-link.rally-link:hover {
-          background: #E65100;
-        }
-
-        /* Mobile Menu Button */
-        .mobile-menu-button {
-          display: none;
-          background: none;
-          border: none;
-          cursor: pointer;
-          padding: 0.5rem;
-          z-index: 1001;
-        }
-
-        .hamburger {
-          width: 25px;
-          height: 20px;
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-        }
-
-        .hamburger span {
-          display: block;
-          height: 3px;
-          width: 100%;
-          background: #FF6600;
-          border-radius: 2px;
-          transition: all 0.3s ease;
-        }
-
-        .hamburger.open span:nth-child(1) {
-          transform: rotate(45deg) translate(6px, 6px);
-        }
-
-        .hamburger.open span:nth-child(2) {
-          opacity: 0;
-        }
-
-        .hamburger.open span:nth-child(3) {
-          transform: rotate(-45deg) translate(6px, -6px);
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
-          position: fixed;
-          top: 70px;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: rgba(255, 255, 255, 0.98);
-          backdrop-filter: blur(10px);
-          z-index: 999;
-          transform: translateX(100%);
-          transition: transform 0.3s ease;
-          overflow-y: auto;
-          display: none;
-        }
-
-        @media (max-width: 768px) {
-          .mobile-menu {
-            display: block;
-          }
-        }
-
-        .mobile-menu.open {
-          transform: translateX(0);
-        }
-
-        .mobile-nav {
-          display: flex;
-          flex-direction: column;
-          padding: 2rem;
-          gap: 0.5rem;
-        }
-
-        .mobile-nav-link {
-          color: #333;
-          text-decoration: none;
-          font-weight: 500;
-          padding: 1rem;
-          border-radius: 8px;
-          transition: all 0.3s ease;
-          text-align: center;
-          border: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .mobile-nav-link:hover,
-        .mobile-nav-link:active {
-          background: rgba(231, 76, 60, 0.1);
-          border-color: #FF6600;
-          color: #FF6600;
-        }
-
-        .mobile-nav-link.active {
-          background: rgba(231, 76, 60, 0.2);
-          border-color: #FF6600;
-          color: #FF6600;
-        }
-
-        .mobile-nav-link.honcho-link {
-          background: linear-gradient(135deg, #2D5A27 0%, #3E7B3E 100%);
-          color: white;
-          border-color: #3E7B3E;
-        }
-
-        /* Hero */
-        .hero {
-          margin-top: 80px;
-          height: 500px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .hero-video {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          min-width: 100%;
-          min-height: 100%;
-          width: auto;
-          height: auto;
-          transform: translate(-50%, -50%);
-          object-fit: cover;
-          z-index: 0;
-        }
-
-        .hero::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: rgba(0, 0, 0, 0.4);
-          z-index: 1;
-        }
-
-        .hero-content {
-          position: relative;
-          z-index: 2;
-          text-align: center;
-          color: white;
-          max-width: 1200px;
-          width: 100%;
-          padding: 0 2rem;
-        }
-
-        .hero-title {
-          font-size: 3rem;
-          font-weight: bold;
-          margin-bottom: 1rem;
-          line-height: 1.2;
-          color: white;
-          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-subtitle {
-          font-size: 1.2rem;
-          color: white;
-          margin-bottom: 2rem;
-          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-
-        .cta-button {
-          background: #FF6600;
-          color: white;
-          padding: 1rem 2rem;
-          border-radius: 8px;
-          text-decoration: none;
-          font-weight: bold;
-          display: inline-block;
-          transition: background 0.3s;
-        }
-
-        .cta-button:hover {
-          background: #E65100;
-        }
-
-        /* Benefits */
-        .benefits {
-          padding: 1.5rem 2rem 2.5rem;
-          background: #f8f9fa;
-        }
-
-        .section-title {
-          text-align: center;
-          font-size: 2.5rem;
-          margin-bottom: 2rem;
-          font-weight: bold;
-        }
-
-        .benefits-grid {
-          max-width: 1000px;
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 2rem;
-        }
-
-        .benefit-item {
-          text-align: center;
-        }
-
-        .benefit-icon {
-          font-size: 3rem;
-          margin-bottom: 1rem;
-        }
-
-        .benefit-item h3 {
-          font-size: 1.5rem;
-          margin-bottom: 1rem;
-        }
-
-        .benefit-item p {
-          color: #666;
-        }
-
-        /* Membership */
-        .membership {
-          padding: 1.5rem 2rem;
-          max-width: 1000px;
-          margin: 0 auto;
-        }
-
-        .membership-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 2rem;
-          align-items: stretch;
-        }
-
-        .membership-card {
-          background: white;
-          padding: 2rem;
-          border-radius: 12px;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-          text-align: center;
-          display: flex;
-          flex-direction: column;
-          height: 100%;
-        }
-
-        .membership-title {
-          font-size: 1.5rem;
-          margin-bottom: 1rem;
-        }
-
-        .membership-price {
-          margin-bottom: 2rem;
-        }
-
-        .price {
-          font-size: 3rem;
-          font-weight: bold;
-        }
-
-        .period {
-          font-size: 1rem;
-          color: #666;
-        }
-
-        .membership-cta {
-          margin-bottom: 2rem;
-        }
-
-        .membership-button {
-          background: #FF6600;
-          color: white;
-          padding: 0.75rem 2rem;
-          border-radius: 8px;
-          text-decoration: none;
-          font-weight: bold;
-          display: inline-block;
-          transition: background 0.3s;
-        }
-
-        .membership-button.secondary {
-          background: #95a5a6;
-        }
-
-        .membership-button:hover {
-          background: #E65100;
-        }
-
-        .membership-button.secondary:hover {
-          background: #7f8c8d;
-        }
-
-        .membership-features {
-          list-style: none;
-          text-align: center;
-          flex-grow: 1;
-        }
-
-        .membership-features li {
-          padding: 0.5rem 0;
-          color: #666;
-        }
-
-        /* Membership badges */
-        .best-value-badge {
-          position: absolute;
-          top: -10px;
-          left: 20px;
-          background: linear-gradient(45deg, #ff6b35, #f7931e);
-          color: white;
-          padding: 5px 15px;
-          border-radius: 15px;
-          font-size: 0.8rem;
-          font-weight: bold;
-          transform: rotate(-15deg);
-          box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        .no-commitment-badge {
-          position: absolute;
-          top: -10px;
-          left: 20px;
-          background: #3498db;
-          color: white;
-          padding: 5px 15px;
-          border-radius: 15px;
-          font-size: 0.8rem;
-          font-weight: bold;
-          transform: rotate(-15deg);
-          box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        .membership-card.featured {
-          position: relative;
-          border: 2px solid #ff6b35;
-        }
-
-        .membership-card {
-          position: relative;
-        }
-
-        .membership-annual {
-          font-size: 0.9rem;
-          color: #666;
-          font-style: italic;
-          margin-bottom: 1.5rem;
-          margin-top: -0.5rem;
-        }
-
-        /* Pricing note section */
-        .pricing-note {
-          max-width: 1000px;
-          margin: 3rem auto 0;
-          padding: 2rem;
-          background: #f8f9fa;
-          border-radius: 12px;
-          border-left: 4px solid #FF6600;
-        }
-
-        .pricing-note > p {
-          font-size: 1.1rem;
-          margin-bottom: 1.5rem;
-          text-align: center;
-        }
-
-        .pricing-highlights {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 1rem;
-          margin-bottom: 2rem;
-        }
-
-        .highlight-box {
-          padding: 1rem;
-          border-radius: 8px;
-          border-left: 4px solid;
-        }
-
-        .highlight-box.registration {
-          background: #e3f2fd;
-          border-left-color: #2196f3;
-        }
-
-        .highlight-box.mixed-play {
-          background: #fff3e0;
-          border-left-color: #ff9800;
-        }
-
-        .highlight-box.payment {
-          background: #e8f5e8;
-          border-left-color: #4caf50;
-        }
-
-        .highlight-box p {
-          margin: 0;
-          font-size: 0.95rem;
-          line-height: 1.5;
-        }
-
-        .not-permitted {
-          color: #FF6600;
-          font-weight: bold;
-        }
-
-        .join-info {
-          text-align: center;
-          background: #fff;
-          padding: 1.5rem;
-          border-radius: 8px;
-          border: 2px solid #FF6600;
-        }
-
-        .join-info p {
-          margin: 0.25rem 0;
-          font-size: 1rem;
-        }
-
-        .join-info p:first-child {
-          font-size: 1.2rem;
-          margin-bottom: 0.5rem;
-        }
-
-        /* Honcho League */
-        .honcho-league {
-          padding: 2.5rem 2rem;
-          background: linear-gradient(135deg, #2D5A27 0%, #3E7B3E 100%);
-          color: white;
-          position: relative;
-        }
-
-        .honcho-league::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-          opacity: 0.3;
-        }
-
-        .honcho-content {
-          max-width: 1000px;
-          margin: 0 auto;
-          position: relative;
-          z-index: 1;
-        }
-
-        .honcho-header {
-          text-align: center;
-          margin-bottom: 2rem;
-        }
-
-        .honcho-title {
-          font-size: 2.2rem;
-          font-weight: bold;
-          margin-bottom: 0.5rem;
-          color: white;
-        }
-
-        .honcho-subtitle {
-          font-size: 1.1rem;
-          color: #E8F5E8;
-          max-width: 600px;
-          margin: 0 auto;
-        }
-
-        .honcho-summary {
-          text-align: center;
-        }
-
-        .honcho-description {
-          font-size: 1.1rem;
-          color: #E8F5E8;
-          margin-bottom: 2rem;
-          max-width: 800px;
-          margin-left: auto;
-          margin-right: auto;
-        }
-
-        .honcho-highlights {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 1.5rem;
-          margin-bottom: 2rem;
-        }
-
-        .highlight-item {
-          background: rgba(255, 255, 255, 0.1);
-          padding: 1.5rem;
-          border-radius: 12px;
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(200, 245, 96, 0.3);
-          text-align: center;
-        }
-
-        .highlight-icon {
-          font-size: 2rem;
-          margin-bottom: 1rem;
-          display: block;
-        }
-
-        .highlight-item strong {
-          color: #C8F560;
-        }
-
-        .honcho-cta {
-          margin-top: 2rem;
-        }
-
-        .honcho-button {
-          background: #C8F560;
-          color: #2D5A27;
-          padding: 1rem 2rem;
-          border-radius: 8px;
-          text-decoration: none;
-          font-weight: bold;
-          transition: all 0.3s ease;
-          font-size: 1.1rem;
-          display: inline-block;
-        }
-
-        .honcho-button:hover {
-          background: #B8E550;
-          transform: translateY(-2px);
-          box-shadow: 0 8px 25px rgba(200, 245, 96, 0.3);
-        }
-
-        .honcho-button:visited {
-          background: #C8F560;
-          color: #2D5A27;
-          text-decoration: none;
-        }
-
-        .honcho-button:visited:hover {
-          background: #B8E550;
-          color: #2D5A27;
-          text-decoration: none;
-        }
-
-        .honcho-button.secondary {
-          background: transparent;
-          color: white;
-          border: 2px solid #C8F560;
-          margin-left: 1rem;
-        }
-
-        .honcho-button.secondary:hover {
-          background: rgba(200, 245, 96, 0.1);
-          border-color: #B8E550;
-        }
-
-        .honcho-cta {
-          display: flex;
-          justify-content: center;
-          gap: 1rem;
-          flex-wrap: wrap;
-        }
-
-        /* Facility */
-        .facility {
-          padding: 2.5rem 2rem;
-          background: #f8f9fa;
-        }
-
-        .facility-grid {
-          max-width: 1000px;
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 3rem;
-        }
-
-        .facility-item {
-          text-align: center;
-        }
-
-        .facility-caption {
-          margin-top: 1rem;
-        }
-
-        .facility-caption h3 {
-          font-size: 1.25rem;
-          margin-bottom: 0.5rem;
-          color: #333;
-        }
-
-        .facility-caption p {
-          color: #666;
-          font-style: italic;
-          margin: 0;
-        }
-
-        /* Booking */
-        .booking {
-          padding: 2.5rem 2rem;
-          max-width: 1200px;
-          margin: 0 auto;
-        }
-
-        .booking-steps {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 2rem;
-        }
-
-        .step {
-          text-align: center;
-        }
-
-        .step-number {
-          width: 60px;
-          height: 60px;
-          background: #FF6600;
-          color: white;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 1.5rem;
-          font-weight: bold;
-          margin: 0 auto 1rem;
-        }
-
-        .step h3 {
-          margin-bottom: 0.5rem;
-        }
-
-        .step p {
-          color: #666;
-          font-size: 0.9rem;
-        }
-
-        .booking-cta {
-          text-align: center;
-          margin-top: 3rem;
-        }
-
-        /* Location */
-        .location {
-          padding: 2.5rem 2rem 4rem;
-          background: #f8f9fa;
-        }
-
-        .location-content {
-          max-width: 1200px;
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 3rem;
-          align-items: start;
-        }
-
-        .location-info {
-          display: flex;
-          flex-direction: column;
-          gap: 2rem;
-        }
-
-        .address h3,
-        .hours h3 {
-          font-size: 1.5rem;
-          margin-bottom: 1rem;
-          color: #333;
-        }
-
-        .address p,
-        .hours p {
-          color: #666;
-          line-height: 1.6;
-          margin-bottom: 0.5rem;
-        }
-
-        .hours a {
-          color: #FF6600;
-          text-decoration: none;
-        }
-
-        .hours a:hover {
-          text-decoration: underline;
-        }
-
-        .map-container {
-          height: 400px;
-          border-radius: 12px;
-          overflow: hidden;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        /* FAQ */
-        .faq {
-          padding: 3.5rem 2rem 2.5rem;
-          background: white;
-          max-width: 800px;
-          margin: 0 auto;
-        }
-
-        .faq-list {
-          margin-top: 2rem;
-        }
-
-        .faq-item {
-          margin-bottom: 1rem;
-          background: white;
-          border: 1px solid #e0e0e0;
-          border-radius: 8px;
-          overflow: hidden;
-        }
-
-        .faq-question {
-          width: 100%;
-          padding: 1.5rem;
-          background: none;
-          border: none;
-          text-align: left;
-          font-size: 1.1rem;
-          font-weight: 500;
-          cursor: pointer;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-
-        .faq-question:hover {
-          background: #f8f9fa;
-        }
-
-        .faq-arrow {
-          font-size: 1.5rem;
-          font-weight: bold;
-        }
-
-        .faq-answer {
-          padding: 0 1.5rem 1.5rem;
-          color: #666;
-          line-height: 1.6;
-        }
-
-        /* Contact */
-        .contact {
-          padding: 2.5rem 2rem;
-          text-align: center;
-          max-width: 800px;
-          margin: 0 auto;
-        }
-
-        .contact-title {
-          font-size: 2rem;
-          margin-bottom: 2rem;
-        }
-
-        .contact-button {
-          background: #FF6600;
-          color: white;
-          padding: 1rem 2rem;
-          border-radius: 8px;
-          text-decoration: none;
-          font-weight: bold;
-          display: inline-block;
-          transition: background 0.3s;
-        }
-
-        .contact-button:hover {
-          background: #E65100;
-        }
-
-        /* Footer */
-        .footer {
-          background: #333;
-          color: white;
-          padding: 2rem;
-          text-align: center;
-        }
-
-        .footer-content {
-          max-width: 1200px;
-          margin: 0 auto;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-
-        .footer-links {
-          display: flex;
-          gap: 2rem;
-        }
-
-        .footer-links a {
-          color: white;
-          text-decoration: none;
-        }
-
-        .footer-links a:hover {
-          color: #FF6600;
-        }
-
-        /* Lightbox */
-        .lightbox-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: rgba(0, 0, 0, 0.9);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 2000;
-          cursor: pointer;
-        }
-
-        .lightbox-content {
-          position: relative;
-          max-width: 90vw;
-          max-height: 90vh;
-          cursor: default;
-        }
-
-        .lightbox-close {
-          position: absolute;
-          top: -40px;
-          right: -10px;
-          background: none;
-          border: none;
-          color: white;
-          font-size: 3rem;
-          cursor: pointer;
-          z-index: 2001;
-          line-height: 1;
-        }
-
-        .lightbox-close:hover {
-          color: #FF6600;
-        }
-
-        .lightbox-header {
-          text-align: center;
-          margin-bottom: 1.5rem;
-        }
-
-        .lightbox-footer {
-          text-align: center;
-          margin-top: 1.5rem;
-        }
-
-        .lightbox-heading {
-          color: white;
-          font-size: 2rem;
-          margin: 0;
-          font-weight: bold;
-        }
-
-        .lightbox-caption {
-          color: #ccc;
-          font-size: 1.1rem;
-          font-style: italic;
-          margin: 0;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-          .nav {
-            display: none;
-          }
-
-          .mobile-menu-button {
-            display: block;
-          }
-
-          .hero {
-            height: 400px;
-          }
-
-          .hero-title {
-            font-size: 2rem;
-          }
-
-          .section-title {
-            font-size: 2rem;
-          }
-
-          .benefits {
-            padding: 1rem 1rem 1.5rem;
-          }
-
-          .benefits-grid {
-            grid-template-columns: 1fr;
-            gap: 1rem;
-          }
-
-          .benefit-item {
-            padding: 0.5rem;
-          }
-
-          .benefit-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-          }
-
-          .benefit-item h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-          }
-
-          .benefit-item p {
-            font-size: 0.9rem;
-          }
-
-          .membership-grid {
-            grid-template-columns: 1fr;
-          }
-
-          .facility-grid {
-            grid-template-columns: 1fr;
-          }
-
-          .location-content {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-          }
-
-          .booking-steps {
-            grid-template-columns: repeat(2, 1fr);
-          }
-
-          .honcho-highlights {
-            grid-template-columns: 1fr;
-            gap: 1rem;
-          }
-
-          .footer-content {
-            flex-direction: column;
-            gap: 1rem;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .hero-title {
-            font-size: 1.5rem;
-          }
-
-          .section-title {
-            font-size: 1.5rem;
-          }
-
-          .contact-title {
-            font-size: 1.5rem;
-          }
-
-          .booking-steps {
-            grid-template-columns: 1fr;
-          }
-
-          .honcho-title {
-            font-size: 2rem;
-          }
-        }
-      `}</style>
     </>
   );
 }
