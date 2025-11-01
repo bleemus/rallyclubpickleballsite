@@ -157,36 +157,114 @@ export default function Home() {
                   or <span style={{ fontWeight: 'bold', color: '#333' }}>$350</span>/year
                 </div>
               </div>
+              <p className="membership-summary">Reserve 10 days in advance.</p>
               <div className="membership-cta">
-                <a href="https://square.link/u/LcxQzlsY" className="membership-button" target="_blank" rel="noopener noreferrer">Join Monthly ($35/mo)</a>
-                <a href="https://square.link/u/EU8yAr7I" className="membership-button" target="_blank" rel="noopener noreferrer" style={{ marginTop: '0.5rem' }}>Join Yearly ($350/yr)</a>
+                <a href="https://square.link/u/LcxQzlsY" className="membership-button" target="_blank" rel="noopener noreferrer">Join Monthly</a>
+                <a href="https://square.link/u/EU8yAr7I" className="membership-button" target="_blank" rel="noopener noreferrer">Join Yearly</a>
               </div>
-              <ul className="membership-features">
-                <li>✓ Reserve 10 days in advance</li>
-                <li>✓ $8/hr base rate ($2/hr per player)</li>
-                <li>✓ $20/hr prime time* ($5/hr per player)</li>
-                <li>✓ Member events</li>
-              </ul>
+              <div className="pricing-details">
+                <h4>Court Rates:</h4>
+                <div className="rate-item">
+                  <span className="rate-time">Weekdays 9am - 4pm</span>
+                  <span className="rate-price">FREE</span>
+                </div>
+                <div className="rate-item">
+                  <span className="rate-time">Weekdays 4pm - midnight</span>
+                  <span className="rate-price">$20/hr</span>
+                </div>
+                <div className="rate-item">
+                  <span className="rate-time">Weekends 3pm - midnight</span>
+                  <span className="rate-price">$20/hr</span>
+                </div>
+                <div className="rate-item base-rate">
+                  <span className="rate-time">All other times</span>
+                  <span className="rate-price">$8/hr</span>
+                </div>
+              </div>
             </div>
             <div className="membership-card">
+              <div className="approval-badge">REQUIRES APPROVAL</div>
+              <h3 className="membership-title">A-List Silver</h3>
+              <div className="membership-price">
+                <span className="price">$0</span>
+                <span className="period">/month</span>
+              </div>
+              <p className="membership-summary">Reserve 7 days in advance. Requires Silver Sneakers eligibility.</p>
+              <div className="membership-cta">
+                <a href="https://tools.silversneakers.com/Eligibility/CheckEligibility" className="membership-button" target="_blank" rel="noopener noreferrer">Check Eligibility</a>
+              </div>
+              <div className="pricing-details">
+                <h4>Court Rates:</h4>
+                <div className="rate-item">
+                  <span className="rate-time">Peak times</span>
+                  <span className="rate-price">$28/hr</span>
+                </div>
+                <div className="rate-item">
+                  <span className="rate-time">Off-peak times</span>
+                  <span className="rate-price">$20/hr</span>
+                </div>
+                <div className="rate-item base-rate">
+                  <span className="rate-time">All other times</span>
+                  <span className="rate-price">FREE</span>
+                </div>
+              </div>
+            </div>
+            <div className="membership-card">
+              <div className="approval-badge">REQUIRES APPROVAL</div>
+              <h3 className="membership-title">A-List Active</h3>
+              <div className="membership-price">
+                <span className="price">$0</span>
+                <span className="period">/month</span>
+              </div>
+              <p className="membership-summary">Reserve 7 days in advance. Requires Renew Active eligibility.</p>
+              <div className="membership-cta">
+                <a href="https://www.uhcrenewactive.com/home" className="membership-button" target="_blank" rel="noopener noreferrer">Check Eligibility</a>
+              </div>
+              <div className="pricing-details">
+                <h4>Court Rates:</h4>
+                <div className="rate-item">
+                  <span className="rate-time">Peak times</span>
+                  <span className="rate-price">$28/hr</span>
+                </div>
+                <div className="rate-item">
+                  <span className="rate-time">Off-peak times</span>
+                  <span className="rate-price">$20/hr</span>
+                </div>
+                <div className="rate-item base-rate">
+                  <span className="rate-time">All other times</span>
+                  <span className="rate-price">FREE</span>
+                </div>
+              </div>
+            </div>
+            <div className="membership-card rally-reserve">
               <div className="no-commitment-badge">NO COMMITMENT</div>
               <h3 className="membership-title">Rally Reserve</h3>
               <div className="membership-price">
                 <span className="price">$0</span>
                 <span className="period">/month</span>
               </div>
+              <p className="membership-summary">Reserve 5 days in advance.</p>
               <div className="membership-cta">
                 <a href="https://rallyclub.pickleplanner.com/dashboard/membership/join" className="membership-button secondary" target="_blank" rel="noopener noreferrer">Join Rally Reserve</a>
               </div>
-              <ul className="membership-features">
-                <li>✓ Reserve 5 days in advance</li>
-                <li>✓ $16/hr base rate ($4/hr per player)</li>
-                <li>✓ $28/hr prime time* ($7/hr per player)</li>
-              </ul>
+              <div className="pricing-details">
+                <h4>Court Rates:</h4>
+                <div className="rate-item">
+                  <span className="rate-time">Weekdays 4:30pm - 10pm</span>
+                  <span className="rate-price">$40/hr</span>
+                </div>
+                <div className="rate-item">
+                  <span className="rate-time">All day Sat & Sun</span>
+                  <span className="rate-price">$40/hr</span>
+                </div>
+                <div className="rate-item base-rate">
+                  <span className="rate-time">All other times</span>
+                  <span className="rate-price">$16/hr</span>
+                </div>
+              </div>
             </div>
           </div>
           <div className="pricing-note">
-            <p><strong>*Prime Time:</strong> Monday - Friday 4:30 pm - 9:00 pm, all day Saturday & Sunday</p>
             <div className="pricing-highlights">
               <div className="highlight-box registration">
                 <p>All Players must register an account with <strong>PicklePlanner</strong> and sign waivers. Unregistered guests are <span className="not-permitted">NOT</span> permitted</p>
@@ -196,6 +274,9 @@ export default function Home() {
               </div>
               <div className="highlight-box payment">
                 <p>Reserving player pays court costs & fees up front, it is up to them how their playing partners reimburse them</p>
+              </div>
+              <div className="highlight-box special-programs">
+                <p><strong>Special Programs:</strong> A-List Silver (Silver Sneakers) and A-List Active (Renew Active) require eligibility verification and admin approval. Check eligibility through the respective program websites.</p>
               </div>
             </div>
           </div>
@@ -397,7 +478,11 @@ export default function Home() {
               </button>
               {openFaq === 2 && (
                 <div className="faq-answer">
-                  A-List: $8/hr base ($2/player), $20/hr prime time ($5/player). Rally Reserve: $16/hr base ($4/player), $28/hr prime time ($7/player).
+                  <strong>A-List:</strong> Weekdays 9am-4pm are FREE, $20/hr for evenings and weekends, $8/hr all other times.
+                  <br/><br/>
+                  <strong>Rally Reserve:</strong> $40/hr for all day weekends and weekday evenings (4:30-10pm), $16/hr all other times.
+                  <br/><br/>
+                  See membership details above for complete pricing breakdown.
                 </div>
               )}
             </div>
@@ -780,25 +865,32 @@ export default function Home() {
         /* Membership */
         .membership {
           padding: 1.5rem 2rem;
-          max-width: 1000px;
+          max-width: 1200px;
           margin: 0 auto;
         }
 
         .membership-grid {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(3, 1fr);
           gap: 2rem;
-          align-items: stretch;
+          align-items: start;
+        }
+
+        .membership-card.rally-reserve {
+          grid-column: 1 / -1;
+          max-width: calc(33.333% - 1.333rem);
+          margin: 0 auto;
+          width: 100%;
         }
 
         .membership-card {
           background: white;
-          padding: 2rem;
+          padding: 2rem 2rem 1.5rem 2rem;
           border-radius: 12px;
           box-shadow: 0 10px 30px rgba(0,0,0,0.1);
           text-align: center;
-          display: flex;
-          flex-direction: column;
+          display: grid;
+          grid-template-rows: auto auto auto auto 1fr;
           height: 100%;
         }
 
@@ -808,7 +900,7 @@ export default function Home() {
         }
 
         .membership-price {
-          margin-bottom: 2rem;
+          margin-bottom: 1rem;
         }
 
         .price {
@@ -821,8 +913,19 @@ export default function Home() {
           color: #666;
         }
 
+        .membership-summary {
+          color: #666;
+          font-size: 0.95rem;
+          line-height: 1.5;
+          margin-bottom: 1.5rem;
+          padding: 0 1rem;
+        }
+
         .membership-cta {
           margin-bottom: 2rem;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
         }
 
         .membership-button {
@@ -859,6 +962,55 @@ export default function Home() {
           color: #666;
         }
 
+        .pricing-details {
+          text-align: left;
+          width: 100%;
+          flex-grow: 1;
+        }
+
+        .pricing-details h4 {
+          font-size: 1rem;
+          font-weight: 600;
+          color: #333;
+          margin-bottom: 1rem;
+          text-align: center;
+        }
+
+        .rate-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0.75rem 1rem;
+          margin-bottom: 0.5rem;
+          background: #f8f9fa;
+          border-radius: 6px;
+          border-left: 3px solid #FF6600;
+        }
+
+        .rate-item:last-child {
+          margin-bottom: 0;
+        }
+
+        .rate-item.base-rate {
+          border-left-color: #95a5a6;
+          background: #ecf0f1;
+        }
+
+        .rate-time {
+          color: #555;
+          font-size: 0.95rem;
+        }
+
+        .rate-price {
+          font-weight: bold;
+          color: #FF6600;
+          font-size: 1.1rem;
+        }
+
+        .rate-item.base-rate .rate-price {
+          color: #7f8c8d;
+        }
+
         /* Membership badges */
         .best-value-badge {
           position: absolute;
@@ -879,6 +1031,20 @@ export default function Home() {
           top: -10px;
           left: 20px;
           background: #3498db;
+          color: white;
+          padding: 5px 15px;
+          border-radius: 15px;
+          font-size: 0.8rem;
+          font-weight: bold;
+          transform: rotate(-15deg);
+          box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .approval-badge {
+          position: absolute;
+          top: -10px;
+          left: 20px;
+          background: #9b59b6;
           color: white;
           padding: 5px 15px;
           border-radius: 15px;
@@ -925,7 +1091,6 @@ export default function Home() {
           display: grid;
           grid-template-columns: 1fr;
           gap: 1rem;
-          margin-bottom: 2rem;
         }
 
         .highlight-box {
@@ -947,6 +1112,11 @@ export default function Home() {
         .highlight-box.payment {
           background: #e8f5e8;
           border-left-color: #4caf50;
+        }
+
+        .highlight-box.special-programs {
+          background: #f3e5f5;
+          border-left-color: #9b59b6;
         }
 
         .highlight-box p {
@@ -1416,6 +1586,16 @@ export default function Home() {
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+          .membership-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+
+          .membership-card.rally-reserve {
+            grid-column: 1 / -1;
+          }
+        }
+
         @media (max-width: 768px) {
           .nav {
             display: none;
@@ -1423,6 +1603,15 @@ export default function Home() {
 
           .mobile-menu-button {
             display: block;
+          }
+
+          .membership-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .membership-card.rally-reserve {
+            grid-column: 1;
+            max-width: 100%;
           }
 
           .hero {
