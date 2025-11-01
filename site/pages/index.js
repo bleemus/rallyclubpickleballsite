@@ -1611,6 +1611,7 @@ export default function Home() {
 
           .membership-card.rally-reserve {
             grid-column: 1;
+            max-width: 100%;
           }
 
           .hero {
