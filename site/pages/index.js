@@ -256,6 +256,15 @@ export default function Home() {
           <div className={styles.specialProgramsGrid}>
             <div className={styles.membershipCard}>
               <div className={styles.approvalBadge}>REQUIRES APPROVAL</div>
+              <div className={styles.programLogo}>
+                <Image
+                  src="/silver_sneakers.png"
+                  alt="Silver Sneakers Logo"
+                  width={300}
+                  height={100}
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
               <h3 className={styles.membershipTitle}>A-List Silver</h3>
               <div className={styles.membershipPrice}>
                 <span className={styles.price}>$0</span>
@@ -270,6 +279,15 @@ export default function Home() {
             </div>
             <div className={styles.membershipCard}>
               <div className={styles.approvalBadge}>REQUIRES APPROVAL</div>
+              <div className={styles.programLogo}>
+                <Image
+                  src="/renew_active.svg"
+                  alt="Renew Active Logo"
+                  width={180}
+                  height={60}
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
               <h3 className={styles.membershipTitle}>A-List Active</h3>
               <div className={styles.membershipPrice}>
                 <span className={styles.price}>$0</span>

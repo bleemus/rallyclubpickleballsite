@@ -391,6 +391,15 @@
   text-align: left;
 }
 
+.programLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  height: 100px;
+  padding: 1rem 0.5rem;
+}
+
 .membershipCard {
   background: white;
   padding: 2rem 2rem 1.5rem 2rem;
@@ -1124,6 +1133,19 @@
 
   .specialPricingGrid {
     grid-template-columns: 1fr;
+  }
+
+  .programLogo {
+    height: 80px;
+    padding: 0.5rem;
+  }
+
+  .specialProgramsSection {
+    padding: 2rem 1rem;
+  }
+
+  .membershipCard {
+    padding: 1.5rem 1rem 1rem 1rem;
   }
 
   .hero {
