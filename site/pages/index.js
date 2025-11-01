@@ -149,11 +149,17 @@ export default function Home() {
               <div className="best-value-badge">BEST VALUE</div>
               <h3 className="membership-title">A-List</h3>
               <div className="membership-price">
-                <span className="price">$35</span>
-                <span className="period">/month</span>
+                <div style={{ marginBottom: '0.5rem' }}>
+                  <span className="price">$35</span>
+                  <span className="period">/month</span>
+                </div>
+                <div style={{ fontSize: '1.2rem', color: '#666' }}>
+                  or <span style={{ fontWeight: 'bold', color: '#333' }}>$350</span>/year
+                </div>
               </div>
               <div className="membership-cta">
-                <a href="https://checkout.square.site/merchant/MLRWNHWZVQE4S/checkout/ZPZHAIKDZ2D5K7JVUP2C25YQ" className="membership-button" target="_blank" rel="noopener noreferrer">Join A-List</a>
+                <a href="https://square.link/u/LcxQzlsY" className="membership-button" target="_blank" rel="noopener noreferrer">Join Monthly ($35/mo)</a>
+                <a href="https://square.link/u/EU8yAr7I" className="membership-button" target="_blank" rel="noopener noreferrer" style={{ marginTop: '0.5rem' }}>Join Yearly ($350/yr)</a>
               </div>
               <ul className="membership-features">
                 <li>✓ Reserve 10 days in advance</li>
@@ -176,7 +182,6 @@ export default function Home() {
                 <li>✓ Reserve 5 days in advance</li>
                 <li>✓ $16/hr base rate ($4/hr per player)</li>
                 <li>✓ $28/hr prime time* ($7/hr per player)</li>
-                <li>✓ Member events</li>
               </ul>
             </div>
           </div>
