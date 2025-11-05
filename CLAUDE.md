@@ -17,13 +17,13 @@ npm run start    # Start production server (serves from /out directory)
 
 ## Architecture
 - **Framework**: Next.js 15.1.6 with React 19
-- **Build Configuration**: Static export mode (`output: 'standalone'`)
-- **Styling**: Inline JSX styles (styled-jsx)
+- **Build Configuration**: Static export mode (`output: 'export'`)
+- **Styling**: Inline JSX styles (styled-jsx) and CSS modules
 - **Images**: Unoptimized for static hosting compatibility
 - **Video**: Optimized MP4 with web-friendly settings (H.264, faststart)
 - **Deployment**: Azure Static Web Apps with GitHub Actions
 - **Dependencies**: Minimal dependencies (only Next.js, React, React-DOM)
-- **No External CSS Framework**: Uses only styled-jsx and global CSS
+- **No External CSS Framework**: Uses only styled-jsx, CSS modules, and global CSS
 
 ### Project Structure
 ```
@@ -31,6 +31,7 @@ site/                    # Main project directory
 ├── pages/               # Next.js pages
 │   ├── index.js         # Main landing page with video hero
 │   ├── honcho.js        # Honcho Pickleball League details
+│   ├── rally-experiences.js # Corporate team building & private events
 │   ├── merch.js         # Merchandise shop (embedded Square)
 │   ├── faq.js           # FAQ page
 │   ├── _app.js          # App wrapper
@@ -42,7 +43,8 @@ site/                    # Main project directory
 │   └── sitemap.xml      # SEO
 ├── styles/              # CSS files
 │   ├── globals.css      # Global styles
-│   └── Home.module.css  # Module styles
+│   ├── Home.module.css  # Module styles
+│   └── Index.module.css # Index page styles
 ├── package.json         # Dependencies and scripts
 ├── next.config.js       # Next.js configuration
 └── out/                 # Build output directory (gitignored)
@@ -52,8 +54,9 @@ site/                    # Main project directory
 
 #### Main Landing Page (`pages/index.js`)
 - **Hero Section**: Reversed video background (`club_interior_reversed_optimized.mp4`)
-- **Membership Tiers**: A-List ($35/mo) and Rally Reserve (free) with pricing details
+- **Membership Tiers**: A-List ($35/mo or $350/year) and Rally Reserve (free) with pricing details
 - **Honcho League Section**: Registration CTA with discount code RALLYCLUB
+- **Rally Experiences Section**: Link to corporate team building and private events
 - **Facility Overview**: Interactive image gallery with lightbox
 - **Booking Process**: 4-step process visualization
 - **Location Section**: Google Maps integration
@@ -65,6 +68,16 @@ site/                    # Main project directory
 - Registration information with discount code RALLYCLUB
 - External registration link: https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-winter-2026/
 
+#### Rally Experiences Page (`pages/rally-experiences.js`)
+- Corporate team building and private event packages
+- Three pricing tiers: Starter Rally ($450), Pro Rally ($750), Ultimate Rally ($1,200)
+- Professional facilitation and guided gameplay
+- Custom photo and video packages
+- Group sizes from 8-24 participants
+- Turnkey event management
+- Contact email: rental@rallyclubpickleball.com
+- Phone: (618) 931-0015
+
 #### Merchandise Page (`pages/merch.js`)
 - Embedded Square Shop for Rally Club branded merchandise
 - Apparel, accessories, and pickleball gear
@@ -73,7 +86,9 @@ site/                    # Main project directory
 
 ### Styling Approach
 - Inline JSX styles using `<style jsx>` for component-scoped CSS
-- Gradient backgrounds for Honcho League sections (#2D5A27 to #3E7B3E)
+- CSS Modules for index page styling (Index.module.css)
+- Gradient backgrounds for Honcho League and Rally Experiences sections (#2D5A27 to #3E7B3E)
+- Orange accent color (#FF6600) for Rally Experiences navigation and CTAs
 - Responsive design with mobile breakpoints at 768px and 480px
 - Video background with dark overlay for text readability
 
@@ -114,6 +129,8 @@ The site includes comprehensive SEO setup with:
 ## Important Notes
 - All players must be registered with PicklePlanner before playing
 - Discount code for Honcho League: **RALLYCLUB**
+- Rally Experiences contact: rental@rallyclubpickleball.com or (618) 931-0015
+- General inquiries: rally.club618@gmail.com
 - Video files in `site/public/` are large - ensure they're optimized before committing
 - The `.claude/` directory is gitignored (contains Claude Code workspace data)
 - Development work should be done in the `site/` directory, not the repository root

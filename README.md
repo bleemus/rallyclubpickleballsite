@@ -11,8 +11,9 @@ This is a Next.js-based website that showcases Rally Club Pickleball's facility,
 ## Features
 
 - 🎥 **Video Hero Section** - Reversed and optimized club interior footage as background
-- 💳 **Membership Tiers** - A-List ($35/mo) and Rally Reserve (free) with integrated Square checkout
+- 💳 **Membership Tiers** - A-List ($35/mo or $350/year) and Rally Reserve (free) with integrated Square checkout
 - 🏆 **Honcho League Integration** - Dedicated page for Honcho Pickleball League with exclusive RALLYCLUB discount code
+- 🎯 **Rally Experiences** - Corporate team building and private event packages with guided pickleball experiences
 - 🛍️ **Merchandise Shop** - Embedded Square Shop for Rally Club apparel and gear
 - 🏐 **Facility Overview** - Interactive image gallery with lightbox modal
 - 📅 **Booking Integration** - Direct links to PicklePlanner 24/7 booking system
@@ -84,21 +85,23 @@ npm run start
 ```
 site/
 ├── pages/
-│   ├── index.js          # Main landing page with video hero
-│   ├── honcho.js         # Honcho Pickleball League details
-│   ├── merch.js          # Merchandise shop (embedded Square)
-│   ├── faq.js            # FAQ page
-│   ├── _app.js           # App wrapper
-│   └── _document.js      # HTML document structure
-├── public/               # Static assets
+│   ├── index.js             # Main landing page with video hero
+│   ├── honcho.js            # Honcho Pickleball League details
+│   ├── rally-experiences.js # Corporate team building & private events
+│   ├── merch.js             # Merchandise shop (embedded Square)
+│   ├── faq.js               # FAQ page
+│   ├── _app.js              # App wrapper
+│   └── _document.js         # HTML document structure
+├── public/                  # Static assets
 │   ├── club_interior_reversed_optimized.mp4  # Hero video (6MB)
-│   ├── *.jpg, *.png      # Facility images and logos
-│   ├── robots.txt        # SEO
-│   └── sitemap.xml       # SEO
+│   ├── *.jpg, *.png         # Facility images and logos
+│   ├── robots.txt           # SEO
+│   └── sitemap.xml          # SEO
 ├── styles/
-│   ├── globals.css       # Global styles
-│   └── Home.module.css   # Module styles
-└── out/                  # Build output (gitignored)
+│   ├── globals.css          # Global styles
+│   ├── Home.module.css      # Module styles
+│   └── Index.module.css     # Index page styles
+└── out/                     # Build output (gitignored)
 ```
 
 ## Key Sections
@@ -120,8 +123,8 @@ Result: 71MB → 6MB (91% reduction)
 Three-column grid showcasing flexibility, competitive pricing, and member perks.
 
 ### Membership Tiers
-- **A-List ($35/month)**: Reserve 10 days in advance, $8/hr base rate ($2/hr per player), $20/hr prime time, member events
-- **Rally Reserve (Free)**: Reserve 5 days in advance, $16/hr base rate ($4/hr per player), $28/hr prime time, member events
+- **A-List ($35/month or $350/year)**: Reserve 10 days in advance, FREE weekdays 9am-4pm, discounted rates for other times, member events
+- **Rally Reserve (Free)**: Reserve 5 days in advance, standard court rates apply, member events
 
 ### Honcho Pickleball League
 Dedicated page (`/honcho`) featuring:
@@ -129,6 +132,14 @@ Dedicated page (`/honcho`) featuring:
 - Registration information with dates and early bird pricing
 - Community benefits and season structure
 - Discount code: **RALLYCLUB** for Rally Club members
+
+### Rally Experiences
+Dedicated page (`/rally-experiences`) for corporate team building and private events:
+- Three package tiers: Starter Rally ($450), Pro Rally ($750), Ultimate Rally ($1,200)
+- Professional facilitation and guided gameplay
+- Custom photo and video packages
+- Group sizes from 8-24 participants
+- Turnkey event management
 
 ### Merchandise Shop
 Full-page embedded Square Shop (`/merch`) featuring:
@@ -156,7 +167,7 @@ No environment variables required for basic functionality.
 
 ### External Integrations
 - **PicklePlanner**: Court booking system (https://rallyclub.pickleplanner.com)
-- **Honcho Pickleball**: League registration (https://honchopickleball.com/register/) - Use code: **RALLYCLUB**
+- **Honcho Pickleball**: League registration (https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-winter-2026/) - Use code: **RALLYCLUB**
 - **Square**: Payment processing for A-List membership and merchandise shop
 - **Square Shop**: Embedded merchandise store (https://the-rally-club-llc.square.site)
 - **Google Maps**: Location and directions
@@ -198,9 +209,11 @@ This project is proprietary software owned by Rally Club Pickleball.
 ## Contact
 
 For questions about the website or facility:
-- Email: rally.club618@gmail.com
-- Facebook: [Rally Club Pickleball](https://www.facebook.com/profile.php?id=61572523900750)
-- Website: [www.rallyclubpickleball.com](https://www.rallyclubpickleball.com/)
+- **General Inquiries**: rally.club618@gmail.com
+- **Corporate Events & Rally Experiences**: rental@rallyclubpickleball.com
+- **Phone**: (618) 931-0015
+- **Facebook**: [Rally Club Pickleball](https://www.facebook.com/profile.php?id=61572523900750)
+- **Website**: [www.rallyclubpickleball.com](https://www.rallyclubpickleball.com/)
 
 ---
 
