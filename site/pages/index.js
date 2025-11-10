@@ -235,21 +235,21 @@ export default function Home() {
             <p className={styles.membershipSummary}>Reserve 7 days in advance.</p>
             <div className={styles.specialPricingGrid}>
               <div className={styles.rateItem}>
-                <span className={styles.rateTime}>Peak times</span>
+                <span className={styles.rateTime}>Prime Hours</span>
                 <span className={styles.ratePrice}>$28/hr</span>
               </div>
               <div className={styles.rateItem}>
-                <span className={styles.rateTime}>Off-peak times</span>
+                <span className={styles.rateTime}>Regular Hours</span>
                 <span className={styles.ratePrice}>$20/hr</span>
               </div>
-              <div className={`${styles.rateItem} ${styles.baseRate}`}>
-                <span className={styles.rateTime}>All other times</span>
+              <div className={styles.rateItem}>
+                <span className={styles.rateTime}>Complimentary Hours</span>
                 <span className={styles.ratePrice}>FREE</span>
               </div>
             </div>
             <div className={styles.peakTimesLink}>
               <a href="#peak-times-faq" onClick={(e) => { e.preventDefault(); document.getElementById('peak-times-faq')?.scrollIntoView({ behavior: 'smooth' }); toggleFaq(5); }}>
-                What are peak and off-peak times?
+                What are the rates by day and time?
               </a>
             </div>
           </div>
@@ -540,16 +540,52 @@ export default function Home() {
                 className={styles.faqQuestion}
                 onClick={() => toggleFaq(5)}
               >
-                What are peak and off-peak times for Special Programs?
+                What are the court rates for Special Programs?
                 <span className={styles.faqArrow}>{openFaq === 5 ? '−' : '+'}</span>
               </button>
               {openFaq === 5 && (
                 <div className={styles.faqAnswer}>
-                  <strong>Peak times ($28/hr):</strong> Weekdays 4:30pm-10pm and all day Saturday & Sunday
-                  <br/><br/>
-                  <strong>Off-peak times ($20/hr):</strong> Weekdays 9am-4pm
-                  <br/><br/>
-                  <strong>All other times (FREE):</strong> Weekdays midnight-9am and 10pm-midnight
+                  <div className={styles.ratesContainer}>
+                    <div className={styles.rateCategory}>
+                      <h4 className={styles.rateCategoryTitle}>Prime Hours - $28/hr</h4>
+                      <div className={styles.specialRatesGrid}>
+                        <div className={styles.rateRow}>
+                          <span className={styles.rateDay}>Sat & Sun</span>
+                          <span className={styles.rateTimeDetail}>7:00am - 11:00am</span>
+                        </div>
+                        <div className={styles.rateRow}>
+                          <span className={styles.rateDay}>Mon - Fri</span>
+                          <span className={styles.rateTimeDetail}>4:00pm - Midnight</span>
+                        </div>
+                        <div className={styles.rateRow}>
+                          <span className={styles.rateDay}>Sat & Sun</span>
+                          <span className={styles.rateTimeDetail}>5:00pm - Midnight</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className={styles.rateCategory}>
+                      <h4 className={styles.rateCategoryTitle}>Regular Hours - $20/hr</h4>
+                      <div className={styles.specialRatesGrid}>
+                        <div className={styles.rateRow}>
+                          <span className={styles.rateDay}>All Days</span>
+                          <span className={styles.rateTimeDetail}>Midnight - 7:00am</span>
+                        </div>
+                        <div className={styles.rateRow}>
+                          <span className={styles.rateDay}>Sat & Sun</span>
+                          <span className={styles.rateTimeDetail}>11:00am - 5:00pm</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className={styles.rateCategory}>
+                      <h4 className={styles.rateCategoryTitle}>Complimentary Hours</h4>
+                      <div className={styles.specialRatesGrid}>
+                        <div className={styles.rateRow}>
+                          <span className={styles.rateDay}>Mon - Fri</span>
+                          <span className={styles.rateTimeDetail}>7:00am - 4:00pm</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               )}
             </div>
