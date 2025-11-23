@@ -187,7 +187,7 @@ export default function Home() {
               <div className={styles.pricingDetails}>
                 <h4>Court Rates:</h4>
                 <div className={styles.rateItem}>
-                  <span className={styles.rateTime}>Mon - Sun 9am - 4pm</span>
+                  <span className={styles.rateTime}>Every day 9am - 4pm</span>
                   <span className={styles.ratePrice}>$28/hr</span>
                 </div>
                 <div className={`${styles.rateItem} ${styles.baseRate}`}>
@@ -224,7 +224,7 @@ export default function Home() {
             <div className={styles.specialPricingGrid}>
               <div className={styles.rateItem}>
                 <span className={styles.rateTime}>Weekdays 7am - 4pm</span>
-                <span className={styles.ratePrice}>$0</span>
+                <span className={styles.ratePrice}>FREE</span>
               </div>
               <div className={styles.rateItem}>
                 <span className={styles.rateTime}>Weekends 9am - 4pm</span>
@@ -482,11 +482,11 @@ export default function Home() {
               </button>
               {openFaq === 2 && (
                 <div className={styles.faqAnswer}>
-                  <strong>A-List:</strong> Weekdays 9am-4pm are FREE, $20/hr for evenings and weekends, $8/hr all other times.
+                  <strong>A-List:</strong> Weekdays 9am-4pm are FREE, $20/hr all other times.
                   <br/><br/>
-                  <strong>Rally Reserve:</strong> $40/hr for all day weekends and weekday evenings (4:30-10pm), $16/hr all other times.
+                  <strong>Rally Reserve:</strong> Every day 9am-4pm is $28/hr, $40/hr all other times.
                   <br/><br/>
-                  See membership details above for complete pricing breakdown.
+                  All guests playing on a member's reservation pay the Rally Reserve rates for court time.
                 </div>
               )}
             </div>
