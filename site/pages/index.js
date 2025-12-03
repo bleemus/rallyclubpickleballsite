@@ -204,7 +204,7 @@ export default function Home() {
                   </table>
                 </div>
                 <div className={`${styles.rateItem} ${styles.baseRate}`}>
-                  <span className={styles.rateTime}>Sat-Sun all day</span>
+                  <span className={styles.rateTime}>Weekends — All Day</span>
                   <span className={styles.ratePrice}>$40/hr</span>
                 </div>
               </div>
