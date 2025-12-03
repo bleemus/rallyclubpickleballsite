@@ -198,7 +198,7 @@ export default function Home() {
                       <tr>
                         <td>$16/hr</td>
                         <td>$20/hr</td>
-                        <td>$35/hr</td>
+                        <td>$40/hr</td>
                       </tr>
                     </tbody>
                   </table>
