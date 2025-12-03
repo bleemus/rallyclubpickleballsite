@@ -186,16 +186,25 @@ export default function Home() {
               </div>
               <div className={styles.pricingDetails}>
                 <h4>Court Rates:</h4>
-                <div className={styles.rateItem}>
-                  <span className={styles.rateTime}>Every day 5am - 8am</span>
-                  <span className={styles.ratePrice}>$16/hr</span>
-                </div>
-                <div className={styles.rateItem}>
-                  <span className={styles.rateTime}>Every day 8am - 4pm</span>
-                  <span className={styles.ratePrice}>$20/hr</span>
+                <div className={styles.rateTableWrapper}>
+                  <table className={styles.rateTable}>
+                    <tbody>
+                      <tr>
+                        <th rowSpan="2">Weekdays</th>
+                        <th>12am - 8am</th>
+                        <th>8am - 4pm</th>
+                        <th>4pm - 12am</th>
+                      </tr>
+                      <tr>
+                        <td>$16/hr</td>
+                        <td>$20/hr</td>
+                        <td>$35/hr</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
                 <div className={`${styles.rateItem} ${styles.baseRate}`}>
-                  <span className={styles.rateTime}>All other times</span>
+                  <span className={styles.rateTime}>Sat-Sun all day</span>
                   <span className={styles.ratePrice}>$40/hr</span>
                 </div>
               </div>
@@ -216,27 +225,47 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Special Programs */}
+        {/* A-List Seniors */}
         <section className={styles.specialProgramsSection}>
-          <h2 className={styles.sectionTitle}>Special Programs</h2>
+          <h2 className={styles.sectionTitle}>A-List Seniors</h2>
           <div className={styles.specialProgramsIntro}>
             <p>Rally Club partners with Medicare and Medicaid programs to make pickleball accessible to more players. These special membership tiers require eligibility verification and admin approval.</p>
           </div>
           <div className={styles.specialProgramsPricing}>
-            <h3>Court Rates for Special Programs</h3>
+            <h3>Court Rates for A-List Seniors</h3>
             <p className={styles.membershipSummary}>Reserve 7 days in advance.</p>
             <div className={styles.specialPricingGrid}>
-              <div className={styles.rateItem}>
-                <span className={styles.rateTime}>Weekdays 7am - 4pm</span>
-                <span className={styles.ratePrice}>FREE</span>
+              <div className={styles.rateTableWrapper}>
+                <table className={styles.rateTable}>
+                  <tbody>
+                    <tr>
+                      <th rowSpan="2">Weekdays</th>
+                      <th>12am - 7am</th>
+                      <th>7am - 4pm</th>
+                      <th>4pm - 12am</th>
+                    </tr>
+                    <tr>
+                      <td>$20/hr</td>
+                      <td>FREE</td>
+                      <td>$28/hr</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-              <div className={styles.rateItem}>
-                <span className={styles.rateTime}>Weekends 9am - 4pm</span>
-                <span className={styles.ratePrice}>$20</span>
-              </div>
-              <div className={styles.rateItem}>
-                <span className={styles.rateTime}>All other times</span>
-                <span className={styles.ratePrice}>$28</span>
+              <div className={styles.rateTableWrapper}>
+                <table className={styles.rateTable}>
+                  <tbody>
+                    <tr>
+                      <th rowSpan="2">Weekends</th>
+                      <th>12am - 4pm</th>
+                      <th>4pm - 12am</th>
+                    </tr>
+                    <tr>
+                      <td>$20/hr</td>
+                      <td>$28/hr</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
