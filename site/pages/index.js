@@ -158,8 +158,7 @@ export default function Home() {
               </div>
               <p className={styles.membershipSummary}>Reserve 10 days in advance.</p>
               <div className={styles.membershipCta}>
-                <a href="https://the-rally-club-llc.square.site/product/a-list-monthly-membership/9" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Join Monthly</a>
-                <a href="https://the-rally-club-llc.square.site/product/a-list-annual-membership/7" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Join Yearly</a>
+                <a href="https://square.link/u/oybkGt7O?src=embed" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Join A-List</a>
               </div>
               <div className={styles.pricingDetails}>
                 <h4>Court Rates:</h4>
