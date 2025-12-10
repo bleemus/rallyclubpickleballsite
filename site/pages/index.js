@@ -148,18 +148,31 @@ export default function Home() {
               <div className={styles.bestValueBadge}>BEST VALUE</div>
               <h3 className={styles.membershipTitle}>A-List</h3>
               <div className={styles.membershipPrice}>
-                <div style={{ marginBottom: '0.5rem' }}>
-                  <span className={styles.price}>$35</span>
-                  <span className={styles.period}>/month</span>
-                </div>
-                <div style={{ fontSize: '1.2rem', color: '#666' }}>
-                  or <span style={{ fontWeight: 'bold', color: '#333' }}>$350</span>/year
+                <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', alignItems: 'flex-end', flexWrap: 'wrap' }}>
+                  <div style={{ textAlign: 'center' }}>
+                    <div style={{ fontSize: '0.9rem', color: '#666', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}>Monthly</div>
+                    <div>
+                      <span className={styles.price}>$35</span>
+                      <span className={styles.period}>/mo</span>
+                    </div>
+                  </div>
+                  <div style={{ height: '5rem', width: '1px', background: '#ddd', alignSelf: 'center' }}></div>
+                  <div style={{ textAlign: 'center' }}>
+                    <div style={{ marginBottom: '0.25rem' }}>
+                      <span style={{ background: '#4CAF50', color: 'white', fontSize: '0.7rem', padding: '3px 8px', borderRadius: '10px', fontWeight: 'bold' }}>Save 17%</span>
+                    </div>
+                    <div style={{ fontSize: '0.9rem', color: '#666', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}>Annual</div>
+                    <div>
+                      <span className={styles.price}>$350</span>
+                      <span className={styles.period}>/yr</span>
+                    </div>
+                  </div>
                 </div>
               </div>
               <p className={styles.membershipSummary}>Reserve 10 days in advance.</p>
               <div className={styles.membershipCta}>
-                <a href="https://the-rally-club-llc.square.site/product/a-list-monthly-membership/9" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Join Monthly</a>
-                <a href="https://the-rally-club-llc.square.site/product/a-list-annual-membership/7" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Join Yearly</a>
+                <a href="https://square.link/u/EKztnz5s" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Join A-List Monthly</a>
+                <a href="https://square.link/u/ram1LVxm" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Join A-List Annually</a>
               </div>
               <div className={styles.pricingDetails}>
                 <h4>Court Rates:</h4>
