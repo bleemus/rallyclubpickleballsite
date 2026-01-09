@@ -54,6 +54,7 @@ export default function Honcho() {
               <a href="/#membership" className="nav-link">Membership</a>
               <a href="/merch" className="nav-link">Merch</a>
               <a href="/#contact" className="nav-link">Contact</a>
+              <a href="/rally-academy" className="nav-link academy-nav-link">Rally Academy</a>
               <a href="/honcho" className="nav-link honcho-nav-link active">Honcho League</a>
               <a href="/rally-experiences" className="nav-link rally-nav-link">Rally Experiences</a>
             </nav>
@@ -78,6 +79,7 @@ export default function Honcho() {
             <a href="/#membership" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Membership</a>
             <a href="/merch" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Merch</a>
             <a href="/#contact" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Contact</a>
+            <a href="/rally-academy" className="mobile-nav-link academy-link" onClick={() => setMobileMenuOpen(false)}>Rally Academy</a>
             <a href="/honcho" className="mobile-nav-link honcho-link active" onClick={() => setMobileMenuOpen(false)}>Honcho League</a>
             <a href="/rally-experiences" className="mobile-nav-link rally-link" onClick={() => setMobileMenuOpen(false)}>Rally Experiences</a>
           </nav>
@@ -267,6 +269,15 @@ export default function Honcho() {
           color: #3E7B3E !important;
         }
 
+        .academy-nav-link {
+          color: #1565C0 !important;
+          font-weight: 600;
+        }
+
+        .academy-nav-link:hover {
+          color: #2196F3 !important;
+        }
+
         .rally-nav-link {
           color: #FF6600 !important;
           font-weight: 600;
@@ -383,6 +394,12 @@ export default function Honcho() {
           background: rgba(45, 90, 39, 0.2);
           border-color: #2D5A27;
           color: #2D5A27;
+        }
+
+        .mobile-nav-link.academy-link {
+          background: linear-gradient(135deg, #1565C0 0%, #2196F3 100%);
+          color: white;
+          border-color: #2196F3;
         }
 
         .mobile-nav-link.honcho-link {

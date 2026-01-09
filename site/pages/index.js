@@ -69,6 +69,7 @@ export default function Home() {
               <a href="#membership" className={styles.navLink}>Membership</a>
               <a href="/merch" className={styles.navLink}>Merch</a>
               <a href="#contact" className={styles.navLink}>Contact</a>
+              <a href="/rally-academy" className={`${styles.navLink} ${styles.academyNavLink}`}>Rally Academy</a>
               <a href="/honcho" className={`${styles.navLink} ${styles.honchoNavLink}`}>Honcho League</a>
               <a href="/rally-experiences" className={`${styles.navLink} ${styles.rallyNavLink}`}>Rally Experiences</a>
             </nav>
@@ -93,6 +94,7 @@ export default function Home() {
             <a href="#membership" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Membership</a>
             <a href="/merch" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Merch</a>
             <a href="#contact" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Contact</a>
+            <a href="/rally-academy" className={`${styles.mobileNavLink} ${styles.academyLink}`} onClick={() => setMobileMenuOpen(false)}>Rally Academy</a>
             <a href="/honcho" className={`${styles.mobileNavLink} ${styles.honchoLink}`} onClick={() => setMobileMenuOpen(false)}>Honcho League</a>
             <a href="/rally-experiences" className={`${styles.mobileNavLink} ${styles.rallyLink}`} onClick={() => setMobileMenuOpen(false)}>Rally Experiences</a>
           </nav>

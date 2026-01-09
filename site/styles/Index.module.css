@@ -43,6 +43,15 @@
   color: #FF6600;
 }
 
+.academyNavLink {
+  color: #1565C0 !important;
+  font-weight: 600;
+}
+
+.academyNavLink:hover {
+  color: #2196F3 !important;
+}
+
 .honchoNavLink {
   color: #2D5A27 !important;
   font-weight: 600;
@@ -168,6 +177,12 @@
   background: rgba(231, 76, 60, 0.2);
   border-color: #FF6600;
   color: #FF6600;
+}
+
+.mobileNavLink.academyLink {
+  background: linear-gradient(135deg, #1565C0 0%, #2196F3 100%);
+  color: white;
+  border-color: #2196F3;
 }
 
 .mobileNavLink.honchoLink {
