@@ -68,9 +68,8 @@ export default function Home() {
               <a href="#booking" className={styles.navLink}>Book a Court</a>
               <a href="#membership" className={styles.navLink}>Membership</a>
               <a href="/merch" className={styles.navLink}>Merch</a>
-              <a href="#contact" className={styles.navLink}>Contact</a>
-              <a href="/rally-academy" className={`${styles.navLink} ${styles.academyNavLink}`}>Rally Academy</a>
               <a href="/honcho" className={`${styles.navLink} ${styles.honchoNavLink}`}>Honcho League</a>
+              <a href="/rally-academy" className={`${styles.navLink} ${styles.academyNavLink}`}>Rally Academy</a>
               <a href="/rally-experiences" className={`${styles.navLink} ${styles.rallyNavLink}`}>Rally Experiences</a>
             </nav>
             <button
@@ -93,9 +92,8 @@ export default function Home() {
             <a href="#booking" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Book a Court</a>
             <a href="#membership" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Membership</a>
             <a href="/merch" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Merch</a>
-            <a href="#contact" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Contact</a>
-            <a href="/rally-academy" className={`${styles.mobileNavLink} ${styles.academyLink}`} onClick={() => setMobileMenuOpen(false)}>Rally Academy</a>
             <a href="/honcho" className={`${styles.mobileNavLink} ${styles.honchoLink}`} onClick={() => setMobileMenuOpen(false)}>Honcho League</a>
+            <a href="/rally-academy" className={`${styles.mobileNavLink} ${styles.academyLink}`} onClick={() => setMobileMenuOpen(false)}>Rally Academy</a>
             <a href="/rally-experiences" className={`${styles.mobileNavLink} ${styles.rallyLink}`} onClick={() => setMobileMenuOpen(false)}>Rally Experiences</a>
           </nav>
         </div>
@@ -386,6 +384,46 @@ export default function Home() {
                   Learn More
                 </a>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Programs Section - Rally Academy & Rally Experiences */}
+        <section className={styles.programsSection}>
+          <h2 className={styles.sectionTitle}>More Ways to Play</h2>
+          <div className={styles.programsGrid}>
+            {/* Rally Academy */}
+            <div className={styles.programCard}>
+              <h3 className={styles.programTitle}>Rally Academy</h3>
+              <p className={styles.programTagline}>Training Programs for All Levels</p>
+              <p className={styles.programDescription}>
+                From beginner foundations to competitive performance sessions. Structured coaching to take your game to the next level.
+              </p>
+              <div className={styles.programHighlights}>
+                <span>4-Week Beginner Course</span>
+                <span>3.5+ Performance Sessions</span>
+                <span>Expert Coaching</span>
+              </div>
+              <a href="/rally-academy" className={styles.programButton}>
+                Explore Training Programs
+              </a>
+            </div>
+
+            {/* Rally Experiences */}
+            <div className={styles.programCard}>
+              <h3 className={styles.programTitle}>Rally Experiences</h3>
+              <p className={styles.programTagline}>Corporate Events & Private Parties</p>
+              <p className={styles.programDescription}>
+                Guided pickleball experiences for team building and celebrations. Professional facilitation, all equipment included.
+              </p>
+              <div className={styles.programHighlights}>
+                <span>Team Building</span>
+                <span>Private Events</span>
+                <span>Turnkey Packages</span>
+              </div>
+              <a href="/rally-experiences" className={styles.programButtonOrange}>
+                Plan Your Event
+              </a>
             </div>
           </div>
         </section>

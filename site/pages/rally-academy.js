@@ -99,9 +99,8 @@ export default function RallyAcademy() {
               <a href="/#booking" className="nav-link">Book a Court</a>
               <a href="/#membership" className="nav-link">Membership</a>
               <a href="/merch" className="nav-link">Merch</a>
-              <a href="/#contact" className="nav-link">Contact</a>
-              <a href="/rally-academy" className="nav-link academy-nav-link active">Rally Academy</a>
               <a href="/honcho" className="nav-link honcho-nav-link">Honcho League</a>
+              <a href="/rally-academy" className="nav-link academy-nav-link active">Rally Academy</a>
               <a href="/rally-experiences" className="nav-link rally-nav-link">Rally Experiences</a>
             </nav>
             <button
@@ -124,9 +123,8 @@ export default function RallyAcademy() {
             <a href="/#booking" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Book a Court</a>
             <a href="/#membership" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Membership</a>
             <a href="/merch" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Merch</a>
-            <a href="/#contact" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Contact</a>
-            <a href="/rally-academy" className="mobile-nav-link academy-link active" onClick={() => setMobileMenuOpen(false)}>Rally Academy</a>
             <a href="/honcho" className="mobile-nav-link honcho-link" onClick={() => setMobileMenuOpen(false)}>Honcho League</a>
+            <a href="/rally-academy" className="mobile-nav-link academy-link active" onClick={() => setMobileMenuOpen(false)}>Rally Academy</a>
             <a href="/rally-experiences" className="mobile-nav-link rally-link" onClick={() => setMobileMenuOpen(false)}>Rally Experiences</a>
           </nav>
         </div>
@@ -145,6 +143,33 @@ export default function RallyAcademy() {
           </div>
         </section>
 
+        {/* Why Train With Us */}
+        <section className="why-train">
+          <h2 className="section-title">Why Train With Us?</h2>
+          <div className="why-grid">
+            <div className="why-item">
+              <div className="why-icon">📋</div>
+              <h4>Proven Methodology</h4>
+              <p>Structured curriculum designed for measurable improvement</p>
+            </div>
+            <div className="why-item">
+              <div className="why-icon">📈</div>
+              <h4>Track Progress</h4>
+              <p>Clear milestones and skill development tracking</p>
+            </div>
+            <div className="why-item">
+              <div className="why-icon">🎉</div>
+              <h4>Fun Atmosphere</h4>
+              <p>Improvement doesn't have to be boring – we keep it enjoyable</p>
+            </div>
+            <div className="why-item">
+              <div className="why-icon">🤝</div>
+              <h4>Community</h4>
+              <p>Join a supportive group of players committed to getting better</p>
+            </div>
+          </div>
+        </section>
+
         {/* Program Cards Section */}
         <section className="programs-overview">
           <h2 className="section-title">Choose Your Path</h2>
@@ -152,7 +177,6 @@ export default function RallyAcademy() {
             {/* Beginner Card */}
             <div className="program-card">
               <div className="program-badge">Only 8 Spots!</div>
-              <div className="program-icon">🎯</div>
               <h3 className="program-title">Beginner Foundations</h3>
               <p className="program-headline">From First Paddle to Confident Player in 4 Weeks</p>
               <p className="program-description">
@@ -167,7 +191,6 @@ export default function RallyAcademy() {
 
             {/* Performance Card */}
             <div className="program-card performance">
-              <div className="program-icon">⚡</div>
               <h3 className="program-title">Performance Sessions</h3>
               <p className="program-headline">Level-Up Your Game: Training for Competitive Players</p>
               <p className="program-description">
@@ -218,35 +241,30 @@ export default function RallyAcademy() {
             {/* Selling Points */}
             <div className="selling-points">
               <div className="selling-point">
-                <span className="selling-icon">👥</span>
                 <div>
                   <strong>Small Group</strong>
                   <p>Max 8 players for personalized attention</p>
                 </div>
               </div>
               <div className="selling-point">
-                <span className="selling-icon">📅</span>
                 <div>
                   <strong>Cohort Progress</strong>
                   <p>Learn and improve together as a group</p>
                 </div>
               </div>
               <div className="selling-point">
-                <span className="selling-icon">🎮</span>
                 <div>
                   <strong>Fun Format</strong>
                   <p>Mix of drills, mini-games & coached play</p>
                 </div>
               </div>
               <div className="selling-point">
-                <span className="selling-icon">😊</span>
                 <div>
                   <strong>Zero Pressure</strong>
                   <p>Supportive, encouraging environment</p>
                 </div>
               </div>
               <div className="selling-point">
-                <span className="selling-icon">🎾</span>
                 <div>
                   <strong>Right Level</strong>
                   <p>Ideal for new players & 2.5-3.0 rating</p>
@@ -279,22 +297,18 @@ export default function RallyAcademy() {
             {/* What's Included */}
             <div className="included-grid">
               <div className="included-item">
-                <span className="included-icon">🔥</span>
                 <h4>High-Intensity Drills</h4>
                 <p>Push your limits with focused, fast-paced training sequences.</p>
               </div>
               <div className="included-item">
-                <span className="included-icon">🧠</span>
                 <h4>Tactical Training</h4>
                 <p>Situational play, pattern recognition, and strategic decision-making.</p>
               </div>
               <div className="included-item">
-                <span className="included-icon">📊</span>
                 <h4>Game Analysis</h4>
                 <p>Real-time coaching feedback during competitive play.</p>
               </div>
               <div className="included-item">
-                <span className="included-icon">🏆</span>
                 <h4>Tournament Prep</h4>
                 <p>Mental game, match strategy, and competition readiness.</p>
               </div>
@@ -303,16 +317,16 @@ export default function RallyAcademy() {
             {/* Selling Points */}
             <div className="performance-points">
               <div className="perf-point">
-                <span>🏆</span> Designed for 3.5-4.5 competitive players
+                Designed for 3.5-4.5 competitive players
               </div>
               <div className="perf-point">
-                <span>🔄</span> Drop-in format – join anytime
+                Drop-in format – join anytime
               </div>
               <div className="perf-point">
-                <span>⚡</span> High-intensity improvement focus
+                High-intensity improvement focus
               </div>
               <div className="perf-point">
-                <span>🎯</span> Great for tournament prep
+                Great for tournament prep
               </div>
             </div>
 
@@ -328,33 +342,6 @@ export default function RallyAcademy() {
               <a href="https://rallyclub.pickleplanner.com" className="price-box-cta-dark" target="_blank" rel="noopener noreferrer">
                 Reserve Your Spot
               </a>
-            </div>
-          </div>
-        </section>
-
-        {/* Why Train With Us */}
-        <section className="why-train">
-          <h2 className="section-title">Why Train With Us?</h2>
-          <div className="why-grid">
-            <div className="why-item">
-              <div className="why-icon">📋</div>
-              <h4>Proven Methodology</h4>
-              <p>Structured curriculum designed for measurable improvement</p>
-            </div>
-            <div className="why-item">
-              <div className="why-icon">📈</div>
-              <h4>Track Progress</h4>
-              <p>Clear milestones and skill development tracking</p>
-            </div>
-            <div className="why-item">
-              <div className="why-icon">🎉</div>
-              <h4>Fun Atmosphere</h4>
-              <p>Improvement doesn't have to be boring – we keep it enjoyable</p>
-            </div>
-            <div className="why-item">
-              <div className="why-icon">🤝</div>
-              <h4>Community</h4>
-              <p>Join a supportive group of players committed to getting better</p>
             </div>
           </div>
         </section>

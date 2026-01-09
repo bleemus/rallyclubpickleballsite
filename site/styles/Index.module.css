@@ -868,6 +868,103 @@
   flex-wrap: wrap;
 }
 
+/* Programs Section */
+.programsSection {
+  padding: 4rem 2rem;
+  background: #f0f4f8;
+}
+
+.programsGrid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.programCard {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.programCard:hover {
+  transform: translateY(-5px);
+}
+
+.programIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.programTitle {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.programTagline {
+  font-size: 1rem;
+  color: #666;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.programDescription {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.programHighlights {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.programHighlights span {
+  background: #f0f4f8;
+  color: #555;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.programButton {
+  display: inline-block;
+  background: #2196F3;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.programButton:hover {
+  background: #1565C0;
+}
+
+.programButtonOrange {
+  display: inline-block;
+  background: #FF6600;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.programButtonOrange:hover {
+  background: #E65100;
+}
+
 /* Facility */
 .facility {
   padding: 2.5rem 2rem;
@@ -1316,6 +1413,14 @@
 
   .facilityGrid {
     grid-template-columns: 1fr;
+  }
+
+  .programsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .programCard {
+    padding: 2rem;
   }
 
   .locationContent {
