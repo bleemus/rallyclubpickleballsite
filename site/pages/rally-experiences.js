@@ -363,8 +363,8 @@ export default function RallyExperiences() {
           min-height: 100vh;
           display: flex;
           flex-direction: column;
-          background: #1a1a1a;
-          color: #fff;
+          background: white;
+          color: #333;
         }
 
         /* Header Styles */
@@ -373,11 +373,10 @@ export default function RallyExperiences() {
           top: 0;
           left: 0;
           right: 0;
-          background: rgba(26, 26, 26, 0.95);
-          backdrop-filter: blur(10px);
+          background: white;
           z-index: 1000;
           padding: 1rem 0;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .header-content {
@@ -394,7 +393,7 @@ export default function RallyExperiences() {
           align-items: center;
           font-size: 1.5rem;
           font-weight: 700;
-          color: #C8F560;
+          color: #333;
         }
 
         .nav {
@@ -403,7 +402,7 @@ export default function RallyExperiences() {
         }
 
         .nav-link {
-          color: #fff;
+          color: #666;
           text-decoration: none;
           font-weight: 500;
           transition: color 0.3s ease;
@@ -411,12 +410,12 @@ export default function RallyExperiences() {
         }
 
         .nav-link:hover {
-          color: #C8F560;
+          color: #38B5D6;
         }
 
         .nav-link.active {
-          color: #C8F560;
-          border-bottom: 2px solid #C8F560;
+          color: #38B5D6;
+          border-bottom: 2px solid #38B5D6;
         }
 
         .academy-nav-link {
@@ -429,29 +428,30 @@ export default function RallyExperiences() {
         }
 
         .honcho-nav-link {
-          background: linear-gradient(135deg, #2D5A27 0%, #3E7B3E 100%);
-          padding: 0.5rem 1rem;
-          border-radius: 4px;
+          color: #2D5A27 !important;
+          font-weight: 600;
+        }
+
+        .honcho-nav-link:hover {
+          color: #3E7B3E !important;
         }
 
         .rally-nav-link {
-          color: #FF6600 !important;
+          color: #E5654A !important;
           font-weight: 600;
-          border-bottom: none !important;
         }
 
         .rally-nav-link:hover {
-          color: #E65100 !important;
-          border-bottom: none !important;
+          color: #D4533A !important;
         }
 
         .rally-nav-link.active {
-          color: #FFA500 !important;
-          border-bottom: none !important;
+          color: #E5654A !important;
+          border-bottom: 2px solid #E5654A !important;
         }
 
         .mobile-nav-link.rally-link {
-          background: #FF6600;
+          background: #E5654A;
           color: white !important;
           padding: 0.75rem 1rem;
           border-radius: 6px;
@@ -460,7 +460,7 @@ export default function RallyExperiences() {
 
         .mobile-nav-link.rally-link:hover,
         .mobile-nav-link.rally-link.active {
-          background: #E65100;
+          background: #D4533A;
         }
 
         /* Mobile Menu Button */
@@ -486,7 +486,7 @@ export default function RallyExperiences() {
           display: block;
           height: 3px;
           width: 100%;
-          background: #C8F560;
+          background: #38B5D6;
           border-radius: 2px;
           transition: all 0.3s ease;
         }
@@ -510,7 +510,7 @@ export default function RallyExperiences() {
           left: 0;
           right: 0;
           bottom: 0;
-          background: rgba(26, 26, 26, 0.98);
+          background: rgba(255, 255, 255, 0.98);
           backdrop-filter: blur(10px);
           z-index: 999;
           transform: translateX(100%);
@@ -537,27 +537,27 @@ export default function RallyExperiences() {
         }
 
         .mobile-nav-link {
-          color: #fff;
+          color: #333;
           text-decoration: none;
           font-weight: 500;
           padding: 1rem;
           border-radius: 8px;
           transition: all 0.3s ease;
           text-align: center;
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .mobile-nav-link:hover,
         .mobile-nav-link:active {
-          background: rgba(200, 245, 96, 0.1);
-          border-color: #C8F560;
-          color: #C8F560;
+          background: rgba(229, 101, 74, 0.1);
+          border-color: #E5654A;
+          color: #E5654A;
         }
 
         .mobile-nav-link.active {
-          background: rgba(200, 245, 96, 0.2);
-          border-color: #C8F560;
-          color: #C8F560;
+          background: rgba(229, 101, 74, 0.2);
+          border-color: #E5654A;
+          color: #E5654A;
         }
 
         .mobile-nav-link.academy-link {
@@ -568,12 +568,13 @@ export default function RallyExperiences() {
 
         .mobile-nav-link.honcho-link {
           background: linear-gradient(135deg, #2D5A27 0%, #3E7B3E 100%);
+          color: white;
           border-color: #3E7B3E;
         }
 
         /* Hero Section */
         .events-hero {
-          background: linear-gradient(135deg, #2D5A27 0%, #3E7B3E 100%);
+          background: linear-gradient(135deg, #2A9BC0 0%, #38B5D6 100%);
           padding: 8rem 2rem 4rem;
           text-align: center;
         }
@@ -588,20 +589,20 @@ export default function RallyExperiences() {
           font-weight: 900;
           margin-bottom: 1rem;
           letter-spacing: 2px;
-          color: #C8F560;
+          color: white;
         }
 
         .events-hero-tagline {
           font-size: 1.8rem;
           font-weight: 600;
           margin-bottom: 1rem;
-          color: #E8F5E8;
+          color: white;
         }
 
         .events-hero-subtitle {
           font-size: 1.3rem;
           margin-bottom: 2rem;
-          color: #E8F5E8;
+          color: rgba(255, 255, 255, 0.9);
           font-weight: 500;
         }
 
@@ -609,7 +610,7 @@ export default function RallyExperiences() {
           font-size: 1.1rem;
           line-height: 1.8;
           margin-bottom: 2.5rem;
-          color: #E8F5E8;
+          color: rgba(255, 255, 255, 0.9);
         }
 
         .events-hero-cta {
@@ -620,8 +621,8 @@ export default function RallyExperiences() {
         }
 
         .events-cta-button {
-          background: #C8F560;
-          color: #1a1a1a;
+          background: #E5654A;
+          color: white;
           padding: 1rem 2.5rem;
           border-radius: 8px;
           text-decoration: none;
@@ -631,24 +632,25 @@ export default function RallyExperiences() {
         }
 
         .events-cta-button:hover {
+          background: #D4533A;
           transform: translateY(-2px);
-          box-shadow: 0 10px 30px rgba(200, 245, 96, 0.3);
+          box-shadow: 0 10px 30px rgba(229, 101, 74, 0.3);
         }
 
         .events-cta-button-secondary {
           background: transparent;
-          color: #E8F5E8;
+          color: white;
           padding: 1rem 2.5rem;
           border-radius: 8px;
           text-decoration: none;
           font-weight: 700;
           font-size: 1.1rem;
-          border: 2px solid #E8F5E8;
+          border: 2px solid white;
           transition: all 0.3s ease;
         }
 
         .events-cta-button-secondary:hover {
-          background: rgba(232, 245, 232, 0.1);
+          background: rgba(255, 255, 255, 0.1);
           transform: translateY(-2px);
         }
 
@@ -658,13 +660,13 @@ export default function RallyExperiences() {
           font-weight: 700;
           text-align: center;
           margin-bottom: 3rem;
-          color: #C8F560;
+          color: #333;
         }
 
         /* Unique Section */
         .unique-section {
           padding: 4rem 2rem;
-          background: #252525;
+          background: #f8f9fa;
         }
 
         .unique-content {
@@ -677,7 +679,7 @@ export default function RallyExperiences() {
           line-height: 1.8;
           text-align: center;
           margin-bottom: 3rem;
-          color: #E8F5E8;
+          color: #555;
         }
 
         .unique-grid {
@@ -687,18 +689,17 @@ export default function RallyExperiences() {
         }
 
         .unique-card {
-          background: #1a1a1a;
+          background: white;
           padding: 2rem;
           border-radius: 12px;
           text-align: center;
-          border: 1px solid rgba(200, 245, 96, 0.2);
+          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
           transition: all 0.3s ease;
         }
 
         .unique-card:hover {
           transform: translateY(-5px);
-          border-color: #C8F560;
-          box-shadow: 0 10px 30px rgba(200, 245, 96, 0.2);
+          box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
 
         .unique-icon {
@@ -709,18 +710,18 @@ export default function RallyExperiences() {
         .unique-card h3 {
           font-size: 1.5rem;
           margin-bottom: 1rem;
-          color: #C8F560;
+          color: #333;
         }
 
         .unique-card p {
           line-height: 1.6;
-          color: #E8F5E8;
+          color: #666;
         }
 
         /* Benefits Section */
         .benefits-section {
           padding: 4rem 2rem;
-          background: #1a1a1a;
+          background: white;
         }
 
         .benefits-intro {
@@ -729,7 +730,7 @@ export default function RallyExperiences() {
           text-align: center;
           max-width: 900px;
           margin: 0 auto 3rem;
-          color: #E8F5E8;
+          color: #555;
         }
 
         .benefits-grid-events {
@@ -741,17 +742,16 @@ export default function RallyExperiences() {
         }
 
         .benefit-card-events {
-          background: #252525;
+          background: #f8f9fa;
           padding: 2rem;
           border-radius: 12px;
-          border: 1px solid rgba(200, 245, 96, 0.2);
+          border-left: 4px solid #38B5D6;
           transition: all 0.3s ease;
         }
 
         .benefit-card-events:hover {
           transform: translateY(-5px);
-          border-color: #C8F560;
-          box-shadow: 0 10px 30px rgba(200, 245, 96, 0.2);
+          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .benefit-icon-events {
@@ -762,18 +762,22 @@ export default function RallyExperiences() {
         .benefit-card-events h3 {
           font-size: 1.5rem;
           margin-bottom: 1rem;
-          color: #C8F560;
+          color: #333;
         }
 
         .benefit-card-events p {
           line-height: 1.6;
-          color: #E8F5E8;
+          color: #666;
         }
 
         /* Why Rally Section */
         .why-rally-section {
           padding: 4rem 2rem;
-          background: linear-gradient(135deg, #2D5A27 0%, #3E7B3E 100%);
+          background: linear-gradient(135deg, #2A9BC0 0%, #38B5D6 100%);
+        }
+
+        .why-rally-section .section-title {
+          color: white;
         }
 
         .why-rally-content {
@@ -786,7 +790,7 @@ export default function RallyExperiences() {
           line-height: 1.8;
           text-align: center;
           margin-bottom: 3rem;
-          color: #E8F5E8;
+          color: white;
         }
 
         .why-rally-features {
@@ -799,14 +803,14 @@ export default function RallyExperiences() {
           display: flex;
           gap: 1.5rem;
           align-items: flex-start;
-          background: rgba(0, 0, 0, 0.2);
+          background: rgba(255, 255, 255, 0.15);
           padding: 1.5rem;
           border-radius: 8px;
         }
 
         .feature-check {
           font-size: 2rem;
-          color: #C8F560;
+          color: white;
           flex-shrink: 0;
         }
 
@@ -814,18 +818,18 @@ export default function RallyExperiences() {
           display: block;
           font-size: 1.2rem;
           margin-bottom: 0.5rem;
-          color: #C8F560;
+          color: white;
         }
 
         .feature-item p {
           line-height: 1.6;
-          color: #E8F5E8;
+          color: rgba(255, 255, 255, 0.9);
         }
 
         /* Services Section */
         .services-section {
           padding: 4rem 2rem;
-          background: #252525;
+          background: #f8f9fa;
         }
 
         .services-content {
@@ -840,7 +844,7 @@ export default function RallyExperiences() {
         .services-included h3 {
           font-size: 1.8rem;
           margin-bottom: 2rem;
-          color: #C8F560;
+          color: #333;
         }
 
         .timeline-item {
@@ -848,7 +852,7 @@ export default function RallyExperiences() {
           gap: 1.5rem;
           margin-bottom: 1.5rem;
           padding-bottom: 1.5rem;
-          border-bottom: 1px solid rgba(200, 245, 96, 0.2);
+          border-bottom: 1px solid #ddd;
         }
 
         .timeline-item:last-child {
@@ -857,14 +861,14 @@ export default function RallyExperiences() {
 
         .timeline-duration {
           font-weight: 700;
-          color: #C8F560;
+          color: #E5654A;
           flex-shrink: 0;
           font-size: 1.1rem;
         }
 
         .timeline-description {
           line-height: 1.6;
-          color: #E8F5E8;
+          color: #666;
         }
 
         .included-list {
@@ -877,14 +881,14 @@ export default function RallyExperiences() {
           padding-left: 2rem;
           position: relative;
           line-height: 1.6;
-          color: #E8F5E8;
+          color: #666;
         }
 
         .included-list > li::before {
           content: "✓";
           position: absolute;
           left: 0;
-          color: #C8F560;
+          color: #E5654A;
           font-weight: 700;
           font-size: 1.2rem;
         }
@@ -896,13 +900,13 @@ export default function RallyExperiences() {
 
         .included-list ul li {
           margin-bottom: 0.5rem;
-          color: #E8F5E8;
+          color: #666;
         }
 
         /* Packages Section */
         .packages-section {
           padding: 4rem 2rem;
-          background: #1a1a1a;
+          background: white;
         }
 
         .packages-grid {
@@ -914,10 +918,10 @@ export default function RallyExperiences() {
         }
 
         .package-card {
-          background: #252525;
+          background: white;
           border-radius: 12px;
           padding: 2rem;
-          border: 2px solid rgba(200, 245, 96, 0.2);
+          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
           transition: all 0.3s ease;
           position: relative;
           display: flex;
@@ -926,13 +930,19 @@ export default function RallyExperiences() {
 
         .package-card:hover {
           transform: translateY(-5px);
-          border-color: #C8F560;
-          box-shadow: 0 15px 40px rgba(200, 245, 96, 0.2);
+          box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
 
         .package-featured {
-          border-color: #C8F560;
-          background: linear-gradient(135deg, #2D5A27 0%, #3E7B3E 100%);
+          border: 2px solid #38B5D6;
+          background: linear-gradient(135deg, #2A9BC0 0%, #38B5D6 100%);
+        }
+
+        .package-featured .package-name,
+        .package-featured .package-price,
+        .package-featured .package-details,
+        .package-featured .package-features li {
+          color: white;
         }
 
         .package-badge {
@@ -940,8 +950,8 @@ export default function RallyExperiences() {
           top: -12px;
           left: 50%;
           transform: translateX(-50%);
-          background: #C8F560;
-          color: #1a1a1a;
+          background: linear-gradient(45deg, #D4533A, #E5654A);
+          color: white;
           padding: 0.3rem 1rem;
           border-radius: 20px;
           font-weight: 700;
@@ -957,18 +967,18 @@ export default function RallyExperiences() {
           font-size: 1.8rem;
           font-weight: 700;
           margin-bottom: 1rem;
-          color: #C8F560;
+          color: #333;
         }
 
         .package-price {
           font-size: 3rem;
           font-weight: 900;
-          color: #fff;
+          color: #333;
           margin-bottom: 0.5rem;
         }
 
         .package-details {
-          color: #E8F5E8;
+          color: #666;
           font-size: 0.95rem;
         }
 
@@ -981,9 +991,13 @@ export default function RallyExperiences() {
 
         .package-features li {
           padding: 0.75rem 0;
-          border-bottom: 1px solid rgba(200, 245, 96, 0.1);
-          color: #E8F5E8;
+          border-bottom: 1px solid #eee;
+          color: #666;
           line-height: 1.5;
+        }
+
+        .package-featured .package-features li {
+          border-bottom-color: rgba(255,255,255,0.2);
         }
 
         .package-features li:last-child {
@@ -992,8 +1006,8 @@ export default function RallyExperiences() {
 
         .package-button {
           display: block;
-          background: #C8F560;
-          color: #1a1a1a;
+          background: #E5654A;
+          color: white;
           padding: 1rem;
           border-radius: 8px;
           text-align: center;
@@ -1003,15 +1017,28 @@ export default function RallyExperiences() {
         }
 
         .package-button:hover {
-          background: #D4FF70;
+          background: #D4533A;
           transform: translateY(-2px);
-          box-shadow: 0 5px 15px rgba(200, 245, 96, 0.3);
+          box-shadow: 0 5px 15px rgba(229, 101, 74, 0.3);
+        }
+
+        .package-featured .package-button {
+          background: white;
+          color: #2A9BC0;
+        }
+
+        .package-featured .package-button:hover {
+          background: #f8f9fa;
         }
 
         /* CTA Section */
         .cta-section {
           padding: 4rem 2rem;
-          background: linear-gradient(135deg, #2D5A27 0%, #3E7B3E 100%);
+          background: linear-gradient(135deg, #2A9BC0 0%, #38B5D6 100%);
+        }
+
+        .cta-section .section-title {
+          color: white;
         }
 
         .cta-content {
@@ -1040,8 +1067,8 @@ export default function RallyExperiences() {
         .cta-step-number {
           width: 60px;
           height: 60px;
-          background: #C8F560;
-          color: #1a1a1a;
+          background: white;
+          color: #2A9BC0;
           border-radius: 50%;
           display: flex;
           align-items: center;
@@ -1051,7 +1078,7 @@ export default function RallyExperiences() {
         }
 
         .cta-step p {
-          color: #E8F5E8;
+          color: white;
           line-height: 1.6;
           font-size: 1.1rem;
         }
@@ -1060,7 +1087,7 @@ export default function RallyExperiences() {
           font-size: 1.3rem;
           font-weight: 600;
           margin-bottom: 2rem;
-          color: #E8F5E8;
+          color: white;
         }
 
         .cta-buttons {
@@ -1071,8 +1098,8 @@ export default function RallyExperiences() {
         }
 
         .cta-button-primary {
-          background: #C8F560;
-          color: #1a1a1a;
+          background: #E5654A;
+          color: white;
           padding: 1rem 2.5rem;
           border-radius: 8px;
           text-decoration: none;
@@ -1082,32 +1109,34 @@ export default function RallyExperiences() {
         }
 
         .cta-button-primary:hover {
+          background: #D4533A;
           transform: translateY(-2px);
-          box-shadow: 0 10px 30px rgba(200, 245, 96, 0.3);
+          box-shadow: 0 10px 30px rgba(229, 101, 74, 0.3);
         }
 
         .cta-button-secondary {
           background: transparent;
-          color: #E8F5E8;
+          color: white;
           padding: 1rem 2.5rem;
           border-radius: 8px;
           text-decoration: none;
           font-weight: 700;
           font-size: 1.1rem;
-          border: 2px solid #E8F5E8;
+          border: 2px solid white;
           transition: all 0.3s ease;
         }
 
         .cta-button-secondary:hover {
-          background: rgba(232, 245, 232, 0.1);
+          background: rgba(255, 255, 255, 0.1);
           transform: translateY(-2px);
         }
 
         /* Footer */
         .footer {
-          background: #0a0a0a;
+          background: #333;
           padding: 3rem 2rem 1rem;
           margin-top: auto;
+          color: white;
         }
 
         .footer-content {
@@ -1121,14 +1150,14 @@ export default function RallyExperiences() {
         }
 
         .footer-section h3 {
-          color: #C8F560;
+          color: white;
           margin-bottom: 1rem;
           font-size: 1.2rem;
         }
 
         .footer-section p,
         .footer-link {
-          color: #E8F5E8;
+          color: #ccc;
           margin-bottom: 0.5rem;
           line-height: 1.6;
         }
@@ -1140,13 +1169,13 @@ export default function RallyExperiences() {
         }
 
         .footer-link:hover {
-          color: #C8F560;
+          color: #38B5D6;
         }
 
         .footer-bottom {
           text-align: center;
           padding-top: 2rem;
-          border-top: 1px solid rgba(200, 245, 96, 0.2);
+          border-top: 1px solid #555;
           color: #999;
         }
 
