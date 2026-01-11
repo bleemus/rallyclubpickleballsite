@@ -39,7 +39,7 @@ export default function RallyExperiences() {
         {/* Header */}
         <header className="header">
           <div className="header-content">
-            <div className="logo">
+            <a href="/" className="logo">
               <Image
                 src="/logo-transparent.png"
                 alt="Rally Club Pickleball Logo"
@@ -48,7 +48,7 @@ export default function RallyExperiences() {
                 style={{ marginRight: '0.5rem', objectFit: 'contain' }}
               />
               Rally Club Pickleball
-            </div>
+            </a>
             <nav className="nav">
               <a href="/#booking" className="nav-link">Book a Court</a>
               <a href="/#membership" className="nav-link">Membership</a>
@@ -394,6 +394,13 @@ export default function RallyExperiences() {
           font-size: 1.5rem;
           font-weight: 700;
           color: #333;
+          text-decoration: none;
+          cursor: pointer;
+        }
+
+        .logo:hover {
+          color: #555;
+          opacity: 0.9;
         }
 
         .nav {
@@ -419,12 +426,12 @@ export default function RallyExperiences() {
         }
 
         .academy-nav-link {
-          color: #1565C0 !important;
+          color: #475569 !important;
           font-weight: 600;
         }
 
         .academy-nav-link:hover {
-          color: #2196F3 !important;
+          color: #64748B !important;
         }
 
         .honcho-nav-link {
@@ -561,9 +568,9 @@ export default function RallyExperiences() {
         }
 
         .mobile-nav-link.academy-link {
-          background: linear-gradient(135deg, #1565C0 0%, #2196F3 100%);
+          background: linear-gradient(135deg, #475569 0%, #64748B 100%);
           color: white;
-          border-color: #2196F3;
+          border-color: #64748B;
         }
 
         .mobile-nav-link.honcho-link {

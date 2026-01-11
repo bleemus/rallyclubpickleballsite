@@ -18,12 +18,8 @@ npm run start    # Start production server (serves from /out directory)
 ## Architecture
 - **Framework**: Next.js 15.1.6 with React 19
 - **Build Configuration**: Static export mode (`output: 'export'`)
-- **Styling**: Inline JSX styles (styled-jsx) and CSS modules
 - **Images**: Unoptimized for static hosting compatibility
-- **Video**: Optimized MP4 with web-friendly settings (H.264, faststart)
-- **Deployment**: Azure Static Web Apps with GitHub Actions
 - **Dependencies**: Minimal dependencies (only Next.js, React, React-DOM)
-- **No External CSS Framework**: Uses only styled-jsx, CSS modules, and global CSS
 
 ### Project Structure
 ```
@@ -53,86 +49,54 @@ site/                    # Main project directory
 ### Key Components
 
 #### Main Landing Page (`pages/index.js`)
-- **Hero Section**: Reversed video background (`club_interior_reversed_optimized.mp4`)
-- **Membership Tiers**: A-List ($35/mo or $350/year) and Rally Reserve (free) with pricing details
-- **Honcho League Section**: Registration CTA with discount code RALLYCLUB
-- **Rally Experiences Section**: Link to corporate team building and private events
-- **Facility Overview**: Interactive image gallery with lightbox
-- **Booking Process**: 4-step process visualization
-- **Location Section**: Google Maps integration
-- **FAQ Section**: Collapsible questions
+- **Hero Section**: Reversed video background
+- **Membership Tiers**: A-List ($35/mo or $350/year) and Rally Reserve (free)
+- **Sections**: Honcho League CTA, Rally Experiences link, facility gallery, booking process, location map, FAQ
 
 #### Honcho League Page (`pages/honcho.js`)
 - Detailed information about Honcho Pickleball League
 - Two competition formats: Doubles and Ladder League
-- Registration information with discount code RALLYCLUB
-- External registration link: https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-winter-2026/
+- Registration information and external registration link
 
 #### Rally Experiences Page (`pages/rally-experiences.js`)
 - Corporate team building and private event packages
 - Three pricing tiers: Starter Rally ($450), Pro Rally ($750), Ultimate Rally ($1,200)
 - Professional facilitation and guided gameplay
-- Custom photo and video packages
 - Group sizes from 8-24 participants
-- Turnkey event management
-- Contact email: rental@rallyclubpickleball.com
-- Phone: (618) 931-0015
 
 #### Merchandise Page (`pages/merch.js`)
-- Embedded Square Shop for Rally Club branded merchandise
-- Apparel, accessories, and pickleball gear
+- Embedded Square Shop for branded merchandise
 - Minimal header with "Back to Rally Club" navigation
-- Direct integration with Square Shop for checkout and payment
 
 ### Styling Approach
-- Inline JSX styles using `<style jsx>` for component-scoped CSS
-- CSS Modules for index page styling (Index.module.css)
-- Gradient backgrounds for Honcho League and Rally Experiences sections (#2D5A27 to #3E7B3E)
-- Orange accent color (#FF6600) for Rally Experiences navigation and CTAs
-- Responsive design with mobile breakpoints at 768px and 480px
-- Video background with dark overlay for text readability
+- Inline JSX styles (`<style jsx>`) and CSS Modules
+- Green gradient (#2D5A27 to #3E7B3E) for Honcho League
+- Teal gradient (#2A9BC0 to #38B5D6) for Rally Experiences
+- Slate gradient (#475569 to #64748B) for Rally Academy
+- Responsive breakpoints: 768px and 480px
 
 ### Video Optimization
-Hero video was optimized using ffmpeg:
-- Reversed playback for visual effect
-- H.264 codec with CRF 28 for web compatibility
-- Faststart flag for progressive loading
-- Audio removed (not needed for background)
-- Size reduced from 71MB to 6MB (91% reduction)
+Hero video (`club_interior_reversed_optimized.mp4`) optimized via ffmpeg: reversed playback, H.264/CRF 28, faststart, no audio. Reduced from 71MB to 6MB.
 
 ## External Integrations
-- **PicklePlanner**: Court reservation system (https://rallyclub.pickleplanner.com)
+- **PicklePlanner**: Court reservations (https://rallyclub.pickleplanner.com)
 - **Honcho Pickleball**: League registration (https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-winter-2026/)
-- **Square**: Payment processing for A-List membership and merchandise shop
-- **Square Shop**: Embedded merchandise store (https://the-rally-club-llc.square.site)
-- **Google Maps**: Location and directions
-- **Facebook**: Social media presence
+- **Square Shop**: Merchandise and payments (https://the-rally-club-llc.square.site)
+- **Google Maps**: Location embed
 
 ## Deployment
-- **Platform**: Azure Static Web Apps
-- **Build**: Automatic via GitHub Actions on push to `main`
-- **App Location**: `/site` (configured in GitHub Actions workflow)
+- **Platform**: Azure Static Web Apps via GitHub Actions on push to `main`
 - **URL**: https://www.rallyclubpickleball.com/
-- **Build Output**: Static HTML/CSS/JS exported to `site/out/` directory
-
-The site uses static export for optimal performance and hosting compatibility. All assets are stored in `site/public/` and referenced with relative paths.
+- **Build Output**: Static HTML/CSS/JS exported to `site/out/`
 
 ## SEO Configuration
-The site includes comprehensive SEO setup with:
-- Meta descriptions and keywords for each page
-- Open Graph tags for social sharing
-- Twitter Card support
-- Canonical URLs
-- Sitemap and robots.txt
-- Structured semantic HTML
+Meta descriptions, Open Graph/Twitter cards, canonical URLs, sitemap, and robots.txt configured for all pages.
 
 ## Important Notes
 - All players must be registered with PicklePlanner before playing
 - Discount code for Honcho League: **RALLYCLUB**
-- Rally Experiences contact: rental@rallyclubpickleball.com or (618) 931-0015
-- General inquiries: rally.club618@gmail.com
+- Contact emails: rental@rallyclubpickleball.com (events) | rally.club618@gmail.com (general)
+- Phone: (618) 931-0015
 - Video files in `site/public/` are large - ensure they're optimized before committing
-- The `.claude/` directory is gitignored (contains Claude Code workspace data)
-- Development work should be done in the `site/` directory, not the repository root
-- No testing framework is currently configured
-- No linting tools are currently configured
+- The `.claude/` directory is gitignored
+- No testing or linting frameworks currently configured

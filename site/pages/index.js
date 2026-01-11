@@ -54,7 +54,7 @@ export default function Home() {
         {/* Header */}
         <header className={styles.header}>
           <div className={styles.headerContent}>
-            <div className={styles.logo}>
+            <a href="/" className={styles.logo}>
               <Image
                 src="/logo-transparent.png"
                 alt="Rally Club Pickleball Logo"
@@ -63,7 +63,7 @@ export default function Home() {
                 style={{ marginRight: '0.5rem', objectFit: 'contain' }}
               />
               Rally Club Pickleball
-            </div>
+            </a>
             <nav className={styles.nav}>
               <a href="#booking" className={styles.navLink}>Book a Court</a>
               <a href="#membership" className={styles.navLink}>Membership</a>
