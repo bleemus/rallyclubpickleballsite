@@ -95,7 +95,7 @@ export default function Honcho() {
             />
             <h1 className="honcho-hero-title">Same-Partner Doubles League</h1>
             <p className="honcho-hero-subtitle">
-              Team up with 2-4 players and compete in 7 DUPR-eligible matches plus playoffs. Battle for the Head Honcho Championship and win over $500 in prizes!
+              Team up with 2-4 players and compete in 7 guaranteed DUPR-eligible matches plus playoffs. Battle for the Head Honcho Championship and win over $500 in prizes!
             </p>
             <div className="honcho-hero-cta">
               <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-early-spring-26/" className="honcho-cta-button" target="_blank" rel="noopener noreferrer">Register Now</a>
@@ -112,7 +112,7 @@ export default function Honcho() {
             <div className="detail-card">
               <div className="detail-icon">👥</div>
               <h3>Format & Schedule</h3>
-              <p>2–4 players per team, 2 compete weekly. 8-week season starting March 2, 2026 with 7 DUPR-eligible matches + playoffs.</p>
+              <p>2–4 players per team, 2 compete weekly. 8-week season starting March 2, 2026 with 7 guaranteed DUPR-eligible matches + playoffs.</p>
             </div>
             <div className="detail-card">
               <div className="detail-icon">🏆</div>
