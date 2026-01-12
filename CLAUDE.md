@@ -66,7 +66,7 @@ site/                    # Main project directory
 - Detailed information about Honcho Pickleball League
 - Two competition formats: Doubles and Ladder League
 - Registration information with discount code RALLYCLUB
-- External registration link: https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-winter-2026/
+- External registration link: https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-early-spring-26/
 
 #### Rally Experiences Page (`pages/rally-experiences.js`)
 - Corporate team building and private event packages
@@ -102,7 +102,7 @@ Hero video was optimized using ffmpeg:
 
 ## External Integrations
 - **PicklePlanner**: Court reservation system (https://rallyclub.pickleplanner.com)
-- **Honcho Pickleball**: League registration (https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-winter-2026/)
+- **Honcho Pickleball**: League registration (https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-early-spring-26/)
 - **Square**: Payment processing for A-List membership and merchandise shop
 - **Square Shop**: Embedded merchandise store (https://the-rally-club-llc.square.site)
 - **Google Maps**: Location and directions

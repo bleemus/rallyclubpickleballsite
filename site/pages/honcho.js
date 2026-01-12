@@ -12,7 +12,7 @@ export default function Honcho() {
         <title>Honcho Pickleball League | Rally Club Pickleball</title>
         <meta
           name="description"
-          content="Join the Honcho Pickleball League - the premier amateur pickleball community with doubles and ladder league formats. Registration open Oct 13-Nov 16."
+          content="Join the Honcho Pickleball League - the premier amateur pickleball community with doubles league format. Season starts March 2, 2026. Registration closes Feb 15, 2026."
         />
         <link rel="canonical" href="https://www.rallyclubpickleball.com/honcho" />
         <meta
@@ -98,7 +98,7 @@ export default function Honcho() {
               Team up with 2-4 players and compete in 7 DUPR-eligible matches plus playoffs. Battle for the Head Honcho Championship and win over $500 in prizes!
             </p>
             <div className="honcho-hero-cta">
-              <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-winter-2026/" className="honcho-cta-button" target="_blank" rel="noopener noreferrer">Register Now</a>
+              <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-early-spring-26/" className="honcho-cta-button" target="_blank" rel="noopener noreferrer">Register Now</a>
               <span className="honcho-hashtag">#HonchoFam</span>
             </div>
             <p style={{ marginTop: '1rem', fontSize: '1rem', color: '#E8F5E8' }}>Use code <strong style={{ color: '#C8F560' }}>RALLYCLUB</strong> for extra savings!</p>
@@ -112,7 +112,7 @@ export default function Honcho() {
             <div className="detail-card">
               <div className="detail-icon">👥</div>
               <h3>Format & Schedule</h3>
-              <p>2–4 players per team, 2 compete weekly. 8-week season (Dec 1 start) with 7 DUPR-eligible matches + playoffs. Break: Dec 22 - Jan 4.</p>
+              <p>2–4 players per team, 2 compete weekly. 8-week season starting March 2, 2026 with 7 DUPR-eligible matches + playoffs.</p>
             </div>
             <div className="detail-card">
               <div className="detail-icon">🏆</div>
@@ -122,7 +122,7 @@ export default function Honcho() {
             <div className="detail-card">
               <div className="detail-icon">✅</div>
               <h3>Registration</h3>
-              <p><strong>Open through Nov 16</strong><br />Fully administered gameplay, court costs included<br /><strong>Use code RALLYCLUB</strong> for savings!</p>
+              <p><strong>Closes Feb 15, 2026 at 11:59PM</strong><br />Fully administered gameplay, court costs included<br /><strong>Use code RALLYCLUB</strong> for savings!</p>
             </div>
           </div>
         </section>
@@ -173,7 +173,7 @@ export default function Honcho() {
             <h2>Ready to Compete?</h2>
             <p style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#C8F560', marginBottom: '2rem' }}>Use discount code <span style={{ fontSize: '1.3rem' }}>RALLYCLUB</span> for extra savings on top of early bird pricing!</p>
             <div className="cta-buttons">
-              <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-winter-2026/" className="honcho-button primary large" target="_blank" rel="noopener noreferrer">Register for League</a>
+              <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-early-spring-26/" className="honcho-button primary large" target="_blank" rel="noopener noreferrer">Register for League</a>
             </div>
           </div>
         </section>

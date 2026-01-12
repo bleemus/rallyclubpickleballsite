@@ -167,7 +167,7 @@ No environment variables required for basic functionality.
 
 ### External Integrations
 - **PicklePlanner**: Court booking system (https://rallyclub.pickleplanner.com)
-- **Honcho Pickleball**: League registration (https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-winter-2026/) - Use code: **RALLYCLUB**
+- **Honcho Pickleball**: League registration (https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-early-spring-26/) - Use code: **RALLYCLUB**
 - **Square**: Payment processing for A-List membership and merchandise shop
 - **Square Shop**: Embedded merchandise store (https://the-rally-club-llc.square.site)
 - **Google Maps**: Location and directions
