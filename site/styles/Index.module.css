@@ -24,6 +24,11 @@
   color: #333;
   display: flex;
   align-items: center;
+  text-decoration: none;
+}
+
+.logo:hover {
+  color: #333;
 }
 
 .nav {
@@ -44,12 +49,12 @@
 }
 
 .academyNavLink {
-  color: #1565C0 !important;
+  color: #475569 !important;
   font-weight: 600;
 }
 
 .academyNavLink:hover {
-  color: #2196F3 !important;
+  color: #64748B !important;
 }
 
 .honchoNavLink {
@@ -180,9 +185,9 @@
 }
 
 .mobileNavLink.academyLink {
-  background: linear-gradient(135deg, #1565C0 0%, #2196F3 100%);
+  background: linear-gradient(135deg, #475569 0%, #64748B 100%);
   color: white;
-  border-color: #2196F3;
+  border-color: #64748B;
 }
 
 .mobileNavLink.honchoLink {
