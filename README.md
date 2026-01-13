@@ -12,7 +12,7 @@ This is a Next.js-based website that showcases Rally Club Pickleball's facility,
 
 - 🎥 **Video Hero Section** - Reversed and optimized club interior footage as background
 - 💳 **Membership Tiers** - A-List ($35/mo or $350/year) and Rally Reserve (free) with integrated Square checkout
-- 🏆 **Honcho League Integration** - Dedicated page for Honcho Pickleball League with exclusive RALLYCLUB discount code
+- 🏆 **Honcho League Integration** - Dedicated page for Honcho Pickleball League with exclusive Hawkes discount code
 - 🎯 **Rally Experiences** - Corporate team building and private event packages with guided pickleball experiences
 - 🛍️ **Merchandise Shop** - Embedded Square Shop for Rally Club apparel and gear
 - 🏐 **Facility Overview** - Interactive image gallery with lightbox modal
@@ -131,7 +131,7 @@ Dedicated page (`/honcho`) featuring:
 - Two competition formats: Doubles League and Ladder League
 - Registration information with dates and early bird pricing
 - Community benefits and season structure
-- Discount code: **RALLYCLUB** for Rally Club members
+- Discount code: **Hawkes** for Rally Club members
 
 ### Rally Experiences
 Dedicated page (`/rally-experiences`) for corporate team building and private events:
@@ -167,7 +167,7 @@ No environment variables required for basic functionality.
 
 ### External Integrations
 - **PicklePlanner**: Court booking system (https://rallyclub.pickleplanner.com)
-- **Honcho Pickleball**: League registration (https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-early-spring-26/) - Use code: **RALLYCLUB**
+- **Honcho Pickleball**: League registration (https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-early-spring-26/) - Use code: **Hawkes**
 - **Square**: Payment processing for A-List membership and merchandise shop
 - **Square Shop**: Embedded merchandise store (https://the-rally-club-llc.square.site)
 - **Google Maps**: Location and directions

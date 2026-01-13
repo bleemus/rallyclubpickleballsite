@@ -112,7 +112,15 @@ export default function Honcho() {
             <div className="detail-card">
               <div className="detail-icon">👥</div>
               <h3>Format & Schedule</h3>
-              <p>2–4 players per team. 8-week season runs March 4 - April 29, 2026 with 7 guaranteed DUPR-eligible matches + playoffs.</p>
+              <ul style={{ textAlign: 'left', margin: 0, paddingLeft: '1.2rem', fontSize: '0.95rem', lineHeight: '1.6', color: '#666' }}>
+                <li>2–4 players per team</li>
+                <li>8-week season
+                  <ul style={{ paddingLeft: '1rem', marginTop: '0.25rem' }}>
+                    <li>March 4 - April 29, 2026</li>
+                  </ul>
+                </li>
+                <li>7 guaranteed DUPR-eligible matches</li>
+              </ul>
             </div>
             <div className="detail-card">
               <div className="detail-icon">🏆</div>
@@ -122,7 +130,7 @@ export default function Honcho() {
             <div className="detail-card">
               <div className="detail-icon">✅</div>
               <h3>Registration</h3>
-              <p><strong>Early Bird:</strong> Jan 12 - Jan 25<br /><strong>Regular:</strong> Jan 25 - Feb 15<br /><strong>Use code Hawkes</strong> for savings!</p>
+              <p><strong>Early Bird:</strong> Jan 12 - Jan 25, 2026<br /><strong>Regular:</strong> Jan 25 - Feb 15, 2026<br /><strong>Use code <span style={{ textDecoration: 'underline' }}>Hawkes</span></strong> for savings!</p>
             </div>
           </div>
         </section>
