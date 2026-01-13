@@ -55,7 +55,7 @@ site/                    # Main project directory
 #### Main Landing Page (`pages/index.js`)
 - **Hero Section**: Reversed video background (`club_interior_reversed_optimized.mp4`)
 - **Membership Tiers**: A-List ($35/mo or $350/year) and Rally Reserve (free) with pricing details
-- **Honcho League Section**: Registration CTA with discount code RALLYCLUB
+- **Honcho League Section**: Registration CTA with discount code Hawkes
 - **Rally Experiences Section**: Link to corporate team building and private events
 - **Facility Overview**: Interactive image gallery with lightbox
 - **Booking Process**: 4-step process visualization
@@ -65,8 +65,8 @@ site/                    # Main project directory
 #### Honcho League Page (`pages/honcho.js`)
 - Detailed information about Honcho Pickleball League
 - Two competition formats: Doubles and Ladder League
-- Registration information with discount code RALLYCLUB
-- External registration link: https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-winter-2026/
+- Registration information with discount code Hawkes
+- External registration link: https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-early-spring-26/
 
 #### Rally Experiences Page (`pages/rally-experiences.js`)
 - Corporate team building and private event packages
@@ -102,7 +102,7 @@ Hero video was optimized using ffmpeg:
 
 ## External Integrations
 - **PicklePlanner**: Court reservation system (https://rallyclub.pickleplanner.com)
-- **Honcho Pickleball**: League registration (https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-winter-2026/)
+- **Honcho Pickleball**: League registration (https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-early-spring-26/)
 - **Square**: Payment processing for A-List membership and merchandise shop
 - **Square Shop**: Embedded merchandise store (https://the-rally-club-llc.square.site)
 - **Google Maps**: Location and directions
@@ -128,7 +128,7 @@ The site includes comprehensive SEO setup with:
 
 ## Important Notes
 - All players must be registered with PicklePlanner before playing
-- Discount code for Honcho League: **RALLYCLUB**
+- Discount code for Honcho League: **Hawkes**
 - Rally Experiences contact: rental@rallyclubpickleball.com or (618) 931-0015
 - General inquiries: rally.club618@gmail.com
 - Video files in `site/public/` are large - ensure they're optimized before committing

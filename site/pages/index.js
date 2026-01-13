@@ -377,8 +377,8 @@ export default function Home() {
               </div>
 
               <div className={styles.honchoCta}>
-                <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-winter-2026/" className={styles.honchoButton} target="_blank" rel="noopener noreferrer">
-                  Register Now (Use Code: RALLYCLUB)
+                <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-early-spring-26/" className={styles.honchoButton} target="_blank" rel="noopener noreferrer">
+                  Register Now (Use Code: Hawkes)
                 </a>
                 <a href="/honcho" className={`${styles.honchoButton} ${styles.secondary}`}>
                   Learn More
