@@ -34,6 +34,7 @@ export default function Home() {
           name="keywords"
           content="pickleball, indoor courts, Glen Carbon IL, membership, rally club, sports facility"
         />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Rally Club Pickleball" />
         <meta
           property="og:description"
@@ -48,6 +49,93 @@ export default function Home() {
           content="Your Court. Your Crew. Your Rally. Discover the best indoor pickleball experience in Glen Carbon, IL."
         />
         <meta name="twitter:image" content="/logo-transparent.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SportsActivityLocation",
+              "name": "Rally Club Pickleball",
+              "description": "Premier indoor pickleball facility in Glen Carbon, IL with 24/7 access",
+              "url": "https://www.rallyclubpickleball.com",
+              "telephone": "(618) 931-0015",
+              "email": "rally.club618@gmail.com",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "1 Cottonwood Industrial Park",
+                "addressLocality": "Glen Carbon",
+                "addressRegion": "IL",
+                "postalCode": "62034",
+                "addressCountry": "US"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 38.7615,
+                "longitude": -89.9580
+              },
+              "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                "opens": "00:00",
+                "closes": "23:59"
+              },
+              "sameAs": [
+                "https://www.facebook.com/profile.php?id=61572523900750"
+              ]
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Do I need a membership to book?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. A-List members get the best rate and earlier booking windows. Rally Reserve guests can still book and play pay-as-you-go."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How does the door code work?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "After checkout you'll receive a unique code via email/text. It activates 20 minutes before your reservation."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What's the pricing for members vs guests?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Pricing varies by membership tier and time of day. Guests pay Rally Reserve rates. See our membership section for full details."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can I bring friends who aren't registered?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "All players must be registered with PicklePlanner & Rally Club before playing."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How do I cancel or reschedule?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Manage your booking in PicklePlanner. Policies may apply based on timing."
+                  }
+                }
+              ]
+            })
+          }}
+        />
       </Head>
 
       <div>
@@ -568,11 +656,7 @@ export default function Home() {
               </button>
               {openFaq === 2 && (
                 <div className={styles.faqAnswer}>
-                  <strong>A-List:</strong> Weekdays 9am-4pm are FREE, $20/hr all other times.
-                  <br/><br/>
-                  <strong>Rally Reserve:</strong> Every day 5am-8am is $16/hr, every day 8am-4pm is $20/hr, $40/hr all other times.
-                  <br/><br/>
-                  All guests playing on a member's reservation pay the Rally Reserve rates for court time.
+                  Pricing varies by membership tier and time of day. Guests pay Rally Reserve rates. <a href="#membership" className={styles.faqLink}>See our membership section</a> for full details.
                 </div>
               )}
             </div>
