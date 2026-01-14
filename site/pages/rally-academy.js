@@ -65,6 +65,7 @@ export default function RallyAcademy() {
           name="keywords"
           content="pickleball training, pickleball lessons, beginner pickleball, competitive pickleball, pickleball coaching, Glen Carbon IL, Rally Club"
         />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Rally Academy | Pickleball Training Programs" />
         <meta
           property="og:description"
@@ -79,6 +80,82 @@ export default function RallyAcademy() {
           content="Beginner foundation course and competitive performance sessions. Train with Rally Club Pickleball."
         />
         <meta name="twitter:image" content="/logo-transparent.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Course",
+              "name": "Rally Academy Pickleball Training Programs",
+              "description": "Pickleball training at Rally Club. 4-week beginner program on Tuesdays and training/drill lessons for 3.5-4.5 DUPR players.",
+              "provider": {
+                "@type": "Organization",
+                "name": "Rally Club Pickleball",
+                "url": "https://www.rallyclubpickleball.com"
+              },
+              "location": {
+                "@type": "Place",
+                "name": "Rally Club Pickleball",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "1 Cottonwood Industrial Park",
+                  "addressLocality": "Glen Carbon",
+                  "addressRegion": "IL",
+                  "postalCode": "62034",
+                  "addressCountry": "US"
+                }
+              },
+              "hasCourseInstance": [
+                {
+                  "@type": "CourseInstance",
+                  "name": "Beginner Program",
+                  "description": "4-week beginner pickleball program for new players and 2.5-3.0 rating. Tuesdays 1:00-2:30 pm.",
+                  "courseMode": "onsite",
+                  "offers": {
+                    "@type": "Offer",
+                    "price": "80",
+                    "priceCurrency": "USD",
+                    "url": "https://rallyclub.pickleplanner.com"
+                  }
+                },
+                {
+                  "@type": "CourseInstance",
+                  "name": "Training/Drill Lessons",
+                  "description": "60-minute focused drills for intermediate players (DUPR 3.5-4.5). Mondays 4:30-5:30 pm and Wednesdays 5:00-6:00 pm.",
+                  "courseMode": "onsite",
+                  "offers": {
+                    "@type": "Offer",
+                    "price": "20",
+                    "priceCurrency": "USD",
+                    "url": "https://rallyclub.pickleplanner.com"
+                  }
+                }
+              ]
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://www.rallyclubpickleball.com/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Rally Academy"
+                }
+              ]
+            })
+          }}
+        />
       </Head>
 
       <div className="container">
