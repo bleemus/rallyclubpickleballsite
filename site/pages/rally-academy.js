@@ -14,15 +14,15 @@ export default function RallyAcademy() {
   const faqData = [
     {
       question: "Do I need any experience for the Beginner Program?",
-      answer: "No experience needed! The Beginner Foundations Program is designed for complete beginners and players rated 2.5-3.0. We'll teach you everything from grip basics to game strategy."
+      answer: "No experience needed! The Beginner Program is designed for complete beginners and players rated 2.5-3.0. We'll teach you everything from grip basics to game strategy. Classes are Tuesdays from 1:00 to 2:30 pm."
     },
     {
       question: "What paddle should I bring?",
       answer: "Bring any paddle you have! If you don't own one yet, we have loaner paddles available. Our coaches can also help you choose the right paddle for your playing style."
     },
     {
-      question: "What skill level do I need for Performance Sessions?",
-      answer: "Performance Sessions are designed for competitive players rated 3.5-4.5. These sessions focus on advanced drills, tactical training, and tournament preparation."
+      question: "What skill level do I need for Training/Drill Lessons?",
+      answer: "Training/Drill Lessons are designed for intermediate and upper intermediate players with an estimated DUPR of 3.5-4.5. Sessions are 60 minutes on Mondays (4:30-5:30 pm) and Wednesdays (5:00-6:00 pm)."
     },
     {
       question: "What if I miss a week in the Beginner Program?",
@@ -38,17 +38,17 @@ export default function RallyAcademy() {
     {
       quote: "The beginner program was exactly what I needed. Four weeks later, I'm confidently playing with friends!",
       name: "Sarah M.",
-      program: "Beginner Foundations"
+      program: "Beginner Program"
     },
     {
-      quote: "Performance sessions pushed my game to the next level. The drills and coaching feedback are top-notch.",
+      quote: "Training sessions pushed my game to the next level. The drills and coaching feedback are top-notch.",
       name: "Mike T.",
-      program: "Performance Sessions"
+      program: "Training/Drill Lessons"
     },
     {
       quote: "Great coaching! The structured approach helped me improve faster than just playing pickup games.",
       name: "Jennifer R.",
-      program: "Beginner Foundations"
+      program: "Beginner Program"
     }
   ];
 
@@ -58,7 +58,7 @@ export default function RallyAcademy() {
         <title>Rally Academy | Pickleball Training Programs | Rally Club Pickleball</title>
         <meta
           name="description"
-          content="Pickleball training at Rally Club. 4-week beginner foundation course ($99) and competitive performance sessions ($25/session) for 3.5+ players. Glen Carbon, IL."
+          content="Pickleball training at Rally Club. 4-week beginner program ($80) on Tuesdays and training/drill lessons ($20/session) for 3.5-4.5 DUPR players. Glen Carbon, IL."
         />
         <link rel="canonical" href="https://www.rallyclubpickleball.com/rally-academy" />
         <meta
@@ -134,11 +134,11 @@ export default function RallyAcademy() {
           <div className="academy-hero-content">
             <h1 className="academy-hero-title">Pickleball Training Programs</h1>
             <p className="academy-hero-subtitle">
-              Structured coaching for beginners & performance sessions for advanced players.
+              Structured coaching for beginners & training drills for intermediate players.
             </p>
             <div className="academy-hero-cta">
               <a href="#beginner" className="academy-cta-button">Beginner Program</a>
-              <a href="#performance" className="academy-cta-button secondary">Performance Sessions</a>
+              <a href="#training" className="academy-cta-button">Training/Drill Lessons</a>
             </div>
           </div>
         </section>
@@ -177,39 +177,39 @@ export default function RallyAcademy() {
             {/* Beginner Card */}
             <div className="program-card">
               <div className="program-badge">Only 8 Spots!</div>
-              <h3 className="program-title">Beginner Foundations</h3>
+              <h3 className="program-title">Beginner Program</h3>
               <p className="program-headline">From First Paddle to Confident Player in 4 Weeks</p>
               <p className="program-description">
-                Structured lessons, simple progress, tons of fun. Perfect for anyone new or still figuring it out.
+                Structured lessons, simple progress, tons of fun. Tuesdays 1:00–2:30 pm.
               </p>
               <div className="program-price">
-                <span className="price-amount">$99</span>
+                <span className="price-amount">$80</span>
                 <span className="price-period">4-week program</span>
               </div>
               <a href="#beginner" className="program-cta">Learn More</a>
             </div>
 
-            {/* Performance Card */}
+            {/* Training/Drill Lessons Card */}
             <div className="program-card performance">
-              <h3 className="program-title">Performance Sessions</h3>
-              <p className="program-headline">Level-Up Your Game: Training for Competitive Players</p>
+              <h3 className="program-title">Training/Drill Lessons</h3>
+              <p className="program-headline">Level-Up Your Game: Drills for Intermediate Players</p>
               <p className="program-description">
-                Fast-paced drills. Tactical training. Smart coaching. Competitive play.
+                60-minute focused drills for DUPR 3.5–4.5 players. Mondays & Wednesdays.
               </p>
               <div className="program-price">
-                <span className="price-amount">$25</span>
+                <span className="price-amount">$20</span>
                 <span className="price-period">per session</span>
               </div>
-              <a href="#performance" className="program-cta">Learn More</a>
+              <a href="#training" className="program-cta">Learn More</a>
             </div>
           </div>
         </section>
 
-        {/* Beginner Foundations Detailed Section */}
+        {/* Beginner Program Detailed Section */}
         <section id="beginner" className="beginner-section">
           <div className="section-content">
-            <h2 className="section-title-light">Beginner Foundations Program</h2>
-            <p className="section-subtitle">4 weeks to confident play</p>
+            <h2 className="section-title-light">Beginner Program</h2>
+            <p className="section-subtitle">4 weeks to confident play | Tuesdays 1:00–2:30 pm</p>
 
             {/* Week by Week */}
             <div className="curriculum">
@@ -275,7 +275,7 @@ export default function RallyAcademy() {
             {/* Price Box */}
             <div className="price-box">
               <div className="price-box-content">
-                <div className="price-box-amount">$99</div>
+                <div className="price-box-amount">$80</div>
                 <div className="price-box-details">
                   <p>Complete 4-week program</p>
                   <p className="urgency">Only 8 Players Per Session!</p>
@@ -288,17 +288,29 @@ export default function RallyAcademy() {
           </div>
         </section>
 
-        {/* Performance Sessions Detailed Section */}
-        <section id="performance" className="performance-section">
+        {/* Training/Drill Lessons Detailed Section */}
+        <section id="training" className="performance-section">
           <div className="section-content">
-            <h2 className="section-title">Performance Sessions</h2>
-            <p className="section-subtitle-dark">For competitive players ready to level up</p>
+            <h2 className="section-title">Training/Drill Lessons</h2>
+            <p className="section-subtitle-dark">For intermediate players (DUPR 3.5–4.5) ready to level up</p>
+
+            {/* Schedule Info */}
+            <div className="schedule-info">
+              <div className="schedule-item">
+                <strong>Mondays</strong>
+                <span>4:30 – 5:30 pm</span>
+              </div>
+              <div className="schedule-item">
+                <strong>Wednesdays</strong>
+                <span>5:00 – 6:00 pm</span>
+              </div>
+            </div>
 
             {/* What's Included */}
             <div className="included-grid">
               <div className="included-item">
-                <h4>High-Intensity Drills</h4>
-                <p>Push your limits with focused, fast-paced training sequences.</p>
+                <h4>Focused Drills</h4>
+                <p>60-minute sessions with targeted skill development.</p>
               </div>
               <div className="included-item">
                 <h4>Tactical Training</h4>
@@ -309,31 +321,31 @@ export default function RallyAcademy() {
                 <p>Real-time coaching feedback during competitive play.</p>
               </div>
               <div className="included-item">
-                <h4>Tournament Prep</h4>
-                <p>Mental game, match strategy, and competition readiness.</p>
+                <h4>Skill Building</h4>
+                <p>Work on specific shots and techniques to improve your game.</p>
               </div>
             </div>
 
             {/* Selling Points */}
             <div className="performance-points">
               <div className="perf-point">
-                Designed for 3.5-4.5 competitive players
+                For DUPR 3.5–4.5 players
               </div>
               <div className="perf-point">
                 Drop-in format – join anytime
               </div>
               <div className="perf-point">
-                High-intensity improvement focus
+                60-minute focused sessions
               </div>
               <div className="perf-point">
-                Great for tournament prep
+                Two days per week
               </div>
             </div>
 
             {/* Price Box */}
             <div className="price-box-light">
               <div className="price-box-content">
-                <div className="price-box-amount-dark">$25</div>
+                <div className="price-box-amount-dark">$20</div>
                 <div className="price-box-details-dark">
                   <p>Per session</p>
                   <p className="urgency-dark">Limited Court Capacity</p>
@@ -387,10 +399,10 @@ export default function RallyAcademy() {
             <p className="cta-reassurance">Beginner friendly. Zero judgment. Just improvement + fun.</p>
             <div className="cta-buttons">
               <a href="https://rallyclub.pickleplanner.com" className="cta-button primary" target="_blank" rel="noopener noreferrer">
-                Beginner Program – $99
+                Beginner Program – $80/4 weeks
               </a>
-              <a href="https://rallyclub.pickleplanner.com" className="cta-button secondary" target="_blank" rel="noopener noreferrer">
-                Performance Sessions – $25
+              <a href="https://rallyclub.pickleplanner.com" className="cta-button primary" target="_blank" rel="noopener noreferrer">
+                Training/Drill Lessons – $20/session
               </a>
             </div>
           </div>
@@ -954,6 +966,33 @@ export default function RallyAcademy() {
           background: #f8f9fa;
         }
 
+        .schedule-info {
+          display: flex;
+          justify-content: center;
+          gap: 3rem;
+          margin-bottom: 3rem;
+        }
+
+        .schedule-item {
+          background: white;
+          padding: 1.5rem 2.5rem;
+          border-radius: 12px;
+          text-align: center;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .schedule-item strong {
+          display: block;
+          color: #475569;
+          font-size: 1.2rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .schedule-item span {
+          color: #666;
+          font-size: 1rem;
+        }
+
         .included-grid {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
@@ -1325,6 +1364,17 @@ export default function RallyAcademy() {
           .performance-points {
             flex-direction: column;
             align-items: center;
+          }
+
+          .schedule-info {
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+          }
+
+          .schedule-item {
+            width: 100%;
+            max-width: 300px;
           }
 
           .why-grid {
