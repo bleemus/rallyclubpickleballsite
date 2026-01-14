@@ -113,7 +113,7 @@ export default function Home() {
                   "name": "What's the pricing for members vs guests?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "A-List: Weekdays 9am-4pm are FREE, $20/hr all other times. Rally Reserve: Every day 5am-8am is $16/hr, every day 8am-4pm is $20/hr, $40/hr all other times. All guests playing on a member's reservation pay the Rally Reserve rates for court time."
+                    "text": "Pricing varies by membership tier and time of day. See our membership section for full details."
                   }
                 },
                 {
@@ -616,11 +616,7 @@ export default function Home() {
               </button>
               {openFaq === 2 && (
                 <div className={styles.faqAnswer}>
-                  <strong>A-List:</strong> Weekdays 9am-4pm are FREE, $20/hr all other times.
-                  <br/><br/>
-                  <strong>Rally Reserve:</strong> Every day 5am-8am is $16/hr, every day 8am-4pm is $20/hr, $40/hr all other times.
-                  <br/><br/>
-                  All guests playing on a member's reservation pay the Rally Reserve rates for court time.
+                  Pricing varies by membership tier and time of day. <a href="#membership" className={styles.faqLink}>See our membership section</a> for full details.
                 </div>
               )}
             </div>
