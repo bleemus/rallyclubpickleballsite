@@ -15,6 +15,9 @@ return (
         <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
+        {/* Theme color for browser chrome */}
+        <meta name="theme-color" content="#2D5A27" />
+
         {/* Preconnect to improve font loading */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
