@@ -19,6 +19,7 @@ export default function RallyExperiences() {
           name="keywords"
           content="rally experiences, team building, pickleball events, corporate team building, private events, glen carbon, rally club"
         />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Rally Experiences | Corporate Team Building" />
         <meta
           property="og:description"
@@ -33,6 +34,28 @@ export default function RallyExperiences() {
           content="Guided pickleball experiences for corporate teams and private events. Professional facilitation included."
         />
         <meta name="twitter:image" content="/logo-transparent.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://www.rallyclubpickleball.com/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Rally Experiences"
+                }
+              ]
+            })
+          }}
+        />
       </Head>
 
       <div className="container">
@@ -342,7 +365,7 @@ export default function RallyExperiences() {
             </div>
             <div className="footer-section">
               <h3>Location</h3>
-              <p>137 N. Main Street<br />Glen Carbon, IL 62034</p>
+              <p>1 Cottonwood Industrial Park<br />Glen Carbon, IL 62034</p>
             </div>
             <div className="footer-section">
               <h3>Quick Links</h3>

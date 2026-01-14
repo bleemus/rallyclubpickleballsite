@@ -19,6 +19,7 @@ export default function Honcho() {
           name="keywords"
           content="honcho pickleball, pickleball league, amateur tournament, doubles league, ladder league, glen carbon"
         />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Honcho Pickleball League" />
         <meta
           property="og:description"
@@ -33,6 +34,67 @@ export default function Honcho() {
           content="Premier amateur pickleball league with doubles and ladder formats. Registration open now!"
         />
         <meta name="twitter:image" content="/honcho-logo.svg" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SportsEvent",
+              "name": "Honcho Pickleball League at Rally Club - Early Spring 2026",
+              "description": "Honcho Pickleball League doubles competition at Rally Club Pickleball in Glen Carbon, IL. Team up with 2-4 players and compete in 7 guaranteed DUPR-eligible matches plus playoffs.",
+              "startDate": "2026-03-04",
+              "endDate": "2026-04-29",
+              "location": {
+                "@type": "Place",
+                "name": "Rally Club Pickleball",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "1 Cottonwood Industrial Park",
+                  "addressLocality": "Glen Carbon",
+                  "addressRegion": "IL",
+                  "postalCode": "62034",
+                  "addressCountry": "US"
+                }
+              },
+              "organizer": {
+                "@type": "Organization",
+                "name": "Honcho Pickleball",
+                "url": "https://honchopickleball.com"
+              },
+              "superEvent": {
+                "@type": "SportsEvent",
+                "name": "Honcho Pickleball League"
+              },
+              "offers": {
+                "@type": "Offer",
+                "url": "https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-early-spring-26/",
+                "availability": "https://schema.org/InStock"
+              }
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://www.rallyclubpickleball.com/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Honcho League"
+                }
+              ]
+            })
+          }}
+        />
       </Head>
 
       <div className="container">

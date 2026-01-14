@@ -14,14 +14,42 @@ export default function Merch() {
           name="description"
           content="Shop Rally Club Pickleball merchandise - apparel, accessories, and gear for pickleball enthusiasts."
         />
+        <meta name="keywords" content="rally club merchandise, rally club apparel, rally club pickleball, pickleball clothing" />
         <link rel="canonical" href="https://www.rallyclubpickleball.com/merch" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Rally Club Pickleball Merchandise" />
         <meta
           property="og:description"
           content="Shop Rally Club Pickleball merchandise - apparel, accessories, and gear."
         />
-        <meta property="og:image" content="/logo-transparent.png" />
+        <meta property="og:image" content="https://www.rallyclubpickleball.com/logo-transparent.png" />
         <meta property="og:url" content="https://www.rallyclubpickleball.com/merch" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Rally Club Pickleball Merchandise" />
+        <meta name="twitter:description" content="Shop official Rally Club Pickleball merchandise and apparel." />
+        <meta name="twitter:image" content="https://www.rallyclubpickleball.com/logo-transparent.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://www.rallyclubpickleball.com/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Merchandise"
+                }
+              ]
+            })
+          }}
+        />
       </Head>
 
       <div className="container">
