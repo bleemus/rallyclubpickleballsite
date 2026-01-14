@@ -113,7 +113,7 @@ export default function Home() {
                   "name": "What's the pricing for members vs guests?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Pricing varies by membership tier and time of day. See our membership section for full details."
+                    "text": "Pricing varies by membership tier and time of day. Guests pay Rally Reserve rates. See our membership section for full details."
                   }
                 },
                 {
@@ -616,7 +616,7 @@ export default function Home() {
               </button>
               {openFaq === 2 && (
                 <div className={styles.faqAnswer}>
-                  Pricing varies by membership tier and time of day. <a href="#membership" className={styles.faqLink}>See our membership section</a> for full details.
+                  Pricing varies by membership tier and time of day. Guests pay Rally Reserve rates. <a href="#membership" className={styles.faqLink}>See our membership section</a> for full details.
                 </div>
               )}
             </div>
