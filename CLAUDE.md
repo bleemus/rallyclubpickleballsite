@@ -114,3 +114,6 @@ Meta descriptions, Open Graph/Twitter cards, canonical URLs, sitemap, and robots
 - Video files in `site/public/` are large - ensure they're optimized before committing
 - The `.claude/` directory is gitignored
 - No testing or linting frameworks currently configured
+
+## Git Workflow
+- Never offer to push commits - the user will handle pushing themselves
