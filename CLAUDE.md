@@ -28,8 +28,8 @@ site/                    # Main project directory
 │   ├── index.js         # Main landing page with video hero
 │   ├── honcho.js        # Honcho Pickleball League details
 │   ├── rally-experiences.js # Corporate team building & private events
+│   ├── rally-academy.js # Training programs (Beginners Clinics & Performance Training)
 │   ├── merch.js         # Merchandise shop (embedded Square)
-│   ├── faq.js           # FAQ page
 │   ├── _app.js          # App wrapper
 │   └── _document.js     # HTML document structure
 ├── public/              # Static assets
@@ -52,11 +52,11 @@ site/                    # Main project directory
 - **Hero Section**: Reversed video background (`club_interior_reversed_optimized.mp4`)
 - **Membership Tiers**: A-List ($35/mo or $350/year) and Rally Reserve (free) with pricing details
 - **Honcho League Section**: Registration CTA with discount code Hawkes
+- **Rally Academy Section**: Link to training programs
 - **Rally Experiences Section**: Link to corporate team building and private events
 - **Facility Overview**: Interactive image gallery with lightbox
 - **Booking Process**: 4-step process visualization
 - **Location Section**: Google Maps integration
-- **FAQ Section**: Collapsible questions
 
 #### Honcho League Page (`pages/honcho.js`)
 - Detailed information about Honcho Pickleball League
@@ -69,6 +69,12 @@ site/                    # Main project directory
 - Three pricing tiers: Starter Rally ($450), Pro Rally ($750), Ultimate Rally ($1,200)
 - Professional facilitation and guided gameplay
 - Group sizes from 8-24 participants
+
+#### Rally Academy Page (`pages/rally-academy.js`)
+- **Beginners Clinics**: 4-week program ($80) for new players, Tuesdays 1:00-2:30 pm
+- **Performance Training**: Drop-in sessions ($20) for DUPR 3.5-4.5 players, Mondays & Wednesdays
+- Registration via Square (Beginners Clinics) and PicklePlanner (Performance Training)
+- FAQ sections for each program type
 
 #### Merchandise Page (`pages/merch.js`)
 - Embedded Square Shop for branded merchandise

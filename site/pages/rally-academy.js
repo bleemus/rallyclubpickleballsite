@@ -5,32 +5,48 @@ import Link from 'next/link';
 
 export default function RallyAcademy() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [openFaq, setOpenFaq] = useState(null);
+  const [openBeginnerFaq, setOpenBeginnerFaq] = useState(null);
+  const [openPerformanceFaq, setOpenPerformanceFaq] = useState(null);
 
-  const toggleFaq = (index) => {
-    setOpenFaq(openFaq === index ? null : index);
+  const toggleBeginnerFaq = (index) => {
+    setOpenBeginnerFaq(openBeginnerFaq === index ? null : index);
   };
 
-  const faqData = [
+  const togglePerformanceFaq = (index) => {
+    setOpenPerformanceFaq(openPerformanceFaq === index ? null : index);
+  };
+
+  const beginnersFaqData = [
     {
-      question: "Do I need any experience for the Beginner Program?",
-      answer: "No experience needed! The Beginner Program is designed for complete beginners and players rated 2.5-3.0. We'll teach you everything from grip basics to game strategy. Classes are Tuesdays from 1:00 to 2:30 pm."
+      question: "Do I need any experience?",
+      answer: "No experience needed! Beginners Clinics are designed for complete beginners and players rated 2.5-3.0. We'll teach you everything from grip basics to game strategy."
     },
     {
       question: "What paddle should I bring?",
-      answer: "Bring any paddle you have! If you don't own one yet, we have loaner paddles available. Our coaches can also help you choose the right paddle for your playing style."
+      answer: "For Beginners Clinics, bring any paddle you have! If you don't own one yet, we have loaner paddles available. Our coaches can also help you choose the right paddle for your playing style."
     },
     {
-      question: "What skill level do I need for Drills & Clinics?",
-      answer: "Drills & Clinics are designed for intermediate and upper intermediate players with an estimated DUPR of 3.5-4.5. Sessions are 60 minutes on Mondays (4:30-5:30 pm) and Wednesdays (5:00-6:00 pm)."
+      question: "What if I miss a week?",
+      answer: "Beginners Clinics require consistent attendance to ensure all participants progress together. If you know you'll miss a week, please contact us before signing up to discuss options."
     },
     {
-      question: "What if I miss a week in the Beginner Program?",
-      answer: "The Beginner Program requires consistent attendance to ensure all participants progress together. If you know you'll miss a week, please contact us before signing up to discuss options."
+      question: <>{"Is it "}<i>really</i>{" beginner-friendly?"}</>,
+      answer: "Absolutely! Beginners Clinics are taught by coaches who create a supportive, zero-pressure environment. You'll learn alongside other beginners, and we focus on making improvement fun. No judgment, just pickleball!"
+    }
+  ];
+
+  const performanceFaqData = [
+    {
+      question: "What skill level do I need?",
+      answer: "Performance Training is designed for intermediate and upper intermediate players with an estimated DUPR of 3.5-4.5."
     },
     {
-      question: "Is it really beginner-friendly?",
-      answer: "Absolutely! Our coaches create a supportive, zero-pressure environment. You'll learn alongside other beginners, and we focus on making improvement fun. No judgment, just pickleball!"
+      question: "Do I need to commit to a schedule?",
+      answer: "No! Performance Training uses a drop-in format. Sign up for any session that works for your schedule."
+    },
+    {
+      question: "What will I work on?",
+      answer: "Performance Training sessions include focused drills, tactical training, game analysis, and skill building tailored to intermediate players looking to level up."
     }
   ];
 
@@ -40,7 +56,7 @@ export default function RallyAcademy() {
         <title>Rally Academy | Pickleball Training Programs | Rally Club Pickleball</title>
         <meta
           name="description"
-          content="Pickleball training at Rally Club. 4-week beginner program ($80) on Tuesdays and training/drill lessons ($20/session) for 3.5-4.5 DUPR players. Glen Carbon, IL."
+          content="Pickleball training at Rally Club. Beginners Clinics ($80/4 weeks) on Tuesdays and Performance Training ($20/session) for 3.5-4.5 DUPR players. Glen Carbon, IL."
         />
         <link rel="canonical" href="https://www.rallyclubpickleball.com/rally-academy" />
         <meta
@@ -51,7 +67,7 @@ export default function RallyAcademy() {
         <meta property="og:title" content="Rally Academy | Pickleball Training Programs" />
         <meta
           property="og:description"
-          content="Structured coaching for beginners & performance sessions for advanced players. Join Rally Academy at Rally Club Pickleball."
+          content="Beginners Clinics for new players & Performance Training for intermediate players. Join Rally Academy at Rally Club Pickleball."
         />
         <meta property="og:image" content="/logo-transparent.png" />
         <meta property="og:url" content="https://www.rallyclubpickleball.com/rally-academy" />
@@ -59,7 +75,7 @@ export default function RallyAcademy() {
         <meta name="twitter:title" content="Rally Academy | Pickleball Training" />
         <meta
           name="twitter:description"
-          content="Beginner foundation course and competitive performance sessions. Train with Rally Club Pickleball."
+          content="Beginners Clinics and Performance Training sessions. Train with Rally Club Pickleball."
         />
         <meta name="twitter:image" content="/logo-transparent.png" />
         <script
@@ -69,7 +85,7 @@ export default function RallyAcademy() {
               "@context": "https://schema.org",
               "@type": "Course",
               "name": "Rally Academy Pickleball Training Programs",
-              "description": "Pickleball training at Rally Club. 4-week beginner program on Tuesdays and training/drill lessons for 3.5-4.5 DUPR players.",
+              "description": "Pickleball training at Rally Club. Beginners Clinics on Tuesdays and Performance Training for 3.5-4.5 DUPR players.",
               "provider": {
                 "@type": "Organization",
                 "name": "Rally Club Pickleball",
@@ -90,26 +106,26 @@ export default function RallyAcademy() {
               "hasCourseInstance": [
                 {
                   "@type": "CourseInstance",
-                  "name": "Beginner Program",
+                  "name": "Beginners Clinics",
                   "description": "4-week beginner pickleball program for new players and 2.5-3.0 rating. Tuesdays 1:00-2:30 pm.",
                   "courseMode": "onsite",
                   "offers": {
                     "@type": "Offer",
                     "price": "80",
                     "priceCurrency": "USD",
-                    "url": "https://rallyclub.pickleplanner.com"
+                    "url": "https://square.link/u/k6oFr2Fw"
                   }
                 },
                 {
                   "@type": "CourseInstance",
-                  "name": "Drills & Clinics",
+                  "name": "Performance Training",
                   "description": "60-minute focused drills for intermediate players (DUPR 3.5-4.5). Mondays 4:30-5:30 pm and Wednesdays 5:00-6:00 pm.",
                   "courseMode": "onsite",
                   "offers": {
                     "@type": "Offer",
                     "price": "20",
                     "priceCurrency": "USD",
-                    "url": "https://rallyclub.pickleplanner.com"
+                    "url": "https://rallyclub.pickleplanner.com/event/7a812974-29c0-4907-8929-26ad3cb8123e"
                   }
                 }
               ]
@@ -196,8 +212,8 @@ export default function RallyAcademy() {
               Structured coaching for beginners & training drills for intermediate players.
             </p>
             <div className="academy-hero-cta">
-              <a href="#beginner" className="academy-cta-button">Beginner Program</a>
-              <a href="#training" className="academy-cta-button">Drills & Clinics</a>
+              <a href="#beginner" className="academy-cta-button">Beginners Clinics</a>
+              <a href="#training" className="academy-cta-button">Performance Training</a>
             </div>
           </div>
         </section>
@@ -236,7 +252,7 @@ export default function RallyAcademy() {
             {/* Beginner Card */}
             <div className="program-card">
               <div className="program-badge">Only 8 Spots!</div>
-              <h3 className="program-title">Beginner Program</h3>
+              <h3 className="program-title">Beginners Clinics</h3>
               <p className="program-headline">From First Paddle to Confident Player in 4 Weeks</p>
               <p className="program-description">
                 Structured lessons, simple progress, tons of fun. Tuesdays 1:00–2:30 pm.
@@ -248,9 +264,9 @@ export default function RallyAcademy() {
               <a href="#beginner" className="program-cta">Learn More</a>
             </div>
 
-            {/* Drills & Clinics Card */}
+            {/* Performance Training Card */}
             <div className="program-card performance">
-              <h3 className="program-title">Drills & Clinics</h3>
+              <h3 className="program-title">Performance Training</h3>
               <p className="program-headline">Level-Up Your Game: Drills for Intermediate Players</p>
               <p className="program-description">
                 60-minute focused drills for DUPR 3.5–4.5 players. Mondays & Wednesdays.
@@ -264,11 +280,20 @@ export default function RallyAcademy() {
           </div>
         </section>
 
-        {/* Beginner Program Detailed Section */}
+        {/* Beginners Clinics Detailed Section */}
         <section id="beginner" className="beginner-section">
           <div className="section-content">
-            <h2 className="section-title-light">Beginner Program</h2>
-            <p className="section-subtitle">4 weeks to confident play | Tuesdays 1:00–2:30 pm</p>
+            <h2 className="section-title-light">Beginners Clinics</h2>
+            <p className="section-subtitle">4 weeks to confident play</p>
+
+            {/* Schedule Info */}
+            <div className="schedule-box-dark">
+              <h3 className="schedule-title-dark">Session Times</h3>
+              <div className="schedule-slot-single">
+                <span className="slot-day-dark">Tuesdays</span>
+                <span className="slot-time-dark">1:00 – 2:30 pm</span>
+              </div>
+            </div>
 
             {/* Week by Week */}
             <div className="curriculum">
@@ -331,37 +356,49 @@ export default function RallyAcademy() {
               </div>
             </div>
 
-            {/* Price Box */}
-            <div className="price-box">
-              <div className="price-box-content">
+            {/* Sign Up Box */}
+            <div className="signup-box">
+              <div className="signup-box-header">
                 <div className="price-box-amount">$80</div>
                 <div className="price-box-details">
                   <p>Complete 4-week program</p>
                   <p className="urgency">Only 8 Players Per Session!</p>
                 </div>
               </div>
-              <a href="https://rallyclub.pickleplanner.com" className="price-box-cta" target="_blank" rel="noopener noreferrer">
+              <div className="signup-box-steps">
+                <h4 className="steps-title">How to Join</h4>
+                <ol className="instructions-list">
+                  <li>Choose and pay for your session using the button below</li>
+                  <li>The instructor will add you to the session</li>
+                  <li>The instructor will reach out to answer any questions</li>
+                </ol>
+              </div>
+              <a href="https://square.link/u/k6oFr2Fw" className="price-box-cta" target="_blank" rel="noopener noreferrer">
                 Sign Up
               </a>
             </div>
           </div>
         </section>
 
-        {/* Drills & Clinics Detailed Section */}
+        {/* Performance Training Detailed Section */}
         <section id="training" className="performance-section">
           <div className="section-content">
-            <h2 className="section-title">Drills & Clinics</h2>
+            <h2 className="section-title">Performance Training</h2>
             <p className="section-subtitle-dark">For intermediate players (DUPR 3.5–4.5) ready to level up</p>
 
             {/* Schedule Info */}
-            <div className="schedule-info">
-              <div className="schedule-item">
-                <strong>Mondays</strong>
-                <span>4:30 – 5:30 pm</span>
-              </div>
-              <div className="schedule-item">
-                <strong>Wednesdays</strong>
-                <span>5:00 – 6:00 pm</span>
+            <div className="schedule-box">
+              <h3 className="schedule-title">Session Times</h3>
+              <div className="schedule-slots">
+                <div className="schedule-slot">
+                  <span className="slot-day">Mondays</span>
+                  <span className="slot-time">4:30 – 5:30 pm</span>
+                </div>
+                <div className="schedule-divider"></div>
+                <div className="schedule-slot">
+                  <span className="slot-day">Wednesdays</span>
+                  <span className="slot-time">5:00 – 6:00 pm</span>
+                </div>
               </div>
             </div>
 
@@ -396,21 +433,25 @@ export default function RallyAcademy() {
               <div className="perf-point">
                 60-minute focused sessions
               </div>
-              <div className="perf-point">
-                Two days per week
-              </div>
             </div>
 
-            {/* Price Box */}
-            <div className="price-box-light">
-              <div className="price-box-content">
+            {/* Sign Up Box */}
+            <div className="signup-box-light">
+              <div className="signup-box-header-light">
                 <div className="price-box-amount-dark">$20</div>
                 <div className="price-box-details-dark">
                   <p>Per session</p>
                   <p className="urgency-dark">Limited Court Capacity</p>
                 </div>
               </div>
-              <a href="https://rallyclub.pickleplanner.com" className="price-box-cta-dark" target="_blank" rel="noopener noreferrer">
+              <div className="signup-box-steps-light">
+                <h4 className="steps-title-dark">How to Join</h4>
+                <ol className="instructions-list-dark">
+                  <li>Visit PicklePlanner using the button below</li>
+                  <li>Sign up for the sessions you want to join</li>
+                </ol>
+              </div>
+              <a href="https://rallyclub.pickleplanner.com/event/7a812974-29c0-4907-8929-26ad3cb8123e" className="price-box-cta-dark" target="_blank" rel="noopener noreferrer">
                 Reserve Your Spot
               </a>
             </div>
@@ -419,19 +460,40 @@ export default function RallyAcademy() {
 
         {/* FAQ Section */}
         <section className="faq-section">
-          <h2 className="section-title">Frequently Asked Questions</h2>
-          <div className="faq-container">
-            {faqData.map((faq, index) => (
-              <div key={index} className={`faq-item ${openFaq === index ? 'open' : ''}`}>
-                <button className="faq-question" onClick={() => toggleFaq(index)}>
-                  {faq.question}
-                  <span className="faq-toggle">{openFaq === index ? '−' : '+'}</span>
-                </button>
-                <div className="faq-answer">
-                  <p>{faq.answer}</p>
-                </div>
+          <h2 className="section-title-light">Frequently Asked Questions</h2>
+          <div className="faq-grid">
+            <div className="faq-column">
+              <h3 className="faq-column-title">Beginners Clinics</h3>
+              <div className="faq-container">
+                {beginnersFaqData.map((faq, index) => (
+                  <div key={index} className={`faq-item ${openBeginnerFaq === index ? 'open' : ''}`}>
+                    <button className="faq-question" onClick={() => toggleBeginnerFaq(index)}>
+                      <span>{faq.question}</span>
+                      <span className="faq-toggle">{openBeginnerFaq === index ? '−' : '+'}</span>
+                    </button>
+                    <div className="faq-answer">
+                      <p>{faq.answer}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+            <div className="faq-column">
+              <h3 className="faq-column-title">Performance Training</h3>
+              <div className="faq-container">
+                {performanceFaqData.map((faq, index) => (
+                  <div key={index} className={`faq-item ${openPerformanceFaq === index ? 'open' : ''}`}>
+                    <button className="faq-question" onClick={() => togglePerformanceFaq(index)}>
+                      <span>{faq.question}</span>
+                      <span className="faq-toggle">{openPerformanceFaq === index ? '−' : '+'}</span>
+                    </button>
+                    <div className="faq-answer">
+                      <p>{faq.answer}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
@@ -441,11 +503,11 @@ export default function RallyAcademy() {
             <h2>Join Our Training – Let's Get You Better, Faster</h2>
             <p className="cta-reassurance">Beginner friendly. Zero judgment. Just improvement + fun.</p>
             <div className="cta-buttons">
-              <a href="https://rallyclub.pickleplanner.com" className="cta-button primary" target="_blank" rel="noopener noreferrer">
-                Beginner Program – $80/4 weeks
+              <a href="https://square.link/u/k6oFr2Fw" className="cta-button primary" target="_blank" rel="noopener noreferrer">
+                Beginners Clinics – $80 per 4 weeks
               </a>
-              <a href="https://rallyclub.pickleplanner.com" className="cta-button primary" target="_blank" rel="noopener noreferrer">
-                Drills & Clinics – $20/session
+              <a href="https://rallyclub.pickleplanner.com/event/7a812974-29c0-4907-8929-26ad3cb8123e" className="cta-button primary" target="_blank" rel="noopener noreferrer">
+                Performance Training – $20 per session
               </a>
             </div>
           </div>
@@ -957,23 +1019,50 @@ export default function RallyAcademy() {
           color: #CBD5E1;
         }
 
-        /* Price Box */
-        .price-box {
+        /* Sign Up Box */
+        .signup-box {
           background: rgba(255, 255, 255, 0.15);
           padding: 2rem;
           border-radius: 16px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
           backdrop-filter: blur(5px);
-          max-width: 600px;
+          max-width: 650px;
           margin: 0 auto;
+          text-align: center;
         }
 
-        .price-box-content {
+        .signup-box-header {
           display: flex;
           align-items: center;
+          justify-content: center;
           gap: 1.5rem;
+          margin-bottom: 1.5rem;
+          padding-bottom: 1.5rem;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .signup-box-steps {
+          margin-bottom: 1.75rem;
+        }
+
+        .steps-title {
+          font-size: 1.1rem;
+          margin-bottom: 0.75rem;
+          color: white;
+        }
+
+        .instructions-list {
+          color: #CBD5E1;
+          font-size: 1rem;
+          line-height: 1.7;
+          margin: 0 auto;
+          text-align: left;
+          padding-left: 1.25rem;
+          display: inline-block;
+        }
+
+        .instructions-list li {
+          margin-bottom: 0.4rem;
+          white-space: nowrap;
         }
 
         .price-box-amount {
@@ -1011,31 +1100,85 @@ export default function RallyAcademy() {
           background: #f8f9fa;
         }
 
-        .schedule-info {
-          display: flex;
-          justify-content: center;
-          gap: 3rem;
-          margin-bottom: 3rem;
-        }
-
-        .schedule-item {
+        .schedule-box {
           background: white;
-          padding: 1.5rem 2.5rem;
-          border-radius: 12px;
+          padding: 1.5rem 3rem;
+          border-radius: 16px;
           text-align: center;
-          box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+          box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+          max-width: 500px;
+          margin: 0 auto 3rem;
         }
 
-        .schedule-item strong {
-          display: block;
+        .schedule-title {
           color: #475569;
-          font-size: 1.2rem;
-          margin-bottom: 0.5rem;
+          font-size: 1.1rem;
+          margin-bottom: 1rem;
+          font-weight: 600;
         }
 
-        .schedule-item span {
+        .schedule-slots {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 2.5rem;
+        }
+
+        .schedule-slot {
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+        }
+
+        .slot-day {
+          color: #475569;
+          font-weight: 600;
+          font-size: 1.05rem;
+        }
+
+        .slot-time {
           color: #666;
-          font-size: 1rem;
+          font-size: 0.95rem;
+        }
+
+        .schedule-divider {
+          width: 1px;
+          height: 40px;
+          background: #e2e8f0;
+        }
+
+        .schedule-box-dark {
+          background: rgba(255, 255, 255, 0.15);
+          padding: 1.5rem 3rem;
+          border-radius: 16px;
+          text-align: center;
+          backdrop-filter: blur(5px);
+          max-width: 300px;
+          margin: 0 auto 3rem;
+        }
+
+        .schedule-title-dark {
+          color: white;
+          font-size: 1.1rem;
+          margin-bottom: 1rem;
+          font-weight: 600;
+        }
+
+        .schedule-slot-single {
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+        }
+
+        .slot-day-dark {
+          color: white;
+          font-weight: 600;
+          font-size: 1.05rem;
+        }
+
+        .slot-time-dark {
+          color: #CBD5E1;
+          font-size: 0.95rem;
         }
 
         .included-grid {
@@ -1089,17 +1232,50 @@ export default function RallyAcademy() {
           margin-right: 0.5rem;
         }
 
-        /* Price Box Light */
-        .price-box-light {
+        /* Sign Up Box Light */
+        .signup-box-light {
           background: white;
           padding: 2rem;
           border-radius: 16px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+          max-width: 650px;
+          margin: 0 auto;
+          text-align: center;
+        }
+
+        .signup-box-header-light {
           display: flex;
           align-items: center;
-          justify-content: space-between;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-          max-width: 600px;
+          justify-content: center;
+          gap: 1.5rem;
+          margin-bottom: 1.5rem;
+          padding-bottom: 1.5rem;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .signup-box-steps-light {
+          margin-bottom: 1.75rem;
+        }
+
+        .steps-title-dark {
+          font-size: 1.1rem;
+          margin-bottom: 0.75rem;
+          color: #475569;
+        }
+
+        .instructions-list-dark {
+          color: #666;
+          font-size: 1rem;
+          line-height: 1.7;
           margin: 0 auto;
+          text-align: left;
+          padding-left: 1.25rem;
+          display: inline-block;
+        }
+
+        .instructions-list-dark li {
+          margin-bottom: 0.4rem;
+          white-space: nowrap;
         }
 
         .price-box-amount-dark {
@@ -1170,20 +1346,44 @@ export default function RallyAcademy() {
         /* FAQ Section */
         .faq-section {
           padding: 5rem 2rem;
-          background: #f8f9fa;
+          background: linear-gradient(135deg, #475569 0%, #64748B 100%);
+          color: white;
+        }
+
+        .faq-grid {
+          max-width: 1100px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 3rem;
+        }
+
+        .faq-column {
+
+        }
+
+        .faq-column-title {
+          font-size: 1.5rem;
+          color: white;
+          margin-bottom: 1.5rem;
+          padding-bottom: 0.75rem;
+          text-align: center;
+          font-weight: 600;
+          border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+          display: inline-block;
+          width: 100%;
         }
 
         .faq-container {
-          max-width: 700px;
-          margin: 0 auto;
+
         }
 
         .faq-item {
-          background: white;
+          background: rgba(255, 255, 255, 0.1);
           border-radius: 12px;
           margin-bottom: 1rem;
           overflow: hidden;
-          box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+          backdrop-filter: blur(5px);
         }
 
         .faq-question {
@@ -1192,22 +1392,22 @@ export default function RallyAcademy() {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          background: white;
+          background: rgba(255, 255, 255, 0.1);
           border: none;
           cursor: pointer;
           font-size: 1rem;
           font-weight: 600;
-          color: #333;
+          color: white;
           text-align: left;
         }
 
         .faq-question:hover {
-          background: #f8f9fa;
+          background: rgba(255, 255, 255, 0.2);
         }
 
         .faq-toggle {
           font-size: 1.5rem;
-          color: #64748B;
+          color: white;
           font-weight: bold;
         }
 
@@ -1223,7 +1423,7 @@ export default function RallyAcademy() {
 
         .faq-answer p {
           padding: 0 1.5rem 1.5rem;
-          color: #666;
+          color: #CBD5E1;
           line-height: 1.6;
         }
 
@@ -1349,16 +1549,16 @@ export default function RallyAcademy() {
             grid-template-columns: repeat(2, 1fr);
           }
 
-          .price-box,
-          .price-box-light {
+          .signup-box-header,
+          .signup-box-header-light {
             flex-direction: column;
             text-align: center;
-            gap: 1.5rem;
+            gap: 1rem;
           }
 
-          .price-box-content {
-            flex-direction: column;
-            gap: 0.5rem;
+          .instructions-list li,
+          .instructions-list-dark li {
+            white-space: normal;
           }
 
           .included-grid {
@@ -1370,19 +1570,23 @@ export default function RallyAcademy() {
             align-items: center;
           }
 
-          .schedule-info {
+          .schedule-slots {
             flex-direction: column;
             gap: 1rem;
-            align-items: center;
           }
 
-          .schedule-item {
-            width: 100%;
-            max-width: 300px;
+          .schedule-divider {
+            width: 80px;
+            height: 1px;
           }
 
           .why-grid {
             grid-template-columns: repeat(2, 1fr);
+          }
+
+          .faq-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
           }
 
           .section-title,

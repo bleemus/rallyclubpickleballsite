@@ -488,11 +488,11 @@ export default function Home() {
                 From beginner foundations to competitive performance sessions. Structured coaching to take your game to the next level.
               </p>
               <div className={styles.programHighlights}>
-                <span>4-Week Beginner Course</span>
-                <span>3.5+ Performance Sessions</span>
+                <span>Beginner Course</span>
+                <span>3.5+ Sessions</span>
                 <span>Expert Coaching</span>
               </div>
-              <a href="/rally-academy" className={styles.programButton}>
+              <a href="/rally-academy" className={styles.programButtonSlate}>
                 Explore Training Programs
               </a>
             </div>
@@ -693,7 +693,7 @@ export default function Home() {
 
         {/* Contact */}
         <section id="contact" className={styles.contact}>
-          <h2 className={styles.contactTitle}>Have more questions? Contact us!</h2>
+          <h2 className={styles.contactTitle}>Have more questions?</h2>
           <a href="mailto:rally.club618@gmail.com" className={styles.contactButton}>Contact Us</a>
         </section>
 

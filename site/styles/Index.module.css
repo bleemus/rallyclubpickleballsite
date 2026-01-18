@@ -298,8 +298,8 @@
 }
 
 .benefitIcon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
 }
 
 .benefitItem h3 {
@@ -970,6 +970,22 @@
   background: #E65100;
 }
 
+.programButtonSlate {
+  display: inline-block;
+  background: linear-gradient(135deg, #475569 0%, #64748B 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.programButtonSlate:hover {
+  background: linear-gradient(135deg, #3d4a5c 0%, #586d7f 100%);
+  transform: translateY(-2px);
+}
+
 /* Facility */
 .facility {
   padding: 2.5rem 2rem;
@@ -1399,7 +1415,7 @@
   }
 
   .benefitIcon {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-bottom: 0.5rem;
   }
 
