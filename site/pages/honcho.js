@@ -101,7 +101,7 @@ export default function Honcho() {
         {/* Header */}
         <header className="header">
           <div className="header-content">
-            <div className="logo">
+            <a href="/" className="logo">
               <Image
                 src="/logo-transparent.png"
                 alt="Rally Club Pickleball Logo"
@@ -110,13 +110,13 @@ export default function Honcho() {
                 style={{ marginRight: '0.5rem', objectFit: 'contain' }}
               />
               Rally Club Pickleball
-            </div>
+            </a>
             <nav className="nav">
               <a href="/#booking" className="nav-link">Book a Court</a>
               <a href="/#membership" className="nav-link">Membership</a>
               <a href="/merch" className="nav-link">Merch</a>
-              <a href="/#contact" className="nav-link">Contact</a>
               <a href="/honcho" className="nav-link honcho-nav-link active">Honcho League</a>
+              <a href="/rally-academy" className="nav-link academy-nav-link">Rally Academy</a>
               <a href="/rally-experiences" className="nav-link rally-nav-link">Rally Experiences</a>
             </nav>
             <button
@@ -139,8 +139,8 @@ export default function Honcho() {
             <a href="/#booking" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Book a Court</a>
             <a href="/#membership" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Membership</a>
             <a href="/merch" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Merch</a>
-            <a href="/#contact" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Contact</a>
             <a href="/honcho" className="mobile-nav-link honcho-link active" onClick={() => setMobileMenuOpen(false)}>Honcho League</a>
+            <a href="/rally-academy" className="mobile-nav-link academy-link" onClick={() => setMobileMenuOpen(false)}>Rally Academy</a>
             <a href="/rally-experiences" className="mobile-nav-link rally-link" onClick={() => setMobileMenuOpen(false)}>Rally Experiences</a>
           </nav>
         </div>
@@ -269,6 +269,7 @@ export default function Honcho() {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           line-height: 1.6;
           color: #333;
+          overflow-x: hidden;
         }
 
         /* Header */
@@ -326,6 +327,15 @@ export default function Honcho() {
         .honcho-nav-link:hover,
         .honcho-nav-link.active {
           color: #3E7B3E !important;
+        }
+
+        .academy-nav-link {
+          color: #475569 !important;
+          font-weight: 600;
+        }
+
+        .academy-nav-link:hover {
+          color: #64748B !important;
         }
 
         .rally-nav-link {
@@ -444,6 +454,12 @@ export default function Honcho() {
           background: rgba(45, 90, 39, 0.2);
           border-color: #2D5A27;
           color: #2D5A27;
+        }
+
+        .mobile-nav-link.academy-link {
+          background: linear-gradient(135deg, #475569 0%, #64748B 100%);
+          color: white;
+          border-color: #64748B;
         }
 
         .mobile-nav-link.honcho-link {
@@ -945,7 +961,13 @@ export default function Honcho() {
             font-size: 2rem;
           }
 
-          .benefits-grid {
+          .details-grid-compact {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+          }
+
+          .benefits-grid,
+          .benefits-grid-compact {
             grid-template-columns: 1fr;
           }
 

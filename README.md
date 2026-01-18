@@ -18,7 +18,7 @@ This is a Next.js-based website that showcases Rally Club Pickleball's facility,
 - 🏐 **Facility Overview** - Interactive image gallery with lightbox modal
 - 📅 **Booking Integration** - Direct links to PicklePlanner 24/7 booking system
 - 📍 **Location & Hours** - Google Maps integration with facility information
-- ❓ **FAQ Section** - Interactive collapsible frequently asked questions
+- 🎓 **Rally Academy** - Training programs for beginners and intermediate players
 - 🔍 **SEO Optimized** - Meta tags, Open Graph, Twitter Card, sitemap, and robots.txt
 - 📱 **Fully Responsive** - Mobile-optimized design with breakpoints at 768px and 480px
 
@@ -88,8 +88,8 @@ site/
 │   ├── index.js             # Main landing page with video hero
 │   ├── honcho.js            # Honcho Pickleball League details
 │   ├── rally-experiences.js # Corporate team building & private events
+│   ├── rally-academy.js     # Training programs (Beginners Clinics & Performance Training)
 │   ├── merch.js             # Merchandise shop (embedded Square)
-│   ├── faq.js               # FAQ page
 │   ├── _app.js              # App wrapper
 │   └── _document.js         # HTML document structure
 ├── public/                  # Static assets

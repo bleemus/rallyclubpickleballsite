@@ -24,6 +24,11 @@
   color: #333;
   display: flex;
   align-items: center;
+  text-decoration: none;
+}
+
+.logo:hover {
+  color: #333;
 }
 
 .nav {
@@ -41,6 +46,15 @@
 
 .navLink:hover {
   color: #FF6600;
+}
+
+.academyNavLink {
+  color: #475569 !important;
+  font-weight: 600;
+}
+
+.academyNavLink:hover {
+  color: #64748B !important;
 }
 
 .honchoNavLink {
@@ -170,6 +184,12 @@
   color: #FF6600;
 }
 
+.mobileNavLink.academyLink {
+  background: linear-gradient(135deg, #475569 0%, #64748B 100%);
+  color: white;
+  border-color: #64748B;
+}
+
 .mobileNavLink.honchoLink {
   background: linear-gradient(135deg, #2D5A27 0%, #3E7B3E 100%);
   color: white;
@@ -278,8 +298,8 @@
 }
 
 .benefitIcon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
 }
 
 .benefitItem h3 {
@@ -853,6 +873,119 @@
   flex-wrap: wrap;
 }
 
+/* Programs Section */
+.programsSection {
+  padding: 4rem 2rem;
+  background: #f0f4f8;
+}
+
+.programsGrid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.programCard {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.programCard:hover {
+  transform: translateY(-5px);
+}
+
+.programIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.programTitle {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.programTagline {
+  font-size: 1rem;
+  color: #666;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.programDescription {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.programHighlights {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.programHighlights span {
+  background: #f0f4f8;
+  color: #555;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.programButton {
+  display: inline-block;
+  background: #2196F3;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.programButton:hover {
+  background: #1565C0;
+}
+
+.programButtonOrange {
+  display: inline-block;
+  background: #FF6600;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.programButtonOrange:hover {
+  background: #E65100;
+}
+
+.programButtonSlate {
+  display: inline-block;
+  background: linear-gradient(135deg, #475569 0%, #64748B 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.programButtonSlate:hover {
+  background: linear-gradient(135deg, #3d4a5c 0%, #586d7f 100%);
+  transform: translateY(-2px);
+}
+
 /* Facility */
 .facility {
   padding: 2.5rem 2rem;
@@ -1282,7 +1415,7 @@
   }
 
   .benefitIcon {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-bottom: 0.5rem;
   }
 
@@ -1301,6 +1434,14 @@
 
   .facilityGrid {
     grid-template-columns: 1fr;
+  }
+
+  .programsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .programCard {
+    padding: 2rem;
   }
 
   .locationContent {
