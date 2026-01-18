@@ -269,6 +269,7 @@ export default function Honcho() {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           line-height: 1.6;
           color: #333;
+          overflow-x: hidden;
         }
 
         /* Header */
@@ -960,7 +961,13 @@ export default function Honcho() {
             font-size: 2rem;
           }
 
-          .benefits-grid {
+          .details-grid-compact {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+          }
+
+          .benefits-grid,
+          .benefits-grid-compact {
             grid-template-columns: 1fr;
           }
 
