@@ -488,7 +488,7 @@ export default function Home() {
                 From beginner foundations to competitive performance sessions. Structured coaching to take your game to the next level.
               </p>
               <div className={styles.programHighlights}>
-                <span>Beginner Course</span>
+                <span>Beginner Program</span>
                 <span>3.5+ Sessions</span>
                 <span>Expert Coaching</span>
               </div>

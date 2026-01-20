@@ -19,19 +19,19 @@ export default function RallyAcademy() {
   const beginnersFaqData = [
     {
       question: "Do I need any experience?",
-      answer: "No experience needed! Beginners Clinics are designed for complete beginners and players rated 2.5-3.0. We'll teach you everything from grip basics to game strategy."
+      answer: "No experience needed! Beginners Programs are designed for complete beginners and players rated 2.5-3.0. We'll teach you everything from grip basics to game strategy."
     },
     {
       question: "What paddle should I bring?",
-      answer: "For Beginners Clinics, bring any paddle you have! If you don't own one yet, we have loaner paddles available. Our coaches can also help you choose the right paddle for your playing style."
+      answer: "For Beginners Programs, bring any paddle you have! If you don't own one yet, we have loaner paddles available. Our coaches can also help you choose the right paddle for your playing style."
     },
     {
       question: "What if I miss a week?",
-      answer: "Beginners Clinics require consistent attendance to ensure all participants progress together. If you know you'll miss a week, please contact us before signing up to discuss options."
+      answer: "Beginners Programs require consistent attendance to ensure all participants progress together. If you know you'll miss a week, please contact us before signing up to discuss options."
     },
     {
       question: <>{"Is it "}<i>really</i>{" beginner-friendly?"}</>,
-      answer: "Absolutely! Beginners Clinics are taught by coaches who create a supportive, zero-pressure environment. You'll learn alongside other beginners, and we focus on making improvement fun. No judgment, just pickleball!"
+      answer: "Absolutely! Beginners Programs are taught by coaches who create a supportive, zero-pressure environment. You'll learn alongside other beginners, and we focus on making improvement fun. No judgment, just pickleball!"
     }
   ];
 
@@ -56,7 +56,7 @@ export default function RallyAcademy() {
         <title>Rally Academy | Pickleball Training Programs | Rally Club Pickleball</title>
         <meta
           name="description"
-          content="Pickleball training at Rally Club. Beginners Clinics ($80/4 weeks) on Tuesdays and Performance Training ($20/session) for 3.5-4.5 DUPR players. Glen Carbon, IL."
+          content="Pickleball training at Rally Club. Beginners Programs ($80/4 weeks) on Tuesdays and Performance Training ($20/session) for 3.5-4.5 DUPR players. Glen Carbon, IL."
         />
         <link rel="canonical" href="https://www.rallyclubpickleball.com/rally-academy" />
         <meta
@@ -67,7 +67,7 @@ export default function RallyAcademy() {
         <meta property="og:title" content="Rally Academy | Pickleball Training Programs" />
         <meta
           property="og:description"
-          content="Beginners Clinics for new players & Performance Training for intermediate players. Join Rally Academy at Rally Club Pickleball."
+          content="Beginners Programs for new players & Performance Training for intermediate players. Join Rally Academy at Rally Club Pickleball."
         />
         <meta property="og:image" content="/logo-transparent.png" />
         <meta property="og:url" content="https://www.rallyclubpickleball.com/rally-academy" />
@@ -75,7 +75,7 @@ export default function RallyAcademy() {
         <meta name="twitter:title" content="Rally Academy | Pickleball Training" />
         <meta
           name="twitter:description"
-          content="Beginners Clinics and Performance Training sessions. Train with Rally Club Pickleball."
+          content="Beginners Programs and Performance Training sessions. Train with Rally Club Pickleball."
         />
         <meta name="twitter:image" content="/logo-transparent.png" />
         <script
@@ -85,7 +85,7 @@ export default function RallyAcademy() {
               "@context": "https://schema.org",
               "@type": "Course",
               "name": "Rally Academy Pickleball Training Programs",
-              "description": "Pickleball training at Rally Club. Beginners Clinics on Tuesdays and Performance Training for 3.5-4.5 DUPR players.",
+              "description": "Pickleball training at Rally Club. Beginners Programs on Tuesdays and Performance Training for 3.5-4.5 DUPR players.",
               "provider": {
                 "@type": "Organization",
                 "name": "Rally Club Pickleball",
@@ -106,7 +106,7 @@ export default function RallyAcademy() {
               "hasCourseInstance": [
                 {
                   "@type": "CourseInstance",
-                  "name": "Beginners Clinics",
+                  "name": "Beginners Programs",
                   "description": "4-week beginner pickleball program for new players and 2.5-3.0 rating. Tuesdays 1:00-2:30 pm.",
                   "courseMode": "onsite",
                   "offers": {
@@ -212,7 +212,7 @@ export default function RallyAcademy() {
               Structured coaching for beginners & training drills for intermediate players.
             </p>
             <div className="academy-hero-cta">
-              <a href="#beginner" className="academy-cta-button">Beginners Clinics</a>
+              <a href="#beginner" className="academy-cta-button">Beginners Programs</a>
               <a href="#training" className="academy-cta-button">Performance Training</a>
             </div>
           </div>
@@ -252,7 +252,7 @@ export default function RallyAcademy() {
             {/* Beginner Card */}
             <div className="program-card">
               <div className="program-badge">Only 8 Spots!</div>
-              <h3 className="program-title">Beginners Clinics</h3>
+              <h3 className="program-title">Beginners Programs</h3>
               <p className="program-headline">From First Paddle to Confident Player in 4 Weeks</p>
               <p className="program-description">
                 Structured lessons, simple progress, tons of fun. Tuesdays 1:00–2:30 pm.
@@ -280,10 +280,10 @@ export default function RallyAcademy() {
           </div>
         </section>
 
-        {/* Beginners Clinics Detailed Section */}
+        {/* Beginners Programs Detailed Section */}
         <section id="beginner" className="beginner-section">
           <div className="section-content">
-            <h2 className="section-title-light">Beginners Clinics</h2>
+            <h2 className="section-title-light">Beginners Programs</h2>
             <p className="section-subtitle">4 weeks to confident play</p>
 
             {/* Schedule Info */}
@@ -463,7 +463,7 @@ export default function RallyAcademy() {
           <h2 className="section-title-light">Frequently Asked Questions</h2>
           <div className="faq-grid">
             <div className="faq-column">
-              <h3 className="faq-column-title">Beginners Clinics</h3>
+              <h3 className="faq-column-title">Beginners Programs</h3>
               <div className="faq-container">
                 {beginnersFaqData.map((faq, index) => (
                   <div key={index} className={`faq-item ${openBeginnerFaq === index ? 'open' : ''}`}>
@@ -504,7 +504,7 @@ export default function RallyAcademy() {
             <p className="cta-reassurance">Beginner friendly. Zero judgment. Just improvement + fun.</p>
             <div className="cta-buttons">
               <a href="https://square.link/u/k6oFr2Fw" className="cta-button primary" target="_blank" rel="noopener noreferrer">
-                Beginners Clinics – $80 per 4 weeks
+                Beginners Programs – $80 per 4 weeks
               </a>
               <a href="https://rallyclub.pickleplanner.com/event/7a812974-29c0-4907-8929-26ad3cb8123e" className="cta-button primary" target="_blank" rel="noopener noreferrer">
                 Performance Training – $20 per session
