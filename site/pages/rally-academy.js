@@ -451,7 +451,7 @@ export default function RallyAcademy() {
                   <li>Sign up for the sessions you want to join</li>
                 </ol>
               </div>
-              <a href="https://rallyclub.pickleplanner.com/event/7a812974-29c0-4907-8929-26ad3cb8123e" className="price-box-cta-dark" target="_blank" rel="noopener noreferrer">
+              <a href="https://rallyclub.pickleplanner.com/dashboard/reservation/joinable" className="price-box-cta-dark" target="_blank" rel="noopener noreferrer">
                 Reserve Your Spot
               </a>
             </div>
