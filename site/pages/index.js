@@ -465,10 +465,8 @@ export default function Home() {
               </div>
 
               <div className={styles.honchoCta}>
-                <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-early-spring-26/" className={styles.honchoButton} target="_blank" rel="noopener noreferrer">
-                  Register Now (Use Code: Hawkes)
-                </a>
-                <a href="/honcho" className={`${styles.honchoButton} ${styles.secondary}`}>
+                <p style={{ color: '#E8F5E8', fontSize: '1rem', marginBottom: '1rem' }}>The current season is in progress. Check back for the next session!</p>
+                <a href="/honcho" className={styles.honchoButton}>
                   Learn More
                 </a>
               </div>
