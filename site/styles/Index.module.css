@@ -321,8 +321,7 @@
 .membershipGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  align-items: start;
+  column-gap: 2rem;
 }
 
 .membershipCard.rallyReserve {
@@ -420,6 +419,49 @@
   padding: 1rem 0.5rem;
 }
 
+.seniorProgramsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.seniorProgramCard {
+  background: white;
+  padding: 1.25rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.seniorProgramLogo {
+  flex-shrink: 0;
+  width: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.seniorProgramInfo {
+  flex: 1;
+}
+
+.seniorProgramTitle {
+  font-size: 1.1rem;
+  margin: 0 0 0.25rem;
+  color: #333;
+}
+
+.seniorProgramDesc {
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.4;
+  margin: 0;
+}
+
 .membershipCard {
   background: white;
   padding: 2rem 2rem 1.5rem 2rem;
@@ -427,8 +469,8 @@
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   text-align: center;
   display: grid;
-  grid-template-rows: auto auto auto auto 1fr;
-  height: 100%;
+  grid-row: span 5;
+  grid-template-rows: subgrid;
 }
 
 .membershipTitle {
@@ -587,6 +629,12 @@
 .rateTime {
   color: #555;
   font-size: 0.95rem;
+}
+
+.rateTime .rateTimeDetail {
+  font-size: 0.8rem;
+  color: #999;
+  font-style: italic;
 }
 
 .ratePrice {
@@ -1348,6 +1396,12 @@
 @media (max-width: 1024px) {
   .membershipGrid {
     grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .membershipCard {
+    grid-row: auto;
+    grid-template-rows: auto auto auto auto 1fr;
   }
 
   .specialProgramsGrid {
@@ -1370,6 +1424,15 @@
 
   .specialProgramsGrid {
     grid-template-columns: 1fr;
+  }
+
+  .seniorProgramCard {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .seniorProgramLogo {
+    width: auto;
   }
 
   .specialPricingGrid {
