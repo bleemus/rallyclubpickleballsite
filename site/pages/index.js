@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,13 +8,40 @@ export default function Home() {
   const [openFaq, setOpenFaq] = useState(null);
   const [lightboxImage, setLightboxImage] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [insideIndex, setInsideIndex] = useState(0);
+  const [outsideIndex, setOutsideIndex] = useState(0);
+
+  const insideImages = ['/inside1.jpg', '/inside2.jpg', '/inside3.jpg'];
+  const outsideImages = ['/outside1.jpg', '/outside2.jpg'];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setInsideIndex((prev) => (prev + 1) % insideImages.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setOutsideIndex((prev) => (prev + 1) % outsideImages.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   const toggleFaq = (index) => {
     setOpenFaq(openFaq === index ? null : index);
   };
 
-  const openLightbox = (imageSrc, imageAlt, heading, caption) => {
-    setLightboxImage({ src: imageSrc, alt: imageAlt, heading, caption });
+  const openLightbox = (imageSrc, imageAlt, heading, caption, type = 'image', gallery = null) => {
+    const galleryIndex = gallery ? gallery.indexOf(imageSrc) : 0;
+    setLightboxImage({ src: imageSrc, alt: imageAlt, heading, caption, type, gallery, galleryIndex });
+  };
+
+  const lightboxNav = (direction) => {
+    if (!lightboxImage?.gallery) return;
+    const { gallery, alt, heading, caption, type } = lightboxImage;
+    const newIndex = (lightboxImage.galleryIndex + direction + gallery.length) % gallery.length;
+    setLightboxImage({ ...lightboxImage, src: gallery[newIndex], galleryIndex: newIndex });
   };
 
   const closeLightbox = () => {
@@ -465,29 +492,37 @@ export default function Home() {
           <h2 className={styles.sectionTitle}>Facility Overview</h2>
           <div className={styles.facilityGrid}>
             <div className={styles.facilityItem}>
-              <div className="facility-image" onClick={() => openLightbox('/facility-layout.jpg', 'Facility Layout', 'Floor Plan', "Here's your future HQ.")}>
-                <Image
-                  src="/facility-layout.jpg"
-                  alt="Facility Layout"
-                  width={400}
-                  height={300}
-                  style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '12px', cursor: 'pointer' }}
-                />
+              <div
+                className={styles.slideshowContainer}
+                onClick={() => openLightbox('/inside.mp4', 'Inside Tour', 'Inside View', 'Take a tour of our courts.', 'video')}
+              >
+                {insideImages.map((src, i) => (
+                  <img
+                    key={src}
+                    src={src}
+                    alt={`Inside View ${i + 1}`}
+                    className={`${styles.slideshowImage} ${i === insideIndex ? styles.slideshowActive : ''}`}
+                  />
+                ))}
               </div>
               <div className={styles.facilityCaption}>
-                <h3>Floor Plan</h3>
-                <p>Here's your future HQ.</p>
+                <h3>Inside View</h3>
+                <p>Take a tour of our courts.</p>
               </div>
             </div>
             <div className={styles.facilityItem}>
-              <div className="facility-image" onClick={() => openLightbox('/facility-outside.jpg', 'Facility Exterior', 'Outside View', 'Pull up. Walk in. Rally begins.')}>
-                <Image
-                  src="/facility-outside.jpg"
-                  alt="Facility Exterior"
-                  width={400}
-                  height={300}
-                  style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '12px', cursor: 'pointer' }}
-                />
+              <div
+                className={styles.slideshowContainer}
+                onClick={() => openLightbox(outsideImages[outsideIndex], 'Facility Exterior', 'Outside View', 'Pull up. Walk in. Rally begins.', 'image', outsideImages)}
+              >
+                {outsideImages.map((src, i) => (
+                  <img
+                    key={src}
+                    src={src}
+                    alt={`Outside View ${i + 1}`}
+                    className={`${styles.slideshowImage} ${i === outsideIndex ? styles.slideshowActive : ''}`}
+                  />
+                ))}
               </div>
               <div className={styles.facilityCaption}>
                 <h3>Outside View</h3>
@@ -659,13 +694,32 @@ export default function Home() {
               <div className={styles.lightboxHeader}>
                 <h3 className={styles.lightboxHeading}>{lightboxImage.heading}</h3>
               </div>
-              <Image
-                src={lightboxImage.src}
-                alt={lightboxImage.alt}
-                width={1200}
-                height={800}
-                style={{ maxWidth: '90vw', maxHeight: '70vh', objectFit: 'contain' }}
-              />
+              {lightboxImage.type === 'video' ? (
+                <video
+                  controls
+                  autoPlay
+                  playsInline
+                  style={{ maxWidth: '90vw', maxHeight: '70vh', borderRadius: '8px' }}
+                >
+                  <source src={lightboxImage.src} type="video/mp4" />
+                </video>
+              ) : (
+                <div style={{ position: 'relative', display: 'inline-block' }}>
+                  <Image
+                    src={lightboxImage.src}
+                    alt={lightboxImage.alt}
+                    width={1200}
+                    height={800}
+                    style={{ maxWidth: '90vw', maxHeight: '70vh', objectFit: 'contain' }}
+                  />
+                  {lightboxImage.gallery && lightboxImage.gallery.length > 1 && (
+                    <>
+                      <button className={styles.lightboxArrow} style={{ left: '10px' }} onClick={() => lightboxNav(-1)}>&lsaquo;</button>
+                      <button className={styles.lightboxArrow} style={{ right: '10px' }} onClick={() => lightboxNav(1)}>&rsaquo;</button>
+                    </>
+                  )}
+                </div>
+              )}
               <div className={styles.lightboxFooter}>
                 <p className={styles.lightboxCaption}>{lightboxImage.caption}</p>
               </div>
