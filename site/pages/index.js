@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,13 +8,40 @@ export default function Home() {
   const [openFaq, setOpenFaq] = useState(null);
   const [lightboxImage, setLightboxImage] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [insideIndex, setInsideIndex] = useState(0);
+  const [outsideIndex, setOutsideIndex] = useState(0);
+
+  const insideImages = ['/inside1.jpg', '/inside2.jpg', '/inside3.jpg'];
+  const outsideImages = ['/outside1.jpg', '/outside2.jpg'];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setInsideIndex((prev) => (prev + 1) % insideImages.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setOutsideIndex((prev) => (prev + 1) % outsideImages.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   const toggleFaq = (index) => {
     setOpenFaq(openFaq === index ? null : index);
   };
 
-  const openLightbox = (imageSrc, imageAlt, heading, caption) => {
-    setLightboxImage({ src: imageSrc, alt: imageAlt, heading, caption });
+  const openLightbox = (imageSrc, imageAlt, heading, caption, type = 'image', gallery = null) => {
+    const galleryIndex = gallery ? gallery.indexOf(imageSrc) : 0;
+    setLightboxImage({ src: imageSrc, alt: imageAlt, heading, caption, type, gallery, galleryIndex });
+  };
+
+  const lightboxNav = (direction) => {
+    if (!lightboxImage?.gallery) return;
+    const { gallery, alt, heading, caption, type } = lightboxImage;
+    const newIndex = (lightboxImage.galleryIndex + direction + gallery.length) % gallery.length;
+    setLightboxImage({ ...lightboxImage, src: gallery[newIndex], galleryIndex: newIndex });
   };
 
   const closeLightbox = () => {
@@ -246,10 +273,7 @@ export default function Home() {
                   </div>
                   <div style={{ height: '5rem', width: '1px', background: '#ddd', alignSelf: 'center' }}></div>
                   <div style={{ textAlign: 'center' }}>
-                    <div style={{ marginBottom: '0.25rem' }}>
-                      <span style={{ background: '#4CAF50', color: 'white', fontSize: '0.7rem', padding: '3px 8px', borderRadius: '10px', fontWeight: 'bold' }}>Save 17%</span>
-                    </div>
-                    <div style={{ fontSize: '0.9rem', color: '#666', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}>Annual</div>
+                    <div style={{ fontSize: '0.9rem', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}><span style={{ color: '#666' }}>Annual</span> <span style={{ color: '#4CAF50' }}>&middot; Save 17%</span></div>
                     <div>
                       <span className={styles.price}>$350</span>
                       <span className={styles.period}>/yr</span>
@@ -265,12 +289,12 @@ export default function Home() {
               <div className={styles.pricingDetails}>
                 <h4>Court Rates:</h4>
                 <div className={styles.rateItem}>
-                  <span className={styles.rateTime}>Weekdays 9am - 4pm</span>
-                  <span className={styles.ratePrice}>FREE</span>
+                  <span className={styles.rateTime}>Mon–Fri, Midnight – 4 PM</span>
+                  <span className={styles.ratePrice}>$8/hr</span>
                 </div>
                 <div className={`${styles.rateItem} ${styles.baseRate}`}>
-                  <span className={styles.rateTime}>All other times</span>
-                  <span className={styles.ratePrice}>$20/hr</span>
+                  <span className={styles.rateTime}>All Other Times<br /><span className={styles.rateTimeDetail}>Weekday Evenings &amp; Weekends</span></span>
+                  <span className={styles.ratePrice}>$16/hr</span>
                 </div>
               </div>
             </div>
@@ -278,8 +302,15 @@ export default function Home() {
               <div className={styles.noCommitmentBadge}>NO COMMITMENT</div>
               <h3 className={styles.membershipTitle}>Rally Reserve</h3>
               <div className={styles.membershipPrice}>
-                <span className={styles.price}>$0</span>
-                <span className={styles.period}>/month</span>
+                <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', alignItems: 'flex-end', flexWrap: 'wrap' }}>
+                  <div style={{ textAlign: 'center' }}>
+                    <div style={{ fontSize: '0.9rem', color: '#666', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}>Monthly</div>
+                    <div>
+                      <span className={styles.price}>$0</span>
+                      <span className={styles.period}>/mo</span>
+                    </div>
+                  </div>
+                </div>
               </div>
               <p className={styles.membershipSummary}>Reserve 5 days in advance.</p>
               <div className={styles.membershipCta}>
@@ -287,26 +318,13 @@ export default function Home() {
               </div>
               <div className={styles.pricingDetails}>
                 <h4>Court Rates:</h4>
-                <div className={styles.rateTableWrapper}>
-                  <table className={styles.rateTable}>
-                    <tbody>
-                      <tr>
-                        <th rowSpan="2">Weekdays</th>
-                        <th>12am - 8am</th>
-                        <th>8am - 4pm</th>
-                        <th>4pm - 12am</th>
-                      </tr>
-                      <tr>
-                        <td>$16/hr</td>
-                        <td>$20/hr</td>
-                        <td>$40/hr</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                <div className={styles.rateItem}>
+                  <span className={styles.rateTime}>Mon–Fri, Midnight – 4 PM</span>
+                  <span className={styles.ratePrice}>$16/hr</span>
                 </div>
                 <div className={`${styles.rateItem} ${styles.baseRate}`}>
-                  <span className={styles.rateTime}>Weekends — All Day</span>
-                  <span className={styles.ratePrice}>$40/hr</span>
+                  <span className={styles.rateTime}>All Other Times<br /><span className={styles.rateTimeDetail}>Weekday Evenings &amp; Weekends</span></span>
+                  <span className={styles.ratePrice}>$28/hr</span>
                 </div>
               </div>
             </div>
@@ -333,89 +351,42 @@ export default function Home() {
             <p>Rally Club partners with Medicare and Medicaid programs to make pickleball accessible to more players. These special membership tiers require eligibility verification and admin approval.</p>
           </div>
           <div className={styles.specialProgramsPricing}>
-            <h3>Court Rates for A-List Seniors</h3>
-            <p className={styles.membershipSummary}>Reserve 7 days in advance.</p>
-            <div className={styles.specialPricingGrid}>
-              <div className={styles.rateTableWrapper}>
-                <table className={styles.rateTable}>
-                  <tbody>
-                    <tr>
-                      <th rowSpan="2">Weekdays</th>
-                      <th>12am - 7am</th>
-                      <th>7am - 4pm</th>
-                      <th>4pm - 12am</th>
-                    </tr>
-                    <tr>
-                      <td>$20/hr</td>
-                      <td>FREE</td>
-                      <td>$28/hr</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div className={styles.rateTableWrapper}>
-                <table className={styles.rateTable}>
-                  <tbody>
-                    <tr>
-                      <th rowSpan="2">Weekends</th>
-                      <th>12am - 4pm</th>
-                      <th>4pm - 12am</th>
-                    </tr>
-                    <tr>
-                      <td>$20/hr</td>
-                      <td>$28/hr</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+            <h3>Pricing</h3>
+            <p className={styles.membershipSummary}>A-List Seniors enjoy the same court rates as <a href="#membership" style={{ color: '#FF6600', textDecoration: 'none', fontWeight: '600' }}>A-List members</a>. The perk is that qualifying members pay no monthly or annual membership fee — your Medicare or Medicaid plan covers it.</p>
+            <p className={styles.membershipSummary}>Courts can be reserved up to 7 days in advance, giving you priority access to book your preferred times.</p>
           </div>
-          <div className={styles.specialProgramsGrid}>
-            <div className={styles.membershipCard}>
-              <div className={styles.approvalBadge}>REQUIRES APPROVAL</div>
-              <div className={styles.programLogo}>
+          <div className={styles.seniorProgramsGrid}>
+            <div className={styles.seniorProgramCard}>
+              <div className={styles.seniorProgramLogo}>
                 <Image
                   src="/silver_sneakers.png"
                   alt="Silver Sneakers Logo"
-                  width={300}
-                  height={100}
-                  style={{ objectFit: 'contain' }}
+                  width={230}
+                  height={80}
+                  style={{ objectFit: 'contain', maxWidth: '160px', height: 'auto' }}
                 />
               </div>
-              <h3 className={styles.membershipTitle}>A-List Silver</h3>
-              <div className={styles.membershipPrice}>
-                <span className={styles.price}>$0</span>
-                <span className={styles.period}>/month</span>
+              <div className={styles.seniorProgramInfo}>
+                <h3 className={styles.seniorProgramTitle}>A-List Silver</h3>
+                <p className={styles.seniorProgramDesc}>For members using Silver Sneakers through their Medicare or Medicaid plan.</p>
               </div>
-              <div className={styles.specialProgramDescription}>
-                <p>The A-List Silver program is for members that wish to use Silver Sneakers offered by their Medicare or Medicaid plan.</p>
-              </div>
-              <div className={styles.membershipCta}>
-                <a href="https://tools.silversneakers.com/Eligibility/CheckEligibility" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Check Eligibility</a>
-              </div>
+              <a href="https://tools.silversneakers.com/Eligibility/CheckEligibility" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Check Eligibility</a>
             </div>
-            <div className={styles.membershipCard}>
-              <div className={styles.approvalBadge}>REQUIRES APPROVAL</div>
-              <div className={styles.programLogo}>
+            <div className={styles.seniorProgramCard}>
+              <div className={styles.seniorProgramLogo}>
                 <Image
                   src="/renew_active.svg"
                   alt="Renew Active Logo"
-                  width={180}
-                  height={60}
-                  style={{ objectFit: 'contain' }}
+                  width={140}
+                  height={45}
+                  style={{ objectFit: 'contain', maxWidth: '160px', height: 'auto' }}
                 />
               </div>
-              <h3 className={styles.membershipTitle}>A-List Active</h3>
-              <div className={styles.membershipPrice}>
-                <span className={styles.price}>$0</span>
-                <span className={styles.period}>/month</span>
+              <div className={styles.seniorProgramInfo}>
+                <h3 className={styles.seniorProgramTitle}>A-List Active</h3>
+                <p className={styles.seniorProgramDesc}>For members using Renew Active through qualifying United Health Care, Medicare, or Medicaid plans.</p>
               </div>
-              <div className={styles.specialProgramDescription}>
-                <p>The A-List Active tier is for members that wish to use Renew Active with either their participating One Pass Medicare, One Pass Select, or Aaptiv Access plan. These programs are offered through qualifying United Health Care, Medicare, & Medicaid plans.</p>
-              </div>
-              <div className={styles.membershipCta}>
-                <a href="https://www.uhcrenewactive.com/home" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Check Eligibility</a>
-              </div>
+              <a href="https://www.uhcrenewactive.com/home" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Check Eligibility</a>
             </div>
           </div>
         </section>
@@ -521,29 +492,37 @@ export default function Home() {
           <h2 className={styles.sectionTitle}>Facility Overview</h2>
           <div className={styles.facilityGrid}>
             <div className={styles.facilityItem}>
-              <div className="facility-image" onClick={() => openLightbox('/facility-layout.jpg', 'Facility Layout', 'Floor Plan', "Here's your future HQ.")}>
-                <Image
-                  src="/facility-layout.jpg"
-                  alt="Facility Layout"
-                  width={400}
-                  height={300}
-                  style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '12px', cursor: 'pointer' }}
-                />
+              <div
+                className={styles.slideshowContainer}
+                onClick={() => openLightbox('/inside.mp4', 'Inside Tour', 'Inside View', 'Take a tour of our courts.', 'video')}
+              >
+                {insideImages.map((src, i) => (
+                  <img
+                    key={src}
+                    src={src}
+                    alt={`Inside View ${i + 1}`}
+                    className={`${styles.slideshowImage} ${i === insideIndex ? styles.slideshowActive : ''}`}
+                  />
+                ))}
               </div>
               <div className={styles.facilityCaption}>
-                <h3>Floor Plan</h3>
-                <p>Here's your future HQ.</p>
+                <h3>Inside View</h3>
+                <p>Take a tour of our courts.</p>
               </div>
             </div>
             <div className={styles.facilityItem}>
-              <div className="facility-image" onClick={() => openLightbox('/facility-outside.jpg', 'Facility Exterior', 'Outside View', 'Pull up. Walk in. Rally begins.')}>
-                <Image
-                  src="/facility-outside.jpg"
-                  alt="Facility Exterior"
-                  width={400}
-                  height={300}
-                  style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '12px', cursor: 'pointer' }}
-                />
+              <div
+                className={styles.slideshowContainer}
+                onClick={() => openLightbox(outsideImages[outsideIndex], 'Facility Exterior', 'Outside View', 'Pull up. Walk in. Rally begins.', 'image', outsideImages)}
+              >
+                {outsideImages.map((src, i) => (
+                  <img
+                    key={src}
+                    src={src}
+                    alt={`Outside View ${i + 1}`}
+                    className={`${styles.slideshowImage} ${i === outsideIndex ? styles.slideshowActive : ''}`}
+                  />
+                ))}
               </div>
               <div className={styles.facilityCaption}>
                 <h3>Outside View</h3>
@@ -715,13 +694,32 @@ export default function Home() {
               <div className={styles.lightboxHeader}>
                 <h3 className={styles.lightboxHeading}>{lightboxImage.heading}</h3>
               </div>
-              <Image
-                src={lightboxImage.src}
-                alt={lightboxImage.alt}
-                width={1200}
-                height={800}
-                style={{ maxWidth: '90vw', maxHeight: '70vh', objectFit: 'contain' }}
-              />
+              {lightboxImage.type === 'video' ? (
+                <video
+                  controls
+                  autoPlay
+                  playsInline
+                  style={{ maxWidth: '90vw', maxHeight: '70vh', borderRadius: '8px' }}
+                >
+                  <source src={lightboxImage.src} type="video/mp4" />
+                </video>
+              ) : (
+                <div style={{ position: 'relative', display: 'inline-block' }}>
+                  <Image
+                    src={lightboxImage.src}
+                    alt={lightboxImage.alt}
+                    width={1200}
+                    height={800}
+                    style={{ maxWidth: '90vw', maxHeight: '70vh', objectFit: 'contain' }}
+                  />
+                  {lightboxImage.gallery && lightboxImage.gallery.length > 1 && (
+                    <>
+                      <button className={styles.lightboxArrow} style={{ left: '10px' }} onClick={() => lightboxNav(-1)}>&lsaquo;</button>
+                      <button className={styles.lightboxArrow} style={{ right: '10px' }} onClick={() => lightboxNav(1)}>&rsaquo;</button>
+                    </>
+                  )}
+                </div>
+              )}
               <div className={styles.lightboxFooter}>
                 <p className={styles.lightboxCaption}>{lightboxImage.caption}</p>
               </div>
