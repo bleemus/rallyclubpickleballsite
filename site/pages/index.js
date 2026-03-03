@@ -336,7 +336,7 @@ export default function Home() {
                   alt="Silver Sneakers Logo"
                   width={230}
                   height={80}
-                  style={{ objectFit: 'contain' }}
+                  style={{ objectFit: 'contain', maxWidth: '160px', height: 'auto' }}
                 />
               </div>
               <div className={styles.seniorProgramInfo}>
@@ -352,7 +352,7 @@ export default function Home() {
                   alt="Renew Active Logo"
                   width={140}
                   height={45}
-                  style={{ objectFit: 'contain' }}
+                  style={{ objectFit: 'contain', maxWidth: '160px', height: 'auto' }}
                 />
               </div>
               <div className={styles.seniorProgramInfo}>
