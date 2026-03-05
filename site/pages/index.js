@@ -266,25 +266,26 @@ export default function Home() {
                 <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', alignItems: 'flex-end', flexWrap: 'wrap' }}>
                   <div style={{ textAlign: 'center' }}>
                     <div style={{ fontSize: '0.9rem', color: '#666', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}>Monthly</div>
-                    <div>
+                    <div className={styles.tooltip} data-tip="$20 one-time sign-up fee">
                       <span className={styles.price}>$35</span>
-                      <span className={styles.period}>/mo</span>
+                      <span className={styles.period}>/mo*</span>
                     </div>
                   </div>
                   <div style={{ height: '5rem', width: '1px', background: '#ddd', alignSelf: 'center' }}></div>
                   <div style={{ textAlign: 'center' }}>
                     <div style={{ fontSize: '0.9rem', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}><span style={{ color: '#666' }}>Annual</span> <span style={{ color: '#4CAF50' }}>&middot; Save 17%</span></div>
-                    <div>
+                    <div className={styles.tooltip} data-tip="$20 one-time sign-up fee">
                       <span className={styles.price}>$350</span>
-                      <span className={styles.period}>/yr</span>
+                      <span className={styles.period}>/yr*</span>
                     </div>
                   </div>
                 </div>
+                <div className={styles.signupFeeNote}>*$20 one-time sign-up fee</div>
               </div>
               <p className={styles.membershipSummary}>Reserve 10 days in advance.</p>
               <div className={styles.membershipCta}>
-                <a href="https://square.link/u/EKztnz5s" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Join A-List Monthly</a>
-                <a href="https://square.link/u/ram1LVxm" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Join A-List Annually</a>
+                <a href="https://square.link/u/oybkGt7O" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Join A-List Monthly</a>
+                <a href="https://square.link/u/h35UrlS4" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Join A-List Annually</a>
               </div>
               <div className={styles.pricingDetails}>
                 <h4>Court Rates:</h4>
