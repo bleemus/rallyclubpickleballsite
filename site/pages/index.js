@@ -284,8 +284,7 @@ export default function Home() {
               </div>
               <p className={styles.membershipSummary}>Reserve 10 days in advance.</p>
               <div className={styles.membershipCta}>
-                <a href="https://square.link/u/oybkGt7O" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Join A-List Monthly</a>
-                <a href="https://square.link/u/h35UrlS4" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Join A-List Annually</a>
+                <a href="https://square.link/u/oybkGt7O" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Join A-List</a>
               </div>
               <div className={styles.pricingDetails}>
                 <h4>Court Rates:</h4>
