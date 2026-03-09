@@ -12,7 +12,7 @@ export default function Honcho() {
         <title>Honcho Pickleball League | Rally Club Pickleball</title>
         <meta
           name="description"
-          content="Join the Honcho Pickleball League - the premier amateur pickleball community with doubles league format. Season runs March 4 - April 29, 2026. Early bird registration Jan 12-25."
+          content="Join the Honcho Pickleball League - the premier amateur pickleball community with doubles league format at Rally Club Pickleball in Glen Carbon, IL."
         />
         <link rel="canonical" href="https://www.rallyclubpickleball.com/honcho" />
         <meta
@@ -31,7 +31,7 @@ export default function Honcho() {
         <meta name="twitter:title" content="Honcho Pickleball League" />
         <meta
           name="twitter:description"
-          content="Premier amateur pickleball league with doubles and ladder formats. Registration open now!"
+          content="Premier amateur pickleball league with doubles and ladder formats at Rally Club Pickleball."
         />
         <meta name="twitter:image" content="/honcho-logo.svg" />
         <script
@@ -68,7 +68,7 @@ export default function Honcho() {
               "offers": {
                 "@type": "Offer",
                 "url": "https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-early-spring-26/",
-                "availability": "https://schema.org/InStock"
+                "availability": "https://schema.org/SoldOut"
               }
             })
           }}
@@ -159,11 +159,13 @@ export default function Honcho() {
             <p className="honcho-hero-subtitle">
               Team up with 2-4 players and compete in 7 guaranteed DUPR-eligible matches plus playoffs. Battle for the Head Honcho Championship and win over $500 in prizes!
             </p>
-            <div className="honcho-hero-cta">
-              <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-early-spring-26/" className="honcho-cta-button" target="_blank" rel="noopener noreferrer">Register Now</a>
+            <div className="season-status-banner">
+              <p>The current league season is in progress. Check back for updates on the next league session!</p>
+            </div>
+            <div style={{ marginTop: '1.5rem' }}>
               <span className="honcho-hashtag">#HonchoFam</span>
             </div>
-            <p style={{ marginTop: '1rem', fontSize: '1rem', color: '#E8F5E8' }}>Use code <strong style={{ color: '#C8F560' }}>Hawkes</strong> for extra savings!</p>
+            <a href="/honcho-faq" className="faq-link">Have questions? Check out our FAQ &rarr;</a>
           </div>
         </section>
 
@@ -190,9 +192,9 @@ export default function Honcho() {
               <p><strong>Intermediate:</strong> 3.0-3.5 DUPR<br /><strong>Upper-Int:</strong> 3.5-4.25 DUPR<br />Champions win $500+ in prizes!</p>
             </div>
             <div className="detail-card">
-              <div className="detail-icon">✅</div>
+              <div className="detail-icon">📋</div>
               <h3>Registration</h3>
-              <p><strong>Early Bird:</strong> Jan 12 - Jan 25, 2026<br /><strong>Regular:</strong> Jan 25 - Feb 15, 2026<br /><strong>Use code <span style={{ textDecoration: 'underline' }}>Hawkes</span></strong> for savings!</p>
+              <p>The current season is underway.<br />Check back soon for details on the next league session!</p>
             </div>
           </div>
         </section>
@@ -231,10 +233,10 @@ export default function Honcho() {
         {/* Call to Action */}
         <section className="final-cta">
           <div className="cta-content">
-            <h2>Ready to Compete?</h2>
-            <p style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#C8F560', marginBottom: '2rem' }}>Use discount code <span style={{ fontSize: '1.3rem' }}>Hawkes</span> for extra savings on top of early bird pricing!</p>
+            <h2>Interested in Joining?</h2>
+            <p style={{ fontSize: '1.1rem', color: '#E8F5E8', marginBottom: '2rem' }}>The current Honcho League season is in progress. Check back for updates on the next league session!</p>
             <div className="cta-buttons">
-              <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-early-spring-26/" className="honcho-button primary large" target="_blank" rel="noopener noreferrer">Register for League</a>
+              <a href="/honcho-faq" className="honcho-button primary large">View League FAQ</a>
             </div>
           </div>
         </section>
@@ -242,7 +244,7 @@ export default function Honcho() {
         {/* Honcho Contact */}
         <section className="honcho-contact">
           <div className="honcho-contact-content">
-            <p>Questions? Reach out to Honcho at <a href="mailto:support@honchopickle.com">support@honchopickle.com</a> — they've got your back.</p>
+            <p>Questions? Check our <a href="/honcho-faq">Honcho League FAQ</a> or reach out to Honcho at <a href="mailto:support@honchopickle.com">support@honchopickle.com</a> — they've got your back.</p>
           </div>
         </section>
 
@@ -539,6 +541,36 @@ export default function Honcho() {
           font-weight: bold;
           color: #C8F560;
           font-style: italic;
+        }
+
+        .season-status-banner {
+          background: rgba(200, 245, 96, 0.15);
+          border: 2px solid #C8F560;
+          border-radius: 10px;
+          padding: 1rem 2rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .season-status-banner p {
+          font-size: 1.1rem;
+          color: #E8F5E8;
+          margin: 0;
+          font-weight: 500;
+        }
+
+        .faq-link {
+          display: inline-block;
+          margin-top: 1rem;
+          color: #C8F560;
+          text-decoration: none;
+          font-weight: 500;
+          font-size: 1rem;
+          transition: opacity 0.3s;
+        }
+
+        .faq-link:hover {
+          opacity: 0.8;
+          text-decoration: underline;
         }
 
         /* Section Styles */
