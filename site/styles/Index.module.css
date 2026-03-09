@@ -492,6 +492,54 @@
   color: #666;
 }
 
+.tooltip {
+  position: relative;
+  cursor: help;
+}
+
+.tooltip::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.1s;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+}
+
+.signupFeeNote {
+  display: none;
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 0.25rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .signupFeeNote {
+    display: block;
+  }
+
+  .tooltip::after {
+    display: none;
+  }
+
+  .price {
+    font-size: 2rem;
+  }
+}
+
 .membershipSummary {
   color: #666;
   font-size: 0.95rem;
@@ -916,6 +964,8 @@
 
 .honchoCta {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
@@ -1526,8 +1576,7 @@
   }
 
   .benefitIcon {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    display: none;
   }
 
   .benefitItem h3 {
