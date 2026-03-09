@@ -27,6 +27,7 @@ site/                    # Main project directory
 ├── pages/               # Next.js pages
 │   ├── index.js         # Main landing page with video hero
 │   ├── honcho.js        # Honcho Pickleball League details
+│   ├── honcho-faq.js    # Honcho League FAQ page
 │   ├── rally-experiences.js # Corporate team building & private events
 │   ├── rally-academy.js # Training programs (Beginners Clinics & Performance Training)
 │   ├── merch.js         # Merchandise shop (embedded Square)
@@ -50,8 +51,8 @@ site/                    # Main project directory
 
 #### Main Landing Page (`pages/index.js`)
 - **Hero Section**: Reversed video background (`club_interior_reversed_optimized.mp4`)
-- **Membership Tiers**: A-List ($35/mo or $350/year) and Rally Reserve (free) with pricing details
-- **Honcho League Section**: Registration CTA with discount code Hawkes
+- **Membership Tiers**: A-List ($35/mo or $350/year, $20 sign-up fee) and Rally Reserve (free) with pricing details
+- **Honcho League Section**: Season status display with link to league details
 - **Rally Academy Section**: Link to training programs
 - **Rally Experiences Section**: Link to corporate team building and private events
 - **Facility Overview**: Interactive image gallery with lightbox
@@ -61,8 +62,13 @@ site/                    # Main project directory
 #### Honcho League Page (`pages/honcho.js`)
 - Detailed information about Honcho Pickleball League
 - Two competition formats: Doubles and Ladder League
-- Registration information with discount code Hawkes
-- External registration link: https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-early-spring-26/
+- Season status updates (currently shows "season in progress" when registration is closed)
+- Link to Honcho FAQ page
+
+#### Honcho FAQ Page (`pages/honcho-faq.js`)
+- Frequently asked questions about the Honcho Pickleball League
+- Organized by sections: Pre-Season, During Season, General
+- Collapsible FAQ items
 
 #### Rally Experiences Page (`pages/rally-experiences.js`)
 - Corporate team building and private event packages
@@ -93,7 +99,7 @@ Hero video (`club_interior_reversed_optimized.mp4`) optimized via ffmpeg: revers
 ## External Integrations
 - **PicklePlanner**: Court reservation system (https://rallyclub.pickleplanner.com)
 - **Honcho Pickleball**: League registration (https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-early-spring-26/)
-- **Square**: Payment processing for A-List membership and merchandise shop
+- **Square**: Payment processing for A-List membership (https://square.link/u/oybkGt7O) and merchandise shop
 - **Square Shop**: Embedded merchandise store (https://the-rally-club-llc.square.site)
 - **Google Maps**: Location and directions
 - **Facebook**: Social media presence
