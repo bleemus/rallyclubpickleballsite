@@ -123,8 +123,8 @@ Result: 71MB → 6MB (91% reduction)
 Three-column grid showcasing flexibility, competitive pricing, and member perks.
 
 ### Membership Tiers
-- **A-List ($35/month or $350/year)**: Reserve 10 days in advance, FREE weekdays 9am-4pm, discounted rates for other times, member events
-- **Rally Reserve (Free)**: Reserve 5 days in advance, standard court rates apply, member events
+- **A-List ($35/month or $350/year)**: Reserve 10 days in advance, $8/hr base rate (Midnight–4 PM Mon–Fri), $16/hr prime rate (weekday evenings + weekends)
+- **Rally Reserve (Free)**: Reserve 5 days in advance, $28/hr standard rate, $16/hr off-peak (Midnight–4 PM Mon–Fri)
 
 ### Honcho Pickleball League
 Dedicated page (`/honcho`) featuring:
