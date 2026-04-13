@@ -408,7 +408,7 @@ export default function Home() {
 
             <div className={styles.honchoSummary}>
               <p className={styles.honchoDescription}>
-                Team up with 2-4 players and compete in 7 DUPR-eligible match-ups plus playoffs over 8 weeks. Battle for the Head Honcho Championship with a prize package worth over $500!
+                Late Spring Season starts May 25th! 8-week same-partner doubles league with court costs included, a free $68 Centerline Athletics performance shirt, and a championship bundle worth ~$500!
               </p>
 
               <div className={styles.honchoHighlights}>
@@ -416,30 +416,35 @@ export default function Home() {
                   <span className={styles.highlightIcon}>👥</span>
                   <div>
                     <strong>Flexible Teams:</strong><br />
-                    2-4 players, no gender requirements
+                    2-4 players, multiple skill divisions
                   </div>
                 </div>
                 <div className={styles.highlightItem}>
                   <span className={styles.highlightIcon}>🏆</span>
                   <div>
                     <strong>Compete & Win:</strong><br />
-                    7 matches + playoffs, $500+ prizes
+                    ~$500 championship bundle
                   </div>
                 </div>
                 <div className={styles.highlightItem}>
-                  <span className={styles.highlightIcon}>📊</span>
+                  <span className={styles.highlightIcon}>🎁</span>
                   <div>
-                    <strong>DUPR Eligible:</strong><br />
-                    Track your progress
+                    <strong>Perks Included:</strong><br />
+                    Free shirt, weekly giveaways
                   </div>
                 </div>
               </div>
 
               <div className={styles.honchoCta}>
-                <p style={{ color: '#E8F5E8', fontSize: '1rem', marginBottom: '1rem' }}>The current season is in progress. Check back for the next session!</p>
-                <a href="/honcho" className={styles.honchoButton}>
-                  Learn More
-                </a>
+                <p style={{ color: '#C8F560', fontSize: '1rem', marginBottom: '0.5rem', fontWeight: 'bold' }}>Early-bird registration is open! Use code RALLYCLUB for a discount.</p>
+                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                  <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-late-spring-26/" className={styles.honchoButton} target="_blank" rel="noopener noreferrer">
+                    Register Now
+                  </a>
+                  <a href="/honcho" className={styles.honchoButtonSecondary || styles.honchoButton} style={{ background: 'transparent', border: '2px solid white', color: 'white' }}>
+                    Learn More
+                  </a>
+                </div>
               </div>
             </div>
           </div>

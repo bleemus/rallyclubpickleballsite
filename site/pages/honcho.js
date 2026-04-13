@@ -40,10 +40,10 @@ export default function Honcho() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "SportsEvent",
-              "name": "Honcho Pickleball League at Rally Club - Early Spring 2026",
-              "description": "Honcho Pickleball League doubles competition at Rally Club Pickleball in Glen Carbon, IL. Team up with 2-4 players and compete in 7 guaranteed DUPR-eligible matches plus playoffs.",
-              "startDate": "2026-03-04",
-              "endDate": "2026-04-29",
+              "name": "Honcho Pickleball League at Rally Club - Late Spring 2026",
+              "description": "Honcho Pickleball League doubles competition at Rally Club Pickleball in Glen Carbon, IL. 8-week same-partner doubles league with multiple skill-level divisions, championship prizes, and free Centerline Athletics performance shirt.",
+              "startDate": "2026-05-25",
+              "endDate": "2026-07-19",
               "location": {
                 "@type": "Place",
                 "name": "Rally Club Pickleball",
@@ -67,8 +67,8 @@ export default function Honcho() {
               },
               "offers": {
                 "@type": "Offer",
-                "url": "https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-early-spring-26/",
-                "availability": "https://schema.org/SoldOut"
+                "url": "https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-late-spring-26/",
+                "availability": "https://schema.org/InStock"
               }
             })
           }}
@@ -157,13 +157,17 @@ export default function Honcho() {
             />
             <h1 className="honcho-hero-title">Same-Partner Doubles League</h1>
             <p className="honcho-hero-subtitle">
-              Team up with 2-4 players and compete in 7 guaranteed DUPR-eligible matches plus playoffs. Battle for the Head Honcho Championship and win over $500 in prizes!
+              8-week season with weekly administered games and court costs included. Multiple skill-level divisions available. Battle for the Head Honcho Championship with a prize package worth ~$500!
             </p>
             <div className="season-status-banner">
-              <p>The current league season is in progress. Check back for updates on the next league session!</p>
+              <p>Late Spring Season starts May 25th — Early-bird registration is now open!</p>
             </div>
-            <div style={{ marginTop: '1.5rem' }}>
+            <div className="honcho-hero-cta">
+              <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-late-spring-26/" className="honcho-cta-button" target="_blank" rel="noopener noreferrer">Register Now</a>
               <span className="honcho-hashtag">#HonchoFam</span>
+            </div>
+            <div className="discount-highlight">
+              Use promo code <strong>RALLYCLUB</strong> — stackable with early-bird pricing!
             </div>
             <a href="/honcho-faq" className="faq-link">Have questions? Check out our FAQ &rarr;</a>
           </div>
@@ -180,10 +184,10 @@ export default function Honcho() {
                 <li>2–4 players per team</li>
                 <li>8-week season
                   <ul style={{ paddingLeft: '1rem', marginTop: '0.25rem' }}>
-                    <li>March 4 - April 29, 2026</li>
+                    <li>May 25 - July 19, 2026</li>
                   </ul>
                 </li>
-                <li>7 guaranteed DUPR-eligible matches</li>
+                <li>Weekly administered games, court costs included</li>
               </ul>
             </div>
             <div className="detail-card">
@@ -194,7 +198,8 @@ export default function Honcho() {
             <div className="detail-card">
               <div className="detail-icon">📋</div>
               <h3>Registration</h3>
-              <p>The current season is underway.<br />Check back soon for details on the next league session!</p>
+              <p>Early-bird registration is open!<br />Use promo code <strong>RALLYCLUB</strong> for a discount — stackable with early-bird pricing.</p>
+              <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-late-spring-26/" className="honcho-button primary" style={{ marginTop: '1rem' }} target="_blank" rel="noopener noreferrer">Register Now</a>
             </div>
           </div>
         </section>
@@ -226,6 +231,27 @@ export default function Honcho() {
                   <p>Fully administered gameplay, court costs included</p>
                 </div>
               </div>
+              <div className="benefit-item-compact">
+                <span className="benefit-icon-compact">👕</span>
+                <div>
+                  <strong>Free Gear</strong>
+                  <p>$68 Centerline Athletics performance shirt included</p>
+                </div>
+              </div>
+              <div className="benefit-item-compact">
+                <span className="benefit-icon-compact">🎁</span>
+                <div>
+                  <strong>Weekly Giveaways</strong>
+                  <p>Sponsor activations and prizes every week</p>
+                </div>
+              </div>
+              <div className="benefit-item-compact">
+                <span className="benefit-icon-compact">🏓</span>
+                <div>
+                  <strong>Referral Rewards</strong>
+                  <p>Refer 4 friends and get a free JOOLA paddle (up to $300 value)</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -233,10 +259,12 @@ export default function Honcho() {
         {/* Call to Action */}
         <section className="final-cta">
           <div className="cta-content">
-            <h2>Interested in Joining?</h2>
-            <p style={{ fontSize: '1.1rem', color: '#E8F5E8', marginBottom: '2rem' }}>The current Honcho League season is in progress. Check back for updates on the next league session!</p>
+            <h2>Ready to Join?</h2>
+            <p style={{ fontSize: '1.1rem', color: '#E8F5E8', marginBottom: '1rem' }}>Late Spring Season starts May 25th. Early-bird registration is open now!</p>
+            <p style={{ fontSize: '1rem', color: '#C8F560', marginBottom: '2rem' }}>Use promo code <strong>RALLYCLUB</strong> — stackable with early-bird pricing!</p>
             <div className="cta-buttons">
-              <a href="/honcho-faq" className="honcho-button primary large">View League FAQ</a>
+              <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-late-spring-26/" className="honcho-button primary large" target="_blank" rel="noopener noreferrer">Register Now</a>
+              <a href="/honcho-faq" className="honcho-button secondary large">View League FAQ</a>
             </div>
           </div>
         </section>
@@ -779,7 +807,7 @@ export default function Honcho() {
         .benefits-grid-compact {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 2rem;
+          gap: 1.5rem;
         }
 
         .benefit-item-compact {
