@@ -436,7 +436,7 @@ export default function Home() {
               </div>
 
               <div className={styles.honchoCta}>
-                <p style={{ color: '#C8F560', fontSize: '1rem', marginBottom: '0.5rem', fontWeight: 'bold' }}>Early-bird registration is open! Use code RALLYCLUB for a discount.</p>
+                <p style={{ color: '#C8F560', fontSize: '1rem', marginBottom: '0.5rem', fontWeight: 'bold' }}>Registration is open! Use code RALLYCLUB for a discount.</p>
                 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                   <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-late-spring-26/" className={styles.honchoButton} target="_blank" rel="noopener noreferrer">
                     Register Now

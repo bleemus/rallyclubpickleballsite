@@ -160,14 +160,14 @@ export default function Honcho() {
               8-week season with weekly administered games and court costs included. Multiple skill-level divisions available. Battle for the Head Honcho Championship with a prize package worth ~$500!
             </p>
             <div className="season-status-banner">
-              <p>Late Spring Season starts May 25th — Early-bird registration is now open!</p>
+              <p>Late Spring Season starts May 25th — Registration is now open!</p>
             </div>
             <div className="honcho-hero-cta">
               <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-late-spring-26/" className="honcho-cta-button" target="_blank" rel="noopener noreferrer">Register Now</a>
               <span className="honcho-hashtag">#HonchoFam</span>
             </div>
             <div className="discount-highlight">
-              Use promo code <strong>RALLYCLUB</strong> — stackable with early-bird pricing!
+              Use promo code <strong>RALLYCLUB</strong> for 14% off at checkout!
             </div>
             <a href="/honcho-faq" className="faq-link">Have questions? Check out our FAQ &rarr;</a>
           </div>
@@ -198,7 +198,7 @@ export default function Honcho() {
             <div className="detail-card">
               <div className="detail-icon">📋</div>
               <h3>Registration</h3>
-              <p>Early-bird registration is open!<br />Use promo code <strong>RALLYCLUB</strong> for a discount — stackable with early-bird pricing.</p>
+              <p>Registration is open!<br />Use promo code <strong>RALLYCLUB</strong> for 14% off at checkout.</p>
               <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-late-spring-26/" className="honcho-button primary" style={{ marginTop: '1rem' }} target="_blank" rel="noopener noreferrer">Register Now</a>
             </div>
           </div>
@@ -260,8 +260,8 @@ export default function Honcho() {
         <section className="final-cta">
           <div className="cta-content">
             <h2>Ready to Join?</h2>
-            <p style={{ fontSize: '1.1rem', color: '#E8F5E8', marginBottom: '1rem' }}>Late Spring Season starts May 25th. Early-bird registration is open now!</p>
-            <p style={{ fontSize: '1rem', color: '#C8F560', marginBottom: '2rem' }}>Use promo code <strong>RALLYCLUB</strong> — stackable with early-bird pricing!</p>
+            <p style={{ fontSize: '1.1rem', color: '#E8F5E8', marginBottom: '1rem' }}>Late Spring Season starts May 25th. Registration is open now!</p>
+            <p style={{ fontSize: '1rem', color: '#C8F560', marginBottom: '2rem' }}>Use promo code <strong>RALLYCLUB</strong> for 14% off at checkout!</p>
             <div className="cta-buttons">
               <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-late-spring-26/" className="honcho-button primary large" target="_blank" rel="noopener noreferrer">Register Now</a>
               <a href="/honcho-faq" className="honcho-button secondary large">View League FAQ</a>
