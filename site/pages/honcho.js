@@ -157,18 +157,14 @@ export default function Honcho() {
             />
             <h1 className="honcho-hero-title">Same-Partner Doubles League</h1>
             <p className="honcho-hero-subtitle">
-              8-week season with weekly administered games and court costs included. Multiple skill-level divisions available. Battle for the Head Honcho Championship with a prize package worth ~$500!
+              8-week season, court costs included, multiple skill divisions. Battle for the Head Honcho Championship and a ~$500 prize package!
             </p>
-            <div className="season-status-banner">
-              <p>Late Spring Season starts May 25th — Registration is now open!</p>
-            </div>
             <div className="honcho-hero-cta">
               <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-late-spring-26/" className="honcho-cta-button" target="_blank" rel="noopener noreferrer">Register Now</a>
-              <span className="honcho-hashtag">#HonchoFam</span>
             </div>
-            <div className="discount-highlight">
-              Use promo code <strong>RALLYCLUB</strong> for 14% off at checkout!
-            </div>
+            <p className="hero-meta">
+              Late Spring starts May 25 · Use code <strong className="promo-code" data-expiry="Expires Sun, April 26 at 11:59 PM">RALLYCLUB</strong> for 14% off · <span className="honcho-hashtag">#HonchoFam</span>
+            </p>
             <a href="/honcho-faq" className="faq-link">Have questions? Check out our FAQ &rarr;</a>
           </div>
         </section>
@@ -198,7 +194,7 @@ export default function Honcho() {
             <div className="detail-card">
               <div className="detail-icon">📋</div>
               <h3>Registration</h3>
-              <p>Registration is open!<br />Use promo code <strong>RALLYCLUB</strong> for 14% off at checkout.</p>
+              <p>Registration is open!<br />Use promo code <strong className="promo-code" data-expiry="Expires Sun, April 26 at 11:59 PM">RALLYCLUB</strong> for 14% off at checkout.</p>
               <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-late-spring-26/" className="honcho-button primary" style={{ marginTop: '1rem' }} target="_blank" rel="noopener noreferrer">Register Now</a>
             </div>
           </div>
@@ -261,7 +257,7 @@ export default function Honcho() {
           <div className="cta-content">
             <h2>Ready to Join?</h2>
             <p style={{ fontSize: '1.1rem', color: '#E8F5E8', marginBottom: '1rem' }}>Late Spring Season starts May 25th. Registration is open now!</p>
-            <p style={{ fontSize: '1rem', color: '#C8F560', marginBottom: '2rem' }}>Use promo code <strong>RALLYCLUB</strong> for 14% off at checkout!</p>
+            <p style={{ fontSize: '1rem', color: '#C8F560', marginBottom: '2rem' }}>Use promo code <strong className="promo-code" data-expiry="Expires Sun, April 26 at 11:59 PM">RALLYCLUB</strong> for 14% off at checkout!</p>
             <div className="cta-buttons">
               <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-late-spring-26/" className="honcho-button primary large" target="_blank" rel="noopener noreferrer">Register Now</a>
               <a href="/honcho-faq" className="honcho-button secondary large">View League FAQ</a>
@@ -550,22 +546,65 @@ export default function Honcho() {
         .honcho-cta-button {
           background: #C8F560;
           color: #2D5A27;
-          padding: 1.2rem 2.5rem;
-          border-radius: 8px;
+          padding: 1.4rem 3.5rem;
+          border-radius: 10px;
           text-decoration: none;
-          font-weight: bold;
-          font-size: 1.2rem;
+          font-weight: 800;
+          font-size: 1.4rem;
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
+          box-shadow: 0 10px 30px rgba(200, 245, 96, 0.35);
           transition: all 0.3s ease;
         }
 
         .honcho-cta-button:hover {
           background: #B8E550;
           transform: translateY(-2px);
-          box-shadow: 0 8px 25px rgba(200, 245, 96, 0.3);
+          box-shadow: 0 14px 40px rgba(200, 245, 96, 0.55);
+        }
+
+        .hero-meta {
+          margin-top: 1.25rem;
+          font-size: 1rem;
+          color: #E8F5E8;
+        }
+
+        .hero-meta strong {
+          color: #C8F560;
+          letter-spacing: 0.5px;
+        }
+
+        .promo-code {
+          position: relative;
+          cursor: help;
+          border-bottom: 1px dashed currentColor;
+        }
+
+        .promo-code::after {
+          content: attr(data-expiry);
+          position: absolute;
+          left: 50%;
+          bottom: calc(100% + 8px);
+          transform: translateX(-50%);
+          background: #1a1a1a;
+          color: #fff;
+          font-size: 0.8rem;
+          font-weight: 500;
+          letter-spacing: 0;
+          padding: 0.4rem 0.7rem;
+          border-radius: 6px;
+          white-space: nowrap;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.2s ease;
+          z-index: 10;
+        }
+
+        .promo-code:hover::after {
+          opacity: 1;
         }
 
         .honcho-hashtag {
-          font-size: 1.5rem;
           font-weight: bold;
           color: #C8F560;
           font-style: italic;
