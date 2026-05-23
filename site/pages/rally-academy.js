@@ -2,11 +2,14 @@ import { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import RequestTrainingModal from '../components/RequestTrainingModal';
+import instructors from '../data/instructors.json';
 
 export default function RallyAcademy() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openBeginnerFaq, setOpenBeginnerFaq] = useState(null);
   const [openPerformanceFaq, setOpenPerformanceFaq] = useState(null);
+  const [personalModalOpen, setPersonalModalOpen] = useState(false);
 
   const toggleBeginnerFaq = (index) => {
     setOpenBeginnerFaq(openBeginnerFaq === index ? null : index);
@@ -214,6 +217,13 @@ export default function RallyAcademy() {
             <div className="academy-hero-cta">
               <a href="#beginner" className="academy-cta-button">Beginner Programs</a>
               <a href="#training" className="academy-cta-button">Performance Training</a>
+              <button
+                type="button"
+                className="academy-cta-button"
+                onClick={() => setPersonalModalOpen(true)}
+              >
+                Personal Training
+              </button>
             </div>
           </div>
         </section>
@@ -276,6 +286,26 @@ export default function RallyAcademy() {
                 <span className="price-period">per session</span>
               </div>
               <a href="#training" className="program-cta">Learn More</a>
+            </div>
+
+            {/* Personal Training Card */}
+            <div className="program-card personal">
+              <h3 className="program-title">Personal Training</h3>
+              <p className="program-headline">One-on-One Coaching, Tailored to You</p>
+              <p className="program-description">
+                Private sessions with a Rally Club coach. Pick a trainer or let us match you. Scheduled around your availability.
+              </p>
+              <div className="program-price">
+                <span className="price-amount">Request</span>
+                <span className="price-period">we'll be in touch</span>
+              </div>
+              <button
+                type="button"
+                className="program-cta"
+                onClick={() => setPersonalModalOpen(true)}
+              >
+                Request Now
+              </button>
             </div>
           </div>
         </section>
@@ -509,9 +539,22 @@ export default function RallyAcademy() {
               <a href="https://rallyclub.pickleplanner.com/event/7a812974-29c0-4907-8929-26ad3cb8123e" className="cta-button primary" target="_blank" rel="noopener noreferrer">
                 Performance Training – $20 per session
               </a>
+              <button
+                type="button"
+                className="cta-button primary"
+                onClick={() => setPersonalModalOpen(true)}
+              >
+                Personal Training – Request a session
+              </button>
             </div>
           </div>
         </section>
+
+        <RequestTrainingModal
+          open={personalModalOpen}
+          onClose={() => setPersonalModalOpen(false)}
+          instructors={instructors}
+        />
 
         {/* Footer */}
         <footer className="footer">
@@ -782,9 +825,12 @@ export default function RallyAcademy() {
           color: #475569;
           padding: 1rem 2rem;
           border-radius: 8px;
+          border: none;
           text-decoration: none;
           font-weight: bold;
           font-size: 1.1rem;
+          font-family: inherit;
+          cursor: pointer;
           transition: all 0.3s ease;
         }
 
@@ -844,11 +890,18 @@ export default function RallyAcademy() {
         }
 
         .programs-grid {
-          max-width: 900px;
+          max-width: 1200px;
           margin: 0 auto;
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(3, 1fr);
           gap: 2rem;
+        }
+
+        @media (max-width: 1024px) {
+          .programs-grid {
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 900px;
+          }
         }
 
         .program-card {
@@ -923,8 +976,12 @@ export default function RallyAcademy() {
           color: white;
           padding: 0.75rem 2rem;
           border-radius: 8px;
+          border: none;
           text-decoration: none;
           font-weight: 600;
+          font-size: 1rem;
+          font-family: inherit;
+          cursor: pointer;
           transition: background 0.3s;
         }
 
@@ -1461,9 +1518,12 @@ export default function RallyAcademy() {
         .cta-button {
           padding: 1rem 2rem;
           border-radius: 8px;
+          border: none;
           text-decoration: none;
           font-weight: bold;
           font-size: 1rem;
+          font-family: inherit;
+          cursor: pointer;
           transition: all 0.3s ease;
         }
 

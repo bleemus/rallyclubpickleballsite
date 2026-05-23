@@ -1,0 +1,11 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "AZURE_STORAGE_CONNECTION_STRING": "DefaultEndpointsProtocol=https;AccountName=...;AccountKey=...;EndpointSuffix=core.windows.net",
+    "TURNSTILE_SECRET_KEY": "1x0000000000000000000000000000000AA",
+    "IP_SALT": "change-me-to-a-random-32-char-string",
+    "ADMIN_GITHUB_LOGIN": "your-github-username"
+  }
+}

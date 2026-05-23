@@ -5,11 +5,24 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "npx serve@latest out"
+    "start": "npx serve@latest out",
+    "bootstrap": "npm install && npm install --prefix api",
+    "predev:local": "node -e \"const fs=require('fs');const p='api/local.settings.json';if(!fs.existsSync(p)){fs.copyFileSync(p+'.example',p);console.log('[bootstrap] created '+p+' from example - edit it if you need to override values');}\"",
+    "dev:local": "concurrently -k -n azurite,next,swa -c yellow,cyan,magenta \"npm:dev:azurite\" \"npm:dev:next\" \"npm:dev:swa\"",
+    "dev:azurite": "azurite --silent --location ./.azurite --debug ./.azurite/debug.log",
+    "dev:next": "next dev",
+    "dev:swa": "wait-on tcp:3000 && swa start http://localhost:3000 --api-location api --swa-config-location .."
   },
   "dependencies": {
     "next": "^15.1.6",
     "react": "19.0.0",
     "react-dom": "19.0.0"
+  },
+  "devDependencies": {
+    "@azure/static-web-apps-cli": "^2.0.0",
+    "azure-functions-core-tools": "^4.0.0",
+    "azurite": "^3.32.0",
+    "concurrently": "^9.1.0",
+    "wait-on": "^8.0.1"
   }
 }
