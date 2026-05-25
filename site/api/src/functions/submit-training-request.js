@@ -29,14 +29,31 @@ app.http('submit-training-request', {
     const userAgent = (req.headers.get('user-agent') || '').slice(0, 200);
     const host = getRequestHost(req);
 
-    const turnstileOk = await verifyTurnstile(body.turnstileToken, ip, host, (msg, data) => ctx.log(msg, data));
+    let lastTurnstileDiag = null;
+    const turnstileOk = await verifyTurnstile(body.turnstileToken, ip, host, (msg, data) => {
+      ctx.log(msg, data);
+      lastTurnstileDiag = { msg, data };
+    });
     if (!turnstileOk) {
-      ctx.log('Turnstile verification failed', {
+      const previewHost = isPreviewHost(host);
+      ctx.log('Turnstile verification failed', { host, preview: previewHost, hadToken: !!body.turnstileToken });
+      // TEMP: surface diagnostic info on the wire to debug preview-env Turnstile failures.
+      // Safe to remove once root cause identified. No secrets included.
+      const debug = {
         host,
-        preview: isPreviewHost(host),
-        hadToken: !!body.turnstileToken
-      });
-      return { status: 400, jsonBody: { error: 'verification_failed' } };
+        preview: previewHost,
+        hadToken: !!body.turnstileToken,
+        seenHeaders: {
+          'x-forwarded-host': req.headers.get('x-forwarded-host') || null,
+          'disguised-host': req.headers.get('disguised-host') || null,
+          'x-original-host': req.headers.get('x-original-host') || null,
+          'x-waws-unencoded-url': req.headers.get('x-waws-unencoded-url') || null,
+          'host': req.headers.get('host') || null,
+          'x-ms-original-url': req.headers.get('x-ms-original-url') || null
+        },
+        lastDiag: lastTurnstileDiag
+      };
+      return { status: 400, jsonBody: { error: 'verification_failed', debug } };
     }
 
     const allowedIds = getAllowedIds();
