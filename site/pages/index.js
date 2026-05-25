@@ -156,7 +156,7 @@ export default function Home() {
                   "name": "How do I cancel or reschedule?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Manage your booking in PicklePlanner. Policies may apply based on timing."
+                    "text": "You can cancel or reschedule in PicklePlanner up to 4 hours before your reservation. Within 4 hours of your start time, email rally.club618@gmail.com and we'll do what we can. Otherwise the booking is non-refundable."
                   }
                 }
               ]
@@ -695,7 +695,7 @@ export default function Home() {
               </button>
               {openFaq === 4 && (
                 <div className={styles.faqAnswer}>
-                  Manage your booking in PicklePlanner. Policies may apply based on timing.
+                  You can cancel or reschedule in PicklePlanner up to 4 hours before your reservation. Within 4 hours of your start time, email <a href="mailto:rally.club618@gmail.com" className={styles.faqLink}>rally.club618@gmail.com</a> and we'll do what we can. Otherwise the booking is non-refundable.
                 </div>
               )}
             </div>
