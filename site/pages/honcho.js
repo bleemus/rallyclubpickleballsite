@@ -39,45 +39,6 @@ export default function Honcho() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "SportsEvent",
-              "name": "Honcho Pickleball League at Rally Club - Late Spring 2026",
-              "description": "Honcho Pickleball League doubles competition at Rally Club Pickleball in Glen Carbon, IL. 8-week same-partner doubles league with multiple skill-level divisions, championship prizes, and free Centerline Athletics performance shirt.",
-              "startDate": "2026-05-25",
-              "endDate": "2026-07-19",
-              "location": {
-                "@type": "Place",
-                "name": "Rally Club Pickleball",
-                "address": {
-                  "@type": "PostalAddress",
-                  "streetAddress": "1 Cottonwood Industrial Park",
-                  "addressLocality": "Glen Carbon",
-                  "addressRegion": "IL",
-                  "postalCode": "62034",
-                  "addressCountry": "US"
-                }
-              },
-              "organizer": {
-                "@type": "Organization",
-                "name": "Honcho Pickleball",
-                "url": "https://honchopickleball.com"
-              },
-              "superEvent": {
-                "@type": "SportsEvent",
-                "name": "Honcho Pickleball League"
-              },
-              "offers": {
-                "@type": "Offer",
-                "url": "https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-late-spring-26/",
-                "availability": "https://schema.org/InStock"
-              }
-            })
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               "itemListElement": [
                 {
@@ -159,11 +120,11 @@ export default function Honcho() {
             <p className="honcho-hero-subtitle">
               8-week season, court costs included, multiple skill divisions. Battle for the Head Honcho Championship and a ~$500 prize package!
             </p>
-            <div className="honcho-hero-cta">
-              <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-late-spring-26/" className="honcho-cta-button" target="_blank" rel="noopener noreferrer">Register Now</a>
+            <div className="season-placeholder">
+              Details about our next season coming soon!
             </div>
             <p className="hero-meta">
-              Late Spring starts May 25 · Use code <strong className="promo-code" data-expiry="Expires Sun, April 26 at 11:59 PM">RALLYCLUB</strong> for 14% off · <span className="honcho-hashtag">#HonchoFam</span>
+              <span className="honcho-hashtag">#HonchoFam</span>
             </p>
             <a href="/honcho-faq" className="faq-link">Have questions? Check out our FAQ &rarr;</a>
           </div>
@@ -178,11 +139,7 @@ export default function Honcho() {
               <h3>Format & Schedule</h3>
               <ul style={{ textAlign: 'left', margin: 0, paddingLeft: '1.2rem', fontSize: '0.95rem', lineHeight: '1.6', color: '#666' }}>
                 <li>2–4 players per team</li>
-                <li>8-week season
-                  <ul style={{ paddingLeft: '1rem', marginTop: '0.25rem' }}>
-                    <li>May 25 - July 19, 2026</li>
-                  </ul>
-                </li>
+                <li>8-week season</li>
                 <li>Weekly administered games, court costs included</li>
               </ul>
             </div>
@@ -194,8 +151,7 @@ export default function Honcho() {
             <div className="detail-card">
               <div className="detail-icon">📋</div>
               <h3>Registration</h3>
-              <p>Registration is open!<br />Use promo code <strong className="promo-code" data-expiry="Expires Sun, April 26 at 11:59 PM">RALLYCLUB</strong> for 14% off at checkout.</p>
-              <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-late-spring-26/" className="honcho-button primary" style={{ marginTop: '1rem' }} target="_blank" rel="noopener noreferrer">Register Now</a>
+              <p>Details about our next season coming soon! Check back here or follow us on Facebook for updates.</p>
             </div>
           </div>
         </section>
@@ -255,11 +211,9 @@ export default function Honcho() {
         {/* Call to Action */}
         <section className="final-cta">
           <div className="cta-content">
-            <h2>Ready to Join?</h2>
-            <p style={{ fontSize: '1.1rem', color: '#E8F5E8', marginBottom: '1rem' }}>Late Spring Season starts May 25th. Registration is open now!</p>
-            <p style={{ fontSize: '1rem', color: '#C8F560', marginBottom: '2rem' }}>Use promo code <strong className="promo-code" data-expiry="Expires Sun, April 26 at 11:59 PM">RALLYCLUB</strong> for 14% off at checkout!</p>
+            <h2>Want In on the Next Season?</h2>
+            <p style={{ fontSize: '1.1rem', color: '#E8F5E8', marginBottom: '2rem' }}>Details about our next season coming soon! Check back here or follow us on Facebook for updates.</p>
             <div className="cta-buttons">
-              <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-late-spring-26/" className="honcho-button primary large" target="_blank" rel="noopener noreferrer">Register Now</a>
               <a href="/honcho-faq" className="honcho-button secondary large">View League FAQ</a>
             </div>
           </div>
@@ -561,6 +515,18 @@ export default function Honcho() {
           background: #B8E550;
           transform: translateY(-2px);
           box-shadow: 0 14px 40px rgba(200, 245, 96, 0.55);
+        }
+
+        .season-placeholder {
+          display: inline-block;
+          background: rgba(255, 255, 255, 0.14);
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          border-radius: 12px;
+          padding: 0.9rem 1.5rem;
+          color: white;
+          font-size: 1.1rem;
+          font-weight: 600;
+          letter-spacing: 0.2px;
         }
 
         .hero-meta {

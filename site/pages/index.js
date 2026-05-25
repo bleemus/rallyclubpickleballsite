@@ -408,7 +408,7 @@ export default function Home() {
 
             <div className={styles.honchoSummary}>
               <p className={styles.honchoDescription}>
-                Late Spring Season starts May 25th! 8-week same-partner doubles league with court costs included, a free $68 Centerline Athletics performance shirt, and a championship bundle worth ~$500!
+                8-week same-partner doubles league with court costs included, a free $68 Centerline Athletics performance shirt, and a championship bundle worth ~$500!
               </p>
 
               <div className={styles.honchoHighlights}>
@@ -436,40 +436,10 @@ export default function Home() {
               </div>
 
               <div className={styles.honchoCta}>
-                <p style={{ color: '#C8F560', fontSize: '1rem', marginBottom: '0.5rem', fontWeight: 'bold' }}>Registration is open! Use code <span className="promo-code-inline" data-expiry="Expires Sun, April 26 at 11:59 PM">RALLYCLUB</span> for 14% off.
-                  <style jsx>{`
-                    .promo-code-inline {
-                      position: relative;
-                      cursor: help;
-                      border-bottom: 1px dashed currentColor;
-                    }
-                    .promo-code-inline::after {
-                      content: attr(data-expiry);
-                      position: absolute;
-                      left: 50%;
-                      bottom: calc(100% + 8px);
-                      transform: translateX(-50%);
-                      background: #1a1a1a;
-                      color: #fff;
-                      font-size: 0.8rem;
-                      font-weight: 500;
-                      padding: 0.4rem 0.7rem;
-                      border-radius: 6px;
-                      white-space: nowrap;
-                      opacity: 0;
-                      pointer-events: none;
-                      transition: opacity 0.2s ease;
-                      z-index: 10;
-                    }
-                    .promo-code-inline:hover::after {
-                      opacity: 1;
-                    }
-                  `}</style>
+                <p style={{ color: '#C8F560', fontSize: '1rem', marginBottom: '1rem', fontWeight: 'bold' }}>
+                  Details about our next season coming soon!
                 </p>
                 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                  <a href="https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-late-spring-26/" className={styles.honchoButton} target="_blank" rel="noopener noreferrer">
-                    Register Now
-                  </a>
                   <a href="/honcho" className={styles.honchoButtonSecondary || styles.honchoButton} style={{ background: 'transparent', border: '2px solid white', color: 'white' }}>
                     Learn More
                   </a>
