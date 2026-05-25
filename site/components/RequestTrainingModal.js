@@ -4,6 +4,72 @@ const TURNSTILE_SCRIPT_ID = 'cf-turnstile-script';
 const TURNSTILE_SCRIPT_SRC = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
 const FALLBACK_TEST_SITE_KEY = '1x00000000000000000000AA';
 
+// Mirror site/api/src/lib/validate.js — keep these in sync.
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const FIELD_LIMITS = {
+  name: 100, email: 200, phone: 30, duprOrSkill: 50,
+  preferredTimes: 500, goals: 1000, notes: 1000
+};
+const ERROR_MESSAGES = {
+  name: { required: 'Please enter your name', too_long: 'Name is too long' },
+  email: { required: 'Email is required', too_long: 'Email is too long', invalid: 'Enter a valid email address' },
+  phone: { required: 'Phone is required', too_long: 'Phone number is too long', invalid: 'Enter a phone number with at least 10 digits' },
+  instructorId: { invalid: 'Please pick a valid instructor', too_long: 'Invalid selection' },
+  duprOrSkill: { required: 'Tell us your DUPR or skill level', too_long: 'Too long' },
+  preferredTimes: { required: 'Tell us your preferred days / times', too_long: 'Too long' },
+  goals: { too_long: 'Too long (max 1000 characters)' },
+  notes: { too_long: 'Too long (max 1000 characters)' }
+};
+
+function errorText(field, code) {
+  return (ERROR_MESSAGES[field] && ERROR_MESSAGES[field][code]) || code;
+}
+
+function validateField(name, value) {
+  const v = typeof value === 'string' ? value.trim() : '';
+  switch (name) {
+    case 'name':
+      if (!v) return 'required';
+      if (v.length > FIELD_LIMITS.name) return 'too_long';
+      return null;
+    case 'email':
+      if (!v) return 'required';
+      if (v.length > FIELD_LIMITS.email) return 'too_long';
+      if (!EMAIL_RE.test(v.toLowerCase())) return 'invalid';
+      return null;
+    case 'phone':
+      if (!v) return 'required';
+      if (v.length > FIELD_LIMITS.phone) return 'too_long';
+      if (v.replace(/\D/g, '').length < 10) return 'invalid';
+      return null;
+    case 'duprOrSkill':
+      if (!v) return 'required';
+      if (v.length > FIELD_LIMITS.duprOrSkill) return 'too_long';
+      return null;
+    case 'preferredTimes':
+      if (!v) return 'required';
+      if (v.length > FIELD_LIMITS.preferredTimes) return 'too_long';
+      return null;
+    case 'goals':
+      if (v.length > FIELD_LIMITS.goals) return 'too_long';
+      return null;
+    case 'notes':
+      if (v.length > FIELD_LIMITS.notes) return 'too_long';
+      return null;
+    default:
+      return null;
+  }
+}
+
+function validateAll(form) {
+  const errors = {};
+  for (const field of ['name', 'email', 'phone', 'duprOrSkill', 'preferredTimes', 'goals', 'notes']) {
+    const err = validateField(field, form[field]);
+    if (err) errors[field] = err;
+  }
+  return errors;
+}
+
 function loadTurnstileScript() {
   if (typeof window === 'undefined') return Promise.resolve();
   if (window.turnstile) return Promise.resolve();
@@ -119,8 +185,22 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
     if (fieldErrors[name]) setFieldErrors(prev => ({ ...prev, [name]: undefined }));
   };
 
+  const onBlur = (e) => {
+    const { name, value } = e.target;
+    const err = validateField(name, value);
+    setFieldErrors(prev => ({ ...prev, [name]: err || undefined }));
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
+
+    const clientErrors = validateAll(form);
+    if (Object.keys(clientErrors).length > 0) {
+      setFieldErrors(clientErrors);
+      setErrorMsg('Please correct the highlighted fields and try again.');
+      return;
+    }
+
     setStatus('submitting');
     setErrorMsg('');
     setFieldErrors({});
@@ -205,21 +285,21 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
               <div className="ptm-row">
                 <label className="ptm-field">
                   <span>Name <em>*</em></span>
-                  <input name="name" type="text" required maxLength={100} value={form.name} onChange={onChange} disabled={status === 'submitting'} />
-                  {fieldErrors.name && <small className="ptm-err">{fieldErrors.name}</small>}
+                  <input name="name" type="text" required maxLength={100} value={form.name} onChange={onChange} onBlur={onBlur} disabled={status === 'submitting'} aria-invalid={!!fieldErrors.name} />
+                  {fieldErrors.name && <small className="ptm-err">{errorText('name', fieldErrors.name)}</small>}
                 </label>
                 <label className="ptm-field">
                   <span>Email <em>*</em></span>
-                  <input name="email" type="email" required maxLength={200} value={form.email} onChange={onChange} disabled={status === 'submitting'} />
-                  {fieldErrors.email && <small className="ptm-err">{fieldErrors.email}</small>}
+                  <input name="email" type="email" required maxLength={200} value={form.email} onChange={onChange} onBlur={onBlur} disabled={status === 'submitting'} aria-invalid={!!fieldErrors.email} />
+                  {fieldErrors.email && <small className="ptm-err">{errorText('email', fieldErrors.email)}</small>}
                 </label>
               </div>
 
               <div className="ptm-row">
                 <label className="ptm-field">
                   <span>Phone <em>*</em></span>
-                  <input name="phone" type="tel" required maxLength={30} value={form.phone} onChange={onChange} disabled={status === 'submitting'} placeholder="(555) 555-5555" />
-                  {fieldErrors.phone && <small className="ptm-err">{fieldErrors.phone}</small>}
+                  <input name="phone" type="tel" required maxLength={30} value={form.phone} onChange={onChange} onBlur={onBlur} disabled={status === 'submitting'} placeholder="(555) 555-5555" aria-invalid={!!fieldErrors.phone} />
+                  {fieldErrors.phone && <small className="ptm-err">{errorText('phone', fieldErrors.phone)}</small>}
                 </label>
                 <label className="ptm-field">
                   <span>Instructor</span>
@@ -229,32 +309,32 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
                       <option key={i.id} value={i.id}>{i.name}</option>
                     ))}
                   </select>
-                  {fieldErrors.instructorId && <small className="ptm-err">{fieldErrors.instructorId}</small>}
+                  {fieldErrors.instructorId && <small className="ptm-err">{errorText('instructorId', fieldErrors.instructorId)}</small>}
                 </label>
               </div>
 
               <label className="ptm-field">
                 <span>DUPR / Skill level <em>*</em></span>
-                <input name="duprOrSkill" type="text" required maxLength={50} value={form.duprOrSkill} onChange={onChange} disabled={status === 'submitting'} placeholder="e.g. 3.5 or 'beginner'" />
-                {fieldErrors.duprOrSkill && <small className="ptm-err">{fieldErrors.duprOrSkill}</small>}
-              </label>
-
-              <label className="ptm-field">
-                <span>Goals (optional)</span>
-                <textarea name="goals" rows={2} maxLength={1000} value={form.goals} onChange={onChange} disabled={status === 'submitting'} placeholder="What do you want to work on?" />
-                {fieldErrors.goals && <small className="ptm-err">{fieldErrors.goals}</small>}
+                <input name="duprOrSkill" type="text" required maxLength={50} value={form.duprOrSkill} onChange={onChange} onBlur={onBlur} disabled={status === 'submitting'} placeholder="e.g. 3.5 or 'beginner'" aria-invalid={!!fieldErrors.duprOrSkill} />
+                {fieldErrors.duprOrSkill && <small className="ptm-err">{errorText('duprOrSkill', fieldErrors.duprOrSkill)}</small>}
               </label>
 
               <label className="ptm-field">
                 <span>Preferred days / times <em>*</em></span>
-                <textarea name="preferredTimes" rows={2} maxLength={500} value={form.preferredTimes} onChange={onChange} disabled={status === 'submitting'} placeholder="e.g. weekday mornings, Wed evenings" />
-                {fieldErrors.preferredTimes && <small className="ptm-err">{fieldErrors.preferredTimes}</small>}
+                <textarea name="preferredTimes" rows={2} maxLength={500} value={form.preferredTimes} onChange={onChange} onBlur={onBlur} disabled={status === 'submitting'} placeholder="e.g. weekday mornings, Wed evenings" aria-invalid={!!fieldErrors.preferredTimes} />
+                {fieldErrors.preferredTimes && <small className="ptm-err">{errorText('preferredTimes', fieldErrors.preferredTimes)}</small>}
               </label>
 
               <label className="ptm-field">
-                <span>Notes (optional)</span>
-                <textarea name="notes" rows={2} maxLength={1000} value={form.notes} onChange={onChange} disabled={status === 'submitting'} />
-                {fieldErrors.notes && <small className="ptm-err">{fieldErrors.notes}</small>}
+                <span>Goals (optional)</span>
+                <textarea name="goals" rows={2} maxLength={1000} value={form.goals} onChange={onChange} onBlur={onBlur} disabled={status === 'submitting'} placeholder="What do you want to work on?" />
+                {fieldErrors.goals && <small className="ptm-err">{errorText('goals', fieldErrors.goals)}</small>}
+              </label>
+
+              <label className="ptm-field">
+                <span>Anything else you&rsquo;d like us to know? (optional)</span>
+                <textarea name="notes" rows={2} maxLength={1000} value={form.notes} onChange={onChange} onBlur={onBlur} disabled={status === 'submitting'} />
+                {fieldErrors.notes && <small className="ptm-err">{errorText('notes', fieldErrors.notes)}</small>}
               </label>
 
               <div className="ptm-turnstile" ref={turnstileContainerRef} />
@@ -359,9 +439,20 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
           border: 1px solid #cbd5e1;
           border-radius: 8px;
           font: inherit;
+          line-height: 1.5;
           color: #1a1a1a;
           background: white;
           box-sizing: border-box;
+        }
+        .ptm-field select {
+          appearance: none;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          padding-right: 2.25rem;
+          background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2012%208%22%3E%3Cpath%20fill%3D%22none%22%20stroke%3D%22%2364748B%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20d%3D%22M1%201l5%205%205-5%22%2F%3E%3C%2Fsvg%3E");
+          background-repeat: no-repeat;
+          background-position: right 0.75rem center;
+          background-size: 0.7rem auto;
         }
         .ptm-field textarea {
           resize: vertical;
@@ -374,6 +465,15 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
           outline: none;
           border-color: #475569;
           box-shadow: 0 0 0 3px rgba(71, 85, 105, 0.15);
+        }
+        .ptm-field input[aria-invalid="true"],
+        .ptm-field textarea[aria-invalid="true"] {
+          border-color: #dc2626;
+        }
+        .ptm-field input[aria-invalid="true"]:focus,
+        .ptm-field textarea[aria-invalid="true"]:focus {
+          border-color: #dc2626;
+          box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
         }
         .ptm-err {
           display: block;

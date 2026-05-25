@@ -1,13 +1,42 @@
 [
   {
-    "id": "coach-1",
-    "name": "Replace with real coach name",
+    "id": "curt-price",
+    "name": "Curt Price",
     "active": true,
-    "bio": "Optional one-line bio shown in the form."
+    "photo": "/instructors/curt-price.png",
+    "bio": [
+      "I'm a Six Zero Pickleball Ambassador and a 4.5 DUPR rated player who has been playing pickleball since 2020. I've won numerous tournaments and regularly play in local leagues.",
+      "I enjoy teaching individuals and groups (bring friends to get a better rate!) how to properly play pickleball by teaching the fundamentals of the game, along with strategies and techniques to take their game to the next level. The goal is to have fun while improving your skills!",
+      "I'll also have Six Zero paddles on hand for you to demo if you like."
+    ]
   },
   {
-    "id": "coach-2",
-    "name": "Replace with another coach name",
-    "active": true
+    "id": "michael-hawkes",
+    "name": "Michael Hawkes",
+    "active": true,
+    "photo": "/instructors/michael-hawkes.png",
+    "bio": [
+      "I'm a former tennis player turned pickleball addict. I bring a strong background in competitive tennis and focus on helping players develop the basics with clean, efficient mechanics, smart shot selection and a good understanding of the game of pickleball.",
+      "My lessons combine strategy, repetition, and fun — whether you're new to the game or already competing in tournaments.",
+      "Let's take your game to the next level."
+    ]
+  },
+  {
+    "id": "steve-horrell",
+    "name": "Steve Horrell",
+    "active": true,
+    "photo": "/instructors/steve-horrell.png",
+    "bio": [
+      "Steve is certified to teach by the Professional Pickleball Registry and has taught physical education and health in public and private schools. He currently teaches Skills & Drills for One More Game Pickleball Club, in Edwardsville, and offers individual and group lessons locally."
+    ]
+  },
+  {
+    "id": "caleb-fall",
+    "name": "Caleb Fall",
+    "active": true,
+    "photo": null,
+    "bio": [
+      "I've been playing since 2020. PPR certified. Numerous medals in 5.0 and open division tournaments. OMG Pickleball Club pro."
+    ]
   }
 ]
