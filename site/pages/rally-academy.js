@@ -2,11 +2,14 @@ import { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import RequestTrainingModal from '../components/RequestTrainingModal';
+import instructors from '../data/instructors.json';
 
 export default function RallyAcademy() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openBeginnerFaq, setOpenBeginnerFaq] = useState(null);
   const [openPerformanceFaq, setOpenPerformanceFaq] = useState(null);
+  const [personalModalOpen, setPersonalModalOpen] = useState(false);
 
   const toggleBeginnerFaq = (index) => {
     setOpenBeginnerFaq(openBeginnerFaq === index ? null : index);
@@ -212,9 +215,19 @@ export default function RallyAcademy() {
               Structured coaching for beginners & training drills for intermediate players.
             </p>
             <div className="academy-hero-cta">
-              <a href="#beginner" className="academy-cta-button">Beginner Programs</a>
-              <a href="#training" className="academy-cta-button">Performance Training</a>
+              <div className="academy-cta-row">
+                <a href="#beginner" className="academy-cta-button">Beginner Programs</a>
+                <a href="#training" className="academy-cta-button">Performance Training</a>
+              </div>
+              <button
+                type="button"
+                className="academy-cta-button academy-cta-button-pill"
+                onClick={() => setPersonalModalOpen(true)}
+              >
+                Request Personal Training
+              </button>
             </div>
+            <a href="/about-our-instructors" className="academy-hero-meet">Meet our coaches &rarr;</a>
           </div>
         </section>
 
@@ -276,6 +289,26 @@ export default function RallyAcademy() {
                 <span className="price-period">per session</span>
               </div>
               <a href="#training" className="program-cta">Learn More</a>
+            </div>
+
+            {/* Personal Training Card */}
+            <div className="program-card personal">
+              <h3 className="program-title">Personal Training</h3>
+              <p className="program-headline">One-on-One Coaching, Tailored to You</p>
+              <p className="program-description">
+                Private sessions with a Rally Club coach. Pick a trainer or let us match you. Scheduled around your availability.
+              </p>
+              <div className="program-price">
+                <span className="price-amount">Request</span>
+                <span className="price-period">we'll be in touch</span>
+              </div>
+              <button
+                type="button"
+                className="program-cta program-cta-pill"
+                onClick={() => setPersonalModalOpen(true)}
+              >
+                Request Now
+              </button>
             </div>
           </div>
         </section>
@@ -504,14 +537,30 @@ export default function RallyAcademy() {
             <p className="cta-reassurance">Beginner friendly. Zero judgment. Just improvement + fun.</p>
             <div className="cta-buttons">
               <a href="https://square.link/u/k6oFr2Fw" className="cta-button primary" target="_blank" rel="noopener noreferrer">
-                Beginner Programs – $80 per 4 weeks
+                <span className="cta-label">Beginner Programs</span>
+                <span className="cta-sublabel">$80 per 4 weeks</span>
               </a>
               <a href="https://rallyclub.pickleplanner.com/event/7a812974-29c0-4907-8929-26ad3cb8123e" className="cta-button primary" target="_blank" rel="noopener noreferrer">
-                Performance Training – $20 per session
+                <span className="cta-label">Performance Training</span>
+                <span className="cta-sublabel">$20 per session</span>
               </a>
+              <button
+                type="button"
+                className="cta-button primary cta-button-pill"
+                onClick={() => setPersonalModalOpen(true)}
+              >
+                <span className="cta-label">Personal Training</span>
+                <span className="cta-sublabel">Request a session</span>
+              </button>
             </div>
           </div>
         </section>
+
+        <RequestTrainingModal
+          open={personalModalOpen}
+          onClose={() => setPersonalModalOpen(false)}
+          instructors={instructors}
+        />
 
         {/* Footer */}
         <footer className="footer">
@@ -731,7 +780,7 @@ export default function RallyAcademy() {
         /* Hero Section */
         .academy-hero {
           margin-top: 80px;
-          padding: 5rem 2rem;
+          padding: 3.25rem 2rem;
           background: linear-gradient(135deg, #475569 0%, #64748B 100%);
           color: white;
           text-align: center;
@@ -757,19 +806,26 @@ export default function RallyAcademy() {
         }
 
         .academy-hero-title {
-          font-size: 3.5rem;
+          font-size: 3rem;
           font-weight: bold;
-          margin-bottom: 1rem;
+          margin-bottom: 0.75rem;
           line-height: 1.2;
         }
 
         .academy-hero-subtitle {
-          font-size: 1.3rem;
+          font-size: 1.2rem;
           color: #CBD5E1;
-          margin-bottom: 2.5rem;
+          margin-bottom: 1.75rem;
         }
 
         .academy-hero-cta {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 1rem;
+        }
+
+        .academy-cta-row {
           display: flex;
           align-items: center;
           justify-content: center;
@@ -780,12 +836,19 @@ export default function RallyAcademy() {
         .academy-cta-button {
           background: white;
           color: #475569;
-          padding: 1rem 2rem;
+          padding: 0.9rem 2rem;
           border-radius: 8px;
+          border: 2px solid transparent;
           text-decoration: none;
           font-weight: bold;
           font-size: 1.1rem;
+          font-family: inherit;
+          line-height: 1.5;
+          cursor: pointer;
           transition: all 0.3s ease;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .academy-cta-button:hover {
@@ -794,75 +857,103 @@ export default function RallyAcademy() {
           box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
         }
 
-        .academy-cta-button.secondary {
-          background: transparent;
-          color: white;
-          border: 2px solid white;
+        .academy-cta-button-pill {
+          border-radius: 999px;
+          padding: 0.9rem 2.25rem;
+          box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22), 0 2px 6px rgba(0, 0, 0, 0.18);
         }
 
-        .academy-cta-button.secondary:hover {
-          background: rgba(255, 255, 255, 0.1);
+        .academy-cta-button-pill:hover {
+          box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28), 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .academy-hero-meet {
+          display: inline-block;
+          margin-top: 1.25rem;
+          color: #CBD5E1;
+          text-decoration: none;
+          font-size: 0.95rem;
+          font-weight: 500;
+          border-bottom: 1px solid transparent;
+          transition: color 0.2s, border-color 0.2s;
+        }
+        .academy-hero-meet:hover {
+          color: white;
+          border-bottom-color: rgba(255, 255, 255, 0.6);
         }
 
         /* Section Titles */
         .section-title {
           text-align: center;
-          font-size: 2.5rem;
-          margin-bottom: 3rem;
+          font-size: 2.25rem;
+          margin-bottom: 2rem;
           font-weight: bold;
           color: #475569;
         }
 
         .section-title-light {
           text-align: center;
-          font-size: 2.5rem;
-          margin-bottom: 3rem;
+          font-size: 2.25rem;
+          margin-bottom: 2rem;
           font-weight: bold;
           color: white;
         }
 
         .section-subtitle {
           text-align: center;
-          font-size: 1.2rem;
+          font-size: 1.15rem;
           color: #CBD5E1;
-          margin-top: -2rem;
-          margin-bottom: 3rem;
+          margin-top: -1.25rem;
+          margin-bottom: 2rem;
         }
 
         .section-subtitle-dark {
           text-align: center;
-          font-size: 1.2rem;
+          font-size: 1.15rem;
           color: #666;
-          margin-top: -2rem;
-          margin-bottom: 3rem;
+          margin-top: -1.25rem;
+          margin-bottom: 2rem;
         }
 
         /* Programs Overview */
         .programs-overview {
-          padding: 5rem 2rem;
+          padding: 3.25rem 2rem;
           background: #f8f9fa;
         }
 
         .programs-grid {
-          max-width: 900px;
+          max-width: 1200px;
           margin: 0 auto;
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(3, 1fr);
           gap: 2rem;
+        }
+
+        @media (max-width: 1024px) {
+          .programs-grid {
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 900px;
+          }
         }
 
         .program-card {
           background: white;
-          padding: 2.5rem;
+          padding: 1.75rem 2rem;
           border-radius: 16px;
           box-shadow: 0 10px 30px rgba(0,0,0,0.1);
           text-align: center;
           position: relative;
           transition: transform 0.3s ease;
+          display: flex;
+          flex-direction: column;
         }
 
         .program-card:hover {
           transform: translateY(-5px);
+        }
+
+        .program-card .program-price {
+          margin-top: auto;
         }
 
         .program-badge {
@@ -918,13 +1009,21 @@ export default function RallyAcademy() {
         }
 
         .program-cta {
-          display: inline-block;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          align-self: center;
           background: #64748B;
           color: white;
           padding: 0.75rem 2rem;
           border-radius: 8px;
+          border: 2px solid transparent;
           text-decoration: none;
           font-weight: 600;
+          font-size: 1rem;
+          font-family: inherit;
+          line-height: 1.5;
+          cursor: pointer;
           transition: background 0.3s;
         }
 
@@ -932,9 +1031,14 @@ export default function RallyAcademy() {
           background: #475569;
         }
 
+        .program-cta-pill {
+          border-radius: 999px;
+          padding: 0.75rem 2.25rem;
+        }
+
         /* Beginner Section */
         .beginner-section {
-          padding: 5rem 2rem;
+          padding: 3.25rem 2rem;
           background: linear-gradient(135deg, #475569 0%, #64748B 100%);
           color: white;
         }
@@ -946,13 +1050,13 @@ export default function RallyAcademy() {
 
         /* Curriculum */
         .curriculum {
-          margin-bottom: 4rem;
+          margin-bottom: 2.5rem;
         }
 
         .curriculum-title {
           text-align: center;
-          font-size: 1.5rem;
-          margin-bottom: 2rem;
+          font-size: 1.4rem;
+          margin-bottom: 1.25rem;
           color: #CBD5E1;
         }
 
@@ -995,8 +1099,8 @@ export default function RallyAcademy() {
         .selling-points {
           display: grid;
           grid-template-columns: repeat(5, 1fr);
-          gap: 1.5rem;
-          margin-bottom: 4rem;
+          gap: 1.25rem;
+          margin-bottom: 2.5rem;
         }
 
         .selling-point {
@@ -1096,18 +1200,18 @@ export default function RallyAcademy() {
 
         /* Performance Section */
         .performance-section {
-          padding: 5rem 2rem;
+          padding: 3.25rem 2rem;
           background: #f8f9fa;
         }
 
         .schedule-box {
           background: white;
-          padding: 1.5rem 3rem;
+          padding: 1.25rem 3rem;
           border-radius: 16px;
           text-align: center;
           box-shadow: 0 8px 25px rgba(0,0,0,0.1);
           max-width: 500px;
-          margin: 0 auto 3rem;
+          margin: 0 auto 2rem;
         }
 
         .schedule-title {
@@ -1149,12 +1253,12 @@ export default function RallyAcademy() {
 
         .schedule-box-dark {
           background: rgba(255, 255, 255, 0.15);
-          padding: 1.5rem 3rem;
+          padding: 1.25rem 3rem;
           border-radius: 16px;
           text-align: center;
           backdrop-filter: blur(5px);
           max-width: 300px;
-          margin: 0 auto 3rem;
+          margin: 0 auto 2rem;
         }
 
         .schedule-title-dark {
@@ -1184,13 +1288,13 @@ export default function RallyAcademy() {
         .included-grid {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          gap: 2rem;
-          margin-bottom: 3rem;
+          gap: 1.5rem;
+          margin-bottom: 2rem;
         }
 
         .included-item {
           background: white;
-          padding: 2rem;
+          padding: 1.5rem;
           border-radius: 12px;
           text-align: center;
           box-shadow: 0 5px 15px rgba(0,0,0,0.08);
@@ -1215,9 +1319,9 @@ export default function RallyAcademy() {
         .performance-points {
           display: flex;
           justify-content: center;
-          gap: 2rem;
+          gap: 1.5rem;
           flex-wrap: wrap;
-          margin-bottom: 3rem;
+          margin-bottom: 2rem;
         }
 
         .perf-point {
@@ -1311,7 +1415,7 @@ export default function RallyAcademy() {
 
         /* Why Train With Us */
         .why-train {
-          padding: 5rem 2rem;
+          padding: 3.25rem 2rem;
           background: white;
         }
 
@@ -1320,12 +1424,12 @@ export default function RallyAcademy() {
           margin: 0 auto;
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          gap: 2rem;
+          gap: 1.5rem;
         }
 
         .why-item {
           text-align: center;
-          padding: 1.5rem;
+          padding: 1rem;
         }
 
         .why-icon {
@@ -1345,7 +1449,7 @@ export default function RallyAcademy() {
 
         /* FAQ Section */
         .faq-section {
-          padding: 5rem 2rem;
+          padding: 3.25rem 2rem;
           background: linear-gradient(135deg, #475569 0%, #64748B 100%);
           color: white;
         }
@@ -1429,42 +1533,65 @@ export default function RallyAcademy() {
 
         /* Final CTA */
         .final-cta {
-          padding: 5rem 2rem;
+          padding: 3.25rem 2rem;
           background: linear-gradient(135deg, #475569 0%, #64748B 100%);
           text-align: center;
           color: white;
         }
 
         .cta-content {
-          max-width: 600px;
+          max-width: 960px;
           margin: 0 auto;
         }
 
         .cta-content h2 {
-          font-size: 2.5rem;
-          margin-bottom: 1rem;
+          font-size: 2.25rem;
+          margin-bottom: 0.75rem;
         }
 
         .cta-reassurance {
-          font-size: 1.2rem;
+          font-size: 1.15rem;
           color: #CBD5E1;
-          margin-bottom: 2rem;
+          margin-bottom: 1.5rem;
         }
 
         .cta-buttons {
-          display: flex;
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
           justify-content: center;
           gap: 1rem;
-          flex-wrap: wrap;
+          max-width: 900px;
+          margin: 0 auto;
         }
 
         .cta-button {
-          padding: 1rem 2rem;
+          padding: 0.85rem 1.25rem;
           border-radius: 8px;
+          border: 2px solid transparent;
           text-decoration: none;
           font-weight: bold;
           font-size: 1rem;
+          font-family: inherit;
+          line-height: 1.3;
+          cursor: pointer;
           transition: all 0.3s ease;
+          display: inline-flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 0.15rem;
+          text-align: center;
+        }
+        .cta-label {
+          font-size: 1.05rem;
+          font-weight: bold;
+          line-height: 1.2;
+        }
+        .cta-sublabel {
+          font-size: 0.85rem;
+          font-weight: 500;
+          opacity: 0.78;
+          line-height: 1.2;
         }
 
         .cta-button.primary {
@@ -1475,6 +1602,10 @@ export default function RallyAcademy() {
         .cta-button.primary:hover {
           background: #F1F5F9;
           transform: translateY(-2px);
+        }
+
+        .cta-button-pill {
+          border-radius: 999px;
         }
 
         .cta-button.secondary {
@@ -1622,7 +1753,7 @@ export default function RallyAcademy() {
           }
 
           .cta-buttons {
-            flex-direction: column;
+            grid-template-columns: 1fr;
           }
 
           .academy-hero-cta {
