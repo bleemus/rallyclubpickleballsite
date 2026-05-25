@@ -14,39 +14,34 @@ const TEST_SECRET = '1x0000000000000000000000000000000AA';
 // own 9-digit app suffix. (PR numbers in this repo will not realistically hit 100,000.)
 const PREVIEW_HOST_RE = /-\d{1,5}\.[a-z0-9-]+\.\d+\.azurestaticapps\.net$/i;
 
-// SWA Managed Functions don't get a consistent `host`/`x-forwarded-host` —
-// depending on edge routing, the user-facing hostname can land in any of these.
-// `disguised-host` is the App Service convention; `x-ms-original-url` carries
-// the full original request URL when SWA rewrites it.
-const HOST_HEADER_CANDIDATES = [
-  'x-forwarded-host',
-  'disguised-host',
-  'x-original-host',
-  'x-waws-unencoded-url',
-  'host'
-];
+// On SWA Managed Functions the only header that carries the user-facing
+// hostname is `x-ms-original-url` — `host`, `disguised-host`, and
+// `x-forwarded-host` all return the internal Function App container name
+// (`<uuid>.azurewebsites.net`) which is useless for preview detection.
+// Other headers are kept as fallbacks for unrelated runtime contexts.
+const HOST_HEADER_FALLBACKS = ['x-forwarded-host', 'x-original-host', 'host'];
 
 function normalizeHost(value) {
   if (!value) return '';
-  // `x-forwarded-host` can be comma-separated; first hop is the public hostname.
   const first = String(value).split(',')[0].trim();
   return first.toLowerCase().split(':')[0];
 }
 
 function getRequestHost(req) {
   if (!req || !req.headers) return '';
-  for (const name of HOST_HEADER_CANDIDATES) {
+  const originalUrl = req.headers.get('x-ms-original-url');
+  if (originalUrl) {
+    try {
+      const h = normalizeHost(new URL(originalUrl).hostname);
+      if (h) return h;
+    } catch { /* ignore */ }
+  }
+  for (const name of HOST_HEADER_FALLBACKS) {
     const v = req.headers.get(name);
     if (v) {
       const h = normalizeHost(v);
       if (h) return h;
     }
-  }
-  const originalUrl = req.headers.get('x-ms-original-url');
-  if (originalUrl) {
-    try {
-      return normalizeHost(new URL(originalUrl).hostname);
-    } catch { /* ignore */ }
   }
   return '';
 }
