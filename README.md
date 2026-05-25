@@ -98,10 +98,10 @@ npm run start
 ## Project Structure
 
 ```
-staticwebapp.config.json     # SWA routing, auth, and role-gating config
 infra/
 └── storage.bicep            # Azure Storage Account + tables (training requests, rate limiting)
 site/
+├── staticwebapp.config.json # SWA routing, auth, and role-gating config
 ├── .nvmrc                   # Pins Node 22
 ├── pages/
 │   ├── index.js                  # Landing page with video hero

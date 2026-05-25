@@ -40,10 +40,10 @@ First-run auto-setup (via the `predev:local` and `dev:swa` script hooks):
 
 ### Project Structure
 ```
-staticwebapp.config.json # SWA routing, auth, and role-gating config (prod)
 infra/
 └── storage.bicep        # Azure Storage Account + tables (TrainingRequests, RateLimitEvents)
 site/
+├── staticwebapp.config.json  # SWA routing, auth, and role-gating config (prod)
 ├── .nvmrc               # Pins Node 22 (required by SWA CLI)
 ├── next.config.js       # Static export config
 ├── package.json

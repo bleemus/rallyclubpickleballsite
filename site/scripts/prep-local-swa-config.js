@@ -6,7 +6,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const SRC = path.resolve(__dirname, '..', '..', 'staticwebapp.config.json');
+const SRC = path.resolve(__dirname, '..', 'staticwebapp.config.json');
 const OUT_DIR = path.resolve(__dirname, '..', '.swa-local');
 const OUT = path.join(OUT_DIR, 'staticwebapp.config.json');
 
