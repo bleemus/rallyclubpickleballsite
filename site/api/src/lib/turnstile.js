@@ -14,10 +14,46 @@ const TEST_SECRET = '1x0000000000000000000000000000000AA';
 // own 9-digit app suffix. (PR numbers in this repo will not realistically hit 100,000.)
 const PREVIEW_HOST_RE = /-\d{1,5}\.[a-z0-9-]+\.\d+\.azurestaticapps\.net$/i;
 
+// SWA Managed Functions don't get a consistent `host`/`x-forwarded-host` —
+// depending on edge routing, the user-facing hostname can land in any of these.
+// `disguised-host` is the App Service convention; `x-ms-original-url` carries
+// the full original request URL when SWA rewrites it.
+const HOST_HEADER_CANDIDATES = [
+  'x-forwarded-host',
+  'disguised-host',
+  'x-original-host',
+  'x-waws-unencoded-url',
+  'host'
+];
+
+function normalizeHost(value) {
+  if (!value) return '';
+  // `x-forwarded-host` can be comma-separated; first hop is the public hostname.
+  const first = String(value).split(',')[0].trim();
+  return first.toLowerCase().split(':')[0];
+}
+
+function getRequestHost(req) {
+  if (!req || !req.headers) return '';
+  for (const name of HOST_HEADER_CANDIDATES) {
+    const v = req.headers.get(name);
+    if (v) {
+      const h = normalizeHost(v);
+      if (h) return h;
+    }
+  }
+  const originalUrl = req.headers.get('x-ms-original-url');
+  if (originalUrl) {
+    try {
+      return normalizeHost(new URL(originalUrl).hostname);
+    } catch { /* ignore */ }
+  }
+  return '';
+}
+
 function isPreviewHost(host) {
   if (!host) return false;
-  const bare = host.toLowerCase().split(':')[0];
-  return PREVIEW_HOST_RE.test(bare);
+  return PREVIEW_HOST_RE.test(normalizeHost(host));
 }
 
 function chooseSecret(host) {
@@ -29,9 +65,17 @@ function chooseSecret(host) {
   return secret;
 }
 
-async function verifyTurnstile(token, remoteIp, host) {
+async function verifyTurnstile(token, remoteIp, host, logger) {
   if (!token) return false;
-  const secret = chooseSecret(host);
+  const preview = isPreviewHost(host);
+  const secret = preview
+    ? TEST_SECRET
+    : (process.env.TURNSTILE_SECRET_KEY || '');
+
+  if (!secret) {
+    if (logger) logger('Turnstile: no secret available (host not preview, TURNSTILE_SECRET_KEY unset)', { host });
+    return false;
+  }
 
   const body = new URLSearchParams();
   body.append('secret', secret);
@@ -42,12 +86,25 @@ async function verifyTurnstile(token, remoteIp, host) {
 
   try {
     const res = await fetch(VERIFY_URL, { method: 'POST', body });
-    if (!res.ok) return false;
+    if (!res.ok) {
+      if (logger) logger('Turnstile siteverify HTTP error', { status: res.status, host, preview });
+      return false;
+    }
     const data = await res.json();
-    return data && data.success === true;
-  } catch {
+    if (data && data.success === true) return true;
+    if (logger) {
+      logger('Turnstile siteverify rejected', {
+        host,
+        preview,
+        secretMode: preview ? 'test' : 'prod',
+        errorCodes: data && data['error-codes']
+      });
+    }
+    return false;
+  } catch (err) {
+    if (logger) logger('Turnstile siteverify threw', { host, preview, error: err && err.message });
     return false;
   }
 }
 
-module.exports = { verifyTurnstile, isPreviewHost };
+module.exports = { verifyTurnstile, isPreviewHost, getRequestHost };

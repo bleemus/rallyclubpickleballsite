@@ -1,6 +1,6 @@
 const { app } = require('@azure/functions');
 const { getTableClient, TABLES } = require('../lib/table-client');
-const { verifyTurnstile } = require('../lib/turnstile');
+const { verifyTurnstile, getRequestHost, isPreviewHost } = require('../lib/turnstile');
 const { validateSubmission } = require('../lib/validate');
 const { checkRateLimit, recordAttempt } = require('../lib/rate-limit');
 const { isDuplicate, monthKey } = require('../lib/dedupe');
@@ -27,11 +27,15 @@ app.http('submit-training-request', {
     const forwarded = req.headers.get('x-forwarded-for') || '';
     const ip = forwarded.split(',')[0].trim() || 'unknown';
     const userAgent = (req.headers.get('user-agent') || '').slice(0, 200);
-    const host = req.headers.get('x-forwarded-host') || req.headers.get('host') || '';
+    const host = getRequestHost(req);
 
-    const turnstileOk = await verifyTurnstile(body.turnstileToken, ip, host);
+    const turnstileOk = await verifyTurnstile(body.turnstileToken, ip, host, (msg, data) => ctx.log(msg, data));
     if (!turnstileOk) {
-      ctx.log('Turnstile verification failed');
+      ctx.log('Turnstile verification failed', {
+        host,
+        preview: isPreviewHost(host),
+        hadToken: !!body.turnstileToken
+      });
       return { status: 400, jsonBody: { error: 'verification_failed' } };
     }
 
