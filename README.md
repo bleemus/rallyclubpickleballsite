@@ -18,15 +18,21 @@ This is a Next.js-based website that showcases Rally Club Pickleball's facility,
 - 🏐 **Facility Overview** - Interactive image gallery with lightbox modal
 - 📅 **Booking Integration** - Direct links to PicklePlanner 24/7 booking system
 - 📍 **Location & Hours** - Google Maps integration with facility information
-- 🎓 **Rally Academy** - Training programs for beginners and intermediate players
+- 🎓 **Rally Academy** - Training programs for beginners and intermediate players, plus a **Personal Training request form** (modal popup) backed by Azure Functions and Azure Table Storage
+- 🛡️ **Admin Dashboard** - Role-gated `/admin/` page for staff to view, update, and delete personal training requests; protected by SWA's GitHub-based authentication
 - 🔍 **SEO Optimized** - Meta tags, Open Graph, Twitter Card, sitemap, and robots.txt
 - 📱 **Fully Responsive** - Mobile-optimized design with breakpoints at 768px and 480px
 
 ## Technology Stack
 
-- **Framework**: Next.js 15.1.6 with React 19
+- **Framework**: Next.js 16.2.6 with React 19 (Pages Router, static export)
+- **Backend**: Azure Static Web Apps Managed Functions (Node 22, Functions v4 model)
+- **Storage**: Azure Table Storage (Azurite emulator for local dev)
+- **Auth**: SWA built-in GitHub identity provider with role-gated routes
+- **Anti-spam**: Cloudflare Turnstile + honeypot + timing trap + IP rate limit + content-hash dedupe
+- **Infrastructure as code**: Bicep template (`infra/storage.bicep`) for the storage account + tables
 - **Styling**: Styled JSX (inline component-scoped styles)
-- **Deployment**: Azure Static Web Apps
+- **Deployment**: Azure Static Web Apps via GitHub Actions
 - **Build**: Static export for optimal performance
 - **Video Optimization**: ffmpeg (H.264, CRF 28, faststart)
 - **Booking System**: PicklePlanner integration
@@ -36,8 +42,8 @@ This is a Next.js-based website that showcases Rally Club Pickleball's facility,
 
 ### Prerequisites
 
-- Node.js (latest LTS version recommended)
-- npm or yarn package manager
+- **Node 22** (required by the SWA CLI used in `dev:local`). The repo includes `site/.nvmrc` — run `nvm use` in the `site/` directory before running scripts.
+- npm
 
 ### Installation
 
@@ -47,24 +53,33 @@ git clone https://github.com/your-username/rallyclubpickleballsite.git
 cd rallyclubpickleballsite
 ```
 
-2. Navigate to the site directory:
+2. Navigate to the site directory and install both frontend and api dependencies:
 ```bash
 cd site
-```
-
-3. Install dependencies:
-```bash
-npm install
+nvm use            # switches to Node 22 per .nvmrc
+npm run bootstrap  # installs site/ + site/api/ deps
 ```
 
 ### Development
 
-Start the development server:
+There are two ways to run the site locally:
+
+**Frontend-only** (fast iteration on UI, no API/auth):
 ```bash
 npm run dev
 ```
+Open [http://localhost:3000](http://localhost:3000). The Personal Training form will render but submissions will 404 — there's no Functions runtime in this mode.
 
-Open [http://localhost:3000](http://localhost:3000) to view the site in your browser.
+**Full stack** (Next + Functions + Azurite + mock auth):
+```bash
+npm run dev:local
+```
+Open [http://localhost:4280](http://localhost:4280) — the SWA emulator URL. This orchestrates:
+- Azurite (local Table Storage emulator) on ports 10000–10002
+- Next dev on `127.0.0.1:4281` (loopback-only)
+- SWA CLI emulator on port 4280, which proxies Next, serves `/api/*` via Functions, and provides a mock GitHub sign-in form at `/.auth/login/github`
+
+First run auto-creates `site/api/local.settings.json` from the example, generates a local SWA config without custom auth (so mock auth works), and creates the Azurite tables.
 
 ### Building for Production
 
@@ -83,15 +98,34 @@ npm run start
 ## Project Structure
 
 ```
+staticwebapp.config.json     # SWA routing, auth, and role-gating config
+infra/
+└── storage.bicep            # Azure Storage Account + tables (training requests, rate limiting)
 site/
+├── .nvmrc                   # Pins Node 22
 ├── pages/
-│   ├── index.js             # Main landing page with video hero
-│   ├── honcho.js            # Honcho Pickleball League details
-│   ├── rally-experiences.js # Corporate team building & private events
-│   ├── rally-academy.js     # Training programs (Beginners Clinics & Performance Training)
-│   ├── merch.js             # Merchandise shop (embedded Square)
-│   ├── _app.js              # App wrapper
-│   └── _document.js         # HTML document structure
+│   ├── index.js                  # Landing page with video hero
+│   ├── honcho.js                 # Honcho Pickleball League
+│   ├── honcho-faq.js             # Honcho FAQ
+│   ├── rally-experiences.js      # Corporate team building & private events
+│   ├── rally-academy.js          # Training programs + Personal Training modal trigger
+│   ├── merch.js                  # Embedded Square shop
+│   ├── admin/index.js            # Admin dashboard (role-gated)
+│   ├── _app.js
+│   └── _document.js
+├── components/
+│   └── RequestTrainingModal.js   # Personal Training request form (popup)
+├── data/
+│   └── instructors.json          # Coach list shown in the request modal
+├── api/                          # SWA Managed Functions backend (Node 22)
+│   ├── host.json
+│   ├── package.json
+│   └── src/
+│       ├── functions/            # submit / list / update / delete / get-roles
+│       └── lib/                  # Helpers: turnstile, validate, rate-limit, dedupe, etc.
+├── scripts/
+│   ├── prep-local-swa-config.js  # Creates a local SWA config for dev:local
+│   └── init-azurite-tables.js    # Creates Azurite tables on dev:local startup
 ├── public/                  # Static assets
 │   ├── club_interior_reversed_optimized.mp4  # Hero video (6MB)
 │   ├── *.jpg, *.png         # Facility images and logos
@@ -173,6 +207,9 @@ No environment variables required for basic functionality.
 - **Google Maps**: Location and directions
 - **Google Fonts**: Bebas Neue font family
 - **Facebook**: Social media integration
+- **Cloudflare Turnstile**: Bot challenge for the Personal Training request form
+- **Azure Table Storage**: Backend for training request submissions and rate-limit tracking
+- **GitHub OAuth**: Identity provider for the admin dashboard (one allowed user list per environment, set in SWA app settings)
 
 ## SEO & Analytics
 
