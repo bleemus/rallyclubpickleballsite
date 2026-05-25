@@ -3,7 +3,7 @@ const { getTableClient, TABLES } = require('../lib/table-client');
 
 app.http('delete-training-request', {
   methods: ['DELETE'],
-  route: 'admin/requests/{partitionKey}/{rowKey}',
+  route: 'manage/requests/{partitionKey}/{rowKey}',
   authLevel: 'anonymous',
   handler: async (req, ctx) => {
     const partitionKey = req.params.partitionKey;

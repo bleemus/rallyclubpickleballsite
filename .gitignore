@@ -41,9 +41,10 @@ lerna-debug.log*
 # Azure Functions local secrets (use local.settings.json.example as template)
 **/local.settings.json
 
-# Local dev emulator data (Azurite tables, SWA CLI cache)
+# Local dev emulator data (Azurite tables, SWA CLI cache, generated local config)
 **/.azurite
 **/.swa
+**/.swa-local
 
 # vercel
 .vercel

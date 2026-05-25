@@ -2,7 +2,7 @@
   "routes": [
     { "route": "/admin", "redirect": "/admin/", "statusCode": 301 },
     { "route": "/admin/*", "allowedRoles": ["admin"] },
-    { "route": "/api/admin/*", "allowedRoles": ["admin"] },
+    { "route": "/api/manage/*", "allowedRoles": ["admin"] },
     { "route": "/api/get-roles", "allowedRoles": ["authenticated", "anonymous"] },
     { "route": "/api/training-requests", "allowedRoles": ["anonymous"] }
   ],

@@ -27,8 +27,9 @@ app.http('submit-training-request', {
     const forwarded = req.headers.get('x-forwarded-for') || '';
     const ip = forwarded.split(',')[0].trim() || 'unknown';
     const userAgent = (req.headers.get('user-agent') || '').slice(0, 200);
+    const host = req.headers.get('x-forwarded-host') || req.headers.get('host') || '';
 
-    const turnstileOk = await verifyTurnstile(body.turnstileToken, ip);
+    const turnstileOk = await verifyTurnstile(body.turnstileToken, ip, host);
     if (!turnstileOk) {
       ctx.log('Turnstile verification failed');
       return { status: 400, jsonBody: { error: 'verification_failed' } };

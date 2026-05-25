@@ -6,7 +6,7 @@ const MAX_PAGE_SIZE = 200;
 
 app.http('list-training-requests', {
   methods: ['GET'],
-  route: 'admin/requests',
+  route: 'manage/requests',
   authLevel: 'anonymous',
   handler: async (req, ctx) => {
     const url = new URL(req.url);

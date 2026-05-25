@@ -10,8 +10,8 @@
     "predev:local": "node -e \"const fs=require('fs');const p='api/local.settings.json';if(!fs.existsSync(p)){fs.copyFileSync(p+'.example',p);console.log('[bootstrap] created '+p+' from example - edit it if you need to override values');}\"",
     "dev:local": "concurrently -k -n azurite,next,swa -c yellow,cyan,magenta \"npm:dev:azurite\" \"npm:dev:next\" \"npm:dev:swa\"",
     "dev:azurite": "azurite --silent --location ./.azurite --debug ./.azurite/debug.log",
-    "dev:next": "next dev",
-    "dev:swa": "wait-on tcp:3000 && swa start http://localhost:3000 --api-location api --swa-config-location .."
+    "dev:next": "next dev --hostname 127.0.0.1 --port 4281",
+    "dev:swa": "node ./scripts/prep-local-swa-config.js && wait-on tcp:4281 tcp:10002 && node ./scripts/init-azurite-tables.js && swa start http://localhost:4281 --api-location api --swa-config-location .swa-local"
   },
   "dependencies": {
     "next": "^16.2.6",

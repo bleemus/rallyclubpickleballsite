@@ -33,7 +33,7 @@ export default function AdminDashboard() {
     setError('');
     try {
       const q = statusFilter && statusFilter !== 'All' ? `?status=${encodeURIComponent(statusFilter)}` : '';
-      const res = await fetch(`/api/admin/requests${q}`, { credentials: 'include' });
+      const res = await fetch(`/api/manage/requests${q}`, { credentials: 'include' });
       if (!res.ok) {
         if (res.status === 401 || res.status === 403) {
           window.location.href = '/.auth/login/github?post_login_redirect_uri=/admin/';
@@ -74,7 +74,7 @@ export default function AdminDashboard() {
   const save = async (item) => {
     setSaving(true);
     try {
-      const res = await fetch(`/api/admin/requests/${item.partitionKey}/${item.rowKey}`, {
+      const res = await fetch(`/api/manage/requests/${item.partitionKey}/${item.rowKey}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -94,7 +94,7 @@ export default function AdminDashboard() {
     if (!confirm(`Delete request from ${item.name}? This cannot be undone.`)) return;
     setSaving(true);
     try {
-      const res = await fetch(`/api/admin/requests/${item.partitionKey}/${item.rowKey}`, {
+      const res = await fetch(`/api/manage/requests/${item.partitionKey}/${item.rowKey}`, {
         method: 'DELETE',
         credentials: 'include'
       });

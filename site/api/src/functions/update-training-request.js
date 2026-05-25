@@ -4,7 +4,7 @@ const { validateStatus, STATUSES, FIELD_LIMITS } = require('../lib/validate');
 
 app.http('update-training-request', {
   methods: ['PATCH'],
-  route: 'admin/requests/{partitionKey}/{rowKey}',
+  route: 'manage/requests/{partitionKey}/{rowKey}',
   authLevel: 'anonymous',
   handler: async (req, ctx) => {
     const partitionKey = req.params.partitionKey;
