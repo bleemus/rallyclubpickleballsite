@@ -254,17 +254,19 @@ export default function Home() {
                   <div className={styles.tierDivider}></div>
                   <div className={styles.aListTier}>
                     <div className={styles.aListTierLabel}>Family</div>
-                    <div>
+                    <div className={styles.tooltip} data-tip="Up to 3 adults, same household">
                       {/* PROMO (expires Jul 2027): family is $500 "through next July". Controlled by PRICE_LOCK_END in the pricing useEffect. */}
                       <span className={styles.price}>$500</span>
-                      <span className={styles.period}>/yr</span>
+                      <span className={styles.period}>/yr*</span>
                     </div>
-                    <div className={styles.aListTierSub}>up to 3 adults, same household</div>
                     {pricing.priceLock && (
                       <div className={styles.promoNote}>rate thru Jul 2027</div>
                     )}
                   </div>
                 </div>
+                {/* Hover tooltips don't exist on touch, so .tierFootnote is the
+                    mobile fallback: hidden on desktop, shown under 768px. */}
+                <div className={styles.tierFootnote}>*Family: up to 3 adults, same household</div>
               </div>
               <p className={styles.membershipSummary}>Best court rates and most flexibility. Reserve 10 days in advance.</p>
               <div className={styles.membershipCta}>
@@ -280,7 +282,6 @@ export default function Home() {
                   <span className={styles.rateTime}>4 PM – Midnight</span>
                   <span className={styles.ratePrice}>$16/hr</span>
                 </div>
-                <div className={styles.rateNote}>Split four ways, daytime play is as little as <strong>$2 per person / hour</strong>.</div>
               </div>
             </div>
             <div className={`${styles.membershipCard} ${styles.rallyReserve}`}>
