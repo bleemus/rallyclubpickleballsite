@@ -327,6 +327,33 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Wellness Program Access — Wellhub is the priority promotion, so it is
+            featured and listed first, ahead of Silver&Fit / Active&Fit. */}
+        <section id="wellness" className={styles.wellnessSection}>
+          <h2 className={styles.sectionTitle}>More Ways to Access The Rally Club</h2>
+          <div className={styles.wellnessIntro}>
+            <p>Your employer or health plan may already cover play at The Rally Club. If you&rsquo;re enrolled in one of these wellness programs, it&rsquo;s worth checking your benefits.</p>
+          </div>
+          <div className={styles.wellnessGrid}>
+            <div className={`${styles.wellnessCard} ${styles.featuredProgram}`}>
+              <div className={styles.wellnessBadge}>EMPLOYER BENEFIT</div>
+              <h3 className={styles.wellnessTitle}>Wellhub</h3>
+              <p>Commonly offered through participating employers as part of employee wellness benefits &mdash; <strong>not limited to Medicare or Medicaid participants</strong>.</p>
+              <p>Check your eligibility through Wellhub, or ask your employer&rsquo;s HR department whether Wellhub is included in your benefits.</p>
+              <p className={styles.wellnessHelp}>The Rally Club has resources available to help you navigate signup &mdash; just ask.</p>
+              {/* TODO: Wellhub CTA — add enrollment/eligibility URL when provided, then
+                  render an <a className={styles.membershipButton}> here. */}
+            </div>
+            <div className={styles.wellnessCard}>
+              <h3 className={styles.wellnessTitle}>Silver&amp;Fit / Active&amp;Fit</h3>
+              <p>Silver&amp;Fit is now accepted, along with Active&amp;Fit for eligible participants under age 65.</p>
+              <p>Eligibility varies by health plan or employer, so check your benefits to confirm you&rsquo;re covered.</p>
+              {/* TODO: Silver&Fit / Active&Fit CTA — add enrollment/eligibility URL when
+                  provided, then render an <a className={styles.membershipButton}> here. */}
+            </div>
+          </div>
+        </section>
+
         {/* A-List Seniors */}
         <section className={styles.specialProgramsSection}>
           <h2 className={styles.sectionTitle}>A-List Seniors</h2>

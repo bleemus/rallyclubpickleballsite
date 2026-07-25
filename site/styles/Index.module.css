@@ -98,6 +98,93 @@
   max-width: 100%;
 }
 
+/* Wellness Program Access (Wellhub, Silver&Fit / Active&Fit).
+   Mirrors the A-List Seniors section's layout so the two read as a pair.
+   Wellhub carries .featuredProgram — the same orange-border treatment
+   .membershipCard.featured uses — because it is the priority promotion. */
+.wellnessSection {
+  padding: 3rem 2rem;
+  background: var(--court-white);
+}
+
+.wellnessIntro {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.wellnessIntro p {
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.wellnessGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.wellnessCard {
+  position: relative;
+  background: var(--surface);
+  padding: 1.75rem 1.5rem 1.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.wellnessCard.featuredProgram {
+  border: 2px solid var(--rally-orange);
+}
+
+.wellnessBadge {
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  background: var(--rally-orange);
+  color: var(--court-white);
+  padding: 5px 15px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transform: rotate(-15deg);
+}
+
+.wellnessTitle {
+  font-size: 1.25rem;
+  margin: 0 0 0.75rem;
+  color: var(--ink);
+}
+
+.wellnessCard p {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0 0 0.65rem;
+}
+
+.wellnessCard p:last-child {
+  margin-bottom: 0;
+}
+
+.wellnessCard .wellnessHelp {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .wellnessSection {
+    padding: 2rem 1rem;
+  }
+
+  .wellnessCard {
+    padding: 1.5rem 1.25rem 1.25rem;
+  }
+}
+
 /* A-List Seniors Section */
 .specialProgramsSection {
   padding: 3rem 2rem;
