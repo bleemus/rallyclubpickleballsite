@@ -55,7 +55,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Rally Club Pickleball | Indoor Courts in Glen Carbon, IL</title>
+        <title>Rally Club Pickleball | Glen Carbon, IL</title>
         <meta
           name="description"
           content="Indoor pickleball in Glen Carbon, IL. 24/7 court access, book by the hour, plus leagues and coaching."
