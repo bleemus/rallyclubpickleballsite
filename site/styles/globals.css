@@ -53,6 +53,13 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
 }
 
+/* Visible keyboard focus (keyboard-only via :focus-visible) */
+:focus-visible {
+  outline: 2px solid var(--rally-orange);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 /* Signature "rally lines" mark — replaces emoji feature-icons */
 .rally-mark {
   display: flex;
