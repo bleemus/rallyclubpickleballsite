@@ -3,11 +3,12 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../styles/Index.module.css';
+import SiteHeader from '../components/SiteHeader';
+import SiteFooter from '../components/SiteFooter';
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState(null);
   const [lightboxImage, setLightboxImage] = useState(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [insideIndex, setInsideIndex] = useState(0);
   const [outsideIndex, setOutsideIndex] = useState(0);
 
@@ -169,50 +170,7 @@ export default function Home() {
       </Head>
 
       <div>
-        {/* Header */}
-        <header className={styles.header}>
-          <div className={styles.headerContent}>
-            <a href="/" className={styles.logo}>
-              <Image
-                src="/logo-transparent.png"
-                alt="Rally Club Pickleball Logo"
-                width={40}
-                height={40}
-                style={{ marginRight: '0.5rem', objectFit: 'contain' }}
-              />
-              Rally Club Pickleball
-            </a>
-            <nav className={styles.nav}>
-              <a href="#booking" className={styles.navLink}>Book a Court</a>
-              <a href="#membership" className={styles.navLink}>Membership</a>
-              <a href="/merch" className={styles.navLink}>Merch</a>
-              <a href="/rally-academy" className={`${styles.navLink} ${styles.academyNavLink}`}>Rally Academy</a>
-              <a href="/rally-experiences" className={`${styles.navLink} ${styles.rallyNavLink}`}>Rally Experiences</a>
-            </nav>
-            <button
-              className={styles.mobileMenuButton}
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              <div className={`${styles.hamburger} ${mobileMenuOpen ? styles.open : ""}`}>
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-            </button>
-          </div>
-        </header>
-
-        {/* Mobile Menu */}
-        <div className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.open : ""}`}>
-          <nav className={styles.mobileNav}>
-            <a href="#booking" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Book a Court</a>
-            <a href="#membership" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Membership</a>
-            <a href="/merch" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Merch</a>
-            <a href="/rally-academy" className={`${styles.mobileNavLink} ${styles.academyLink}`} onClick={() => setMobileMenuOpen(false)}>Rally Academy</a>
-            <a href="/rally-experiences" className={`${styles.mobileNavLink} ${styles.rallyLink}`} onClick={() => setMobileMenuOpen(false)}>Rally Experiences</a>
-          </nav>
-        </div>
+        <SiteHeader />
 
         {/* Hero Section */}
         <section className={styles.hero}>
@@ -239,17 +197,17 @@ export default function Home() {
           <h2 className={styles.sectionTitle}>Membership Benefits</h2>
           <div className={styles.benefitsGrid}>
             <div className={styles.benefitItem}>
-              <div className={styles.benefitIcon}>⚡</div>
+              <div className={styles.benefitMark} aria-hidden="true"><span></span><span></span><span></span></div>
               <h3>Flexibility</h3>
               <p>24/7 access to courts when you want to play</p>
             </div>
             <div className={styles.benefitItem}>
-              <div className={styles.benefitIcon}>💰</div>
+              <div className={styles.benefitMark} aria-hidden="true"><span></span><span></span><span></span></div>
               <h3>Pricing</h3>
               <p>Off-peak courts from $8/hr; members book earlier.</p>
             </div>
             <div className={styles.benefitItem}>
-              <div className={styles.benefitIcon}>👥</div>
+              <div className={styles.benefitMark} aria-hidden="true"><span></span><span></span><span></span></div>
               <h3>Perks</h3>
               <p>Leagues, clinics, and earlier booking windows.</p>
             </div>
@@ -621,15 +579,7 @@ export default function Home() {
           <a href="mailto:rally.club618@gmail.com" className={styles.contactButton}>Contact Us</a>
         </section>
 
-        {/* Footer */}
-        <footer className={styles.footer}>
-          <div className={styles.footerContent}>
-            <p>© 2025 Rally Club Pickleball. All rights reserved.</p>
-            <div className={styles.footerLinks}>
-              <a href="https://www.facebook.com/profile.php?id=61572523900750" target="_blank" rel="noopener noreferrer">Facebook</a>
-            </div>
-          </div>
-        </footer>
+        <SiteFooter />
 
         {/* Lightbox Modal */}
         {lightboxImage && (

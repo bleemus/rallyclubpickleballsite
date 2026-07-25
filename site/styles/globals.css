@@ -53,6 +53,18 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
 }
 
+/* Signature "rally lines" mark — replaces emoji feature-icons */
+.rally-mark {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 32px;
+  margin: 0 auto 0.85rem;
+}
+.rally-mark span { height: 3px; background: var(--court-azure); }
+.rally-mark span:nth-child(2) { width: 70%; }
+.rally-mark span:nth-child(3) { width: 45%; background: var(--rally-orange); }
+
 /* Respect reduced-motion: neutralize transitions/animations and smooth scroll */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
