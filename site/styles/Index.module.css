@@ -369,7 +369,6 @@
   margin-bottom: 0.5rem;
   background: var(--surface-alt);
   border-radius: 6px;
-  border-left: 3px solid var(--rally-orange);
 }
 
 .rateItem:last-child {
@@ -377,7 +376,6 @@
 }
 
 .rateItem.baseRate {
-  border-left-color: var(--concrete);
   background: var(--surface-alt);
 }
 
@@ -409,7 +407,7 @@
   position: absolute;
   top: -10px;
   left: 20px;
-  background: linear-gradient(45deg, var(--rally-orange), var(--orange-ink));
+  background: var(--rally-orange);
   color: white;
   padding: 5px 15px;
   border-radius: 15px;
@@ -440,51 +438,34 @@
 
 /* Pricing note section */
 .pricingNote {
-  max-width: 1000px;
-  margin: 3rem auto 0;
-  padding: 2rem;
-  background: var(--surface-alt);
-  border-radius: 12px;
-  border-left: 4px solid var(--rally-orange);
-}
-
-.pricingNote > p {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
+  max-width: 1200px;
+  margin: 2.5rem auto 0;
 }
 
 .pricingHighlights {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
 }
 
 .highlightBox {
-  padding: 1rem;
-  border-radius: 8px;
-  border-left: 4px solid;
-}
-
-.highlightBox.registration {
-  background: var(--concrete-light);
-  border-left-color: var(--court-azure);
-}
-
-.highlightBox.mixedPlay {
-  background: var(--concrete-light);
-  border-left-color: var(--rally-orange);
-}
-
-.highlightBox.payment {
-  background: var(--concrete-light);
-  border-left-color: var(--azure-ink);
+  background: var(--court-white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.5rem;
 }
 
 .highlightBox p {
   margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.5;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+@media (max-width: 768px) {
+  .pricingHighlights {
+    grid-template-columns: 1fr;
+  }
 }
 
 .notPermitted {
@@ -570,7 +551,7 @@
 
 .programButtonSlate {
   display: inline-block;
-  background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--concrete) 100%);
+  background: var(--baseline-navy);
   color: white;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
@@ -580,7 +561,7 @@
 }
 
 .programButtonSlate:hover {
-  background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--concrete) 100%);
+  background: var(--baseline-navy);
 }
 
 /* Slideshow */

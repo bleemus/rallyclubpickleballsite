@@ -249,7 +249,7 @@ export default function AdminDashboard() {
           min-height: 100vh;
         }
         .admin-header {
-          background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--concrete) 100%);
+          background: var(--baseline-navy);
           color: white;
           padding: 1rem 0;
         }

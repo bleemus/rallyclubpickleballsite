@@ -536,7 +536,7 @@ export default function RallyAcademy() {
         .academy-hero {
           margin-top: 62px;
           padding: 3.25rem 2rem;
-          background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--concrete) 100%);
+          background: var(--baseline-navy);
           color: white;
           text-align: center;
           position: relative;
@@ -787,7 +787,7 @@ export default function RallyAcademy() {
         /* Beginner Section */
         .beginner-section {
           padding: 3.25rem 2rem;
-          background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--concrete) 100%);
+          background: var(--baseline-navy);
           color: white;
         }
 
@@ -1175,7 +1175,7 @@ export default function RallyAcademy() {
         /* FAQ Section */
         .faq-section {
           padding: 3.25rem 2rem;
-          background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--concrete) 100%);
+          background: var(--baseline-navy);
           color: white;
         }
 
@@ -1251,7 +1251,7 @@ export default function RallyAcademy() {
         /* Final CTA */
         .final-cta {
           padding: 3.25rem 2rem;
-          background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--concrete) 100%);
+          background: var(--baseline-navy);
           text-align: center;
           color: white;
         }

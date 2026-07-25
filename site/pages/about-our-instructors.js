@@ -132,7 +132,7 @@ export default function AboutOurInstructors() {
         .instructors-hero {
           margin-top: 62px;
           padding: 3.25rem 2rem;
-          background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--concrete) 100%);
+          background: var(--baseline-navy);
           color: white;
           text-align: center;
           position: relative;
@@ -199,7 +199,7 @@ export default function AboutOurInstructors() {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--concrete) 100%);
+          background: var(--baseline-navy);
           color: white;
           font-size: 3rem;
           font-weight: bold;
@@ -225,7 +225,7 @@ export default function AboutOurInstructors() {
         /* Final CTA */
         .final-cta {
           padding: 3.25rem 2rem;
-          background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--concrete) 100%);
+          background: var(--baseline-navy);
           text-align: center;
           color: white;
         }

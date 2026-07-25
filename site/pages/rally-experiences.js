@@ -482,7 +482,6 @@ export default function RallyExperiences() {
           background: var(--surface-alt);
           padding: 2rem;
           border-radius: 12px;
-          border-left: 4px solid var(--court-azure);
           transition: all 0.3s ease;
         }
 
@@ -680,7 +679,7 @@ export default function RallyExperiences() {
           top: -12px;
           left: 50%;
           transform: translateX(-50%);
-          background: linear-gradient(45deg, var(--orange-ink), var(--rally-orange));
+          background: var(--rally-orange);
           color: white;
           padding: 0.3rem 1rem;
           border-radius: 20px;
