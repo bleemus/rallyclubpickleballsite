@@ -84,15 +84,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 .rally-list li {
   position: relative;
-  padding-left: 1.7em !important;
+  padding: 0.5rem 0 0.5rem 1.7em !important;
 }
 .rally-list li::before {
   content: "" !important;
   position: absolute;
   left: 0;
-  top: 0.18em;
-  width: 1.15em;
-  height: 1.15em;
+  top: 0.68rem;
+  width: 1.1em;
+  height: 1.1em;
   background-color: currentColor;
   -webkit-mask: url("/pickleball-bullet.svg") center / contain no-repeat;
   mask: url("/pickleball-bullet.svg") center / contain no-repeat;
