@@ -21,14 +21,14 @@
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #333;
+  color: var(--ink);
   display: flex;
   align-items: center;
   text-decoration: none;
 }
 
 .logo:hover {
-  color: #333;
+  color: var(--ink);
 }
 
 .nav {
@@ -39,44 +39,44 @@
 
 .navLink {
   text-decoration: none;
-  color: #666;
+  color: var(--muted);
   font-weight: 500;
   transition: color 0.3s;
 }
 
 .navLink:hover {
-  color: #FF6600;
+  color: var(--rally-orange);
 }
 
 .academyNavLink {
-  color: #475569 !important;
+  color: var(--baseline-navy) !important;
   font-weight: 600;
 }
 
 .academyNavLink:hover {
-  color: #64748B !important;
+  color: var(--concrete) !important;
 }
 
 .honchoNavLink {
-  color: #2D5A27 !important;
+  color: var(--baseline-navy) !important;
   font-weight: 600;
 }
 
 .honchoNavLink:hover {
-  color: #3E7B3E !important;
+  color: var(--baseline-navy) !important;
 }
 
 .rallyNavLink {
-  color: #FF6600 !important;
+  color: var(--rally-orange) !important;
   font-weight: 600;
 }
 
 .rallyNavLink:hover {
-  color: #E65100 !important;
+  color: var(--orange-ink) !important;
 }
 
 .mobileNavLink.rallyLink {
-  background: #FF6600;
+  background: var(--rally-orange);
   color: white !important;
   padding: 0.75rem 1rem;
   border-radius: 6px;
@@ -84,7 +84,7 @@
 }
 
 .mobileNavLink.rallyLink:hover {
-  background: #E65100;
+  background: var(--orange-ink);
 }
 
 /* Mobile Menu Button */
@@ -110,7 +110,7 @@
   display: block;
   height: 3px;
   width: 100%;
-  background: #FF6600;
+  background: var(--rally-orange);
   border-radius: 2px;
   transition: all 0.3s ease;
 }
@@ -161,7 +161,7 @@
 }
 
 .mobileNavLink {
-  color: #333;
+  color: var(--ink);
   text-decoration: none;
   font-weight: 500;
   padding: 1rem;
@@ -174,26 +174,26 @@
 .mobileNavLink:hover,
 .mobileNavLink:active {
   background: rgba(231, 76, 60, 0.1);
-  border-color: #FF6600;
-  color: #FF6600;
+  border-color: var(--rally-orange);
+  color: var(--rally-orange);
 }
 
 .mobileNavLink.active {
   background: rgba(231, 76, 60, 0.2);
-  border-color: #FF6600;
-  color: #FF6600;
+  border-color: var(--rally-orange);
+  color: var(--rally-orange);
 }
 
 .mobileNavLink.academyLink {
-  background: linear-gradient(135deg, #475569 0%, #64748B 100%);
+  background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--concrete) 100%);
   color: white;
-  border-color: #64748B;
+  border-color: var(--concrete);
 }
 
 .mobileNavLink.honchoLink {
-  background: linear-gradient(135deg, #2D5A27 0%, #3E7B3E 100%);
+  background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--baseline-navy) 100%);
   color: white;
-  border-color: #3E7B3E;
+  border-color: var(--baseline-navy);
 }
 
 /* Hero */
@@ -258,7 +258,7 @@
 }
 
 .ctaButton {
-  background: #FF6600;
+  background: var(--rally-orange);
   color: white;
   padding: 1rem 2rem;
   border-radius: 8px;
@@ -269,13 +269,13 @@
 }
 
 .ctaButton:hover {
-  background: #E65100;
+  background: var(--orange-ink);
 }
 
 /* Benefits */
 .benefits {
   padding: 1.5rem 2rem 2.5rem;
-  background: #f8f9fa;
+  background: var(--surface-alt);
 }
 
 .sectionTitle {
@@ -308,7 +308,7 @@
 }
 
 .benefitItem p {
-  color: #666;
+  color: var(--muted);
 }
 
 /* Membership */
@@ -331,7 +331,7 @@
 /* A-List Seniors Section */
 .specialProgramsSection {
   padding: 3rem 2rem;
-  background: #f3e5f5;
+  background: var(--concrete-light);
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -344,7 +344,7 @@
 
 .specialProgramsIntro p {
   font-size: 1.1rem;
-  color: #555;
+  color: var(--muted);
   line-height: 1.6;
 }
 
@@ -361,7 +361,7 @@
   text-align: center;
   font-size: 1.3rem;
   margin-bottom: 1.5rem;
-  color: #333;
+  color: var(--ink);
 }
 
 .specialPricingGrid {
@@ -378,17 +378,17 @@
 }
 
 .peakTimesLink a {
-  color: #9b59b6;
+  color: var(--azure-ink);
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 500;
-  border-bottom: 1px dashed #9b59b6;
+  border-bottom: 1px dashed var(--azure-ink);
   transition: all 0.3s;
 }
 
 .peakTimesLink a:hover {
-  color: #7d3c98;
-  border-bottom-color: #7d3c98;
+  color: var(--azure-ink);
+  border-bottom-color: var(--azure-ink);
 }
 
 .specialProgramsGrid {
@@ -405,7 +405,7 @@
 
 .specialProgramDescription p {
   font-size: 0.9rem;
-  color: #666;
+  color: var(--muted);
   line-height: 1.6;
   text-align: left;
 }
@@ -452,12 +452,12 @@
 .seniorProgramTitle {
   font-size: 1.1rem;
   margin: 0 0 0.25rem;
-  color: #333;
+  color: var(--ink);
 }
 
 .seniorProgramDesc {
   font-size: 0.85rem;
-  color: #666;
+  color: var(--muted);
   line-height: 1.4;
   margin: 0;
 }
@@ -489,7 +489,7 @@
 
 .period {
   font-size: 1rem;
-  color: #666;
+  color: var(--muted);
 }
 
 .tooltip {
@@ -503,8 +503,8 @@
   bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
-  background: #333;
-  color: #fff;
+  background: var(--ink);
+  color: var(--court-white);
   padding: 0.4rem 0.6rem;
   border-radius: 4px;
   font-size: 0.75rem;
@@ -521,7 +521,7 @@
 .signupFeeNote {
   display: none;
   font-size: 0.8rem;
-  color: #888;
+  color: var(--muted);
   margin-top: 0.25rem;
   text-align: center;
 }
@@ -541,7 +541,7 @@
 }
 
 .membershipSummary {
-  color: #666;
+  color: var(--muted);
   font-size: 0.95rem;
   line-height: 1.5;
   margin-bottom: 1.5rem;
@@ -557,7 +557,7 @@
 }
 
 .membershipButton {
-  background: #FF6600;
+  background: var(--rally-orange);
   color: white;
   padding: 0.75rem 2rem;
   border-radius: 8px;
@@ -568,15 +568,15 @@
 }
 
 .membershipButton.secondary {
-  background: #95a5a6;
+  background: var(--concrete);
 }
 
 .membershipButton:hover {
-  background: #E65100;
+  background: var(--orange-ink);
 }
 
 .membershipButton.secondary:hover {
-  background: #7f8c8d;
+  background: var(--concrete);
 }
 
 .membershipFeatures {
@@ -587,7 +587,7 @@
 
 .membershipFeatures li {
   padding: 0.5rem 0;
-  color: #666;
+  color: var(--muted);
 }
 
 .pricingDetails {
@@ -599,15 +599,15 @@
 .pricingDetails h4 {
   font-size: 1rem;
   font-weight: 600;
-  color: #333;
+  color: var(--ink);
   margin-bottom: 1rem;
   text-align: center;
 }
 
 .rateTableWrapper {
-  background: #f8f9fa;
+  background: var(--surface-alt);
   border-radius: 6px;
-  border-left: 3px solid #FF6600;
+  border-left: 3px solid var(--rally-orange);
   margin-bottom: 0.5rem;
   overflow: hidden;
 }
@@ -615,12 +615,12 @@
 .rateTable {
   width: 100%;
   border-collapse: collapse;
-  background: #f8f9fa;
+  background: var(--surface-alt);
 }
 
 .rateTable th {
-  background: #f8f9fa;
-  color: #333;
+  background: var(--surface-alt);
+  color: var(--ink);
   padding: 0.75rem 0.5rem;
   font-size: 0.85rem;
   font-weight: 600;
@@ -628,30 +628,30 @@
 }
 
 .rateTable th:first-child {
-  background: #f8f9fa;
-  color: #555;
+  background: var(--surface-alt);
+  color: var(--muted);
   font-size: 0.95rem;
   font-weight: 700;
   border-bottom: none;
 }
 
 .rateTable tr:first-child th {
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid var(--border);
 }
 
 .rateTable tr:first-child th:first-child {
   border-bottom: none;
-  border-right: 1px solid #dee2e6;
+  border-right: 1px solid var(--border);
 }
 
 .rateTable td {
   padding: 0.75rem 0.5rem;
   text-align: center;
   font-weight: 700;
-  color: #FF6600;
-  background: #f8f9fa;
+  color: var(--rally-orange);
+  background: var(--surface-alt);
   font-size: 1rem;
-  border-top: 1px solid #dee2e6;
+  border-top: 1px solid var(--border);
 }
 
 .rateItem {
@@ -660,9 +660,9 @@
   align-items: center;
   padding: 0.75rem 1rem;
   margin-bottom: 0.5rem;
-  background: #f8f9fa;
+  background: var(--surface-alt);
   border-radius: 6px;
-  border-left: 3px solid #FF6600;
+  border-left: 3px solid var(--rally-orange);
 }
 
 .rateItem:last-child {
@@ -670,29 +670,29 @@
 }
 
 .rateItem.baseRate {
-  border-left-color: #95a5a6;
-  background: #ecf0f1;
+  border-left-color: var(--concrete);
+  background: var(--surface-alt);
 }
 
 .rateTime {
-  color: #555;
+  color: var(--muted);
   font-size: 0.95rem;
 }
 
 .rateTime .rateTimeDetail {
   font-size: 0.8rem;
-  color: #999;
+  color: var(--muted);
   font-style: italic;
 }
 
 .ratePrice {
   font-weight: bold;
-  color: #FF6600;
+  color: var(--rally-orange);
   font-size: 1.1rem;
 }
 
 .rateItem.baseRate .ratePrice {
-  color: #7f8c8d;
+  color: var(--concrete);
 }
 
 /* Membership badges */
@@ -700,7 +700,7 @@
   position: absolute;
   top: -10px;
   left: 20px;
-  background: linear-gradient(45deg, #ff6b35, #f7931e);
+  background: linear-gradient(45deg, var(--rally-orange), var(--orange-ink));
   color: white;
   padding: 5px 15px;
   border-radius: 15px;
@@ -714,7 +714,7 @@
   position: absolute;
   top: -10px;
   left: 20px;
-  background: #3498db;
+  background: var(--court-azure);
   color: white;
   padding: 5px 15px;
   border-radius: 15px;
@@ -728,7 +728,7 @@
   position: absolute;
   top: -10px;
   left: 20px;
-  background: #9b59b6;
+  background: var(--azure-ink);
   color: white;
   padding: 5px 15px;
   border-radius: 15px;
@@ -740,7 +740,7 @@
 
 .membershipCard.featured {
   position: relative;
-  border: 2px solid #ff6b35;
+  border: 2px solid var(--rally-orange);
 }
 
 .membershipCard {
@@ -749,7 +749,7 @@
 
 .membershipAnnual {
   font-size: 0.9rem;
-  color: #666;
+  color: var(--muted);
   font-style: italic;
   margin-bottom: 1.5rem;
   margin-top: -0.5rem;
@@ -760,9 +760,9 @@
   max-width: 1000px;
   margin: 3rem auto 0;
   padding: 2rem;
-  background: #f8f9fa;
+  background: var(--surface-alt);
   border-radius: 12px;
-  border-left: 4px solid #FF6600;
+  border-left: 4px solid var(--rally-orange);
 }
 
 .pricingNote > p {
@@ -784,23 +784,23 @@
 }
 
 .highlightBox.registration {
-  background: #e3f2fd;
-  border-left-color: #2196f3;
+  background: var(--concrete-light);
+  border-left-color: var(--court-azure);
 }
 
 .highlightBox.mixedPlay {
-  background: #fff3e0;
-  border-left-color: #ff9800;
+  background: var(--concrete-light);
+  border-left-color: var(--rally-orange);
 }
 
 .highlightBox.payment {
-  background: #e8f5e8;
-  border-left-color: #4caf50;
+  background: var(--concrete-light);
+  border-left-color: var(--azure-ink);
 }
 
 .highlightBox.specialPrograms {
-  background: #f3e5f5;
-  border-left-color: #9b59b6;
+  background: var(--concrete-light);
+  border-left-color: var(--azure-ink);
 }
 
 .highlightBox p {
@@ -810,16 +810,16 @@
 }
 
 .notPermitted {
-  color: #FF6600;
+  color: var(--rally-orange);
   font-weight: bold;
 }
 
 .joinInfo {
   text-align: center;
-  background: #fff;
+  background: var(--court-white);
   padding: 1.5rem;
   border-radius: 8px;
-  border: 2px solid #FF6600;
+  border: 2px solid var(--rally-orange);
 }
 
 .joinInfo p {
@@ -835,7 +835,7 @@
 /* Honcho League */
 .honchoLeague {
   padding: 2.5rem 2rem;
-  background: linear-gradient(135deg, #2D5A27 0%, #3E7B3E 100%);
+  background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--baseline-navy) 100%);
   color: white;
   position: relative;
 }
@@ -872,7 +872,7 @@
 
 .honchoSubtitle {
   font-size: 1.1rem;
-  color: #E8F5E8;
+  color: var(--concrete-light);
   max-width: 600px;
   margin: 0 auto;
 }
@@ -883,7 +883,7 @@
 
 .honchoDescription {
   font-size: 1.1rem;
-  color: #E8F5E8;
+  color: var(--concrete-light);
   margin-bottom: 2rem;
   max-width: 800px;
   margin-left: auto;
@@ -913,7 +913,7 @@
 }
 
 .highlightItem strong {
-  color: #C8F560;
+  color: var(--court-azure);
 }
 
 .honchoCta {
@@ -921,8 +921,8 @@
 }
 
 .honchoButton {
-  background: #C8F560;
-  color: #2D5A27;
+  background: var(--court-azure);
+  color: var(--baseline-navy);
   padding: 1rem 2rem;
   border-radius: 8px;
   text-decoration: none;
@@ -933,33 +933,33 @@
 }
 
 .honchoButton:hover {
-  background: #B8E550;
+  background: var(--court-azure);
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(200, 245, 96, 0.3);
 }
 
 .honchoButton:visited {
-  background: #C8F560;
-  color: #2D5A27;
+  background: var(--court-azure);
+  color: var(--baseline-navy);
   text-decoration: none;
 }
 
 .honchoButton:visited:hover {
-  background: #B8E550;
-  color: #2D5A27;
+  background: var(--court-azure);
+  color: var(--baseline-navy);
   text-decoration: none;
 }
 
 .honchoButton.secondary {
   background: transparent;
   color: white;
-  border: 2px solid #C8F560;
+  border: 2px solid var(--court-azure);
   margin-left: 1rem;
 }
 
 .honchoButton.secondary:hover {
   background: rgba(200, 245, 96, 0.1);
-  border-color: #B8E550;
+  border-color: var(--court-azure);
 }
 
 .honchoCta {
@@ -974,7 +974,7 @@
 /* Programs Section */
 .programsSection {
   padding: 4rem 2rem;
-  background: #f0f4f8;
+  background: var(--concrete-light);
 }
 
 .programsGrid {
@@ -1005,19 +1005,19 @@
 
 .programTitle {
   font-size: 1.5rem;
-  color: #333;
+  color: var(--ink);
   margin-bottom: 0.5rem;
 }
 
 .programTagline {
   font-size: 1rem;
-  color: #666;
+  color: var(--muted);
   font-weight: 500;
   margin-bottom: 1rem;
 }
 
 .programDescription {
-  color: #555;
+  color: var(--muted);
   line-height: 1.6;
   margin-bottom: 1.5rem;
 }
@@ -1031,8 +1031,8 @@
 }
 
 .programHighlights span {
-  background: #f0f4f8;
-  color: #555;
+  background: var(--concrete-light);
+  color: var(--muted);
   padding: 0.4rem 0.8rem;
   border-radius: 20px;
   font-size: 0.85rem;
@@ -1040,7 +1040,7 @@
 
 .programButton {
   display: inline-block;
-  background: #2196F3;
+  background: var(--court-azure);
   color: white;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
@@ -1050,12 +1050,12 @@
 }
 
 .programButton:hover {
-  background: #1565C0;
+  background: var(--azure-ink);
 }
 
 .programButtonOrange {
   display: inline-block;
-  background: #FF6600;
+  background: var(--rally-orange);
   color: white;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
@@ -1065,12 +1065,12 @@
 }
 
 .programButtonOrange:hover {
-  background: #E65100;
+  background: var(--orange-ink);
 }
 
 .programButtonSlate {
   display: inline-block;
-  background: linear-gradient(135deg, #475569 0%, #64748B 100%);
+  background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--concrete) 100%);
   color: white;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
@@ -1080,7 +1080,7 @@
 }
 
 .programButtonSlate:hover {
-  background: linear-gradient(135deg, #3d4a5c 0%, #586d7f 100%);
+  background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--concrete) 100%);
   transform: translateY(-2px);
 }
 
@@ -1112,7 +1112,7 @@
 /* Facility */
 .facility {
   padding: 2.5rem 2rem;
-  background: #f8f9fa;
+  background: var(--surface-alt);
 }
 
 .facilityGrid {
@@ -1134,11 +1134,11 @@
 .facilityCaption h3 {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: var(--ink);
 }
 
 .facilityCaption p {
-  color: #666;
+  color: var(--muted);
   font-style: italic;
   margin: 0;
 }
@@ -1163,7 +1163,7 @@
 .stepNumber {
   width: 60px;
   height: 60px;
-  background: #FF6600;
+  background: var(--rally-orange);
   color: white;
   border-radius: 50%;
   display: flex;
@@ -1179,7 +1179,7 @@
 }
 
 .step p {
-  color: #666;
+  color: var(--muted);
   font-size: 0.9rem;
 }
 
@@ -1191,7 +1191,7 @@
 /* Location */
 .location {
   padding: 2.5rem 2rem 4rem;
-  background: #f8f9fa;
+  background: var(--surface-alt);
 }
 
 .locationContent {
@@ -1213,18 +1213,18 @@
 .hours h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #333;
+  color: var(--ink);
 }
 
 .address p,
 .hours p {
-  color: #666;
+  color: var(--muted);
   line-height: 1.6;
   margin-bottom: 0.5rem;
 }
 
 .hours a {
-  color: #FF6600;
+  color: var(--rally-orange);
   text-decoration: none;
 }
 
@@ -1254,7 +1254,7 @@
 .faqItem {
   margin-bottom: 1rem;
   background: white;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border);
   border-radius: 8px;
   overflow: hidden;
 }
@@ -1274,7 +1274,7 @@
 }
 
 .faqQuestion:hover {
-  background: #f8f9fa;
+  background: var(--surface-alt);
 }
 
 .faqArrow {
@@ -1284,7 +1284,7 @@
 
 .faqAnswer {
   padding: 0 1.5rem 1.5rem;
-  color: #666;
+  color: var(--muted);
   line-height: 1.6;
 }
 
@@ -1303,10 +1303,10 @@
 .rateCategoryTitle {
   font-size: 1rem;
   font-weight: 700;
-  color: #9b59b6;
+  color: var(--azure-ink);
   margin-bottom: 0.75rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #9b59b6;
+  border-bottom: 2px solid var(--azure-ink);
   text-align: center;
 }
 
@@ -1320,28 +1320,28 @@
   display: flex;
   align-items: center;
   padding: 0.65rem 1rem;
-  background: #f8f9fa;
+  background: var(--surface-alt);
   border-radius: 6px;
-  border-left: 3px solid #9b59b6;
+  border-left: 3px solid var(--azure-ink);
   gap: 1rem;
 }
 
 .rateDay {
   font-weight: 600;
-  color: #9b59b6;
+  color: var(--azure-ink);
   font-size: 0.85rem;
   white-space: nowrap;
   min-width: 90px;
 }
 
 .rateTimeDetail {
-  color: #555;
+  color: var(--muted);
   font-size: 0.85rem;
 }
 
 .ratePriceDetail {
   font-weight: bold;
-  color: #9b59b6;
+  color: var(--azure-ink);
   font-size: 1.1rem;
   text-align: right;
 }
@@ -1360,7 +1360,7 @@
 }
 
 .contactButton {
-  background: #FF6600;
+  background: var(--rally-orange);
   color: white;
   padding: 1rem 2rem;
   border-radius: 8px;
@@ -1371,12 +1371,12 @@
 }
 
 .contactButton:hover {
-  background: #E65100;
+  background: var(--orange-ink);
 }
 
 /* Footer */
 .footer {
-  background: #333;
+  background: var(--ink);
   color: white;
   padding: 2rem;
   text-align: center;
@@ -1401,7 +1401,7 @@
 }
 
 .footerLinks a:hover {
-  color: #FF6600;
+  color: var(--rally-orange);
 }
 
 /* Lightbox */
@@ -1440,7 +1440,7 @@
 }
 
 .lightboxClose:hover {
-  color: #FF6600;
+  color: var(--rally-orange);
 }
 
 .lightboxHeader {
@@ -1461,7 +1461,7 @@
 }
 
 .lightboxCaption {
-  color: #ccc;
+  color: var(--border);
   font-size: 1.1rem;
   font-style: italic;
   margin: 0;

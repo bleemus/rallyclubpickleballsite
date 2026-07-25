@@ -177,7 +177,7 @@ export default function AboutOurInstructors() {
         .container {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           line-height: 1.6;
-          color: #333;
+          color: var(--ink);
         }
 
         /* Header (mirrors rally-academy.js) */
@@ -201,7 +201,7 @@ export default function AboutOurInstructors() {
         .logo {
           font-size: 1.5rem;
           font-weight: bold;
-          color: #333;
+          color: var(--ink);
           display: flex;
           align-items: center;
           text-decoration: none;
@@ -209,17 +209,17 @@ export default function AboutOurInstructors() {
         .nav { display: flex; align-items: center; gap: 2rem; }
         .nav-link {
           text-decoration: none;
-          color: #666;
+          color: var(--muted);
           font-weight: 500;
           transition: color 0.3s;
         }
-        .nav-link:hover, .nav-link.active { color: #FF6600; }
-        .academy-nav-link { color: #475569 !important; font-weight: 600; }
-        .academy-nav-link:hover, .academy-nav-link.active { color: #64748B !important; }
-        .honcho-nav-link { color: #2D5A27 !important; font-weight: 600; }
-        .honcho-nav-link:hover { color: #3E7B3E !important; }
-        .rally-nav-link { color: #FF6600 !important; font-weight: 600; }
-        .rally-nav-link:hover { color: #E65100 !important; }
+        .nav-link:hover, .nav-link.active { color: var(--rally-orange); }
+        .academy-nav-link { color: var(--baseline-navy) !important; font-weight: 600; }
+        .academy-nav-link:hover, .academy-nav-link.active { color: var(--concrete) !important; }
+        .honcho-nav-link { color: var(--baseline-navy) !important; font-weight: 600; }
+        .honcho-nav-link:hover { color: var(--baseline-navy) !important; }
+        .rally-nav-link { color: var(--rally-orange) !important; font-weight: 600; }
+        .rally-nav-link:hover { color: var(--orange-ink) !important; }
 
         .mobile-menu-button {
           display: none;
@@ -241,7 +241,7 @@ export default function AboutOurInstructors() {
           display: block;
           height: 3px;
           width: 100%;
-          background: #64748B;
+          background: var(--concrete);
           border-radius: 2px;
           transition: all 0.3s ease;
         }
@@ -272,7 +272,7 @@ export default function AboutOurInstructors() {
           gap: 0.5rem;
         }
         .mobile-nav-link {
-          color: #333;
+          color: var(--ink);
           text-decoration: none;
           font-weight: 500;
           padding: 1rem;
@@ -282,26 +282,26 @@ export default function AboutOurInstructors() {
           border: 1px solid rgba(0, 0, 0, 0.1);
         }
         .mobile-nav-link.academy-link {
-          background: linear-gradient(135deg, #475569 0%, #64748B 100%);
+          background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--concrete) 100%);
           color: white;
-          border-color: #64748B;
+          border-color: var(--concrete);
         }
         .mobile-nav-link.honcho-link {
-          background: linear-gradient(135deg, #2D5A27 0%, #3E7B3E 100%);
+          background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--baseline-navy) 100%);
           color: white;
-          border-color: #3E7B3E;
+          border-color: var(--baseline-navy);
         }
         .mobile-nav-link.rally-link {
-          background: #FF6600;
+          background: var(--rally-orange);
           color: white !important;
-          border-color: #FF6600;
+          border-color: var(--rally-orange);
         }
 
         /* Hero */
         .instructors-hero {
           margin-top: 80px;
           padding: 3.25rem 2rem;
-          background: linear-gradient(135deg, #475569 0%, #64748B 100%);
+          background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--concrete) 100%);
           color: white;
           text-align: center;
           position: relative;
@@ -320,13 +320,13 @@ export default function AboutOurInstructors() {
         }
         .instructors-hero-subtitle {
           font-size: 1.2rem;
-          color: #CBD5E1;
+          color: var(--concrete-light);
         }
 
         /* Instructor Grid */
         .instructors-grid-section {
           padding: 3.25rem 2rem;
-          background: #f8f9fa;
+          background: var(--surface-alt);
         }
         .instructors-grid {
           max-width: 1100px;
@@ -353,7 +353,7 @@ export default function AboutOurInstructors() {
           border-radius: 50%;
           overflow: hidden;
           margin-bottom: 1.25rem;
-          background: #e2e8f0;
+          background: var(--concrete-light);
           flex-shrink: 0;
         }
         .coach-photo img {
@@ -368,7 +368,7 @@ export default function AboutOurInstructors() {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: linear-gradient(135deg, #475569 0%, #64748B 100%);
+          background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--concrete) 100%);
           color: white;
           font-size: 3rem;
           font-weight: bold;
@@ -378,12 +378,12 @@ export default function AboutOurInstructors() {
         .coach-name {
           font-size: 1.5rem;
           font-weight: bold;
-          color: #475569;
+          color: var(--baseline-navy);
           margin-bottom: 1rem;
         }
 
         .coach-bio {
-          color: #475569;
+          color: var(--baseline-navy);
           line-height: 1.65;
         }
         .coach-bio p {
@@ -394,7 +394,7 @@ export default function AboutOurInstructors() {
         /* Final CTA */
         .final-cta {
           padding: 3.25rem 2rem;
-          background: linear-gradient(135deg, #475569 0%, #64748B 100%);
+          background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--concrete) 100%);
           text-align: center;
           color: white;
         }
@@ -405,7 +405,7 @@ export default function AboutOurInstructors() {
         }
         .cta-reassurance {
           font-size: 1.15rem;
-          color: #CBD5E1;
+          color: var(--concrete-light);
           margin-bottom: 1.5rem;
         }
         .cta-buttons {
@@ -431,10 +431,10 @@ export default function AboutOurInstructors() {
         }
         .cta-button.primary {
           background: white;
-          color: #475569;
+          color: var(--baseline-navy);
         }
         .cta-button.primary:hover {
-          background: #F1F5F9;
+          background: var(--concrete-light);
           transform: translateY(-2px);
         }
         .cta-button.secondary {
@@ -450,7 +450,7 @@ export default function AboutOurInstructors() {
 
         /* Footer */
         .footer {
-          background: #1a1a1a;
+          background: var(--baseline-navy);
           color: white;
           padding: 2rem;
           text-align: center;
@@ -464,11 +464,11 @@ export default function AboutOurInstructors() {
         }
         .footer-links { display: flex; gap: 2rem; }
         .footer-links a {
-          color: #ccc;
+          color: var(--border);
           text-decoration: none;
           transition: color 0.3s;
         }
-        .footer-links a:hover { color: #94A3B8; }
+        .footer-links a:hover { color: var(--concrete); }
 
         /* Responsive */
         @media (max-width: 768px) {

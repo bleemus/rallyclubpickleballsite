@@ -244,12 +244,12 @@ export default function AdminDashboard() {
         * { box-sizing: border-box; }
         .admin {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-          color: #1a1a1a;
-          background: #f8fafc;
+          color: var(--baseline-navy);
+          background: var(--concrete-light);
           min-height: 100vh;
         }
         .admin-header {
-          background: linear-gradient(135deg, #475569 0%, #64748B 100%);
+          background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--concrete) 100%);
           color: white;
           padding: 1rem 0;
         }
@@ -275,7 +275,7 @@ export default function AdminDashboard() {
           align-items: center;
         }
         .admin-user a {
-          color: #CBD5E1;
+          color: var(--concrete-light);
           text-decoration: underline;
         }
         .admin-main {
@@ -291,21 +291,21 @@ export default function AdminDashboard() {
         }
         .admin-top h1 {
           font-size: 1.75rem;
-          color: #475569;
+          color: var(--baseline-navy);
           margin: 0;
         }
         .admin-refresh {
           background: white;
-          border: 1px solid #cbd5e1;
+          border: 1px solid var(--concrete-light);
           padding: 0.5rem 1rem;
           border-radius: 8px;
           cursor: pointer;
           font: inherit;
-          color: #475569;
+          color: var(--baseline-navy);
           font-weight: 600;
         }
         .admin-refresh:hover:not(:disabled) {
-          background: #f1f5f9;
+          background: var(--concrete-light);
         }
         .admin-filters {
           display: flex;
@@ -315,52 +315,52 @@ export default function AdminDashboard() {
         }
         .admin-chip {
           background: white;
-          border: 1px solid #cbd5e1;
+          border: 1px solid var(--concrete-light);
           padding: 0.4rem 0.9rem;
           border-radius: 999px;
           cursor: pointer;
           font: inherit;
-          color: #475569;
+          color: var(--baseline-navy);
           font-size: 0.9rem;
         }
         .admin-chip:hover {
-          background: #f1f5f9;
+          background: var(--concrete-light);
         }
         .admin-chip.active {
-          background: #475569;
+          background: var(--baseline-navy);
           color: white;
-          border-color: #475569;
+          border-color: var(--baseline-navy);
         }
         .admin-error {
-          background: #fef2f2;
-          color: #b91c1c;
-          border: 1px solid #fecaca;
+          background: var(--danger-bg);
+          color: var(--danger);
+          border: 1px solid var(--danger-border);
           padding: 0.75rem 1rem;
           border-radius: 8px;
           margin-bottom: 1rem;
         }
         .admin-empty {
           background: white;
-          border: 1px dashed #cbd5e1;
+          border: 1px dashed var(--concrete-light);
           padding: 2rem;
           text-align: center;
-          color: #64748B;
+          color: var(--concrete);
           border-radius: 12px;
         }
         .admin-table {
           background: white;
           border-radius: 12px;
           overflow: hidden;
-          border: 1px solid #e2e8f0;
+          border: 1px solid var(--concrete-light);
         }
         .admin-row {
-          border-bottom: 1px solid #e2e8f0;
+          border-bottom: 1px solid var(--concrete-light);
         }
         .admin-row:last-child {
           border-bottom: none;
         }
         .admin-row.expanded {
-          background: #f8fafc;
+          background: var(--concrete-light);
         }
         .admin-row-summary {
           width: 100%;
@@ -376,14 +376,14 @@ export default function AdminDashboard() {
           font: inherit;
         }
         .admin-row-summary:hover {
-          background: #f1f5f9;
+          background: var(--concrete-light);
         }
-        .col-when { color: #64748B; font-size: 0.85rem; }
+        .col-when { color: var(--concrete); font-size: 0.85rem; }
         .col-contact { display: flex; flex-direction: column; font-size: 0.9rem; }
         .col-contact .muted { font-size: 0.8rem; }
         .col-instructor { font-size: 0.9rem; }
         .col-skill { font-size: 0.85rem; }
-        .muted { color: #64748B; }
+        .muted { color: var(--concrete); }
         .admin-status {
           padding: 0.2rem 0.65rem;
           border-radius: 999px;
@@ -394,14 +394,14 @@ export default function AdminDashboard() {
           letter-spacing: 0.04em;
           white-space: nowrap;
         }
-        .status-New { background: #3b82f6; }
-        .status-Contacted { background: #f59e0b; }
-        .status-Scheduled { background: #10b981; }
-        .status-Closed { background: #64748B; }
-        .status-Spam { background: #b91c1c; }
+        .status-New { background: var(--court-azure); }
+        .status-Contacted { background: var(--orange-ink); }
+        .status-Scheduled { background: var(--court-azure); }
+        .status-Closed { background: var(--concrete); }
+        .status-Spam { background: var(--danger); }
         .admin-row-detail {
           padding: 1rem 1.5rem 1.25rem;
-          border-top: 1px solid #e2e8f0;
+          border-top: 1px solid var(--concrete-light);
         }
         .detail-grid {
           display: grid;
@@ -412,13 +412,13 @@ export default function AdminDashboard() {
         .detail-grid h4 {
           margin: 0 0 0.25rem;
           font-size: 0.85rem;
-          color: #475569;
+          color: var(--baseline-navy);
           text-transform: uppercase;
           letter-spacing: 0.05em;
         }
         .detail-grid p {
           margin: 0;
-          color: #1a1a1a;
+          color: var(--baseline-navy);
           font-size: 0.95rem;
           white-space: pre-wrap;
         }
@@ -437,7 +437,7 @@ export default function AdminDashboard() {
         .detail-edit span {
           display: block;
           font-size: 0.85rem;
-          color: #475569;
+          color: var(--baseline-navy);
           font-weight: 600;
           margin-bottom: 0.25rem;
         }
@@ -445,7 +445,7 @@ export default function AdminDashboard() {
         .detail-edit textarea {
           width: 100%;
           padding: 0.5rem 0.6rem;
-          border: 1px solid #cbd5e1;
+          border: 1px solid var(--concrete-light);
           border-radius: 8px;
           font: inherit;
           background: white;
@@ -469,22 +469,22 @@ export default function AdminDashboard() {
           border: 1px solid transparent;
         }
         .btn-primary {
-          background: #475569;
+          background: var(--baseline-navy);
           color: white;
         }
-        .btn-primary:hover:not(:disabled) { background: #334155; }
+        .btn-primary:hover:not(:disabled) { background: var(--baseline-navy); }
         .btn-secondary {
           background: white;
-          color: #475569;
-          border-color: #cbd5e1;
+          color: var(--baseline-navy);
+          border-color: var(--concrete-light);
         }
-        .btn-secondary:hover:not(:disabled) { background: #f1f5f9; }
+        .btn-secondary:hover:not(:disabled) { background: var(--concrete-light); }
         .btn-danger {
           background: white;
-          color: #b91c1c;
-          border-color: #fecaca;
+          color: var(--danger);
+          border-color: var(--danger-border);
         }
-        .btn-danger:hover:not(:disabled) { background: #fef2f2; }
+        .btn-danger:hover:not(:disabled) { background: var(--danger-bg); }
         button:disabled { opacity: 0.6; cursor: not-allowed; }
 
         @media (max-width: 900px) {

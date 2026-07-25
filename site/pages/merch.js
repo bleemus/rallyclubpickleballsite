@@ -142,7 +142,7 @@ export default function Merch() {
         .container {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           line-height: 1.6;
-          color: #333;
+          color: var(--ink);
         }
 
         /* Header */
@@ -168,7 +168,7 @@ export default function Merch() {
         .logo {
           font-size: 1.5rem;
           font-weight: bold;
-          color: #333;
+          color: var(--ink);
           display: flex;
           align-items: center;
           text-decoration: none;
@@ -182,41 +182,41 @@ export default function Merch() {
 
         .nav-link {
           text-decoration: none;
-          color: #666;
+          color: var(--muted);
           font-weight: 500;
           transition: color 0.3s;
         }
 
         .nav-link:hover,
         .nav-link.active {
-          color: #e74c3c;
+          color: var(--rally-orange);
         }
 
         .academy-nav-link {
-          color: #475569 !important;
+          color: var(--baseline-navy) !important;
           font-weight: 600;
         }
 
         .academy-nav-link:hover {
-          color: #64748B !important;
+          color: var(--concrete) !important;
         }
 
         .honcho-nav-link {
-          color: #2D5A27 !important;
+          color: var(--baseline-navy) !important;
           font-weight: 600;
         }
 
         .honcho-nav-link:hover {
-          color: #3E7B3E !important;
+          color: var(--baseline-navy) !important;
         }
 
         .rally-nav-link {
-          color: #FF6600 !important;
+          color: var(--rally-orange) !important;
           font-weight: 600;
         }
 
         .rally-nav-link:hover {
-          color: #E65100 !important;
+          color: var(--orange-ink) !important;
         }
 
         /* Mobile Menu Button */
@@ -242,7 +242,7 @@ export default function Merch() {
           display: block;
           height: 3px;
           width: 100%;
-          background: #333;
+          background: var(--ink);
           border-radius: 2px;
           transition: all 0.3s ease;
         }
@@ -293,7 +293,7 @@ export default function Merch() {
         }
 
         .mobile-nav-link {
-          color: #333;
+          color: var(--ink);
           text-decoration: none;
           font-weight: 500;
           padding: 1rem;
@@ -306,30 +306,30 @@ export default function Merch() {
         .mobile-nav-link:hover,
         .mobile-nav-link:active {
           background: rgba(231, 76, 60, 0.1);
-          border-color: #e74c3c;
-          color: #e74c3c;
+          border-color: var(--rally-orange);
+          color: var(--rally-orange);
         }
 
         .mobile-nav-link.active {
           background: rgba(231, 76, 60, 0.2);
-          border-color: #e74c3c;
-          color: #e74c3c;
+          border-color: var(--rally-orange);
+          color: var(--rally-orange);
         }
 
         .mobile-nav-link.academy-link {
-          background: linear-gradient(135deg, #475569 0%, #64748B 100%);
+          background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--concrete) 100%);
           color: white;
-          border-color: #64748B;
+          border-color: var(--concrete);
         }
 
         .mobile-nav-link.honcho-link {
-          background: linear-gradient(135deg, #2D5A27 0%, #3E7B3E 100%);
+          background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--baseline-navy) 100%);
           color: white;
-          border-color: #3E7B3E;
+          border-color: var(--baseline-navy);
         }
 
         .mobile-nav-link.rally-link {
-          background: #FF6600;
+          background: var(--rally-orange);
           color: white !important;
           padding: 0.75rem 1rem;
           border-radius: 6px;
@@ -337,7 +337,7 @@ export default function Merch() {
         }
 
         .mobile-nav-link.rally-link:hover {
-          background: #E65100;
+          background: var(--orange-ink);
         }
 
         /* Merch Landing Section */
@@ -347,7 +347,7 @@ export default function Merch() {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+          background: linear-gradient(135deg, var(--surface-alt) 0%, var(--border) 100%);
           padding: 4rem 2rem;
         }
 
@@ -362,14 +362,14 @@ export default function Merch() {
 
         h1 {
           font-size: 2.5rem;
-          color: #2D5A27;
+          color: var(--baseline-navy);
           margin-bottom: 1rem;
           font-weight: 700;
         }
 
         .description {
           font-size: 1.125rem;
-          color: #555;
+          color: var(--muted);
           line-height: 1.8;
           margin-bottom: 2rem;
         }
@@ -378,7 +378,7 @@ export default function Merch() {
           display: inline-flex;
           align-items: center;
           gap: 0.75rem;
-          background: #2D5A27;
+          background: var(--baseline-navy);
           color: white;
           text-decoration: none;
           padding: 1rem 2.5rem;
@@ -390,7 +390,7 @@ export default function Merch() {
         }
 
         .shop-button:hover {
-          background: #3E7B3E;
+          background: var(--baseline-navy);
           transform: translateY(-2px);
           box-shadow: 0 6px 16px rgba(45, 90, 39, 0.4);
         }
@@ -407,12 +407,12 @@ export default function Merch() {
         .note {
           margin-top: 1.5rem;
           font-size: 0.875rem;
-          color: #888;
+          color: var(--muted);
         }
 
         /* Footer */
         .footer {
-          background: #333;
+          background: var(--ink);
           color: white;
           padding: 2rem;
           text-align: center;
@@ -438,7 +438,7 @@ export default function Merch() {
         }
 
         .footer-links a:hover {
-          color: #e74c3c;
+          color: var(--rally-orange);
         }
 
         /* Responsive */

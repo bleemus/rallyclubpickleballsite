@@ -263,15 +263,15 @@ export default function Home() {
               <div className={styles.membershipPrice}>
                 <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', alignItems: 'flex-end', flexWrap: 'wrap' }}>
                   <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.9rem', color: '#666', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}>Monthly</div>
+                    <div style={{ fontSize: '0.9rem', color: 'var(--muted)', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}>Monthly</div>
                     <div className={styles.tooltip} data-tip="$20 one-time sign-up fee">
                       <span className={styles.price}>$35</span>
                       <span className={styles.period}>/mo*</span>
                     </div>
                   </div>
-                  <div style={{ height: '5rem', width: '1px', background: '#ddd', alignSelf: 'center' }}></div>
+                  <div style={{ height: '5rem', width: '1px', background: 'var(--border)', alignSelf: 'center' }}></div>
                   <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.9rem', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}><span style={{ color: '#666' }}>Annual</span> <span style={{ color: '#4CAF50' }}>&middot; Save 17%</span></div>
+                    <div style={{ fontSize: '0.9rem', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}><span style={{ color: 'var(--muted)' }}>Annual</span> <span style={{ color: 'var(--azure-ink)' }}>&middot; Save 17%</span></div>
                     <div className={styles.tooltip} data-tip="$20 one-time sign-up fee">
                       <span className={styles.price}>$350</span>
                       <span className={styles.period}>/yr*</span>
@@ -302,7 +302,7 @@ export default function Home() {
               <div className={styles.membershipPrice}>
                 <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', alignItems: 'flex-end', flexWrap: 'wrap' }}>
                   <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.9rem', color: '#666', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}>Monthly</div>
+                    <div style={{ fontSize: '0.9rem', color: 'var(--muted)', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}>Monthly</div>
                     <div>
                       <span className={styles.price}>$0</span>
                       <span className={styles.period}>/mo</span>
@@ -350,7 +350,7 @@ export default function Home() {
           </div>
           <div className={styles.specialProgramsPricing}>
             <h3>Pricing</h3>
-            <p className={styles.membershipSummary}>A-List Seniors enjoy the same court rates as <a href="#membership" style={{ color: '#FF6600', textDecoration: 'none', fontWeight: '600' }}>A-List members</a>. The perk is that qualifying members pay no monthly or annual membership fee — your Medicare or Medicaid plan covers it.</p>
+            <p className={styles.membershipSummary}>A-List Seniors enjoy the same court rates as <a href="#membership" style={{ color: 'var(--rally-orange)', textDecoration: 'none', fontWeight: '600' }}>A-List members</a>. The perk is that qualifying members pay no monthly or annual membership fee — your Medicare or Medicaid plan covers it.</p>
             <p className={styles.membershipSummary}>Courts can be reserved up to 7 days in advance, giving you priority access to book your preferred times.</p>
           </div>
           <div className={styles.seniorProgramsGrid}>
