@@ -405,13 +405,18 @@
   display: flex;
   gap: 0.8rem;
   align-items: flex-start;
+  color: var(--muted);
 }
 
-.pickleBullet {
-  width: 22px;
-  height: 22px;
+.highlightBox::before {
+  content: "";
   flex-shrink: 0;
-  margin-top: 2px;
+  width: 1.3em;
+  height: 1.3em;
+  margin-top: 0.05em;
+  background-color: currentColor;
+  -webkit-mask: url("/pickleball-bullet.svg") center / contain no-repeat;
+  mask: url("/pickleball-bullet.svg") center / contain no-repeat;
 }
 
 .highlightBox p {
