@@ -203,7 +203,7 @@ export default function RallyExperiences() {
 
             <div className="services-included">
               <h3>Every Rally Experience Includes:</h3>
-              <ul className="included-list">
+              <ul className="included-list rally-list">
                 <li>Professional facilitation and on-site instruction</li>
                 <li>All paddles, balls, and equipment</li>
                 <li>Two reserved indoor pickleball courts at The Rally Club in Glen Carbon, IL</li>
@@ -232,7 +232,7 @@ export default function RallyExperiences() {
                 <div className="package-price">$450</div>
                 <div className="package-details">Up to 12 participants • 2 hours • 2 courts</div>
               </div>
-              <ul className="package-features">
+              <ul className="package-features rally-list">
                 <li>Basic instruction</li>
                 <li>Guided play</li>
                 <li>Paddles, balls, and setup included</li>
@@ -250,7 +250,7 @@ export default function RallyExperiences() {
                 <div className="package-price">$750</div>
                 <div className="package-details">Up to 16 participants • 2.5 hours • 2 courts</div>
               </div>
-              <ul className="package-features">
+              <ul className="package-features rally-list">
                 <li>Includes Starter Rally features</li>
                 <li>Extended play time</li>
                 <li>Warm-up drills + mini tournament</li>
@@ -267,7 +267,7 @@ export default function RallyExperiences() {
                 <div className="package-price">$1,200</div>
                 <div className="package-details">Up to 24 participants • 3 hours • 2 courts</div>
               </div>
-              <ul className="package-features">
+              <ul className="package-features rally-list">
                 <li>Includes Pro Rally features</li>
                 <li>Extended play time</li>
                 <li>1-minute highlight video</li>
@@ -612,15 +612,6 @@ export default function RallyExperiences() {
           position: relative;
           line-height: 1.6;
           color: var(--muted);
-        }
-
-        .included-list > li::before {
-          content: "✓";
-          position: absolute;
-          left: 0;
-          color: var(--rally-orange);
-          font-weight: 700;
-          font-size: 1.2rem;
         }
 
         .included-list ul {

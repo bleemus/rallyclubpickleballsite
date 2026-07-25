@@ -72,6 +72,32 @@ h1, h2, h3, h4, h5, h6 {
 .rally-mark span:nth-child(2) { width: 70%; }
 .rally-mark span:nth-child(3) { width: 45%; background: var(--rally-orange); }
 
+/* Pickleball bullet list — opt-in via .rally-list on program/schedule lists only.
+   Uses the kiosk pickleball icon as a mask so the bullet inherits currentColor.
+   !important guards against per-page <style jsx> list rules on the same elements. */
+.rally-list,
+.rally-list ul {
+  list-style: none !important;
+}
+.rally-list {
+  padding-left: 0 !important;
+}
+.rally-list li {
+  position: relative;
+  padding-left: 1.7em !important;
+}
+.rally-list li::before {
+  content: "" !important;
+  position: absolute;
+  left: 0;
+  top: 0.18em;
+  width: 1.15em;
+  height: 1.15em;
+  background-color: currentColor;
+  -webkit-mask: url("/pickleball-bullet.svg") center / contain no-repeat;
+  mask: url("/pickleball-bullet.svg") center / contain no-repeat;
+}
+
 /* Respect reduced-motion: neutralize transitions/animations and smooth scroll */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
