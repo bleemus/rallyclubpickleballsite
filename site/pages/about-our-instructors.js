@@ -216,8 +216,6 @@ export default function AboutOurInstructors() {
         .nav-link:hover, .nav-link.active { color: var(--rally-orange); }
         .academy-nav-link { color: var(--baseline-navy) !important; font-weight: 600; }
         .academy-nav-link:hover, .academy-nav-link.active { color: var(--concrete) !important; }
-        .honcho-nav-link { color: var(--baseline-navy) !important; font-weight: 600; }
-        .honcho-nav-link:hover { color: var(--baseline-navy) !important; }
         .rally-nav-link { color: var(--rally-orange) !important; font-weight: 600; }
         .rally-nav-link:hover { color: var(--orange-ink) !important; }
 
@@ -285,11 +283,6 @@ export default function AboutOurInstructors() {
           background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--concrete) 100%);
           color: white;
           border-color: var(--concrete);
-        }
-        .mobile-nav-link.honcho-link {
-          background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--baseline-navy) 100%);
-          color: white;
-          border-color: var(--baseline-navy);
         }
         .mobile-nav-link.rally-link {
           background: var(--rally-orange);

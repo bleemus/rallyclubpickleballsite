@@ -642,15 +642,6 @@ export default function RallyAcademy() {
           color: var(--concrete) !important;
         }
 
-        .honcho-nav-link {
-          color: var(--baseline-navy) !important;
-          font-weight: 600;
-        }
-
-        .honcho-nav-link:hover {
-          color: var(--baseline-navy) !important;
-        }
-
         .rally-nav-link {
           color: var(--rally-orange) !important;
           font-weight: 600;
@@ -761,12 +752,6 @@ export default function RallyAcademy() {
           background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--concrete) 100%);
           color: white;
           border-color: var(--concrete);
-        }
-
-        .mobile-nav-link.honcho-link {
-          background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--baseline-navy) 100%);
-          color: white;
-          border-color: var(--baseline-navy);
         }
 
         .mobile-nav-link.rally-link {
@@ -966,11 +951,6 @@ export default function RallyAcademy() {
           font-weight: bold;
         }
 
-        .program-icon {
-          font-size: 3rem;
-          margin-bottom: 1rem;
-        }
-
         .program-title {
           font-size: 1.5rem;
           color: var(--baseline-navy);
@@ -1103,12 +1083,6 @@ export default function RallyAcademy() {
 
         .selling-point {
           text-align: center;
-        }
-
-        .selling-icon {
-          font-size: 2rem;
-          display: block;
-          margin-bottom: 0.5rem;
         }
 
         .selling-point strong {
@@ -1298,12 +1272,6 @@ export default function RallyAcademy() {
           box-shadow: 0 5px 15px rgba(0,0,0,0.08);
         }
 
-        .included-icon {
-          font-size: 2.5rem;
-          display: block;
-          margin-bottom: 1rem;
-        }
-
         .included-item h4 {
           color: var(--baseline-navy);
           margin-bottom: 0.5rem;
@@ -1328,10 +1296,6 @@ export default function RallyAcademy() {
           border-radius: 30px;
           box-shadow: 0 3px 10px rgba(0,0,0,0.1);
           font-weight: 500;
-        }
-
-        .perf-point span {
-          margin-right: 0.5rem;
         }
 
         /* Sign Up Box Light */
@@ -1460,10 +1424,6 @@ export default function RallyAcademy() {
           gap: 3rem;
         }
 
-        .faq-column {
-
-        }
-
         .faq-column-title {
           font-size: 1.5rem;
           color: white;
@@ -1474,10 +1434,6 @@ export default function RallyAcademy() {
           border-bottom: 2px solid rgba(255, 255, 255, 0.3);
           display: inline-block;
           width: 100%;
-        }
-
-        .faq-container {
-
         }
 
         .faq-item {
@@ -1604,17 +1560,6 @@ export default function RallyAcademy() {
 
         .cta-button-pill {
           border-radius: 999px;
-        }
-
-        .cta-button.secondary {
-          background: transparent;
-          color: white;
-          border: 2px solid white;
-        }
-
-        .cta-button.secondary:hover {
-          background: rgba(255, 255, 255, 0.1);
-          transform: translateY(-2px);
         }
 
         /* Footer */

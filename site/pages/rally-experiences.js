@@ -452,15 +452,6 @@ export default function RallyExperiences() {
           color: var(--concrete) !important;
         }
 
-        .honcho-nav-link {
-          color: var(--baseline-navy) !important;
-          font-weight: 600;
-        }
-
-        .honcho-nav-link:hover {
-          color: var(--baseline-navy) !important;
-        }
-
         .rally-nav-link {
           color: var(--rally-orange) !important;
           font-weight: 600;
@@ -591,15 +582,9 @@ export default function RallyExperiences() {
           border-color: var(--concrete);
         }
 
-        .mobile-nav-link.honcho-link {
-          background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--baseline-navy) 100%);
-          color: white;
-          border-color: var(--baseline-navy);
-        }
-
         /* Hero Section */
         .events-hero {
-          background: linear-gradient(135deg, var(--court-azure) 0%, var(--court-azure) 100%);
+          background: var(--baseline-navy);
           padding: 8rem 2rem 4rem;
           text-align: center;
         }
@@ -798,7 +783,7 @@ export default function RallyExperiences() {
         /* Why Rally Section */
         .why-rally-section {
           padding: 4rem 2rem;
-          background: linear-gradient(135deg, var(--court-azure) 0%, var(--court-azure) 100%);
+          background: var(--baseline-navy);
         }
 
         .why-rally-section .section-title {
@@ -960,7 +945,7 @@ export default function RallyExperiences() {
 
         .package-featured {
           border: 2px solid var(--court-azure);
-          background: linear-gradient(135deg, var(--court-azure) 0%, var(--court-azure) 100%);
+          background: var(--baseline-navy);
         }
 
         .package-featured .package-name,
@@ -1059,7 +1044,7 @@ export default function RallyExperiences() {
         /* CTA Section */
         .cta-section {
           padding: 4rem 2rem;
-          background: linear-gradient(135deg, var(--court-azure) 0%, var(--court-azure) 100%);
+          background: var(--baseline-navy);
         }
 
         .cta-section .section-title {

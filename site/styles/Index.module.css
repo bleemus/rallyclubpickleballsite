@@ -57,15 +57,6 @@
   color: var(--concrete) !important;
 }
 
-.honchoNavLink {
-  color: var(--baseline-navy) !important;
-  font-weight: 600;
-}
-
-.honchoNavLink:hover {
-  color: var(--baseline-navy) !important;
-}
-
 .rallyNavLink {
   color: var(--rally-orange) !important;
   font-weight: 600;
@@ -178,22 +169,10 @@
   color: var(--rally-orange);
 }
 
-.mobileNavLink.active {
-  background: rgba(231, 76, 60, 0.2);
-  border-color: var(--rally-orange);
-  color: var(--rally-orange);
-}
-
 .mobileNavLink.academyLink {
   background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--concrete) 100%);
   color: white;
   border-color: var(--concrete);
-}
-
-.mobileNavLink.honchoLink {
-  background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--baseline-navy) 100%);
-  color: white;
-  border-color: var(--baseline-navy);
 }
 
 /* Hero */
@@ -364,61 +343,6 @@
   color: var(--ink);
 }
 
-.specialPricingGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.75rem;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.peakTimesLink {
-  text-align: center;
-  margin-top: 1.5rem;
-}
-
-.peakTimesLink a {
-  color: var(--azure-ink);
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 500;
-  border-bottom: 1px dashed var(--azure-ink);
-  transition: all 0.3s;
-}
-
-.peakTimesLink a:hover {
-  color: var(--azure-ink);
-  border-bottom-color: var(--azure-ink);
-}
-
-.specialProgramsGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  align-items: start;
-}
-
-.specialProgramDescription {
-  padding: 0 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.specialProgramDescription p {
-  font-size: 0.9rem;
-  color: var(--muted);
-  line-height: 1.6;
-  text-align: left;
-}
-
-.programLogo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  height: 100px;
-  padding: 1rem 0.5rem;
-}
-
 .seniorProgramsGrid {
   display: grid;
   grid-template-columns: 1fr;
@@ -471,6 +395,7 @@
   display: grid;
   grid-row: span 5;
   grid-template-rows: subgrid;
+  position: relative;
 }
 
 .membershipTitle {
@@ -582,17 +507,6 @@
   background: var(--concrete);
 }
 
-.membershipFeatures {
-  list-style: none;
-  text-align: center;
-  flex-grow: 1;
-}
-
-.membershipFeatures li {
-  padding: 0.5rem 0;
-  color: var(--muted);
-}
-
 .pricingDetails {
   text-align: left;
   width: 100%;
@@ -605,56 +519,6 @@
   color: var(--ink);
   margin-bottom: 1rem;
   text-align: center;
-}
-
-.rateTableWrapper {
-  background: var(--surface-alt);
-  border-radius: 6px;
-  border-left: 3px solid var(--rally-orange);
-  margin-bottom: 0.5rem;
-  overflow: hidden;
-}
-
-.rateTable {
-  width: 100%;
-  border-collapse: collapse;
-  background: var(--surface-alt);
-}
-
-.rateTable th {
-  background: var(--surface-alt);
-  color: var(--ink);
-  padding: 0.75rem 0.5rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-align: center;
-}
-
-.rateTable th:first-child {
-  background: var(--surface-alt);
-  color: var(--muted);
-  font-size: 0.95rem;
-  font-weight: 700;
-  border-bottom: none;
-}
-
-.rateTable tr:first-child th {
-  border-bottom: 1px solid var(--border);
-}
-
-.rateTable tr:first-child th:first-child {
-  border-bottom: none;
-  border-right: 1px solid var(--border);
-}
-
-.rateTable td {
-  padding: 0.75rem 0.5rem;
-  text-align: center;
-  font-weight: 700;
-  color: var(--rally-orange);
-  background: var(--surface-alt);
-  font-size: 1rem;
-  border-top: 1px solid var(--border);
 }
 
 .rateItem {
@@ -729,35 +593,9 @@
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-.approvalBadge {
-  position: absolute;
-  top: -10px;
-  left: 20px;
-  background: var(--azure-ink);
-  color: white;
-  padding: 5px 15px;
-  border-radius: 15px;
-  font-size: 0.8rem;
-  font-weight: bold;
-  transform: rotate(-15deg);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
 .membershipCard.featured {
   position: relative;
   border: 2px solid var(--rally-orange);
-}
-
-.membershipCard {
-  position: relative;
-}
-
-.membershipAnnual {
-  font-size: 0.9rem;
-  color: var(--muted);
-  font-style: italic;
-  margin-bottom: 1.5rem;
-  margin-top: -0.5rem;
 }
 
 /* Pricing note section */
@@ -803,11 +641,6 @@
   border-left-color: var(--azure-ink);
 }
 
-.highlightBox.specialPrograms {
-  background: var(--concrete-light);
-  border-left-color: var(--azure-ink);
-}
-
 .highlightBox p {
   margin: 0;
   font-size: 0.95rem;
@@ -817,163 +650,6 @@
 .notPermitted {
   color: var(--rally-orange);
   font-weight: bold;
-}
-
-.joinInfo {
-  text-align: center;
-  background: var(--court-white);
-  padding: 1.5rem;
-  border-radius: 8px;
-  border: 2px solid var(--rally-orange);
-}
-
-.joinInfo p {
-  margin: 0.25rem 0;
-  font-size: 1rem;
-}
-
-.joinInfo p:first-child {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Honcho League */
-.honchoLeague {
-  padding: 2.5rem 2rem;
-  background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--baseline-navy) 100%);
-  color: white;
-  position: relative;
-}
-
-.honchoLeague::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-  opacity: 0.3;
-}
-
-.honchoContent {
-  max-width: 1000px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-
-.honchoHeader {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.honchoTitle {
-  font-size: 2.2rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  color: white;
-}
-
-.honchoSubtitle {
-  font-size: 1.1rem;
-  color: var(--concrete-light);
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.honchoSummary {
-  text-align: center;
-}
-
-.honchoDescription {
-  font-size: 1.1rem;
-  color: var(--concrete-light);
-  margin-bottom: 2rem;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.honchoHighlights {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.highlightItem {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 1.5rem;
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(200, 245, 96, 0.3);
-  text-align: center;
-}
-
-.highlightIcon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  display: block;
-}
-
-.highlightItem strong {
-  color: var(--court-azure);
-}
-
-.honchoCta {
-  margin-top: 2rem;
-}
-
-.honchoButton {
-  background: var(--court-azure);
-  color: var(--baseline-navy);
-  padding: 1rem 2rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  font-size: 1.1rem;
-  display: inline-block;
-}
-
-.honchoButton:hover {
-  background: var(--court-azure);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(200, 245, 96, 0.3);
-}
-
-.honchoButton:visited {
-  background: var(--court-azure);
-  color: var(--baseline-navy);
-  text-decoration: none;
-}
-
-.honchoButton:visited:hover {
-  background: var(--court-azure);
-  color: var(--baseline-navy);
-  text-decoration: none;
-}
-
-.honchoButton.secondary {
-  background: transparent;
-  color: white;
-  border: 2px solid var(--court-azure);
-  margin-left: 1rem;
-}
-
-.honchoButton.secondary:hover {
-  background: rgba(200, 245, 96, 0.1);
-  border-color: var(--court-azure);
-}
-
-.honchoCta {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
 }
 
 /* Programs Section */
@@ -1001,11 +677,6 @@
 
 .programCard:hover {
   transform: translateY(-5px);
-}
-
-.programIcon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
 }
 
 .programTitle {
@@ -1041,21 +712,6 @@
   padding: 0.4rem 0.8rem;
   border-radius: 20px;
   font-size: 0.85rem;
-}
-
-.programButton {
-  display: inline-block;
-  background: var(--court-azure);
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background 0.3s;
-}
-
-.programButton:hover {
-  background: var(--azure-ink);
 }
 
 .programButtonOrange {
@@ -1293,62 +949,9 @@
   line-height: 1.6;
 }
 
-.ratesContainer {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.rateCategory {
-  margin-bottom: 0;
-}
-
-.rateCategoryTitle {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--azure-ink);
-  margin-bottom: 0.75rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--azure-ink);
-  text-align: center;
-}
-
-.specialRatesGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.5rem;
-}
-
-.rateRow {
-  display: flex;
-  align-items: center;
-  padding: 0.65rem 1rem;
-  background: var(--surface-alt);
-  border-radius: 6px;
-  border-left: 3px solid var(--azure-ink);
-  gap: 1rem;
-}
-
-.rateDay {
-  font-weight: 600;
-  color: var(--azure-ink);
-  font-size: 0.85rem;
-  white-space: nowrap;
-  min-width: 90px;
-}
-
 .rateTimeDetail {
   color: var(--muted);
   font-size: 0.85rem;
-}
-
-.ratePriceDetail {
-  font-weight: bold;
-  color: var(--azure-ink);
-  font-size: 1.1rem;
-  text-align: right;
 }
 
 /* Contact */
@@ -1506,10 +1109,6 @@
     grid-row: auto;
     grid-template-rows: auto auto auto auto 1fr;
   }
-
-  .specialProgramsGrid {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 768px) {
@@ -1521,14 +1120,6 @@
     display: block;
   }
 
-  .membershipGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .specialProgramsGrid {
-    grid-template-columns: 1fr;
-  }
-
   .seniorProgramCard {
     flex-direction: column;
     text-align: center;
@@ -1536,15 +1127,6 @@
 
   .seniorProgramLogo {
     width: 160px;
-  }
-
-  .specialPricingGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .programLogo {
-    height: 80px;
-    padding: 0.5rem;
   }
 
   .specialProgramsSection {
@@ -1593,10 +1175,6 @@
     font-size: 0.9rem;
   }
 
-  .membershipGrid {
-    grid-template-columns: 1fr;
-  }
-
   .facilityGrid {
     grid-template-columns: 1fr;
   }
@@ -1618,21 +1196,9 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .honchoHighlights {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
   .footerContent {
     flex-direction: column;
     gap: 1rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .ratesContainer {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
   }
 }
 
@@ -1653,34 +1219,7 @@
     grid-template-columns: 1fr;
   }
 
-  .honchoTitle {
-    font-size: 2rem;
-  }
-
-  .ratesContainer {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .rateCategory {
-    max-width: 100%;
-  }
-
-  .rateRow {
-    padding: 0.6rem 0.75rem;
-    gap: 0.75rem;
-  }
-
-  .rateDay {
-    font-size: 0.8rem;
-    min-width: 80px;
-  }
-
   .rateTimeDetail {
     font-size: 0.8rem;
-  }
-
-  .rateCategoryTitle {
-    font-size: 0.95rem;
   }
 }
