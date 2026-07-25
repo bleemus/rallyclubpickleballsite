@@ -16,14 +16,14 @@ return (
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
         {/* Theme color for browser chrome */}
-        <meta name="theme-color" content="#2D5A27" />
+        <meta name="theme-color" content="#EF5A28" />
 
         {/* Preconnect to improve font loading */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-        {/* Google Fonts stylesheet */}
+        {/* Google Fonts — Archivo Expanded (display), IBM Plex Sans (body), IBM Plex Mono (data/labels) */}
         <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@600;700;800&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet"
         />
         {/* Google tag (gtag.js) */}

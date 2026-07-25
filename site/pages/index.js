@@ -3,18 +3,21 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../styles/Index.module.css';
+import SiteHeader from '../components/SiteHeader';
+import SiteFooter from '../components/SiteFooter';
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState(null);
   const [lightboxImage, setLightboxImage] = useState(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [insideIndex, setInsideIndex] = useState(0);
   const [outsideIndex, setOutsideIndex] = useState(0);
 
   const insideImages = ['/inside1.jpg', '/inside2.jpg', '/inside3.jpg'];
   const outsideImages = ['/outside1.jpg', '/outside2.jpg'];
 
+  // Auto-advance the facility galleries, unless the visitor prefers reduced motion.
   useEffect(() => {
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const timer = setInterval(() => {
       setInsideIndex((prev) => (prev + 1) % insideImages.length);
     }, 5000);
@@ -22,6 +25,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const timer = setInterval(() => {
       setOutsideIndex((prev) => (prev + 1) % outsideImages.length);
     }, 5000);
@@ -51,10 +55,10 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Rally Club Pickleball | Metro East Premier Indoor Pickleball Club</title>
+        <title>Rally Club Pickleball | Glen Carbon, IL</title>
         <meta
           name="description"
-          content="Play pickleball anytime at Rally Club Pickleball in Glen Carbon, IL. Enjoy 24-hour facility access, top-notch courts, and fun community events."
+          content="Indoor pickleball in Glen Carbon, IL. 24/7 court access, book by the hour, plus leagues and coaching."
         />
         <link rel="canonical" href="https://www.rallyclubpickleball.com/" />
         <meta
@@ -65,7 +69,7 @@ export default function Home() {
         <meta property="og:title" content="Rally Club Pickleball" />
         <meta
           property="og:description"
-          content="Join Glen Carbon's premier 24/7 indoor pickleball facility. Reserve courts, play with friends, and be part of the Rally Club community!"
+          content="Indoor pickleball in Glen Carbon, IL. Book courts by the hour, 24/7 access, no contracts."
         />
         <meta property="og:image" content="/logo-transparent.png" />
         <meta property="og:url" content="https://www.rallyclubpickleball.com/" />
@@ -73,7 +77,7 @@ export default function Home() {
         <meta name="twitter:title" content="Rally Club Pickleball" />
         <meta
           name="twitter:description"
-          content="Your Court. Your Crew. Your Rally. Discover the best indoor pickleball experience in Glen Carbon, IL."
+          content="Your Court. Your Crew. Your Rally. Indoor pickleball in Glen Carbon, IL."
         />
         <meta name="twitter:image" content="/logo-transparent.png" />
         <script
@@ -83,7 +87,7 @@ export default function Home() {
               "@context": "https://schema.org",
               "@type": "SportsActivityLocation",
               "name": "Rally Club Pickleball",
-              "description": "Premier indoor pickleball facility in Glen Carbon, IL with 24/7 access",
+              "description": "Indoor pickleball facility in Glen Carbon, IL with 24/7 access",
               "url": "https://www.rallyclubpickleball.com",
               "telephone": "(618) 931-0015",
               "email": "rally.club618@gmail.com",
@@ -166,52 +170,7 @@ export default function Home() {
       </Head>
 
       <div>
-        {/* Header */}
-        <header className={styles.header}>
-          <div className={styles.headerContent}>
-            <a href="/" className={styles.logo}>
-              <Image
-                src="/logo-transparent.png"
-                alt="Rally Club Pickleball Logo"
-                width={40}
-                height={40}
-                style={{ marginRight: '0.5rem', objectFit: 'contain' }}
-              />
-              Rally Club Pickleball
-            </a>
-            <nav className={styles.nav}>
-              <a href="#booking" className={styles.navLink}>Book a Court</a>
-              <a href="#membership" className={styles.navLink}>Membership</a>
-              <a href="/merch" className={styles.navLink}>Merch</a>
-              <a href="/honcho" className={`${styles.navLink} ${styles.honchoNavLink}`}>Honcho League</a>
-              <a href="/rally-academy" className={`${styles.navLink} ${styles.academyNavLink}`}>Rally Academy</a>
-              <a href="/rally-experiences" className={`${styles.navLink} ${styles.rallyNavLink}`}>Rally Experiences</a>
-            </nav>
-            <button
-              className={styles.mobileMenuButton}
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              <div className={`${styles.hamburger} ${mobileMenuOpen ? styles.open : ""}`}>
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-            </button>
-          </div>
-        </header>
-
-        {/* Mobile Menu */}
-        <div className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.open : ""}`}>
-          <nav className={styles.mobileNav}>
-            <a href="#booking" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Book a Court</a>
-            <a href="#membership" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Membership</a>
-            <a href="/merch" className={styles.mobileNavLink} onClick={() => setMobileMenuOpen(false)}>Merch</a>
-            <a href="/honcho" className={`${styles.mobileNavLink} ${styles.honchoLink}`} onClick={() => setMobileMenuOpen(false)}>Honcho League</a>
-            <a href="/rally-academy" className={`${styles.mobileNavLink} ${styles.academyLink}`} onClick={() => setMobileMenuOpen(false)}>Rally Academy</a>
-            <a href="/rally-experiences" className={`${styles.mobileNavLink} ${styles.rallyLink}`} onClick={() => setMobileMenuOpen(false)}>Rally Experiences</a>
-          </nav>
-        </div>
+        <SiteHeader />
 
         {/* Hero Section */}
         <section className={styles.hero}>
@@ -226,32 +185,10 @@ export default function Home() {
           </video>
           <div className={styles.heroContent}>
             <h1 className={styles.heroTitle}>Play When You Want, with Who You Want &mdash; Anytime.</h1>
-            <p className={styles.heroSubtitle}>Glen Carbon's exclusive indoor pickleball hub &mdash; no contracts, 24/7 access, tournament grade courts.</p>
+            <p className={styles.heroSubtitle}>Indoor pickleball in Glen Carbon &mdash; no contracts, 24/7 court access, book by the hour.</p>
             <a href="https://rallyclub.pickleplanner.com/dashboard/reservation/make" className={styles.ctaButton} target="_blank" rel="noopener noreferrer">
-              Book Your First Rally in 60 Seconds
+              Book a Court
             </a>
-          </div>
-        </section>
-
-        {/* Membership Benefits */}
-        <section id="benefits" className={styles.benefits}>
-          <h2 className={styles.sectionTitle}>Membership Benefits</h2>
-          <div className={styles.benefitsGrid}>
-            <div className={styles.benefitItem}>
-              <div className={styles.benefitIcon}>⚡</div>
-              <h3>Flexibility</h3>
-              <p>24/7 access to courts when you want to play</p>
-            </div>
-            <div className={styles.benefitItem}>
-              <div className={styles.benefitIcon}>💰</div>
-              <h3>Pricing</h3>
-              <p>Competitive rates with member discounts</p>
-            </div>
-            <div className={styles.benefitItem}>
-              <div className={styles.benefitIcon}>👥</div>
-              <h3>Perks</h3>
-              <p>Member events and community access</p>
-            </div>
           </div>
         </section>
 
@@ -265,15 +202,15 @@ export default function Home() {
               <div className={styles.membershipPrice}>
                 <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', alignItems: 'flex-end', flexWrap: 'wrap' }}>
                   <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.9rem', color: '#666', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}>Monthly</div>
+                    <div style={{ fontSize: '0.9rem', color: 'var(--muted)', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}>Monthly</div>
                     <div className={styles.tooltip} data-tip="$20 one-time sign-up fee">
                       <span className={styles.price}>$35</span>
                       <span className={styles.period}>/mo*</span>
                     </div>
                   </div>
-                  <div style={{ height: '5rem', width: '1px', background: '#ddd', alignSelf: 'center' }}></div>
+                  <div style={{ height: '5rem', width: '1px', background: 'var(--border)', alignSelf: 'center' }}></div>
                   <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.9rem', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}><span style={{ color: '#666' }}>Annual</span> <span style={{ color: '#4CAF50' }}>&middot; Save 17%</span></div>
+                    <div style={{ fontSize: '0.9rem', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}><span style={{ color: 'var(--muted)' }}>Annual</span> <span style={{ color: 'var(--azure-ink)' }}>&middot; Save 17%</span></div>
                     <div className={styles.tooltip} data-tip="$20 one-time sign-up fee">
                       <span className={styles.price}>$350</span>
                       <span className={styles.period}>/yr*</span>
@@ -304,7 +241,7 @@ export default function Home() {
               <div className={styles.membershipPrice}>
                 <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', alignItems: 'flex-end', flexWrap: 'wrap' }}>
                   <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.9rem', color: '#666', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}>Monthly</div>
+                    <div style={{ fontSize: '0.9rem', color: 'var(--muted)', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}>Monthly</div>
                     <div>
                       <span className={styles.price}>$0</span>
                       <span className={styles.period}>/mo</span>
@@ -352,7 +289,7 @@ export default function Home() {
           </div>
           <div className={styles.specialProgramsPricing}>
             <h3>Pricing</h3>
-            <p className={styles.membershipSummary}>A-List Seniors enjoy the same court rates as <a href="#membership" style={{ color: '#FF6600', textDecoration: 'none', fontWeight: '600' }}>A-List members</a>. The perk is that qualifying members pay no monthly or annual membership fee — your Medicare or Medicaid plan covers it.</p>
+            <p className={styles.membershipSummary}>A-List Seniors enjoy the same court rates as <a href="#membership" style={{ color: 'var(--rally-orange)', textDecoration: 'none', fontWeight: '600' }}>A-List members</a>. The perk is that qualifying members pay no monthly or annual membership fee — your Medicare or Medicaid plan covers it.</p>
             <p className={styles.membershipSummary}>Courts can be reserved up to 7 days in advance, giving you priority access to book your preferred times.</p>
           </div>
           <div className={styles.seniorProgramsGrid}>
@@ -391,64 +328,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Honcho Pickleball League */}
-        <section id="honcho" className={styles.honchoLeague}>
-          <div className={styles.honchoContent}>
-            <div className={styles.honchoHeader}>
-              <Image
-                src="/honcho-logo-small.png"
-                alt="Honcho Pickleball Logo"
-                width={120}
-                height={58}
-                style={{ marginBottom: '1rem' }}
-              />
-              <h2 className={styles.honchoTitle}>Join the Honcho Pickleball League</h2>
-              <p className={styles.honchoSubtitle}>The premier amateur pickleball community sweeping the nation</p>
-            </div>
-
-            <div className={styles.honchoSummary}>
-              <p className={styles.honchoDescription}>
-                8-week same-partner doubles league with court costs included, a free $68 Centerline Athletics performance shirt, and a championship bundle worth ~$500!
-              </p>
-
-              <div className={styles.honchoHighlights}>
-                <div className={styles.highlightItem}>
-                  <span className={styles.highlightIcon}>👥</span>
-                  <div>
-                    <strong>Flexible Teams:</strong><br />
-                    2-4 players, multiple skill divisions
-                  </div>
-                </div>
-                <div className={styles.highlightItem}>
-                  <span className={styles.highlightIcon}>🏆</span>
-                  <div>
-                    <strong>Compete & Win:</strong><br />
-                    ~$500 championship bundle
-                  </div>
-                </div>
-                <div className={styles.highlightItem}>
-                  <span className={styles.highlightIcon}>🎁</span>
-                  <div>
-                    <strong>Perks Included:</strong><br />
-                    Free shirt, weekly giveaways
-                  </div>
-                </div>
-              </div>
-
-              <div className={styles.honchoCta}>
-                <p style={{ color: '#C8F560', fontSize: '1rem', marginBottom: '1rem', fontWeight: 'bold' }}>
-                  Details about our next season coming soon!
-                </p>
-                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                  <a href="/honcho" className={styles.honchoButtonSecondary || styles.honchoButton} style={{ background: 'transparent', border: '2px solid white', color: 'white' }}>
-                    Learn More
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Programs Section - Rally Academy & Rally Experiences */}
         <section className={styles.programsSection}>
           <h2 className={styles.sectionTitle}>More Ways to Play</h2>
@@ -458,7 +337,7 @@ export default function Home() {
               <h3 className={styles.programTitle}>Rally Academy</h3>
               <p className={styles.programTagline}>Training Programs for All Levels</p>
               <p className={styles.programDescription}>
-                From beginner foundations to competitive performance sessions. Structured coaching to take your game to the next level.
+                Beginner clinics, drop-in performance sessions for 3.5+, and 1:1 coaching.
               </p>
               <div className={styles.programHighlights}>
                 <span>Beginner Program</span>
@@ -678,15 +557,7 @@ export default function Home() {
           <a href="mailto:rally.club618@gmail.com" className={styles.contactButton}>Contact Us</a>
         </section>
 
-        {/* Footer */}
-        <footer className={styles.footer}>
-          <div className={styles.footerContent}>
-            <p>© 2025 Rally Club Pickleball. All rights reserved.</p>
-            <div className={styles.footerLinks}>
-              <a href="https://www.facebook.com/profile.php?id=61572523900750" target="_blank" rel="noopener noreferrer">Facebook</a>
-            </div>
-          </div>
-        </footer>
+        <SiteFooter />
 
         {/* Lightbox Modal */}
         {lightboxImage && (

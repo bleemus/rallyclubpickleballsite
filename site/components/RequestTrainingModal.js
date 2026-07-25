@@ -366,7 +366,7 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
         }
         .ptm-dialog {
           background: white;
-          color: #1a1a1a;
+          color: var(--baseline-navy);
           border-radius: 16px;
           max-width: 560px;
           width: 100%;
@@ -384,22 +384,22 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
           border: none;
           font-size: 1.75rem;
           line-height: 1;
-          color: #64748B;
+          color: var(--concrete);
           cursor: pointer;
           padding: 0.25rem 0.5rem;
           border-radius: 6px;
         }
         .ptm-close:hover {
-          background: #f1f5f9;
-          color: #475569;
+          background: var(--concrete-light);
+          color: var(--baseline-navy);
         }
         h2 {
           font-size: 1.5rem;
-          color: #475569;
+          color: var(--baseline-navy);
           margin-bottom: 0.25rem;
         }
         .ptm-lede {
-          color: #64748B;
+          color: var(--concrete);
           margin-bottom: 1.25rem;
           font-size: 0.95rem;
         }
@@ -424,11 +424,11 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
           display: block;
           font-size: 0.85rem;
           font-weight: 600;
-          color: #334155;
+          color: var(--baseline-navy);
           margin-bottom: 0.25rem;
         }
         .ptm-field em {
-          color: #FF6600;
+          color: var(--rally-orange);
           font-style: normal;
         }
         .ptm-field input,
@@ -436,11 +436,11 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
         .ptm-field textarea {
           width: 100%;
           padding: 0.6rem 0.75rem;
-          border: 1px solid #cbd5e1;
+          border: 1px solid var(--concrete-light);
           border-radius: 8px;
           font: inherit;
           line-height: 1.5;
-          color: #1a1a1a;
+          color: var(--baseline-navy);
           background: white;
           box-sizing: border-box;
         }
@@ -463,21 +463,21 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
         .ptm-field select:focus,
         .ptm-field textarea:focus {
           outline: none;
-          border-color: #475569;
+          border-color: var(--baseline-navy);
           box-shadow: 0 0 0 3px rgba(71, 85, 105, 0.15);
         }
         .ptm-field input[aria-invalid="true"],
         .ptm-field textarea[aria-invalid="true"] {
-          border-color: #dc2626;
+          border-color: var(--danger);
         }
         .ptm-field input[aria-invalid="true"]:focus,
         .ptm-field textarea[aria-invalid="true"]:focus {
-          border-color: #dc2626;
+          border-color: var(--danger);
           box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
         }
         .ptm-err {
           display: block;
-          color: #b91c1c;
+          color: var(--danger);
           font-size: 0.8rem;
           margin-top: 0.25rem;
         }
@@ -486,9 +486,9 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
           min-height: 65px;
         }
         .ptm-error-banner {
-          background: #fef2f2;
-          color: #b91c1c;
-          border: 1px solid #fecaca;
+          background: var(--danger-bg);
+          color: var(--danger);
+          border: 1px solid var(--danger-border);
           border-radius: 8px;
           padding: 0.6rem 0.75rem;
           margin-bottom: 0.75rem;
@@ -501,7 +501,7 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
           margin-top: 0.5rem;
         }
         .ptm-primary-btn {
-          background: #475569;
+          background: var(--baseline-navy);
           color: white;
           border: none;
           padding: 0.7rem 1.5rem;
@@ -511,16 +511,16 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
           font-size: 1rem;
         }
         .ptm-primary-btn:hover:not(:disabled) {
-          background: #334155;
+          background: var(--baseline-navy);
         }
         .ptm-primary-btn:disabled {
-          background: #94a3b8;
+          background: var(--concrete);
           cursor: not-allowed;
         }
         .ptm-secondary-btn {
           background: white;
-          color: #475569;
-          border: 1px solid #cbd5e1;
+          color: var(--baseline-navy);
+          border: 1px solid var(--concrete-light);
           padding: 0.7rem 1.25rem;
           border-radius: 8px;
           font-weight: 600;
@@ -528,7 +528,7 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
           font-size: 1rem;
         }
         .ptm-secondary-btn:hover:not(:disabled) {
-          background: #f8fafc;
+          background: var(--concrete-light);
         }
         .ptm-success {
           text-align: center;
@@ -538,7 +538,7 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
           margin-bottom: 0.75rem;
         }
         .ptm-success p {
-          color: #475569;
+          color: var(--baseline-navy);
           margin-bottom: 1.5rem;
         }
         @media (max-width: 600px) {
