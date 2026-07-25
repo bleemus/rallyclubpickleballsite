@@ -76,7 +76,6 @@ export default function RallyExperiences() {
               <a href="/#booking" className="nav-link">Book a Court</a>
               <a href="/#membership" className="nav-link">Membership</a>
               <a href="/merch" className="nav-link">Merch</a>
-              <a href="/honcho" className="nav-link honcho-nav-link">Honcho League</a>
               <a href="/rally-academy" className="nav-link academy-nav-link">Rally Academy</a>
               <a href="/rally-experiences" className="nav-link rally-nav-link active">Rally Experiences</a>
             </nav>
@@ -100,7 +99,6 @@ export default function RallyExperiences() {
             <a href="/#booking" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Book a Court</a>
             <a href="/#membership" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Membership</a>
             <a href="/merch" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Merch</a>
-            <a href="/honcho" className="mobile-nav-link honcho-link" onClick={() => setMobileMenuOpen(false)}>Honcho League</a>
             <a href="/rally-academy" className="mobile-nav-link academy-link" onClick={() => setMobileMenuOpen(false)}>Rally Academy</a>
             <a href="/rally-experiences" className="mobile-nav-link rally-link active" onClick={() => setMobileMenuOpen(false)}>Rally Experiences</a>
           </nav>
@@ -115,11 +113,9 @@ export default function RallyExperiences() {
               Guided Pickleball Experiences for Corporate Teams and Private Events
             </p>
             <p className="events-hero-description">
-              Rally Experiences is built on a simple but powerful idea: combine the fast-rising popularity of pickleball
-              with the growing need for meaningful, energetic group events. Whether you're a company looking to enhance
-              team cohesion or a group of friends organizing a birthday bash, Rally Experiences offers a fresh, engaging
-              way to bring people together through play. It's not just a game—it's a guided experience designed for
-              connection, movement, and a ton of laughter.
+              Book a couple of hours on the courts and we'll run the rest: guided games, a little coaching, and
+              enough friendly competition to get everyone talking. Good for company outings, client days, birthdays,
+              and bachelor/ette groups &mdash; no pickleball experience needed.
             </p>
             <div className="events-hero-cta">
               <a href="#packages" className="events-cta-button">View Packages</a>
@@ -371,7 +367,6 @@ export default function RallyExperiences() {
               <h3>Quick Links</h3>
               <a href="/" className="footer-link">Home</a>
               <a href="/#membership" className="footer-link">Membership</a>
-              <a href="/honcho" className="footer-link">Honcho League</a>
               <a href="/rally-experiences" className="footer-link">Rally Experiences</a>
             </div>
           </div>

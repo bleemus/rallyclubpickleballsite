@@ -49,7 +49,7 @@ export default function RallyAcademy() {
     },
     {
       question: "What will I work on?",
-      answer: "Performance Training sessions include focused drills, tactical training, game analysis, and skill building tailored to intermediate players looking to level up."
+      answer: "Performance Training sessions include focused drills, tactical training, game analysis, and skill building tailored to intermediate players sharpening specific parts of their game."
     }
   ];
 
@@ -177,7 +177,6 @@ export default function RallyAcademy() {
               <a href="/#booking" className="nav-link">Book a Court</a>
               <a href="/#membership" className="nav-link">Membership</a>
               <a href="/merch" className="nav-link">Merch</a>
-              <a href="/honcho" className="nav-link honcho-nav-link">Honcho League</a>
               <a href="/rally-academy" className="nav-link academy-nav-link active">Rally Academy</a>
               <a href="/rally-experiences" className="nav-link rally-nav-link">Rally Experiences</a>
             </nav>
@@ -201,7 +200,6 @@ export default function RallyAcademy() {
             <a href="/#booking" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Book a Court</a>
             <a href="/#membership" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Membership</a>
             <a href="/merch" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Merch</a>
-            <a href="/honcho" className="mobile-nav-link honcho-link" onClick={() => setMobileMenuOpen(false)}>Honcho League</a>
             <a href="/rally-academy" className="mobile-nav-link academy-link active" onClick={() => setMobileMenuOpen(false)}>Rally Academy</a>
             <a href="/rally-experiences" className="mobile-nav-link rally-link" onClick={() => setMobileMenuOpen(false)}>Rally Experiences</a>
           </nav>
