@@ -14,7 +14,9 @@ export default function Home() {
   const insideImages = ['/inside1.jpg', '/inside2.jpg', '/inside3.jpg'];
   const outsideImages = ['/outside1.jpg', '/outside2.jpg'];
 
+  // Auto-advance the facility galleries, unless the visitor prefers reduced motion.
   useEffect(() => {
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const timer = setInterval(() => {
       setInsideIndex((prev) => (prev + 1) % insideImages.length);
     }, 5000);
@@ -22,6 +24,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const timer = setInterval(() => {
       setOutsideIndex((prev) => (prev + 1) % outsideImages.length);
     }, 5000);

@@ -643,7 +643,6 @@ export default function RallyExperiences() {
 
         .events-cta-button:hover {
           background: var(--orange-ink);
-          transform: translateY(-2px);
           box-shadow: 0 10px 30px rgba(229, 101, 74, 0.3);
         }
 
@@ -661,7 +660,6 @@ export default function RallyExperiences() {
 
         .events-cta-button-secondary:hover {
           background: rgba(255, 255, 255, 0.1);
-          transform: translateY(-2px);
         }
 
         /* Section Styles */
@@ -708,7 +706,6 @@ export default function RallyExperiences() {
         }
 
         .unique-card:hover {
-          transform: translateY(-5px);
           box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
 
@@ -760,7 +757,6 @@ export default function RallyExperiences() {
         }
 
         .benefit-card-events:hover {
-          transform: translateY(-5px);
           box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
@@ -939,7 +935,6 @@ export default function RallyExperiences() {
         }
 
         .package-card:hover {
-          transform: translateY(-5px);
           box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
 
@@ -1028,7 +1023,6 @@ export default function RallyExperiences() {
 
         .package-button:hover {
           background: var(--orange-ink);
-          transform: translateY(-2px);
           box-shadow: 0 5px 15px rgba(229, 101, 74, 0.3);
         }
 
@@ -1120,7 +1114,6 @@ export default function RallyExperiences() {
 
         .cta-button-primary:hover {
           background: var(--orange-ink);
-          transform: translateY(-2px);
           box-shadow: 0 10px 30px rgba(229, 101, 74, 0.3);
         }
 
@@ -1138,7 +1131,6 @@ export default function RallyExperiences() {
 
         .cta-button-secondary:hover {
           background: rgba(255, 255, 255, 0.1);
-          transform: translateY(-2px);
         }
 
         /* Footer */

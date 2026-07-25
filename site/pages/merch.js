@@ -376,7 +376,6 @@ export default function Merch() {
 
         .shop-button:hover {
           background: var(--baseline-navy);
-          transform: translateY(-2px);
           box-shadow: 0 6px 16px rgba(45, 90, 39, 0.4);
         }
 

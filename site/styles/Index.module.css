@@ -676,7 +676,6 @@
 }
 
 .programCard:hover {
-  transform: translateY(-5px);
 }
 
 .programTitle {
@@ -742,7 +741,6 @@
 
 .programButtonSlate:hover {
   background: linear-gradient(135deg, var(--baseline-navy) 0%, var(--concrete) 100%);
-  transform: translateY(-2px);
 }
 
 /* Slideshow */

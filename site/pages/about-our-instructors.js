@@ -428,7 +428,6 @@ export default function AboutOurInstructors() {
         }
         .cta-button.primary:hover {
           background: var(--concrete-light);
-          transform: translateY(-2px);
         }
         .cta-button.secondary {
           background: transparent;
@@ -438,7 +437,6 @@ export default function AboutOurInstructors() {
         .cta-button.secondary:hover {
           background: rgba(255, 255, 255, 0.12);
           border-color: white;
-          transform: translateY(-2px);
         }
 
         /* Footer */

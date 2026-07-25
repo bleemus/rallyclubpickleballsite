@@ -836,7 +836,6 @@ export default function RallyAcademy() {
 
         .academy-cta-button:hover {
           background: var(--concrete-light);
-          transform: translateY(-2px);
           box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
         }
 
@@ -932,7 +931,6 @@ export default function RallyAcademy() {
         }
 
         .program-card:hover {
-          transform: translateY(-5px);
         }
 
         .program-card .program-price {
@@ -1167,7 +1165,6 @@ export default function RallyAcademy() {
 
         .price-box-cta:hover {
           background: var(--concrete-light);
-          transform: translateY(-2px);
         }
 
         /* Performance Section */
@@ -1372,7 +1369,6 @@ export default function RallyAcademy() {
 
         .price-box-cta-dark:hover {
           background: var(--baseline-navy);
-          transform: translateY(-2px);
         }
 
         /* Why Train With Us */
@@ -1555,7 +1551,6 @@ export default function RallyAcademy() {
 
         .cta-button.primary:hover {
           background: var(--concrete-light);
-          transform: translateY(-2px);
         }
 
         .cta-button-pill {
