@@ -243,7 +243,7 @@ export default function AdminDashboard() {
       <style jsx>{`
         * { box-sizing: border-box; }
         .admin {
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          font-family: var(--font-body);
           color: var(--baseline-navy);
           background: var(--concrete-light);
           min-height: 100vh;

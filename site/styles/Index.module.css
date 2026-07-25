@@ -485,6 +485,9 @@
 .price {
   font-size: 3rem;
   font-weight: bold;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
 }
 
 .period {
@@ -689,6 +692,8 @@
   font-weight: bold;
   color: var(--rally-orange);
   font-size: 1.1rem;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
 }
 
 .rateItem.baseRate .ratePrice {

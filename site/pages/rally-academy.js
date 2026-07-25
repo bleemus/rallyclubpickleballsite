@@ -580,7 +580,7 @@ export default function RallyAcademy() {
         }
 
         .container {
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          font-family: var(--font-body);
           line-height: 1.6;
           color: var(--ink);
         }

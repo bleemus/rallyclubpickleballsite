@@ -175,7 +175,7 @@ export default function AboutOurInstructors() {
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         .container {
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          font-family: var(--font-body);
           line-height: 1.6;
           color: var(--ink);
         }
