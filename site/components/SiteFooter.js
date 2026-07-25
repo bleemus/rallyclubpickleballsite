@@ -3,7 +3,7 @@ export default function SiteFooter() {
   return (
     <footer className="site-footer">
       <div className="site-footer-inner">
-        <p>© 2025 Rally Club Pickleball. All rights reserved.</p>
+        <p>© 2026 Rally Club Pickleball. All rights reserved.</p>
         <nav className="site-footer-links">
           <a href="/">Home</a>
           <a href="https://www.facebook.com/profile.php?id=61572523900750" target="_blank" rel="noopener noreferrer">Facebook</a>
