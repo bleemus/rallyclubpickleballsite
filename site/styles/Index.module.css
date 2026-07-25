@@ -159,6 +159,12 @@
   color: var(--ink);
 }
 
+/* When the heading holds a partner wordmark instead of text, drop the inline
+   baseline gap so the logo sits flush with the card padding. */
+.wellnessTitle img {
+  display: block;
+}
+
 .wellnessCard p {
   font-size: 0.95rem;
   color: var(--muted);

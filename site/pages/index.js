@@ -337,7 +337,15 @@ export default function Home() {
           <div className={styles.wellnessGrid}>
             <div className={`${styles.wellnessCard} ${styles.featuredProgram}`}>
               <div className={styles.wellnessBadge}>EMPLOYER BENEFIT</div>
-              <h3 className={styles.wellnessTitle}>Wellhub</h3>
+              <h3 className={styles.wellnessTitle}>
+                <Image
+                  src="/wellhub.svg"
+                  alt="Wellhub"
+                  width={160}
+                  height={31}
+                  style={{ objectFit: 'contain', maxWidth: '160px', height: 'auto' }}
+                />
+              </h3>
               <p>Commonly offered through participating employers as part of employee wellness benefits &mdash; <strong>not limited to Medicare or Medicaid participants</strong>.</p>
               <p>Check your eligibility through Wellhub, or ask your employer&rsquo;s HR department whether Wellhub is included in your benefits.</p>
               <p className={styles.wellnessHelp}>The Rally Club has resources available to help you navigate signup &mdash; just ask.</p>
