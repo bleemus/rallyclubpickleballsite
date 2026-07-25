@@ -6,6 +6,23 @@ import styles from '../styles/Index.module.css';
 import SiteHeader from '../components/SiteHeader';
 import SiteFooter from '../components/SiteFooter';
 
+// Small pickleball marker (ball + holes) used as the bullet on the membership notes.
+function PickleBullet() {
+  return (
+    <svg className={styles.pickleBullet} viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <circle cx="12" cy="12" r="11" fill="var(--court-azure)" />
+      <g fill="var(--court-white)">
+        <circle cx="12" cy="6.2" r="1.35" />
+        <circle cx="7" cy="9.3" r="1.35" />
+        <circle cx="17" cy="9.3" r="1.35" />
+        <circle cx="9" cy="14.2" r="1.35" />
+        <circle cx="15" cy="14.2" r="1.35" />
+        <circle cx="12" cy="17.8" r="1.15" />
+      </g>
+    </svg>
+  );
+}
+
 export default function Home() {
   const [openFaq, setOpenFaq] = useState(null);
   const [lightboxImage, setLightboxImage] = useState(null);
@@ -192,28 +209,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Membership Benefits */}
-        <section id="benefits" className={styles.benefits}>
-          <h2 className={styles.sectionTitle}>Membership Benefits</h2>
-          <div className={styles.benefitsGrid}>
-            <div className={styles.benefitItem}>
-              <div className={styles.benefitMark} aria-hidden="true"><span></span><span></span><span></span></div>
-              <h3>Flexibility</h3>
-              <p>24/7 access to courts when you want to play</p>
-            </div>
-            <div className={styles.benefitItem}>
-              <div className={styles.benefitMark} aria-hidden="true"><span></span><span></span><span></span></div>
-              <h3>Pricing</h3>
-              <p>Off-peak courts from $8/hr; members book earlier.</p>
-            </div>
-            <div className={styles.benefitItem}>
-              <div className={styles.benefitMark} aria-hidden="true"><span></span><span></span><span></span></div>
-              <h3>Perks</h3>
-              <p>Leagues, clinics, and earlier booking windows.</p>
-            </div>
-          </div>
-        </section>
-
         {/* Membership Tiers */}
         <section id="membership" className={styles.membership}>
           <h2 className={styles.sectionTitle}>Membership Tiers</h2>
@@ -291,12 +286,15 @@ export default function Home() {
           <div className={styles.pricingNote}>
             <div className={styles.pricingHighlights}>
               <div className={`${styles.highlightBox} ${styles.registration}`}>
+                <PickleBullet />
                 <p>All Players must register an account with <strong>PicklePlanner</strong> and sign waivers. Unregistered guests are <span className={styles.notPermitted}>NOT</span> permitted</p>
               </div>
               <div className={`${styles.highlightBox} ${styles.mixedPlay}`}>
+                <PickleBullet />
                 <p>Mix & match <strong>A-List</strong> members and <strong>Rally Reserve</strong> players - the court rate is set by the membership tier</p>
               </div>
               <div className={`${styles.highlightBox} ${styles.payment}`}>
+                <PickleBullet />
                 <p>Reserving player pays court costs & fees up front, it is up to them how their playing partners reimburse them</p>
               </div>
             </div>

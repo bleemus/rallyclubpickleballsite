@@ -74,60 +74,11 @@
   background: var(--orange-ink);
 }
 
-/* Benefits */
-.benefits {
-  padding: 1.5rem 2rem 2.5rem;
-  background: var(--surface-alt);
-}
-
 .sectionTitle {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 2rem;
   font-weight: bold;
-}
-
-.benefitsGrid {
-  max-width: 1000px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-
-.benefitItem {
-  text-align: center;
-}
-
-.benefitMark {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  width: 34px;
-  margin: 0 auto 0.9rem;
-}
-
-.benefitMark span {
-  height: 3px;
-  background: var(--court-azure);
-}
-
-.benefitMark span:nth-child(2) {
-  width: 70%;
-}
-
-.benefitMark span:nth-child(3) {
-  width: 45%;
-  background: var(--rally-orange);
-}
-
-.benefitItem h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.benefitItem p {
-  color: var(--muted);
 }
 
 /* Membership */
@@ -150,9 +101,7 @@
 /* A-List Seniors Section */
 .specialProgramsSection {
   padding: 3rem 2rem;
-  background: var(--concrete-light);
-  max-width: 1200px;
-  margin: 0 auto;
+  background: var(--surface-alt);
 }
 
 .specialProgramsIntro {
@@ -453,6 +402,16 @@
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 1.5rem;
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+}
+
+.pickleBullet {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 
 .highlightBox p {
@@ -476,7 +435,7 @@
 /* Programs Section */
 .programsSection {
   padding: 4rem 2rem;
-  background: var(--concrete-light);
+  background: var(--court-white);
 }
 
 .programsGrid {
