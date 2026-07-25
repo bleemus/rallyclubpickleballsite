@@ -69,3 +69,6 @@ Desktop.ini
 
 # Claude Code
 **/.claude
+
+# Design remediation local artifacts (screenshots, specimens)
+audit/
