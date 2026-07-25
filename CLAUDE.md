@@ -3,7 +3,7 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
-This is a Next.js website for Rally Club Pickleball, a premier indoor pickleball facility in Glen Carbon, IL. The site provides information about the facility, membership options, Honcho Pickleball League registration, and includes functionality for court reservations and community features.
+This is a Next.js website for Rally Club Pickleball, a premier indoor pickleball facility in Glen Carbon, IL. The site provides information about the facility, membership options, training programs, and corporate/private events, and includes functionality for court reservations and community features.
 
 ## Development Commands
 All development work is in the `site/` directory. **Node 22 is required** for the SWA CLI used by `dev:local` (pinned in `site/.nvmrc`). `nvm use` before running scripts in a fresh shell.
@@ -49,8 +49,6 @@ site/
 ├── package.json
 ├── pages/
 │   ├── index.js              # Landing page with video hero
-│   ├── honcho.js             # Honcho Pickleball League
-│   ├── honcho-faq.js         # Honcho FAQ
 │   ├── rally-experiences.js  # Corporate / private events
 │   ├── rally-academy.js      # Training programs + Personal Training modal mount
 │   ├── merch.js              # Embedded Square shop
@@ -58,7 +56,9 @@ site/
 │   ├── _app.js
 │   └── _document.js
 ├── components/
-│   └── RequestTrainingModal.js  # Personal training request form (modal popup)
+│   ├── RequestTrainingModal.js  # Personal training request form (modal popup)
+│   ├── SiteHeader.js            # Shared site header / nav
+│   └── SiteFooter.js            # Shared site footer
 ├── data/
 │   └── instructors.json         # Coach list shown in the modal's instructor select
 ├── api/                         # SWA Managed Functions (Node 22, Functions v4)
@@ -85,7 +85,7 @@ site/
 │   ├── prep-local-swa-config.js  # Generates .swa-local/ config without identityProviders
 │   └── init-azurite-tables.js    # Creates tables in Azurite on dev:swa startup
 ├── public/                       # Static assets (videos, images, robots.txt, sitemap.xml)
-├── styles/                       # globals.css, Home.module.css, Index.module.css
+├── styles/                       # globals.css (design tokens + base), Index.module.css
 ├── .azurite/                     # Local Azurite data (gitignored)
 ├── .swa-local/                   # Generated local SWA config (gitignored)
 └── out/                          # Static export output (gitignored)
@@ -96,23 +96,11 @@ site/
 #### Main Landing Page (`pages/index.js`)
 - **Hero Section**: Reversed video background (`club_interior_reversed_optimized.mp4`)
 - **Membership Tiers**: A-List (Monthly / Annual / Family, promotional pricing) and Rally Reserve (court-rate-only, no membership tier). Signup via PicklePlanner; promo prices auto-expire — see the `pricing` state in `pages/index.js`.
-- **Honcho League Section**: Season status display with link to league details
 - **Rally Academy Section**: Link to training programs
 - **Rally Experiences Section**: Link to corporate team building and private events
 - **Facility Overview**: Interactive image gallery with lightbox
 - **Booking Process**: 4-step process visualization
 - **Location Section**: Google Maps integration
-
-#### Honcho League Page (`pages/honcho.js`)
-- Detailed information about Honcho Pickleball League
-- Two competition formats: Doubles and Ladder League
-- Season status updates (currently shows "season in progress" when registration is closed)
-- Link to Honcho FAQ page
-
-#### Honcho FAQ Page (`pages/honcho-faq.js`)
-- Frequently asked questions about the Honcho Pickleball League
-- Organized by sections: Pre-Season, During Season, General
-- Collapsible FAQ items
 
 #### Rally Experiences Page (`pages/rally-experiences.js`)
 - Corporate team building and private event packages
@@ -217,9 +205,7 @@ Set via Azure Portal → Static Web App → Configuration:
 
 ### Styling Approach
 - Inline JSX styles (`<style jsx>`) and CSS Modules
-- Green gradient (#2D5A27 to #3E7B3E) for Honcho League
-- Teal gradient (#2A9BC0 to #38B5D6) for Rally Experiences
-- Slate gradient (#475569 to #64748B) for Rally Academy
+- "Court Signage" design system: tokens defined in `globals.css` (`--court-azure`, `--rally-orange`, `--baseline-navy`, `--ink`, `--muted`, `--border`, `--surface`, `--font-display`, …). Use `var(--token)`, never hardcoded hex.
 - Responsive breakpoints: 768px and 480px
 
 ### Video Optimization
@@ -227,7 +213,6 @@ Hero video (`club_interior_reversed_optimized.mp4`) optimized via ffmpeg: revers
 
 ## External Integrations
 - **PicklePlanner**: Court reservation system and membership signup (https://rallyclub.pickleplanner.com) — A-List and Rally Reserve both sign up via `/dashboard/membership/join`
-- **Honcho Pickleball**: League registration (https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-early-spring-26/)
 - **Square**: Merchandise shop only (A-List membership signup moved to PicklePlanner)
 - **Square Shop**: Embedded merchandise store (https://the-rally-club-llc.square.site)
 - **Google Maps**: Location and directions
@@ -246,7 +231,6 @@ Meta descriptions, Open Graph/Twitter cards, canonical URLs, sitemap, and robots
 
 ## Important Notes
 - All players must be registered with PicklePlanner before playing
-- Discount code for Honcho League: **Hawkes**
 - Rally Experiences contact: rental@rallyclubpickleball.com or (618) 931-0015
 - General inquiries: rally.club618@gmail.com
 - Video files in `site/public/` are large — ensure they're optimized before committing
@@ -259,6 +243,9 @@ Meta descriptions, Open Graph/Twitter cards, canonical URLs, sitemap, and robots
 - **Static export + dates**: `output: 'export'` freezes build-time `new Date()` to the build date. Date-reactive UI (e.g. promo-price expiry in `pages/index.js`) must run client-side in `useEffect`, with initial state matching the build render to avoid a hydration mismatch.
 - No test framework — verify a change by building and grepping the export: `npm run build`, then grep `site/out/*.html`. Note React 19 SSR splits `${expr}` into `$<!-- -->25`, so grep the surrounding literal text, not the interpolated value.
 - Membership prices/promos live in the `pricing` state in `pages/index.js`; promos auto-expire via the `MONTHLY_PROMO_END` / `PRICE_LOCK_END` constants in its `useEffect` (edit those + the `$35` fallback to reprice). Membership signup/booking CTAs point to PicklePlanner, not Square.
+- zsh gotchas when grepping: quote glob args (`--include="*.js"`), and use `${var}[` not `$var[` (bare `$var[` parses as an array subscript).
+- `site/out/*.html` is minified to one line, so `grep -c` reports 1 regardless of hit count — use `grep -o <pattern> <file> | wc -l` to count occurrences.
 
 ## Git Workflow
 - Never offer to push commits - the user will handle pushing themselves
+- Parallel Claude sessions: never switch branches in a shared checkout. Use `git worktree add .claude/worktrees/<name> <branch>` (`.claude/` is gitignored), then `cd site && nvm use && npm install` — worktrees don't share `node_modules`.
