@@ -206,6 +206,7 @@ Set via Azure Portal → Static Web App → Configuration:
 ### Styling Approach
 - Inline JSX styles (`<style jsx>`) and CSS Modules
 - "Court Signage" design system: tokens defined in `globals.css` (`--court-azure`, `--rally-orange`, `--baseline-navy`, `--ink`, `--muted`, `--border`, `--surface`, `--font-display`, …). Use `var(--token)`, never hardcoded hex.
+- **Never use left-accent-bar cards** (`border-left: 3px solid <color>` on a tinted panel). These read as generic AI-generated UI and have been deliberately designed out of this site. For a callout, use either a `var(--surface-alt)` panel with `border-radius: 6px` (peer-level content) or a `border-top: 1px solid var(--border)` rule with `var(--muted)` text (subordinate footnote).
 - Responsive breakpoints: 768px and 480px
 
 ### Video Optimization

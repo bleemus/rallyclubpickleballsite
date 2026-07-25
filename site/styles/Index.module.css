@@ -353,7 +353,7 @@
 
 .membershipTagline {
   text-align: center;
-  color: #666;
+  color: var(--muted);
   font-size: 0.9rem;
   margin: -0.25rem 0 1rem;
   padding: 0 1rem;
@@ -372,15 +372,16 @@
   min-width: 92px;
   text-align: center;
   padding: 0.75rem 0.4rem;
-  background: #f8f9fa;
-  border-radius: 8px;
+  background: var(--surface-alt);
+  border-radius: 6px;
 }
 
 .aListTierLabel {
   font-size: 0.78rem;
-  color: #666;
+  color: var(--muted);
   text-transform: uppercase;
   font-weight: 600;
+  letter-spacing: 0.04em;
   margin-bottom: 0.25rem;
 }
 
@@ -394,44 +395,55 @@
 
 .aListTierSub {
   font-size: 0.72rem;
-  color: #666;
+  color: var(--muted);
   margin-top: 0.3rem;
   line-height: 1.3;
 }
 
 .promoNote {
   font-size: 0.72rem;
-  color: #2e7d32;
+  color: var(--azure-ink);
   font-weight: 600;
   margin-top: 0.35rem;
 }
 
 .promoWas {
   text-decoration: line-through;
-  color: #999;
+  color: var(--muted);
   font-weight: 400;
   margin-right: 0.2rem;
 }
 
+/* Subordinate note under the rate rows — separated by a rule, not a panel,
+   so it reads as a footnote rather than competing with .rateItem. */
 .rateNote {
   font-size: 0.82rem;
-  color: #555;
-  margin-top: 0.6rem;
-  padding: 0.5rem 0.65rem;
-  background: #fff8f2;
-  border-left: 3px solid #FF6600;
+  color: var(--muted);
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  line-height: 1.45;
+}
+
+.rateNote strong {
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Sole content of the Rally Reserve details, so it keeps panel presence and
+   matches .rateItem's treatment. */
+.bookingWindowNote {
+  font-size: 0.85rem;
+  color: var(--muted);
+  padding: 0.75rem 1rem;
+  background: var(--surface-alt);
   border-radius: 6px;
   line-height: 1.45;
 }
 
-.bookingWindowNote {
-  font-size: 0.85rem;
-  color: #555;
-  padding: 0.65rem 0.75rem;
-  background: #eef4ff;
-  border-left: 3px solid #3498db;
-  border-radius: 6px;
-  line-height: 1.45;
+.bookingWindowNote strong {
+  color: var(--ink);
 }
 
 /* Membership badges */
