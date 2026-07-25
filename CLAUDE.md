@@ -95,7 +95,7 @@ site/
 
 #### Main Landing Page (`pages/index.js`)
 - **Hero Section**: Reversed video background (`club_interior_reversed_optimized.mp4`)
-- **Membership Tiers**: A-List ($35/mo or $350/year, $20 sign-up fee) and Rally Reserve (free) with pricing details
+- **Membership Tiers**: A-List (Monthly / Annual / Family, promotional pricing) and Rally Reserve (court-rate-only, no membership tier). Signup via PicklePlanner; promo prices auto-expire — see the `pricing` state in `pages/index.js`.
 - **Honcho League Section**: Season status display with link to league details
 - **Rally Academy Section**: Link to training programs
 - **Rally Experiences Section**: Link to corporate team building and private events
@@ -226,9 +226,9 @@ Set via Azure Portal → Static Web App → Configuration:
 Hero video (`club_interior_reversed_optimized.mp4`) optimized via ffmpeg: reversed playback, H.264/CRF 28, faststart, no audio. Reduced from 71MB to 6MB.
 
 ## External Integrations
-- **PicklePlanner**: Court reservation system (https://rallyclub.pickleplanner.com)
+- **PicklePlanner**: Court reservation system and membership signup (https://rallyclub.pickleplanner.com) — A-List and Rally Reserve both sign up via `/dashboard/membership/join`
 - **Honcho Pickleball**: League registration (https://honchopickleball.com/product/glen-carbon-il-the-rally-club-wednesdays-early-spring-26/)
-- **Square**: Payment processing for A-List membership (https://square.link/u/oybkGt7O) and merchandise shop
+- **Square**: Merchandise shop only (A-List membership signup moved to PicklePlanner)
 - **Square Shop**: Embedded merchandise store (https://the-rally-club-llc.square.site)
 - **Google Maps**: Location and directions
 - **Facebook**: Social media presence
@@ -256,6 +256,9 @@ Meta descriptions, Open Graph/Twitter cards, canonical URLs, sitemap, and robots
 - `site/api/local.settings.json` is gitignored — it contains the local Functions runtime config and is auto-created from `.example` on first `dev:local`
 - Editing the coach list: update `site/data/instructors.json` and commit; the modal reads it at build time. "Any trainer" is hardcoded in the component, not in JSON.
 - To change which GitHub users have admin access, update the `ADMIN_GITHUB_LOGINS` SWA app setting in the Azure Portal — no deploy required.
+- **Static export + dates**: `output: 'export'` freezes build-time `new Date()` to the build date. Date-reactive UI (e.g. promo-price expiry in `pages/index.js`) must run client-side in `useEffect`, with initial state matching the build render to avoid a hydration mismatch.
+- No test framework — verify a change by building and grepping the export: `npm run build`, then grep `site/out/*.html`. Note React 19 SSR splits `${expr}` into `$<!-- -->25`, so grep the surrounding literal text, not the interpolated value.
+- Membership prices/promos live in the `pricing` state in `pages/index.js`; promos auto-expire via the `MONTHLY_PROMO_END` / `PRICE_LOCK_END` constants in its `useEffect` (edit those + the `$35` fallback to reprice). Membership signup/booking CTAs point to PicklePlanner, not Square.
 
 ## Git Workflow
 - Never offer to push commits - the user will handle pushing themselves

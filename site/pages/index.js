@@ -11,6 +11,18 @@ export default function Home() {
   const [insideIndex, setInsideIndex] = useState(0);
   const [outsideIndex, setOutsideIndex] = useState(0);
 
+  // Promotional pricing that auto-expires on the visitor's clock. This is a static export,
+  // so the promo checks must run client-side (in useEffect) to react to the date passing
+  // WITHOUT a rebuild. Initial state assumes promos are active so the build-time HTML matches
+  // the first client render (no hydration mismatch); useEffect then corrects it if a promo
+  // window has closed. To change a price or window, edit the constants in the effect below.
+  const [pricing, setPricing] = useState({
+    monthlyPrice: 25,
+    monthlyPromo: true,
+    reservePromo: true,
+    priceLock: true,
+  });
+
   const insideImages = ['/inside1.jpg', '/inside2.jpg', '/inside3.jpg'];
   const outsideImages = ['/outside1.jpg', '/outside2.jpg'];
 
@@ -26,6 +38,21 @@ export default function Home() {
       setOutsideIndex((prev) => (prev + 1) % outsideImages.length);
     }, 5000);
     return () => clearInterval(timer);
+  }, []);
+
+  // Recompute promo status against the visitor's current date. Runs client-side only, so
+  // promos expire on their own without a redeploy. Update these two dates to reprice.
+  useEffect(() => {
+    const now = new Date();
+    const MONTHLY_PROMO_END = new Date(2026, 8, 1); // Sep 1, 2026 — A-List monthly ($25) & Rally Reserve ($20/hr) run "through August"
+    const PRICE_LOCK_END = new Date(2027, 7, 1);    // Aug 1, 2027 — A-List annual ($275) & family ($500) run "through next July"
+    const monthlyPromo = now < MONTHLY_PROMO_END;
+    setPricing({
+      monthlyPrice: monthlyPromo ? 25 : 35, // reverts to $35 once the promo ends
+      monthlyPromo,
+      reservePromo: now < MONTHLY_PROMO_END,
+      priceLock: now < PRICE_LOCK_END,
+    });
   }, []);
 
   const toggleFaq = (index) => {
@@ -262,69 +289,86 @@ export default function Home() {
             <div className={`${styles.membershipCard} ${styles.featured}`}>
               <div className={styles.bestValueBadge}>BEST VALUE</div>
               <h3 className={styles.membershipTitle}>A-List</h3>
+              <p className={styles.membershipTagline}>Best court rates and most flexibility.</p>
               <div className={styles.membershipPrice}>
-                <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', alignItems: 'flex-end', flexWrap: 'wrap' }}>
-                  <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.9rem', color: '#666', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}>Monthly</div>
-                    <div className={styles.tooltip} data-tip="$20 one-time sign-up fee">
-                      <span className={styles.price}>$35</span>
-                      <span className={styles.period}>/mo*</span>
+                <div className={styles.aListTiers}>
+                  <div className={styles.aListTier}>
+                    <div className={styles.aListTierLabel}>Monthly</div>
+                    <div>
+                      {/* PROMO (expires Aug 2026): monthly is $25/mo "through August", then reverts to $35. Controlled by MONTHLY_PROMO_END in the pricing useEffect. */}
+                      <span className={styles.price}>${pricing.monthlyPrice}</span>
+                      <span className={styles.period}>/mo</span>
                     </div>
+                    {pricing.monthlyPromo && (
+                      <div className={styles.promoNote}><span className={styles.promoWas}>$35</span> promo thru Aug</div>
+                    )}
                   </div>
-                  <div style={{ height: '5rem', width: '1px', background: '#ddd', alignSelf: 'center' }}></div>
-                  <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.9rem', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}><span style={{ color: '#666' }}>Annual</span> <span style={{ color: '#4CAF50' }}>&middot; Save 17%</span></div>
-                    <div className={styles.tooltip} data-tip="$20 one-time sign-up fee">
-                      <span className={styles.price}>$350</span>
-                      <span className={styles.period}>/yr*</span>
+                  <div className={styles.aListTier}>
+                    <div className={styles.aListTierLabel}>Annual</div>
+                    <div>
+                      {/* PROMO (expires Jul 2027): annual is $275 "through next July". Controlled by PRICE_LOCK_END in the pricing useEffect. */}
+                      <span className={styles.price}>$275</span>
+                      <span className={styles.period}>/yr</span>
                     </div>
+                    {pricing.priceLock && (
+                      <div className={styles.promoNote}>rate thru Jul 2027</div>
+                    )}
+                  </div>
+                  <div className={styles.aListTier}>
+                    <div className={styles.aListTierLabel}>Family</div>
+                    <div>
+                      {/* PROMO (expires Jul 2027): family is $500 "through next July". Controlled by PRICE_LOCK_END in the pricing useEffect. */}
+                      <span className={styles.price}>$500</span>
+                      <span className={styles.period}>/yr</span>
+                    </div>
+                    <div className={styles.aListTierSub}>up to 3 adults, same household</div>
+                    {pricing.priceLock && (
+                      <div className={styles.promoNote}>rate thru Jul 2027</div>
+                    )}
                   </div>
                 </div>
-                <div className={styles.signupFeeNote}>*$20 one-time sign-up fee</div>
               </div>
               <p className={styles.membershipSummary}>Reserve 10 days in advance.</p>
               <div className={styles.membershipCta}>
-                <a href="https://square.link/u/oybkGt7O" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Join A-List</a>
+                <a href="https://rallyclub.pickleplanner.com/dashboard/membership/join" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Join A-List</a>
               </div>
               <div className={styles.pricingDetails}>
                 <h4>Court Rates:</h4>
                 <div className={styles.rateItem}>
-                  <span className={styles.rateTime}>Mon–Fri, Midnight – 4 PM</span>
+                  <span className={styles.rateTime}>Midnight – 4 PM</span>
                   <span className={styles.ratePrice}>$8/hr</span>
                 </div>
                 <div className={`${styles.rateItem} ${styles.baseRate}`}>
-                  <span className={styles.rateTime}>All Other Times<br /><span className={styles.rateTimeDetail}>Weekday Evenings &amp; Weekends</span></span>
+                  <span className={styles.rateTime}>4 PM – Midnight</span>
                   <span className={styles.ratePrice}>$16/hr</span>
                 </div>
+                <div className={styles.rateNote}>Split four ways, daytime play is as little as <strong>$2 per person / hour</strong>.</div>
               </div>
             </div>
             <div className={`${styles.membershipCard} ${styles.rallyReserve}`}>
-              <div className={styles.noCommitmentBadge}>NO COMMITMENT</div>
+              <div className={styles.noCommitmentBadge}>NO MEMBERSHIP</div>
               <h3 className={styles.membershipTitle}>Rally Reserve</h3>
+              <p className={styles.membershipTagline}>Court rate only — no membership tiers.</p>
               <div className={styles.membershipPrice}>
-                <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', alignItems: 'flex-end', flexWrap: 'wrap' }}>
-                  <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.9rem', color: '#666', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}>Monthly</div>
-                    <div>
-                      <span className={styles.price}>$0</span>
-                      <span className={styles.period}>/mo</span>
-                    </div>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: '0.9rem', color: '#666', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}>All-Day Court Rate</div>
+                  <div>
+                    {/* PROMO (expires Aug 2026): $20/hr all day "through August". Controlled by MONTHLY_PROMO_END in the pricing useEffect. */}
+                    <span className={styles.price}>$20</span>
+                    <span className={styles.period}>/hr</span>
                   </div>
+                  {pricing.reservePromo && (
+                    <div className={styles.promoNote}>promo thru Aug</div>
+                  )}
                 </div>
               </div>
-              <p className={styles.membershipSummary}>Reserve 5 days in advance.</p>
+              <p className={styles.membershipSummary}>Roughly $5 per player for an hour of doubles.</p>
               <div className={styles.membershipCta}>
-                <a href="https://rallyclub.pickleplanner.com/dashboard/membership/join" className={`${styles.membershipButton} ${styles.secondary}`} target="_blank" rel="noopener noreferrer">Join Rally Reserve</a>
+                <a href="https://rallyclub.pickleplanner.com/dashboard/membership/join" className={`${styles.membershipButton} ${styles.secondary}`} target="_blank" rel="noopener noreferrer">Get Started on PicklePlanner</a>
               </div>
               <div className={styles.pricingDetails}>
-                <h4>Court Rates:</h4>
-                <div className={styles.rateItem}>
-                  <span className={styles.rateTime}>Mon–Fri, Midnight – 4 PM</span>
-                  <span className={styles.ratePrice}>$16/hr</span>
-                </div>
-                <div className={`${styles.rateItem} ${styles.baseRate}`}>
-                  <span className={styles.rateTime}>All Other Times<br /><span className={styles.rateTimeDetail}>Weekday Evenings &amp; Weekends</span></span>
-                  <span className={styles.ratePrice}>$28/hr</span>
+                <div className={styles.bookingWindowNote}>
+                  <strong>Reserve courts 5 AM – 10 PM.</strong> Outside those hours, Rally Reserve players can still join games booked by A-List members.
                 </div>
               </div>
             </div>
