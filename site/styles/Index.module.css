@@ -741,8 +741,7 @@
 .contact {
   padding: 2.5rem 2rem;
   text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
+  background: var(--surface-alt);
 }
 
 .contactTitle {
