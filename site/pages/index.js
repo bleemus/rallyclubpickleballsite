@@ -226,7 +226,6 @@ export default function Home() {
             <div className={`${styles.membershipCard} ${styles.featured}`}>
               <div className={styles.bestValueBadge}>BEST VALUE</div>
               <h3 className={styles.membershipTitle}>A-List</h3>
-              <p className={styles.membershipTagline}>Best court rates and most flexibility.</p>
               <div className={styles.membershipPrice}>
                 <div className={styles.aListTiers}>
                   <div className={styles.aListTier}>
@@ -240,6 +239,7 @@ export default function Home() {
                       <div className={styles.promoNote}><span className={styles.promoWas}>$35</span> promo thru Aug</div>
                     )}
                   </div>
+                  <div className={styles.tierDivider}></div>
                   <div className={styles.aListTier}>
                     <div className={styles.aListTierLabel}>Annual</div>
                     <div>
@@ -251,6 +251,7 @@ export default function Home() {
                       <div className={styles.promoNote}>rate thru Jul 2027</div>
                     )}
                   </div>
+                  <div className={styles.tierDivider}></div>
                   <div className={styles.aListTier}>
                     <div className={styles.aListTierLabel}>Family</div>
                     <div>
@@ -265,7 +266,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <p className={styles.membershipSummary}>Reserve 10 days in advance.</p>
+              <p className={styles.membershipSummary}>Best court rates and most flexibility. Reserve 10 days in advance.</p>
               <div className={styles.membershipCta}>
                 <a href="https://rallyclub.pickleplanner.com/dashboard/membership/join" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Join A-List</a>
               </div>
@@ -285,7 +286,6 @@ export default function Home() {
             <div className={`${styles.membershipCard} ${styles.rallyReserve}`}>
               <div className={styles.noCommitmentBadge}>NO MEMBERSHIP</div>
               <h3 className={styles.membershipTitle}>Rally Reserve</h3>
-              <p className={styles.membershipTagline}>Court rate only — no membership tiers.</p>
               <div className={styles.membershipPrice}>
                 <div style={{ textAlign: 'center' }}>
                   <div style={{ fontSize: '0.9rem', color: 'var(--muted)', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}>All-Day Court Rate</div>
@@ -299,11 +299,12 @@ export default function Home() {
                   )}
                 </div>
               </div>
-              <p className={styles.membershipSummary}>Roughly $5 per player for an hour of doubles.</p>
+              <p className={styles.membershipSummary}>Court rate only &mdash; no membership tiers. Roughly $5 per player for an hour of doubles.</p>
               <div className={styles.membershipCta}>
                 <a href="https://rallyclub.pickleplanner.com/dashboard/membership/join" className={`${styles.membershipButton} ${styles.secondary}`} target="_blank" rel="noopener noreferrer">Get Started on PicklePlanner</a>
               </div>
               <div className={styles.pricingDetails}>
+                <h4>Court Access:</h4>
                 <div className={styles.bookingWindowNote}>
                   <strong>Reserve courts 5 AM – 10 PM.</strong> Outside those hours, Rally Reserve players can still join games booked by A-List members.
                 </div>
