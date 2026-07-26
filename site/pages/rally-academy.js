@@ -44,7 +44,7 @@ export default function RallyAcademy() {
     },
     {
       question: "Do I need to commit to a schedule?",
-      answer: "No! Performance Training uses a drop-in format. Sign up for any session that works for your schedule."
+      answer: "No! Performance Training uses a drop-in format — there's no multi-week commitment, so you can join the sessions that suit you."
     },
     {
       question: "What will I work on?",
@@ -121,13 +121,12 @@ export default function RallyAcademy() {
                 {
                   "@type": "CourseInstance",
                   "name": "Performance Training",
-                  "description": "60-minute focused drills for intermediate players (DUPR 3.5-4.5). Mondays 4:30-5:30 pm and Wednesdays 5:00-6:00 pm.",
+                  "description": "60-minute focused drills for intermediate players (DUPR 3.5-4.5).",
                   "courseMode": "onsite",
                   "offers": {
                     "@type": "Offer",
                     "price": "20",
-                    "priceCurrency": "USD",
-                    "url": "https://rallyclub.pickleplanner.com/event/7a812974-29c0-4907-8929-26ad3cb8123e"
+                    "priceCurrency": "USD"
                   }
                 }
               ]
@@ -236,7 +235,7 @@ export default function RallyAcademy() {
               <h3 className="program-title">Performance Training</h3>
               <p className="program-headline">Level-Up Your Game: Drills for Intermediate Players</p>
               <p className="program-description">
-                60-minute focused drills for DUPR 3.5–4.5 players. Mondays & Wednesdays.
+                60-minute focused drills for DUPR 3.5–4.5 players.
               </p>
               <div className="program-price">
                 <span className="price-amount">$20</span>
@@ -373,22 +372,6 @@ export default function RallyAcademy() {
             <h2 className="section-title">Performance Training</h2>
             <p className="section-subtitle-dark">For intermediate players (DUPR 3.5–4.5) ready to level up</p>
 
-            {/* Schedule Info */}
-            <div className="schedule-box">
-              <h3 className="schedule-title">Session Times</h3>
-              <div className="schedule-slots">
-                <div className="schedule-slot">
-                  <span className="slot-day">Mondays</span>
-                  <span className="slot-time">4:30 – 5:30 pm</span>
-                </div>
-                <div className="schedule-divider"></div>
-                <div className="schedule-slot">
-                  <span className="slot-day">Wednesdays</span>
-                  <span className="slot-time">5:00 – 6:00 pm</span>
-                </div>
-              </div>
-            </div>
-
             {/* What's Included */}
             <div className="included-grid">
               <div className="included-item">
@@ -415,33 +398,16 @@ export default function RallyAcademy() {
                 For DUPR 3.5–4.5 players
               </div>
               <div className="perf-point">
-                Drop-in format – join anytime
+                Drop-in format – no multi-week commitment
               </div>
               <div className="perf-point">
                 60-minute focused sessions
               </div>
             </div>
 
-            {/* Sign Up Box */}
-            <div className="signup-box-light">
-              <div className="signup-box-header-light">
-                <div className="price-box-amount-dark">$20</div>
-                <div className="price-box-details-dark">
-                  <p>Per session</p>
-                  <p className="urgency-dark">Limited Court Capacity</p>
-                </div>
-              </div>
-              <div className="signup-box-steps-light">
-                <h4 className="steps-title-dark">How to Join</h4>
-                <ol className="instructions-list-dark">
-                  <li>Visit PicklePlanner using the button below</li>
-                  <li>Sign up for the sessions you want to join</li>
-                </ol>
-              </div>
-              <a href="https://rallyclub.pickleplanner.com/dashboard/reservation/joinable" className="price-box-cta-dark" target="_blank" rel="noopener noreferrer">
-                Reserve Your Spot
-              </a>
-            </div>
+            {/* Booking box removed — Performance Training is no longer actively
+                scheduled, so the "Reserve Your Spot" journey led to an empty
+                PicklePlanner listing. Restore this block when sessions resume. */}
           </div>
         </section>
 
@@ -494,10 +460,9 @@ export default function RallyAcademy() {
                 <span className="cta-label">Beginner Programs</span>
                 <span className="cta-sublabel">$80 per 4 weeks</span>
               </a>
-              <a href="https://rallyclub.pickleplanner.com/event/7a812974-29c0-4907-8929-26ad3cb8123e" className="cta-button primary" target="_blank" rel="noopener noreferrer">
-                <span className="cta-label">Performance Training</span>
-                <span className="cta-sublabel">$20 per session</span>
-              </a>
+              {/* Performance Training booking CTA removed — no longer actively
+                  scheduled, so this PicklePlanner event link had nothing to book.
+                  Restore alongside the booking box when sessions resume. */}
               <button
                 type="button"
                 className="cta-button primary cta-button-pill"
@@ -945,53 +910,6 @@ export default function RallyAcademy() {
           background: var(--surface-alt);
         }
 
-        .schedule-box {
-          background: white;
-          padding: 1.25rem 3rem;
-          border-radius: 16px;
-          text-align: center;
-          box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-          max-width: 500px;
-          margin: 0 auto 2rem;
-        }
-
-        .schedule-title {
-          color: var(--baseline-navy);
-          font-size: 1.1rem;
-          margin-bottom: 1rem;
-          font-weight: 600;
-        }
-
-        .schedule-slots {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 2.5rem;
-        }
-
-        .schedule-slot {
-          display: flex;
-          flex-direction: column;
-          gap: 0.25rem;
-        }
-
-        .slot-day {
-          color: var(--baseline-navy);
-          font-weight: 600;
-          font-size: 1.05rem;
-        }
-
-        .slot-time {
-          color: var(--muted);
-          font-size: 0.95rem;
-        }
-
-        .schedule-divider {
-          width: 1px;
-          height: 40px;
-          background: var(--concrete-light);
-        }
-
         .schedule-box-dark {
           background: rgba(255, 255, 255, 0.15);
           padding: 1.25rem 3rem;
@@ -1056,7 +974,6 @@ export default function RallyAcademy() {
           justify-content: center;
           gap: 1.5rem;
           flex-wrap: wrap;
-          margin-bottom: 2rem;
         }
 
         .perf-point {
@@ -1065,82 +982,6 @@ export default function RallyAcademy() {
           border-radius: 30px;
           box-shadow: 0 3px 10px rgba(0,0,0,0.1);
           font-weight: 500;
-        }
-
-        /* Sign Up Box Light */
-        .signup-box-light {
-          background: white;
-          padding: 2rem;
-          border-radius: 16px;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-          max-width: 650px;
-          margin: 0 auto;
-          text-align: center;
-        }
-
-        .signup-box-header-light {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 1.5rem;
-          margin-bottom: 1.5rem;
-          padding-bottom: 1.5rem;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .signup-box-steps-light {
-          margin-bottom: 1.75rem;
-        }
-
-        .steps-title-dark {
-          font-size: 1.1rem;
-          margin-bottom: 0.75rem;
-          color: var(--baseline-navy);
-        }
-
-        .instructions-list-dark {
-          color: var(--muted);
-          font-size: 1rem;
-          line-height: 1.7;
-          margin: 0 auto;
-          text-align: left;
-          padding-left: 1.25rem;
-          display: inline-block;
-        }
-
-        .instructions-list-dark li {
-          margin-bottom: 0.4rem;
-          white-space: nowrap;
-        }
-
-        .price-box-amount-dark {
-          font-size: 3rem;
-          font-weight: bold;
-          color: var(--baseline-navy);
-        }
-
-        .price-box-details-dark p {
-          margin: 0;
-          color: var(--muted);
-        }
-
-        .urgency-dark {
-          color: var(--rally-orange);
-          font-weight: bold;
-        }
-
-        .price-box-cta-dark {
-          background: var(--concrete);
-          color: white;
-          padding: 1rem 2rem;
-          border-radius: 8px;
-          text-decoration: none;
-          font-weight: bold;
-          transition: all 0.3s ease;
-        }
-
-        .price-box-cta-dark:hover {
-          background: var(--baseline-navy);
         }
 
         /* Why Train With Us */
@@ -1346,15 +1187,13 @@ export default function RallyAcademy() {
             grid-template-columns: repeat(2, 1fr);
           }
 
-          .signup-box-header,
-          .signup-box-header-light {
+          .signup-box-header {
             flex-direction: column;
             text-align: center;
             gap: 1rem;
           }
 
-          .instructions-list li,
-          .instructions-list-dark li {
+          .instructions-list li {
             white-space: normal;
           }
 
@@ -1365,16 +1204,6 @@ export default function RallyAcademy() {
           .performance-points {
             flex-direction: column;
             align-items: center;
-          }
-
-          .schedule-slots {
-            flex-direction: column;
-            gap: 1rem;
-          }
-
-          .schedule-divider {
-            width: 80px;
-            height: 1px;
           }
 
           .why-grid {
