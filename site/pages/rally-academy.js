@@ -30,7 +30,7 @@ const LABS = [
   }
 ];
 
-// Junior Rally interest form. The usp/ouid query params the original link
+// Junior Rally player survey. The usp/ouid query params the original link
 // carried are tied to the sender's Google account rather than the form, so
 // they're stripped here and must not be pasted back in.
 const JUNIOR_FORM_URL =
@@ -47,7 +47,7 @@ const JUNIOR_SESSIONS = [
   {
     day: 'Thursdays & Saturdays',
     time: '3:00–4:30 PM',
-    what: 'Structured open play led by Jack Geno'
+    what: 'Structured open play with a Rally Club coach'
   }
 ];
 
@@ -524,7 +524,7 @@ export default function RallyAcademy() {
               >
                 PicklePlanner
               </a>
-              , or submit the signup sheet below and we&rsquo;ll reach out. Participation
+              , or submit the player survey below and we&rsquo;ll reach out. Participation
               requires preapproval and registration.
             </p>
 
@@ -535,7 +535,7 @@ export default function RallyAcademy() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Sign Your Child Up for Jr. Rally
+                Player Survey
               </a>
               <a
                 href={JUNIOR_PREPAY_URL}
