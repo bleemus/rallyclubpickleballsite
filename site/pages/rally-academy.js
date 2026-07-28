@@ -30,6 +30,27 @@ const LABS = [
   }
 ];
 
+// Junior Rally interest form. The usp/ouid query params the original link
+// carried are tied to the sender's Google account rather than the form, so
+// they're stripped here and must not be pasted back in.
+const JUNIOR_FORM_URL =
+  'https://docs.google.com/forms/d/e/1FAIpQLSdWUsK6azA0SXHU_e7qYfmpZNWQgvTqeS4sUmStBJwIjUCmhg/viewform';
+const JUNIOR_PREPAY_URL =
+  'https://checkout.square.site/merchant/MLRWNHWZVQE4S/checkout/W4YIZKISIOGE4TCHMQ7F7OBB?src=sheet';
+
+const JUNIOR_SESSIONS = [
+  {
+    day: 'Tuesdays',
+    time: '3:00–4:30 PM',
+    what: 'Clinics and drills led by Bob Biarkis'
+  },
+  {
+    day: 'Thursdays & Saturdays',
+    time: '3:00–4:30 PM',
+    what: 'Structured open play led by Jack Geno'
+  }
+];
+
 function initialsFor(name) {
   return name
     .split(/\s+/)
@@ -248,6 +269,7 @@ export default function RallyAcademy() {
               <div className="academy-cta-row">
                 <a href="#beginner" className="academy-cta-button">Rally Start</a>
                 <a href="#labs" className="academy-cta-button">Rally Labs</a>
+                <a href="#juniors" className="academy-cta-button">Junior Rally</a>
               </div>
               <button
                 type="button"
@@ -456,6 +478,73 @@ export default function RallyAcademy() {
                   <span className="labs-punch-soon">Coming soon</span>
                 </button>
               )}
+            </div>
+          </div>
+        </section>
+
+        {/*
+          Junior Rally
+
+          Deliberately carries no session dates — groups form on a rolling basis,
+          so a fixed date range goes stale. The weekly day/time pattern below is
+          the only schedule stated; the current session lives in PicklePlanner.
+          Note that JUNIOR_PREPAY_URL is a single Square checkout and may need
+          swapping when a new session opens.
+        */}
+        <section id="juniors" className="juniors-section">
+          <div className="section-content">
+            <h2 className="section-title">Junior Rally</h2>
+            <p className="section-subtitle-dark">
+              Instruction and structured play for our younger players
+            </p>
+
+            <p className="juniors-lede">
+              Junior Rally gives younger players a chance to develop their game through a
+              combination of instruction and structured play.
+            </p>
+
+            <div className="juniors-grid">
+              {JUNIOR_SESSIONS.map(session => (
+                <div key={session.day} className="junior-card">
+                  <p className="junior-when">
+                    <span className="junior-day">{session.day}</span>
+                    <span className="junior-time">{session.time}</span>
+                  </p>
+                  <p className="junior-what">{session.what}</p>
+                </div>
+              ))}
+            </div>
+
+            <p className="juniors-note">
+              Junior Rally groups are forming constantly — look for a session in{' '}
+              <a
+                href={PICKLEPLANNER_JOINABLE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                PicklePlanner
+              </a>
+              , or submit the signup sheet below and we&rsquo;ll reach out. Participation
+              requires preapproval and registration.
+            </p>
+
+            <div className="juniors-cta-row">
+              <a
+                href={JUNIOR_FORM_URL}
+                className="junior-cta"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Sign Your Child Up for Jr. Rally
+              </a>
+              <a
+                href={JUNIOR_PREPAY_URL}
+                className="junior-cta junior-cta-secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Prepay
+              </a>
             </div>
           </div>
         </section>
@@ -1017,6 +1106,108 @@ export default function RallyAcademy() {
           color: var(--muted);
         }
 
+        /* Junior Rally Section */
+        /* White rather than surface-alt or navy: it sits between the surface-alt
+           labs section and the navy FAQ, so the three bands stay distinct. */
+        .juniors-section {
+          padding: 3.25rem 2rem;
+          background: white;
+        }
+
+        .juniors-lede {
+          max-width: 640px;
+          margin: 0 auto 2rem;
+          text-align: center;
+          color: var(--muted);
+          font-size: 1.05rem;
+          line-height: 1.7;
+        }
+
+        .juniors-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.5rem;
+          max-width: 800px;
+          margin: 0 auto 1.75rem;
+        }
+
+        .junior-card {
+          background: var(--surface-alt);
+          padding: 1.5rem;
+          border-radius: 12px;
+          text-align: center;
+        }
+
+        /* Matches .lab-when — day over time, since a pipe separator breaks
+           awkwardly once "Thursdays & Saturdays" wraps. */
+        .junior-when {
+          display: flex;
+          flex-direction: column;
+          gap: 0.1rem;
+          margin-bottom: 0.6rem;
+        }
+        .junior-day {
+          font-weight: 600;
+          color: var(--baseline-navy);
+        }
+        .junior-time {
+          color: var(--accent-ink);
+          font-weight: 600;
+          font-size: 0.95rem;
+        }
+
+        .junior-what {
+          color: var(--muted);
+          font-size: 0.95rem;
+          line-height: 1.6;
+        }
+
+        .juniors-note {
+          max-width: 640px;
+          margin: 0 auto 1.75rem;
+          text-align: center;
+          color: var(--muted);
+          font-size: 0.95rem;
+          line-height: 1.7;
+        }
+        .juniors-note a {
+          color: var(--baseline-navy);
+          font-weight: 600;
+        }
+
+        .juniors-cta-row {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 1rem;
+        }
+
+        .junior-cta {
+          background: var(--baseline-navy);
+          color: white;
+          padding: 0.85rem 2rem;
+          border-radius: 8px;
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 0.95rem;
+          transition: background 0.3s ease;
+        }
+        .junior-cta:hover {
+          background: var(--concrete);
+        }
+
+        .junior-cta-secondary {
+          background: transparent;
+          color: var(--baseline-navy);
+          border: 2px solid var(--baseline-navy);
+          /* Offsets the border so both buttons end up the same height. */
+          padding: calc(0.85rem - 2px) calc(2rem - 2px);
+        }
+        .junior-cta-secondary:hover {
+          background: var(--baseline-navy);
+          color: white;
+        }
+
         /* Coach Gallery */
         /* Shares the white background with .why-train directly above it, so a
            hairline rule keeps the two headings from reading as one section. */
@@ -1423,12 +1614,15 @@ export default function RallyAcademy() {
           transition: max-height 0.3s ease;
         }
 
+        /* Generous cap, not a measured one: the longest answer wraps to ~6 lines
+           on a narrow phone, which cleared 200px once the panel got symmetric
+           padding. Overshooting only makes the reveal marginally quicker. */
         .faq-item.open .faq-answer {
-          max-height: 200px;
+          max-height: 400px;
         }
 
         .faq-answer p {
-          padding: 0 1.5rem 1.5rem;
+          padding: 1.25rem 1.5rem;
           color: var(--concrete-light);
           line-height: 1.6;
         }
@@ -1447,7 +1641,8 @@ export default function RallyAcademy() {
             grid-template-columns: 1fr;
           }
 
-          .labs-grid {
+          .labs-grid,
+          .juniors-grid {
             grid-template-columns: 1fr;
             max-width: 420px;
           }
