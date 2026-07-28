@@ -6,8 +6,22 @@
     "photo": "/instructors/curt-price.png",
     "bio": [
       "I'm a Six Zero Pickleball Ambassador and a 4.5 DUPR rated player who has been playing pickleball since 2020. I've won numerous tournaments and regularly play in local leagues.",
-      "I enjoy teaching individuals and groups (bring friends to get a better rate!) how to properly play pickleball by teaching the fundamentals of the game, along with strategies and techniques to take their game to the next level. The goal is to have fun while improving your skills!",
-      "I'll also have Six Zero paddles on hand for you to demo if you like."
+      "I enjoy teaching individuals and groups (bring friends to get a better rate!) how to properly play pickleball by teaching the fundamentals of the game, along with strategies and techniques to take their game to the next level. The goal is to have fun while improving your skills!"
+    ],
+    "rates": [
+      { "people": 1, "price": 60 },
+      { "people": 2, "price": 80 },
+      { "people": 3, "price": 90 },
+      { "people": 4, "price": 100 }
+    ],
+    "availability": [
+      { "day": "Mon", "times": ["7:00am – 8:30am"] },
+      { "day": "Tue", "times": ["7:00am – 8:30am", "5:00pm – 6:00pm"] },
+      { "day": "Wed", "times": ["7:00am – 9:00am"] },
+      { "day": "Thu", "times": ["7:00am – 8:30am", "5:30pm – 6:30pm"] },
+      { "day": "Fri", "times": ["7:00am – 9:00am", "5:00pm – 6:00pm"] },
+      { "day": "Sat", "times": ["9:00am – 12:00pm"] },
+      { "day": "Sun", "times": ["9:00am – 12:00pm"] }
     ]
   },
   {
@@ -28,15 +42,69 @@
     "photo": "/instructors/steve-horrell.png",
     "bio": [
       "Steve is certified to teach by the Professional Pickleball Registry and has taught physical education and health in public and private schools. He currently teaches Skills & Drills for One More Game Pickleball Club, in Edwardsville, and offers individual and group lessons locally."
+    ],
+    "rates": [
+      { "people": 1, "price": 70 },
+      { "people": 2, "price": 70 },
+      { "people": 3, "price": 90 },
+      { "people": 4, "price": 90 }
+    ],
+    "availability": [
+      { "day": "Mon", "times": ["12:00pm – 4:00pm"] },
+      { "day": "Tue", "times": ["12:00pm – 4:00pm"] },
+      { "day": "Wed", "times": ["1:00pm – 4:00pm"] },
+      { "day": "Thu", "times": ["8:00am – 4:00pm"] },
+      { "day": "Fri", "times": ["8:00am – 4:00pm"] },
+      { "day": "Sat", "times": ["8:00am – 4:00pm"] },
+      { "day": "Sun", "times": ["8:00am – 4:00pm"] }
     ]
   },
   {
     "id": "caleb-fall",
     "name": "Caleb Fall",
     "active": true,
-    "photo": null,
+    "photo": "/instructors/caleb-fall.png",
     "bio": [
       "I've been playing since 2020. PPR certified. Numerous medals in 5.0 and open division tournaments. OMG Pickleball Club pro."
+    ],
+    "rates": [
+      { "people": 1, "price": 80 },
+      { "people": 2, "price": 80 },
+      { "people": 3, "price": 80 },
+      { "people": 4, "price": 80 }
+    ],
+    "availability": [
+      { "day": "Mon", "times": ["8:00am – 10:00pm"] },
+      { "day": "Tue", "times": ["8:00am – 10:00pm"] },
+      { "day": "Wed", "times": ["8:00am – 10:00pm"] },
+      { "day": "Thu", "times": ["8:00am – 10:00pm"] },
+      { "day": "Fri", "times": ["8:00am – 10:00pm"] },
+      { "day": "Sat", "times": ["8:00am – 10:00pm"] },
+      { "day": "Sun", "times": ["8:00am – 10:00pm"] }
+    ]
+  },
+  {
+    "id": "linda-wells",
+    "name": "Linda Wells",
+    "active": true,
+    "photo": "/instructors/linda-wells.png",
+    "bio": [
+      "Linda Wells has been playing pickleball for over 7 years and is passionate about helping players grow their confidence, improve their game, and enjoy the sport. With a positive and encouraging approach, she focuses on creating a fun learning environment where players of all skill levels can succeed and continue developing their skills both on and off the court."
+    ],
+    "rates": [
+      { "people": 1, "price": 70 },
+      { "people": 2, "price": 80 },
+      { "people": 3, "price": 90 },
+      { "people": 4, "price": 100 }
+    ],
+    "availability": [
+      { "day": "Mon", "times": ["5:00am – 12:00pm"] },
+      { "day": "Tue", "times": ["5:00am – 12:00pm"] },
+      { "day": "Wed", "times": ["5:00am – 12:00pm"] },
+      { "day": "Thu", "times": ["5:00am – 12:00pm"] },
+      { "day": "Fri", "times": ["5:00am – 12:00pm"] },
+      { "day": "Sat", "times": ["5:00am – 12:00pm"] },
+      { "day": "Sun", "times": [] }
     ]
   }
 ]

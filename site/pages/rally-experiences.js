@@ -300,7 +300,6 @@ export default function RallyExperiences() {
             <p className="cta-tagline">Let's get your team on the court—and out of their comfort zone—in the best way possible.</p>
             <div className="cta-buttons">
               <a href="mailto:rental@rallyclubpickleball.com?subject=Rally%20Experiences%20Inquiry" className="cta-button-primary">Contact Us for Booking</a>
-              <a href="tel:+16189310015" className="cta-button-secondary">Call: (618) 931-0015</a>
             </div>
           </div>
         </section>
@@ -830,22 +829,6 @@ export default function RallyExperiences() {
         .cta-button-primary:hover {
           background: var(--orange-ink);
           box-shadow: 0 10px 30px rgba(229, 101, 74, 0.3);
-        }
-
-        .cta-button-secondary {
-          background: transparent;
-          color: white;
-          padding: 1rem 2.5rem;
-          border-radius: 8px;
-          text-decoration: none;
-          font-weight: 700;
-          font-size: 1.1rem;
-          border: 2px solid white;
-          transition: all 0.3s ease;
-        }
-
-        .cta-button-secondary:hover {
-          background: rgba(255, 255, 255, 0.1);
         }
 
         /* Responsive Design */

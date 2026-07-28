@@ -101,10 +101,20 @@
 /* Wellness Program Access (Wellhub, Silver&Fit / Active&Fit).
    Mirrors the A-List Seniors section's layout so the two read as a pair.
    Wellhub carries .featuredProgram — the same orange-border treatment
-   .membershipCard.featured uses — because it is the priority promotion. */
+   .membershipCard.featured uses — because it is the priority promotion.
+
+   This is the one navy band in the page's white / surface-alt alternation.
+   Membership above it is white, A-List Seniors below it is surface-alt, so the
+   dark break both separates two otherwise-adjacent light sections and marks
+   this as the section worth stopping on. The cards stay white and keep their
+   dark body copy; only the section title and intro flip to light. */
 .wellnessSection {
   padding: 3rem 2rem;
-  background: var(--court-white);
+  background: var(--baseline-navy);
+}
+
+.wellnessSection .sectionTitle {
+  color: var(--court-white);
 }
 
 .wellnessIntro {
@@ -115,7 +125,7 @@
 
 .wellnessIntro p {
   font-size: 1.1rem;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.82);
   line-height: 1.6;
 }
 
@@ -127,42 +137,65 @@
   margin: 0 auto;
 }
 
+/* Deeper shadow than the light sections use — the stock 0.08 lift is invisible
+   against navy. */
 .wellnessCard {
   position: relative;
   background: var(--surface);
-  padding: 1.75rem 1.5rem 1.5rem;
+  padding: 1.5rem;
   border-radius: 10px;
   border: 1px solid var(--border);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.28);
 }
 
 .wellnessCard.featuredProgram {
   border: 2px solid var(--rally-orange);
 }
 
+/* Flat eyebrow rather than the rotated pill the membership cards use — those
+   sit above a text title, whereas this sits above a wide partner wordmark in
+   its own brand pink, which a filled orange badge fights with. */
 .wellnessBadge {
-  position: absolute;
-  top: -10px;
-  left: 20px;
-  background: var(--rally-orange);
-  color: var(--court-white);
-  padding: 5px 15px;
-  border-radius: 15px;
-  font-size: 0.8rem;
-  font-weight: bold;
-  transform: rotate(-15deg);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  margin-bottom: 0.85rem;
 }
 
+/* Holds a partner wordmark, optionally followed by text the mark doesn't
+   cover (e.g. "/ Active&Fit"). Flex keeps the two optically aligned; the
+   img is block so it contributes no inline baseline gap. */
 .wellnessTitle {
-  font-size: 1.25rem;
+  font-size: 1.05rem;
+  font-weight: 600;
   margin: 0 0 0.75rem;
   color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
-/* When the heading holds a partner wordmark instead of text, drop the inline
-   baseline gap so the logo sits flush with the card padding. */
 .wellnessTitle img {
   display: block;
+}
+
+.titleSep {
+  color: var(--border);
+  font-weight: 400;
+}
+
+/* Partner wordmarks double as links out to each program's own site. Block so
+   the anchor contributes no inline baseline gap around the img. */
+.wellnessLogoLink {
+  display: block;
+  transition: opacity 0.2s;
+}
+
+.wellnessLogoLink:hover {
+  opacity: 0.7;
 }
 
 .wellnessCard p {
@@ -181,13 +214,21 @@
   font-weight: 600;
 }
 
+/* CTA centered on its own row at the foot of the card. The preceding <p> keeps
+   its own bottom margin once it is no longer :last-child, so this only tops up
+   the gap to the copy above. */
+.wellnessCta {
+  text-align: center;
+  margin-top: 0.75rem;
+}
+
 @media (max-width: 768px) {
   .wellnessSection {
     padding: 2rem 1rem;
   }
 
   .wellnessCard {
-    padding: 1.5rem 1.25rem 1.25rem;
+    padding: 1.25rem;
   }
 }
 
@@ -209,11 +250,13 @@
   line-height: 1.6;
 }
 
+/* Padding matches the .seniorProgramCard boxes directly below it — this sits in
+   the same column at the same width, so a heavier inset read as misaligned. */
 .specialProgramsPricing {
   max-width: 800px;
   margin: 0 auto 2.5rem;
   background: white;
-  padding: 2rem;
+  padding: 1.25rem 1.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
@@ -221,8 +264,19 @@
 .specialProgramsPricing h3 {
   text-align: center;
   font-size: 1.3rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   color: var(--ink);
+}
+
+/* .membershipSummary carries its own 0 1rem inset for use inside the membership
+   cards; here it would double up on the box's padding. */
+.specialProgramsPricing .membershipSummary {
+  padding: 0;
+  margin-bottom: 0.75rem;
+}
+
+.specialProgramsPricing .membershipSummary:last-child {
+  margin-bottom: 0;
 }
 
 .seniorProgramsGrid {

@@ -169,7 +169,11 @@ export default function AdminDashboard() {
                     <span>{item.email}</span>
                     <span className="muted">{item.phone}</span>
                   </span>
-                  <span className="col-instructor">{item.instructorName || 'Any trainer'}</span>
+                  <span className="col-instructor">
+                    {item.requestType === 'rally-start'
+                      ? <span className="program-tag">Rally Start</span>
+                      : (item.instructorName || 'Any trainer')}
+                  </span>
                   <span className="col-skill muted">{item.duprOrSkill}</span>
                   <span className={`admin-status status-${item.status}`}>{item.status}</span>
                 </button>
@@ -182,7 +186,7 @@ export default function AdminDashboard() {
                         <p>{item.goals || <em className="muted">none</em>}</p>
                       </div>
                       <div>
-                        <h4>Preferred times</h4>
+                        <h4>{item.requestType === 'rally-start' ? 'Availability' : 'Preferred times'}</h4>
                         <p>{item.preferredTimes || <em className="muted">none</em>}</p>
                       </div>
                       <div>
@@ -382,6 +386,18 @@ export default function AdminDashboard() {
         .col-contact { display: flex; flex-direction: column; font-size: 0.9rem; }
         .col-contact .muted { font-size: 0.8rem; }
         .col-instructor { font-size: 0.9rem; }
+        /* Waitlist rows have no instructor, so the column carries the program
+           instead — tagged so it doesn't read as a coach name. */
+        .program-tag {
+          display: inline-block;
+          padding: 0.15rem 0.5rem;
+          border-radius: 999px;
+          background: var(--surface-alt);
+          color: var(--baseline-navy);
+          font-size: 0.78rem;
+          font-weight: 600;
+          white-space: nowrap;
+        }
         .col-skill { font-size: 0.85rem; }
         .muted { color: var(--concrete); }
         .admin-status {

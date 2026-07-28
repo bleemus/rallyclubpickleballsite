@@ -62,6 +62,7 @@ app.http('submit-training-request', {
     const entity = {
       partitionKey: monthKey(now),
       rowKey: newRowKey(),
+      RequestType: clean.requestType,
       Name: clean.name,
       Email: clean.email,
       Phone: clean.phone,

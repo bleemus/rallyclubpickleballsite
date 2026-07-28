@@ -60,7 +60,7 @@ site/
 │   ├── SiteHeader.js            # Shared site header / nav
 │   └── SiteFooter.js            # Shared site footer
 ├── data/
-│   └── instructors.json         # Coach list shown in the modal's instructor select
+│   └── instructors.json         # Coach roster: modal's instructor select + academy coach gallery
 ├── api/                         # SWA Managed Functions (Node 22, Functions v4)
 │   ├── host.json
 │   ├── package.json
@@ -96,6 +96,7 @@ site/
 #### Main Landing Page (`pages/index.js`)
 - **Hero Section**: Reversed video background (`club_interior_reversed_optimized.mp4`)
 - **Membership Tiers**: A-List (Monthly / Annual / Family, promotional pricing) and Rally Reserve (court-rate-only, no membership tier). Signup via PicklePlanner; promo prices auto-expire — see the `pricing` state in `pages/index.js`.
+- **More Ways to Access The Rally Club** (`#wellness`): Wellness-program access. Wellhub is featured first (priority promotion), then a combined Silver&Fit / Active&Fit card. Separate from the Silver Sneakers "A-List Silver" senior-program card further down.
 - **Rally Academy Section**: Link to training programs
 - **Rally Experiences Section**: Link to corporate team building and private events
 - **Facility Overview**: Interactive image gallery with lightbox
@@ -110,9 +111,12 @@ site/
 
 #### Rally Academy Page (`pages/rally-academy.js`)
 - **Beginners Clinics**: 4-week program ($80) for new players, Tuesdays 1:00-2:30 pm
-- **Performance Training**: Drop-in sessions ($20) for DUPR 3.5-4.5 players, Mondays & Wednesdays
+- **Rally Labs** (`#labs`): 90-minute drill sessions led by Steve Horrell — "Rally Labs" (Wed 1:00–2:30 PM, beginner/intermediate) and "Advanced Clinic" (Tue 1:00–2:30 PM, 3.5+). Defined in the `LABS` array at the top of `pages/rally-academy.js`. Replaced the retired Performance Training program.
+  - **Never hardcode a PicklePlanner session URL here** — labs are posted weekly via Joinable Events, so per-session links go stale in days. All CTAs point at `PICKLEPLANNER_JOINABLE_URL` (the joinable-events list) and the copy tells users to find the current week's session there.
+  - `PUNCH_CARD_URL` is an empty-string placeholder with a `TODO`; while empty, the "Purchase a Rally Skills Punch Card" CTA renders as a disabled button rather than a dead link. Fill the constant to activate it.
 - **Personal Training**: 1:1 coaching by request — third program card and CTA buttons launch the `RequestTrainingModal`. Pulls coach list from `site/data/instructors.json`; "Any trainer" is a hardcoded default option.
-- Registration via Square (Beginners Clinics) and PicklePlanner (Performance Training)
+- **Meet Your Coaches** (`#coaches`): Photo-tile gallery of active instructors; clicking a tile opens a bio lightbox (ESC / arrow keys / click-outside). Absorbed from the former standalone `/about-our-instructors` page, which was deleted.
+- Registration via Square (Beginners Clinics)
 - FAQ sections for each program type
 
 #### Personal Training Modal (`components/RequestTrainingModal.js`)
@@ -232,14 +236,15 @@ Meta descriptions, Open Graph/Twitter cards, canonical URLs, sitemap, and robots
 
 ## Important Notes
 - All players must be registered with PicklePlanner before playing
-- Rally Experiences contact: rental@rallyclubpickleball.com or (618) 931-0015
+- Rally Experiences contact: rental@rallyclubpickleball.com
 - General inquiries: rally.club618@gmail.com
+- **Contact is email-only** — the (618) 931-0015 number was deliberately removed from the site (CTA button, `LocalBusiness` JSON-LD). Don't reintroduce a phone number or `tel:` link.
 - Video files in `site/public/` are large — ensure they're optimized before committing
 - The `.claude/` directory is gitignored
 - No testing or linting frameworks currently configured
 - **Node 22 required** for `dev:local` (SWA CLI compatibility). Use `nvm use` in the `site/` directory.
 - `site/api/local.settings.json` is gitignored — it contains the local Functions runtime config and is auto-created from `.example` on first `dev:local`
-- Editing the coach list: update `site/data/instructors.json` and commit; the modal reads it at build time. "Any trainer" is hardcoded in the component, not in JSON.
+- Editing the coach list: update `site/data/instructors.json` and commit; both the modal's select and the Rally Academy coach gallery read it at build time. Set `active: false` to drop a coach from the gallery without deleting the entry. "Any trainer" is hardcoded in the component, not in JSON.
 - To change which GitHub users have admin access, update the `ADMIN_GITHUB_LOGINS` SWA app setting in the Azure Portal — no deploy required.
 - **Static export + dates**: `output: 'export'` freezes build-time `new Date()` to the build date. Date-reactive UI (e.g. promo-price expiry in `pages/index.js`) must run client-side in `useEffect`, with initial state matching the build render to avoid a hydration mismatch.
 - No test framework — verify a change by building and grepping the export: `npm run build`, then grep `site/out/*.html`. Note React 19 SSR splits `${expr}` into `$<!-- -->25`, so grep the surrounding literal text, not the interpolated value.

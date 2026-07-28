@@ -116,7 +116,6 @@ export default function Home() {
               "name": "Rally Club Pickleball",
               "description": "Indoor pickleball facility in Glen Carbon, IL with 24/7 access",
               "url": "https://www.rallyclubpickleball.com",
-              "telephone": "(618) 931-0015",
               "email": "rally.club618@gmail.com",
               "address": {
                 "@type": "PostalAddress",
@@ -341,23 +340,42 @@ export default function Home() {
                 <Image
                   src="/wellhub.svg"
                   alt="Wellhub"
-                  width={160}
-                  height={31}
-                  style={{ objectFit: 'contain', maxWidth: '160px', height: 'auto' }}
+                  width={141}
+                  height={26}
+                  style={{ objectFit: 'contain', width: '160px', height: 'auto' }}
                 />
               </h3>
               <p>Commonly offered through participating employers as part of employee wellness benefits &mdash; <strong>not limited to Medicare or Medicaid participants</strong>.</p>
               <p>Check your eligibility through Wellhub, or ask your employer&rsquo;s HR department whether Wellhub is included in your benefits.</p>
               <p className={styles.wellnessHelp}>The Rally Club has resources available to help you navigate signup &mdash; just ask.</p>
-              {/* TODO: Wellhub CTA — add enrollment/eligibility URL when provided, then
-                  render an <a className={styles.membershipButton}> here. */}
+              <div className={styles.wellnessCta}>
+                <a href="https://signup.gympass.com/company-search" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Look Up Your Organization</a>
+              </div>
             </div>
             <div className={styles.wellnessCard}>
-              <h3 className={styles.wellnessTitle}>Silver&amp;Fit / Active&amp;Fit</h3>
+              <h3 className={styles.wellnessTitle}>
+                <a href="https://www.silverandfit.com" className={styles.wellnessLogoLink} target="_blank" rel="noopener noreferrer">
+                  <Image
+                    src="/silver-and-fit.svg"
+                    alt="Silver&amp;Fit"
+                    width={130}
+                    height={27}
+                    style={{ objectFit: 'contain', width: '140px', height: 'auto' }}
+                  />
+                </a>
+                <span className={styles.titleSep} aria-hidden="true">/</span>
+                <a href="https://www.activeandfit.com" className={styles.wellnessLogoLink} target="_blank" rel="noopener noreferrer">
+                  <Image
+                    src="/active-fit.svg"
+                    alt="Active&amp;Fit"
+                    width={165}
+                    height={34}
+                    style={{ objectFit: 'contain', width: '140px', height: 'auto' }}
+                  />
+                </a>
+              </h3>
               <p>Silver&amp;Fit is now accepted, along with Active&amp;Fit for eligible participants under age 65.</p>
               <p>Eligibility varies by health plan or employer, so check your benefits to confirm you&rsquo;re covered.</p>
-              {/* TODO: Silver&Fit / Active&Fit CTA — add enrollment/eligibility URL when
-                  provided, then render an <a className={styles.membershipButton}> here. */}
             </div>
           </div>
         </section>
@@ -379,9 +397,9 @@ export default function Home() {
                 <Image
                   src="/silver_sneakers.png"
                   alt="Silver Sneakers Logo"
-                  width={230}
-                  height={80}
-                  style={{ objectFit: 'contain', maxWidth: '160px', height: 'auto' }}
+                  width={661}
+                  height={230}
+                  style={{ objectFit: 'contain', width: '160px', height: 'auto' }}
                 />
               </div>
               <div className={styles.seniorProgramInfo}>
@@ -395,9 +413,9 @@ export default function Home() {
                 <Image
                   src="/renew_active.svg"
                   alt="Renew Active Logo"
-                  width={140}
-                  height={45}
-                  style={{ objectFit: 'contain', maxWidth: '160px', height: 'auto' }}
+                  width={200}
+                  height={64}
+                  style={{ objectFit: 'contain', width: '140px', height: 'auto' }}
                 />
               </div>
               <div className={styles.seniorProgramInfo}>

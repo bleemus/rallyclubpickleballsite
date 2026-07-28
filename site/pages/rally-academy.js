@@ -1,54 +1,136 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import Head from 'next/head';
 import SiteHeader from '../components/SiteHeader';
 import SiteFooter from '../components/SiteFooter';
 import RequestTrainingModal from '../components/RequestTrainingModal';
+import RallyStartWaitlistModal from '../components/RallyStartWaitlistModal';
 import instructors from '../data/instructors.json';
+
+// Rally Labs sessions are posted weekly, so the per-session PicklePlanner event
+// URL changes every week. Always link to the joinable-events list instead — a
+// hardcoded session link goes stale within days.
+const PICKLEPLANNER_JOINABLE_URL = 'https://rallyclub.pickleplanner.com/dashboard/reservation/joinable';
+
+// TODO: replace with the real Rally Skills Punch Card purchase URL once it
+// exists. While this is empty the CTA renders disabled instead of linking out.
+const PUNCH_CARD_URL = '';
+
+const LABS = [
+  {
+    name: 'Rally Labs with Steve Horrell',
+    day: 'Wednesdays',
+    time: '1:00–2:30 PM',
+    who: 'For beginner and intermediate players looking for targeted reps.'
+  },
+  {
+    name: 'Advanced Clinic',
+    day: 'Tuesdays',
+    time: '1:00–2:30 PM',
+    who: 'For 3.5+ players looking to sharpen their game.'
+  }
+];
+
+function initialsFor(name) {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .map(part => part[0])
+    .slice(0, 2)
+    .join('')
+    .toUpperCase();
+}
 
 export default function RallyAcademy() {
   const [openBeginnerFaq, setOpenBeginnerFaq] = useState(null);
-  const [openPerformanceFaq, setOpenPerformanceFaq] = useState(null);
+  const [openLabsFaq, setOpenLabsFaq] = useState(null);
   const [personalModalOpen, setPersonalModalOpen] = useState(false);
+  const [waitlistModalOpen, setWaitlistModalOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(null);
+  const dialogScrollRef = useRef(null);
 
   const toggleBeginnerFaq = (index) => {
     setOpenBeginnerFaq(openBeginnerFaq === index ? null : index);
   };
 
-  const togglePerformanceFaq = (index) => {
-    setOpenPerformanceFaq(openPerformanceFaq === index ? null : index);
+  const toggleLabsFaq = (index) => {
+    setOpenLabsFaq(openLabsFaq === index ? null : index);
   };
+
+  // Sorted on the displayed name, so the order matches what a reader scanning
+  // the tiles actually sees. .filter() already copied, so the import isn't mutated.
+  const activeInstructors = instructors
+    .filter(i => i && i.active !== false)
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  const coachCount = activeInstructors.length;
+  const activeCoach = activeIndex === null ? null : activeInstructors[activeIndex];
+
+  const closeCoach = useCallback(() => setActiveIndex(null), []);
+  const stepCoach = useCallback(
+    direction => setActiveIndex(i => (i === null ? i : (i + direction + coachCount) % coachCount)),
+    [coachCount]
+  );
+
+  // Arrow keys walk the roster without reaching for the mouse; ESC and the
+  // scroll lock match how RequestTrainingModal behaves on this same page.
+  useEffect(() => {
+    if (activeIndex === null) return undefined;
+    const onKeyDown = e => {
+      if (e.key === 'Escape') closeCoach();
+      else if (e.key === 'ArrowLeft') stepCoach(-1);
+      else if (e.key === 'ArrowRight') stepCoach(1);
+    };
+    document.addEventListener('keydown', onKeyDown);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [activeIndex, closeCoach, stepCoach]);
+
+  // Paging keeps the same scroll container mounted, so without this the next
+  // coach opens at the previous coach's scroll offset — their name scrolled
+  // off the top. Runs on open too, which is already 0 and harmless.
+  useEffect(() => {
+    if (dialogScrollRef.current) dialogScrollRef.current.scrollTop = 0;
+  }, [activeIndex]);
 
   const beginnersFaqData = [
     {
       question: "Do I need any experience?",
-      answer: "No experience needed! Beginner Programs are designed for complete beginners and players rated 2.5-3.0. We'll teach you everything from grip basics to game strategy."
+      answer: "No experience needed! Rally Start is designed for complete beginners and players rated 2.5-3.0. We'll teach you everything from grip basics to game strategy."
     },
     {
       question: "What paddle should I bring?",
-      answer: "For Beginner Programs, bring any paddle you have! If you don't own one yet, we have loaner paddles available. Our coaches can also help you choose the right paddle for your playing style."
+      answer: "Bring any paddle you have! If you don't own one yet, we have loaner paddles available. Our coaches can also help you choose the right paddle for your playing style."
     },
     {
-      question: "What if I miss a week?",
-      answer: "Beginner Programs require consistent attendance to ensure all participants progress together. If you know you'll miss a week, please contact us before signing up to discuss options."
+      question: "When does the next group start?",
+      answer: "There's no fixed schedule — we start a group once enough people have joined the waitlist. When you sign up you tell us which days and times work for you, and we build the schedule around what the group has in common."
+    },
+    {
+      question: "Does joining the waitlist commit me to anything?",
+      answer: "Not at all. It just tells us you're interested and when you're free. We'll email you with the dates and details once a group forms, and you can decide then."
     },
     {
       question: <>{"Is it "}<i>really</i>{" beginner-friendly?"}</>,
-      answer: "Absolutely! Beginner Programs are taught by coaches who create a supportive, zero-pressure environment. You'll learn alongside other beginners, and we focus on making improvement fun. No judgment, just pickleball!"
+      answer: "Absolutely! Rally Start is taught by coaches who create a supportive, zero-pressure environment. You'll learn alongside other beginners, and we focus on making improvement fun. No judgment, just pickleball!"
     }
   ];
 
-  const performanceFaqData = [
+  const labsFaqData = [
     {
-      question: "What skill level do I need?",
-      answer: "Performance Training is designed for intermediate and upper intermediate players with an estimated DUPR of 3.5-4.5."
+      question: "Which lab should I join?",
+      answer: "Rally Labs on Wednesdays is built for beginner and intermediate players who want targeted reps. The Advanced Clinic on Tuesdays is for 3.5+ players sharpening a game they already have."
     },
     {
-      question: "Do I need to commit to a schedule?",
-      answer: "No! Performance Training uses a drop-in format — there's no multi-week commitment, so you can join the sessions that suit you."
+      question: "How do I sign up?",
+      answer: "Both labs are booked through Joinable Events in PicklePlanner. Sessions are posted a week at a time, so open the joinable events page to find the current week's session — there's no standing registration to sign up for."
     },
     {
-      question: "What will I work on?",
-      answer: "Performance Training sessions include focused drills, tactical training, game analysis, and skill building tailored to intermediate players sharpening specific parts of their game."
+      question: "What does a session look like?",
+      answer: "90 minutes built around repetition and structure: focused drills, live-ball reps, and coaching from Steve Horrell aimed at habits that hold up in a real game."
     }
   ];
 
@@ -58,7 +140,7 @@ export default function RallyAcademy() {
         <title>Rally Academy | Pickleball Training Programs | Rally Club Pickleball</title>
         <meta
           name="description"
-          content="Pickleball training at Rally Club. Beginner Programs ($80/4 weeks) on Tuesdays and Performance Training ($20/session) for 3.5-4.5 DUPR players. Glen Carbon, IL."
+          content="Pickleball training at Rally Club in Glen Carbon, IL. Rally Start beginner groups, Rally Labs drill sessions with Steve Horrell, and 1-on-1 personal training."
         />
         <link rel="canonical" href="https://www.rallyclubpickleball.com/rally-academy" />
         <meta
@@ -69,7 +151,7 @@ export default function RallyAcademy() {
         <meta property="og:title" content="Rally Academy | Pickleball Training Programs" />
         <meta
           property="og:description"
-          content="Beginner Programs for new players & Performance Training for intermediate players. Join Rally Academy at Rally Club Pickleball."
+          content="Rally Start beginner groups & Rally Labs drill sessions. Join Rally Academy at Rally Club Pickleball."
         />
         <meta property="og:image" content="/logo-transparent.png" />
         <meta property="og:url" content="https://www.rallyclubpickleball.com/rally-academy" />
@@ -77,7 +159,7 @@ export default function RallyAcademy() {
         <meta name="twitter:title" content="Rally Academy | Pickleball Training" />
         <meta
           name="twitter:description"
-          content="Beginner Programs and Performance Training sessions. Train with Rally Club Pickleball."
+          content="Rally Start beginner groups and Rally Labs drill sessions. Train with Rally Club Pickleball."
         />
         <meta name="twitter:image" content="/logo-transparent.png" />
         <script
@@ -87,7 +169,7 @@ export default function RallyAcademy() {
               "@context": "https://schema.org",
               "@type": "Course",
               "name": "Rally Academy Pickleball Training Programs",
-              "description": "Pickleball training at Rally Club. Beginner Programs on Tuesdays and Performance Training for 3.5-4.5 DUPR players.",
+              "description": "Pickleball training at Rally Club. Rally Start beginner groups and Rally Labs drill sessions with Steve Horrell.",
               "provider": {
                 "@type": "Organization",
                 "name": "Rally Club Pickleball",
@@ -108,26 +190,21 @@ export default function RallyAcademy() {
               "hasCourseInstance": [
                 {
                   "@type": "CourseInstance",
-                  "name": "Beginner Programs",
-                  "description": "4-week beginner pickleball program for new players and 2.5-3.0 rating. Tuesdays 1:00-2:30 pm.",
-                  "courseMode": "onsite",
-                  "offers": {
-                    "@type": "Offer",
-                    "price": "80",
-                    "priceCurrency": "USD",
-                    "url": "https://square.link/u/k6oFr2Fw"
-                  }
+                  "name": "Rally Start",
+                  "description": "Small-group beginner pickleball program. Groups form from a waitlist; schedule is set once a group fills.",
+                  "courseMode": "onsite"
                 },
                 {
                   "@type": "CourseInstance",
-                  "name": "Performance Training",
-                  "description": "60-minute focused drills for intermediate players (DUPR 3.5-4.5).",
-                  "courseMode": "onsite",
-                  "offers": {
-                    "@type": "Offer",
-                    "price": "20",
-                    "priceCurrency": "USD"
-                  }
+                  "name": "Rally Labs with Steve Horrell",
+                  "description": "90-minute drill session for beginner and intermediate players looking for targeted reps. Wednesdays 1:00-2:30 PM.",
+                  "courseMode": "onsite"
+                },
+                {
+                  "@type": "CourseInstance",
+                  "name": "Advanced Clinic",
+                  "description": "90-minute drill session for 3.5+ players looking to sharpen their game. Tuesdays 1:00-2:30 PM.",
+                  "courseMode": "onsite"
                 }
               ]
             })
@@ -169,8 +246,8 @@ export default function RallyAcademy() {
             </p>
             <div className="academy-hero-cta">
               <div className="academy-cta-row">
-                <a href="#beginner" className="academy-cta-button">Beginner Programs</a>
-                <a href="#training" className="academy-cta-button">Performance Training</a>
+                <a href="#beginner" className="academy-cta-button">Rally Start</a>
+                <a href="#labs" className="academy-cta-button">Rally Labs</a>
               </div>
               <button
                 type="button"
@@ -180,7 +257,7 @@ export default function RallyAcademy() {
                 Request Personal Training
               </button>
             </div>
-            <a href="/about-our-instructors" className="academy-hero-meet">Meet our coaches &rarr;</a>
+            <a href="#coaches" className="academy-hero-meet">Meet our coaches &rarr;</a>
           </div>
         </section>
 
@@ -189,25 +266,53 @@ export default function RallyAcademy() {
           <h2 className="section-title">Why Train With Us?</h2>
           <div className="why-grid">
             <div className="why-item">
-              <div className="rally-mark" aria-hidden="true"><span></span><span></span><span></span></div>
               <h4>Proven Methodology</h4>
               <p>Structured curriculum designed for measurable improvement</p>
             </div>
             <div className="why-item">
-              <div className="rally-mark" aria-hidden="true"><span></span><span></span><span></span></div>
               <h4>Track Progress</h4>
               <p>Clear milestones and skill development tracking</p>
             </div>
             <div className="why-item">
-              <div className="rally-mark" aria-hidden="true"><span></span><span></span><span></span></div>
               <h4>Fun Atmosphere</h4>
               <p>Improvement doesn't have to be boring – we keep it enjoyable</p>
             </div>
             <div className="why-item">
-              <div className="rally-mark" aria-hidden="true"><span></span><span></span><span></span></div>
               <h4>Community</h4>
               <p>Join a supportive group of players committed to getting better</p>
             </div>
+          </div>
+        </section>
+
+        {/* Coach Gallery — tiles only; bios open in the lightbox at the end of
+            this page. Absorbed from the former /about-our-instructors page.
+            Sits directly under "Why Train With Us?" — the coaches are part of
+            that answer, so the two read as one thought. */}
+        <section id="coaches" className="coaches-section">
+          <h2 className="section-title">Meet Your Coaches</h2>
+          <p className="section-subtitle-dark">PPR-certified pros teaching every level, from first paddle to tournament play</p>
+          <div className="coach-gallery">
+            {activeInstructors.map((coach, i) => (
+              <button
+                key={coach.id}
+                type="button"
+                className="coach-tile"
+                onClick={() => setActiveIndex(i)}
+                aria-haspopup="dialog"
+              >
+                {/* alt="" — the button's own text already names the coach, so a
+                    described image would just repeat it to a screen reader. */}
+                <span className="coach-photo">
+                  {coach.photo ? (
+                    <img src={coach.photo} alt="" />
+                  ) : (
+                    <span className="coach-photo-fallback">{initialsFor(coach.name)}</span>
+                  )}
+                </span>
+                <span className="coach-tile-name">{coach.name}</span>
+                <span className="coach-tile-hint">Read bio</span>
+              </button>
+            ))}
           </div>
         </section>
 
@@ -217,31 +322,39 @@ export default function RallyAcademy() {
           <div className="programs-grid">
             {/* Beginner Card */}
             <div className="program-card">
-              <div className="program-badge">Only 8 Spots!</div>
-              <h3 className="program-title">Beginner Programs</h3>
-              <p className="program-headline">From First Paddle to Confident Player in 4 Weeks</p>
+              <div className="program-badge">Forming Now</div>
+              <h3 className="program-title">Rally Start</h3>
+              <p className="program-headline">From First Paddle to Confident Player</p>
               <p className="program-description">
-                Structured lessons, simple progress, tons of fun. Tuesdays 1:00–2:30 pm.
+                Small-group coaching for brand-new players. Join the waitlist and we&rsquo;ll
+                build the next group around everyone&rsquo;s availability.
               </p>
               <div className="program-price">
-                <span className="price-amount">$80</span>
-                <span className="price-period">4-week program</span>
+                <span className="price-amount">Waitlist</span>
+                <span className="price-period">we&rsquo;ll be in touch</span>
               </div>
-              <a href="#beginner" className="program-cta">Learn More</a>
+              <button
+                type="button"
+                className="program-cta program-cta-pill"
+                onClick={() => setWaitlistModalOpen(true)}
+              >
+                Join the Waitlist
+              </button>
             </div>
 
-            {/* Performance Training Card */}
-            <div className="program-card performance">
-              <h3 className="program-title">Performance Training</h3>
-              <p className="program-headline">Level-Up Your Game: Drills for Intermediate Players</p>
+            {/* Rally Labs Card */}
+            <div className="program-card">
+              <h3 className="program-title">Rally Labs</h3>
+              <p className="program-headline">Reps, Structure, Better Habits</p>
               <p className="program-description">
-                60-minute focused drills for DUPR 3.5–4.5 players.
+                90-minute drill sessions with Steve Horrell. Two weekly labs — one for
+                beginner and intermediate players, one for 3.5+.
               </p>
               <div className="program-price">
-                <span className="price-amount">$20</span>
-                <span className="price-period">per session</span>
+                <span className="price-amount">Weekly</span>
+                <span className="price-period">Tuesdays &amp; Wednesdays</span>
               </div>
-              <a href="#training" className="program-cta">Learn More</a>
+              <a href="#labs" className="program-cta">Learn More</a>
             </div>
 
             {/* Personal Training Card */}
@@ -266,148 +379,85 @@ export default function RallyAcademy() {
           </div>
         </section>
 
-        {/* Beginner Programs Detailed Section */}
+        {/* Rally Start — waitlist only. No schedule, price, or session detail:
+            a group forms once enough beginners sign up, so this section exists
+            to gather interest, not to sell a specific class. */}
         <section id="beginner" className="beginner-section">
           <div className="section-content">
-            <h2 className="section-title-light">Beginner Programs</h2>
-            <p className="section-subtitle">4 weeks to confident play</p>
+            <h2 className="section-title-light">Rally Start</h2>
+            <p className="section-subtitle">Our beginner program — from first paddle to confident player</p>
 
-            {/* Schedule Info */}
-            <div className="schedule-box-dark">
-              <h3 className="schedule-title-dark">Session Times</h3>
-              <div className="schedule-slot-single">
-                <span className="slot-day-dark">Tuesdays</span>
-                <span className="slot-time-dark">1:00 – 2:30 pm</span>
-              </div>
-            </div>
+            <p className="beginner-lede">
+              Rally Start is small-group coaching for people brand new to pickleball. We form
+              a group once enough players have signed up, then build the schedule around
+              everyone&rsquo;s availability. Add your name and we&rsquo;ll be in touch when the next
+              group comes together.
+            </p>
 
-            {/* Week by Week */}
-            <div className="curriculum">
-              <h3 className="curriculum-title">What You'll Learn</h3>
-              <div className="curriculum-grid">
-                <div className="week-card">
-                  <div className="week-number">Week 1</div>
-                  <h4>Foundations</h4>
-                  <p>Grip, ready position, basic strokes. Build your foundation right from day one.</p>
-                </div>
-                <div className="week-card">
-                  <div className="week-number">Week 2</div>
-                  <h4>Footwork</h4>
-                  <p>Court movement, positioning, split step. Move efficiently and be ready for any shot.</p>
-                </div>
-                <div className="week-card">
-                  <div className="week-number">Week 3</div>
-                  <h4>Strategy Basics</h4>
-                  <p>Dinking, third shot drops, court positioning. Learn the smart way to play.</p>
-                </div>
-                <div className="week-card">
-                  <div className="week-number">Week 4</div>
-                  <h4>Putting It All Together</h4>
-                  <p>Consistency, confidence, mini-tournament. Show off everything you've learned!</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Selling Points */}
-            <div className="selling-points">
-              <div className="selling-point">
-                <div>
-                  <strong>Small Group</strong>
-                  <p>Max 8 players for personalized attention</p>
-                </div>
-              </div>
-              <div className="selling-point">
-                <div>
-                  <strong>Cohort Progress</strong>
-                  <p>Learn and improve together as a group</p>
-                </div>
-              </div>
-              <div className="selling-point">
-                <div>
-                  <strong>Fun Format</strong>
-                  <p>Mix of drills, mini-games & coached play</p>
-                </div>
-              </div>
-              <div className="selling-point">
-                <div>
-                  <strong>Zero Pressure</strong>
-                  <p>Supportive, encouraging environment</p>
-                </div>
-              </div>
-              <div className="selling-point">
-                <div>
-                  <strong>Right Level</strong>
-                  <p>Ideal for new players & 2.5-3.0 rating</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Sign Up Box */}
-            <div className="signup-box">
-              <div className="signup-box-header">
-                <div className="price-box-amount">$80</div>
-                <div className="price-box-details">
-                  <p>Complete 4-week program</p>
-                  <p className="urgency">Only 8 Players Per Session!</p>
-                </div>
-              </div>
-              <div className="signup-box-steps">
-                <h4 className="steps-title">How to Join</h4>
-                <ol className="instructions-list">
-                  <li>Choose and pay for your session using the button below</li>
-                  <li>The instructor will add you to the session</li>
-                  <li>The instructor will reach out to answer any questions</li>
-                </ol>
-              </div>
-              <a href="https://square.link/u/k6oFr2Fw" className="price-box-cta" target="_blank" rel="noopener noreferrer">
-                Sign Up
-              </a>
-            </div>
+            <button
+              type="button"
+              className="beginner-waitlist-cta"
+              onClick={() => setWaitlistModalOpen(true)}
+            >
+              Join the Waitlist
+            </button>
           </div>
         </section>
 
-        {/* Performance Training Detailed Section */}
-        <section id="training" className="performance-section">
+        {/* Rally Labs */}
+        <section id="labs" className="labs-section">
           <div className="section-content">
-            <h2 className="section-title">Performance Training</h2>
-            <p className="section-subtitle-dark">For intermediate players (DUPR 3.5–4.5) ready to level up</p>
+            <h2 className="section-title">Rally Labs</h2>
+            <p className="section-subtitle-dark">
+              90-minute drill sessions built around repetition, structure, and better habits on the court
+            </p>
 
-            {/* What's Included */}
-            <div className="included-grid">
-              <div className="included-item">
-                <h4>Focused Drills</h4>
-                <p>60-minute sessions with targeted skill development.</p>
-              </div>
-              <div className="included-item">
-                <h4>Tactical Training</h4>
-                <p>Situational play, pattern recognition, and strategic decision-making.</p>
-              </div>
-              <div className="included-item">
-                <h4>Game Analysis</h4>
-                <p>Real-time coaching feedback during competitive play.</p>
-              </div>
-              <div className="included-item">
-                <h4>Skill Building</h4>
-                <p>Work on specific shots and techniques to improve your game.</p>
-              </div>
+            <div className="labs-grid">
+              {LABS.map(lab => (
+                <div key={lab.name} className="lab-card">
+                  <h3 className="lab-name">{lab.name}</h3>
+                  <p className="lab-when">
+                    <span className="lab-day">{lab.day}</span>
+                    <span className="lab-time">{lab.time}</span>
+                  </p>
+                  <p className="lab-who">{lab.who}</p>
+                  <a
+                    href={PICKLEPLANNER_JOINABLE_URL}
+                    className="lab-cta"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Find This Week&rsquo;s Session
+                  </a>
+                </div>
+              ))}
             </div>
 
-            {/* Selling Points */}
-            <div className="performance-points">
-              <div className="perf-point">
-                For DUPR 3.5–4.5 players
-              </div>
-              <div className="perf-point">
-                Drop-in format – no multi-week commitment
-              </div>
-              <div className="perf-point">
-                60-minute focused sessions
-              </div>
-            </div>
+            <p className="labs-note">
+              Both labs are led by Steve Horrell and booked through Joinable Events in
+              PicklePlanner. Sessions are posted a week at a time, so open the joinable
+              events page to find the current week&rsquo;s session and reserve your spot.
+            </p>
 
-            {/* Booking box removed — Performance Training is no longer actively
-                scheduled, so the "Reserve Your Spot" journey led to an empty
-                PicklePlanner listing. Restore this block when sessions resume. */}
+            <div className="labs-secondary">
+              {PUNCH_CARD_URL ? (
+                <a
+                  href={PUNCH_CARD_URL}
+                  className="labs-punch-cta"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Purchase a Rally Skills Punch Card
+                </a>
+              ) : (
+                /* Rendered disabled rather than as a dead href, so nobody clicks
+                   through to nothing. Fill in PUNCH_CARD_URL to activate it. */
+                <button type="button" className="labs-punch-cta" disabled>
+                  Purchase a Rally Skills Punch Card
+                  <span className="labs-punch-soon">Coming soon</span>
+                </button>
+              )}
+            </div>
           </div>
         </section>
 
@@ -416,7 +466,7 @@ export default function RallyAcademy() {
           <h2 className="section-title-light">Frequently Asked Questions</h2>
           <div className="faq-grid">
             <div className="faq-column">
-              <h3 className="faq-column-title">Beginner Programs</h3>
+              <h3 className="faq-column-title">Rally Start</h3>
               <div className="faq-container">
                 {beginnersFaqData.map((faq, index) => (
                   <div key={index} className={`faq-item ${openBeginnerFaq === index ? 'open' : ''}`}>
@@ -432,13 +482,13 @@ export default function RallyAcademy() {
               </div>
             </div>
             <div className="faq-column">
-              <h3 className="faq-column-title">Performance Training</h3>
+              <h3 className="faq-column-title">Rally Labs</h3>
               <div className="faq-container">
-                {performanceFaqData.map((faq, index) => (
-                  <div key={index} className={`faq-item ${openPerformanceFaq === index ? 'open' : ''}`}>
-                    <button className="faq-question" onClick={() => togglePerformanceFaq(index)}>
+                {labsFaqData.map((faq, index) => (
+                  <div key={index} className={`faq-item ${openLabsFaq === index ? 'open' : ''}`}>
+                    <button className="faq-question" onClick={() => toggleLabsFaq(index)}>
                       <span>{faq.question}</span>
-                      <span className="faq-toggle">{openPerformanceFaq === index ? '−' : '+'}</span>
+                      <span className="faq-toggle">{openLabsFaq === index ? '−' : '+'}</span>
                     </button>
                     <div className="faq-answer">
                       <p>{faq.answer}</p>
@@ -456,13 +506,23 @@ export default function RallyAcademy() {
             <h2>Join Our Training – Let's Get You Better, Faster</h2>
             <p className="cta-reassurance">Beginner friendly. Zero judgment. Just improvement + fun.</p>
             <div className="cta-buttons">
-              <a href="https://square.link/u/k6oFr2Fw" className="cta-button primary" target="_blank" rel="noopener noreferrer">
-                <span className="cta-label">Beginner Programs</span>
-                <span className="cta-sublabel">$80 per 4 weeks</span>
+              <button
+                type="button"
+                className="cta-button primary cta-button-pill"
+                onClick={() => setWaitlistModalOpen(true)}
+              >
+                <span className="cta-label">Rally Start</span>
+                <span className="cta-sublabel">Join the waitlist</span>
+              </button>
+              <a
+                href={PICKLEPLANNER_JOINABLE_URL}
+                className="cta-button primary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="cta-label">Rally Labs</span>
+                <span className="cta-sublabel">Find this week&rsquo;s session</span>
               </a>
-              {/* Performance Training booking CTA removed — no longer actively
-                  scheduled, so this PicklePlanner event link had nothing to book.
-                  Restore alongside the booking box when sessions resume. */}
               <button
                 type="button"
                 className="cta-button primary cta-button-pill"
@@ -480,6 +540,108 @@ export default function RallyAcademy() {
           onClose={() => setPersonalModalOpen(false)}
           instructors={instructors}
         />
+
+        <RallyStartWaitlistModal
+          open={waitlistModalOpen}
+          onClose={() => setWaitlistModalOpen(false)}
+        />
+
+        {/* Coach bio lightbox */}
+        {activeCoach && (
+          <div className="coach-overlay" onClick={closeCoach}>
+            <div
+              className="coach-dialog"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="coach-dialog-name"
+              onClick={e => e.stopPropagation()}
+            >
+              <button
+                type="button"
+                className="coach-dialog-close"
+                onClick={closeCoach}
+                aria-label="Close"
+              >
+                &times;
+              </button>
+              {/* Only this region scrolls, so the close button and the pager
+                  stay reachable no matter how long a bio runs. */}
+              <div className="coach-dialog-scroll" ref={dialogScrollRef}>
+              <div className="coach-dialog-body">
+                <span className="coach-photo">
+                  {activeCoach.photo ? (
+                    <img src={activeCoach.photo} alt={`${activeCoach.name} headshot`} />
+                  ) : (
+                    <span className="coach-photo-fallback">{initialsFor(activeCoach.name)}</span>
+                  )}
+                </span>
+                <div className="coach-dialog-text">
+                  <h2 id="coach-dialog-name" className="coach-name">{activeCoach.name}</h2>
+                  <div className="coach-bio">
+                    {activeCoach.bio.map((para, i) => (
+                      <p key={i}>{para}</p>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Rates and availability are optional per coach — a coach without
+                  them simply shows the bio, rather than an empty panel. */}
+              {(activeCoach.rates?.length > 0 || activeCoach.availability?.length > 0) && (
+                <div className="coach-details">
+                  {activeCoach.rates?.length > 0 && (
+                    <div className="coach-panel">
+                      <h3 className="coach-panel-title">Lesson Rates</h3>
+                      <ul className="coach-rates">
+                        {activeCoach.rates.map(rate => (
+                          <li key={rate.people}>
+                            <span className="coach-rate-price">${rate.price}</span>
+                            <span className="coach-rate-unit">
+                              / hour for {rate.people} {rate.people === 1 ? 'person' : 'people'}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                      <p className="coach-panel-note">Rates include court fees.</p>
+                    </div>
+                  )}
+                  {activeCoach.availability?.length > 0 && (
+                    <div className="coach-panel">
+                      <h3 className="coach-panel-title">General Availability</h3>
+                      <dl className="coach-availability">
+                        {activeCoach.availability.map(slot => (
+                          <div key={slot.day} className="coach-avail-row">
+                            <dt>{slot.day}</dt>
+                            <dd>
+                              {slot.times.length > 0 ? (
+                                slot.times.map(time => <span key={time}>{time}</span>)
+                              ) : (
+                                <span className="coach-avail-none">Not available</span>
+                              )}
+                            </dd>
+                          </div>
+                        ))}
+                      </dl>
+                      <p className="coach-panel-note">A general guide — confirm exact times when you book.</p>
+                    </div>
+                  )}
+                </div>
+              )}
+              </div>
+              {coachCount > 1 && (
+                <div className="coach-dialog-nav">
+                  <button type="button" onClick={() => stepCoach(-1)} aria-label="Previous coach">
+                    &lsaquo;
+                  </button>
+                  <span className="coach-dialog-count">{activeIndex + 1} / {coachCount}</span>
+                  <button type="button" onClick={() => stepCoach(1)} aria-label="Next coach">
+                    &rsaquo;
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
 
         <SiteFooter />
       </div>
@@ -749,11 +911,12 @@ export default function RallyAcademy() {
           padding: 0.75rem 2.25rem;
         }
 
-        /* Beginner Section */
+        /* Rally Start Section */
         .beginner-section {
           padding: 3.25rem 2rem;
           background: var(--baseline-navy);
           color: white;
+          text-align: center;
         }
 
         .section-content {
@@ -761,227 +924,459 @@ export default function RallyAcademy() {
           margin: 0 auto;
         }
 
-        /* Curriculum */
-        .curriculum {
-          margin-bottom: 2.5rem;
-        }
-
-        .curriculum-title {
-          text-align: center;
-          font-size: 1.4rem;
-          margin-bottom: 1.25rem;
+        /* Narrower than .section-content so the paragraph keeps a readable
+           measure now that it is the only body copy in the section. */
+        .beginner-lede {
+          max-width: 640px;
+          margin: 0 auto 2rem;
           color: var(--concrete-light);
-        }
-
-        .curriculum-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 1.5rem;
-        }
-
-        .week-card {
-          background: rgba(255, 255, 255, 0.1);
-          padding: 1.5rem;
-          border-radius: 12px;
-          text-align: center;
-          backdrop-filter: blur(5px);
-        }
-
-        .week-number {
-          background: white;
-          color: var(--baseline-navy);
-          padding: 0.25rem 0.75rem;
-          border-radius: 20px;
-          font-size: 0.85rem;
-          font-weight: bold;
-          display: inline-block;
-          margin-bottom: 0.75rem;
-        }
-
-        .week-card h4 {
-          font-size: 1.1rem;
-          margin-bottom: 0.5rem;
-        }
-
-        .week-card p {
-          font-size: 0.9rem;
-          color: var(--concrete-light);
-        }
-
-        /* Selling Points */
-        .selling-points {
-          display: grid;
-          grid-template-columns: repeat(5, 1fr);
-          gap: 1.25rem;
-          margin-bottom: 2.5rem;
-        }
-
-        .selling-point {
-          text-align: center;
-        }
-
-        .selling-point strong {
-          display: block;
-          margin-bottom: 0.25rem;
-        }
-
-        .selling-point p {
-          font-size: 0.85rem;
-          color: var(--concrete-light);
-        }
-
-        /* Sign Up Box */
-        .signup-box {
-          background: rgba(255, 255, 255, 0.15);
-          padding: 2rem;
-          border-radius: 16px;
-          backdrop-filter: blur(5px);
-          max-width: 650px;
-          margin: 0 auto;
-          text-align: center;
-        }
-
-        .signup-box-header {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 1.5rem;
-          margin-bottom: 1.5rem;
-          padding-bottom: 1.5rem;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .signup-box-steps {
-          margin-bottom: 1.75rem;
-        }
-
-        .steps-title {
-          font-size: 1.1rem;
-          margin-bottom: 0.75rem;
-          color: white;
-        }
-
-        .instructions-list {
-          color: var(--concrete-light);
-          font-size: 1rem;
+          font-size: 1.05rem;
           line-height: 1.7;
-          margin: 0 auto;
-          text-align: left;
-          padding-left: 1.25rem;
-          display: inline-block;
         }
 
-        .instructions-list li {
-          margin-bottom: 0.4rem;
-          white-space: nowrap;
-        }
-
-        .price-box-amount {
-          font-size: 3rem;
-          font-weight: bold;
-        }
-
-        .price-box-details p {
-          margin: 0;
-        }
-
-        .urgency {
-          color: var(--rally-orange);
-          font-weight: bold;
-        }
-
-        .price-box-cta {
+        .beginner-waitlist-cta {
           background: white;
           color: var(--baseline-navy);
-          padding: 1rem 2rem;
-          border-radius: 8px;
-          text-decoration: none;
+          border: 0;
+          padding: 1rem 2.5rem;
+          border-radius: 999px;
+          font-family: inherit;
+          font-size: 1rem;
           font-weight: bold;
-          transition: all 0.3s ease;
+          cursor: pointer;
+          transition: background 0.3s ease;
         }
-
-        .price-box-cta:hover {
+        .beginner-waitlist-cta:hover {
           background: var(--concrete-light);
         }
 
-        /* Performance Section */
-        .performance-section {
+        /* Rally Labs Section */
+        .labs-section {
           padding: 3.25rem 2rem;
           background: var(--surface-alt);
         }
 
-        .schedule-box-dark {
-          background: rgba(255, 255, 255, 0.15);
-          padding: 1.25rem 3rem;
-          border-radius: 16px;
-          text-align: center;
-          backdrop-filter: blur(5px);
-          max-width: 300px;
+        .labs-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.5rem;
+          max-width: 800px;
           margin: 0 auto 2rem;
         }
 
-        .schedule-title-dark {
-          color: white;
-          font-size: 1.1rem;
-          margin-bottom: 1rem;
-          font-weight: 600;
-        }
-
-        .schedule-slot-single {
-          display: flex;
-          flex-direction: column;
-          gap: 0.25rem;
-        }
-
-        .slot-day-dark {
-          color: white;
-          font-weight: 600;
-          font-size: 1.05rem;
-        }
-
-        .slot-time-dark {
-          color: var(--concrete-light);
-          font-size: 0.95rem;
-        }
-
-        .included-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 1.5rem;
-          margin-bottom: 2rem;
-        }
-
-        .included-item {
+        .lab-card {
           background: white;
-          padding: 1.5rem;
+          padding: 1.75rem;
           border-radius: 12px;
           text-align: center;
           box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+          display: flex;
+          flex-direction: column;
         }
 
-        .included-item h4 {
+        .lab-name {
           color: var(--baseline-navy);
-          margin-bottom: 0.5rem;
+          font-size: 1.2rem;
+          margin-bottom: 0.75rem;
         }
 
-        .included-item p {
-          color: var(--muted);
+        /* Day and time stack rather than sharing a line — a pipe separator
+           breaks awkwardly at the card's narrow width. */
+        .lab-when {
+          display: flex;
+          flex-direction: column;
+          gap: 0.1rem;
+          margin-bottom: 0.75rem;
+        }
+        .lab-day {
+          font-weight: 600;
+          color: var(--baseline-navy);
+        }
+        .lab-time {
+          color: var(--accent-ink);
+          font-weight: 600;
           font-size: 0.95rem;
         }
 
-        .performance-points {
-          display: flex;
-          justify-content: center;
-          gap: 1.5rem;
-          flex-wrap: wrap;
+        .lab-who {
+          color: var(--muted);
+          font-size: 0.95rem;
+          margin-bottom: 1.5rem;
+          /* Pushes the CTA to the bottom so both cards' buttons line up even
+             when one description wraps to more lines. */
+          flex-grow: 1;
         }
 
-        .perf-point {
+        .lab-cta {
+          align-self: center;
+          background: var(--baseline-navy);
+          color: white;
+          padding: 0.75rem 1.75rem;
+          border-radius: 8px;
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 0.95rem;
+          transition: background 0.3s ease;
+        }
+        .lab-cta:hover {
+          background: var(--concrete);
+        }
+
+        .labs-note {
+          max-width: 640px;
+          margin: 0 auto 1.75rem;
+          text-align: center;
+          color: var(--muted);
+          font-size: 0.95rem;
+          line-height: 1.7;
+        }
+
+        .labs-secondary {
+          text-align: center;
+        }
+        .labs-punch-cta {
+          display: inline-flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.15rem;
+          background: transparent;
+          color: var(--baseline-navy);
+          border: 2px solid var(--baseline-navy);
+          padding: 0.7rem 1.75rem;
+          border-radius: 8px;
+          text-decoration: none;
+          font-family: inherit;
+          font-size: 0.95rem;
+          font-weight: bold;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        .labs-punch-cta:hover:not(:disabled) {
+          background: var(--baseline-navy);
+          color: white;
+        }
+        .labs-punch-cta:disabled {
+          border-color: var(--border);
+          color: var(--muted);
+          cursor: not-allowed;
+        }
+        .labs-punch-soon {
+          font-size: 0.72rem;
+          font-weight: 600;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: var(--muted);
+        }
+
+        /* Coach Gallery */
+        /* Shares the white background with .why-train directly above it, so a
+           hairline rule keeps the two headings from reading as one section. */
+        .coaches-section {
+          padding: 3.25rem 2rem;
           background: white;
-          padding: 0.75rem 1.5rem;
-          border-radius: 30px;
-          box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-          font-weight: 500;
+          border-top: 1px solid var(--border);
+        }
+
+        /* Gallery of photo tiles. The bios are the tall part of this roster, so
+           they live in the lightbox and the tiles stay on one screen. */
+        .coach-gallery {
+          max-width: 1000px;
+          margin: 2rem auto 0;
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 1.5rem;
+        }
+
+        .coach-tile {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.7rem;
+          background: none;
+          border: 0;
+          padding: 0.5rem;
+          border-radius: 12px;
+          font-family: inherit;
+          cursor: pointer;
+          transition: transform 0.2s ease;
+        }
+        .coach-tile:hover { transform: translateY(-4px); }
+        .coach-tile:hover .coach-photo { box-shadow: 0 12px 26px rgba(0,0,0,0.2); }
+        .coach-tile:hover .coach-tile-hint { color: var(--accent-ink); }
+        .coach-tile:focus-visible {
+          outline: 2px solid var(--rally-orange);
+          outline-offset: 3px;
+        }
+
+        .coach-tile-name {
+          font-size: 1.05rem;
+          font-weight: bold;
+          color: var(--baseline-navy);
+          line-height: 1.3;
+          text-align: center;
+        }
+        .coach-tile-hint {
+          font-size: 0.78rem;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: var(--muted);
+          transition: color 0.2s ease;
+        }
+
+        .coach-photo {
+          display: block;
+          width: 140px;
+          height: 140px;
+          border-radius: 50%;
+          overflow: hidden;
+          background: var(--concrete-light);
+          flex-shrink: 0;
+          transition: box-shadow 0.2s ease;
+        }
+        .coach-photo img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+        .coach-photo-fallback {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: var(--baseline-navy);
+          color: white;
+          font-size: 2.5rem;
+          font-weight: bold;
+          letter-spacing: 0.05em;
+        }
+
+        /* Bio lightbox */
+        .coach-overlay {
+          position: fixed;
+          inset: 0;
+          z-index: 1000;
+          background: rgba(24, 39, 65, 0.82);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 1.5rem;
+        }
+        /* Column layout so the dialog is only ever as tall as its content, up
+           to the viewport: the middle scrolls, the chrome stays put. dvh (not
+           vh) so a phone's collapsing address bar doesn't clip the pager. */
+        .coach-dialog {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          max-width: 820px;
+          max-height: calc(100vh - 3rem);
+          max-height: calc(100dvh - 3rem);
+          overflow: hidden;
+          background: white;
+          border-radius: 16px;
+          box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+        }
+        .coach-dialog-scroll {
+          overflow-y: auto;
+          padding: 2rem;
+          /* Keeps the heading clear of the close button. */
+          padding-right: 3rem;
+        }
+        .coach-dialog-close {
+          position: absolute;
+          top: 0.6rem;
+          right: 0.85rem;
+          z-index: 1;
+          background: none;
+          border: 0;
+          padding: 0.25rem;
+          font-size: 1.9rem;
+          line-height: 1;
+          color: var(--muted);
+          cursor: pointer;
+        }
+        .coach-dialog-close:hover { color: var(--baseline-navy); }
+
+        .coach-dialog-body {
+          display: flex;
+          align-items: flex-start;
+          gap: 1.5rem;
+        }
+        /* Descendant selector, not a modifier class — it has to outrank the
+           .coach-photo sizes set inside the breakpoints further down. */
+        .coach-dialog .coach-photo { width: 150px; height: 150px; }
+        .coach-dialog-text { min-width: 0; }
+
+        .coach-name {
+          font-size: 1.5rem;
+          font-weight: bold;
+          color: var(--baseline-navy);
+          margin-bottom: 0.75rem;
+        }
+        .coach-bio {
+          color: var(--baseline-navy);
+          line-height: 1.65;
+        }
+        .coach-bio p { margin-bottom: 0.85rem; }
+        .coach-bio p:last-child { margin-bottom: 0; }
+
+        /* Rates + availability sit below the bio at full dialog width, so the
+           two panels can run side by side instead of squeezing beside the photo. */
+        .coach-details {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+          margin-top: 1.5rem;
+        }
+        .coach-panel {
+          background: var(--surface-alt);
+          border-radius: 6px;
+          padding: 1.1rem 1.25rem;
+        }
+        .coach-panel-title {
+          font-size: 1rem;
+          font-weight: bold;
+          color: var(--baseline-navy);
+          margin-bottom: 0.75rem;
+        }
+        .coach-panel-note {
+          margin-top: 0.8rem;
+          padding-top: 0.6rem;
+          border-top: 1px solid var(--border);
+          font-size: 0.78rem;
+          line-height: 1.45;
+          color: var(--muted);
+        }
+
+        .coach-rates { list-style: none; }
+        .coach-rates li {
+          display: flex;
+          align-items: baseline;
+          flex-wrap: wrap;
+          gap: 0.35rem;
+          margin-bottom: 0.45rem;
+        }
+        .coach-rates li:last-child { margin-bottom: 0; }
+        .coach-rate-price {
+          font-size: 1.05rem;
+          font-weight: bold;
+          color: var(--baseline-navy);
+        }
+        .coach-rate-unit {
+          font-size: 0.88rem;
+          color: var(--muted);
+        }
+
+        .coach-avail-row {
+          display: flex;
+          gap: 0.75rem;
+          margin-bottom: 0.4rem;
+        }
+        .coach-avail-row:last-child { margin-bottom: 0; }
+        .coach-avail-row dt {
+          flex-shrink: 0;
+          min-width: 2.3rem;
+          padding-top: 0.12rem;
+          font-size: 0.75rem;
+          font-weight: 600;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          color: var(--baseline-navy);
+        }
+        /* Column, not a comma list — a coach with a morning and an evening
+           window reads as two distinct blocks, the way a schedule should. */
+        .coach-avail-row dd {
+          display: flex;
+          flex-direction: column;
+          gap: 0.1rem;
+          font-size: 0.88rem;
+          color: var(--ink);
+        }
+        .coach-avail-none { color: var(--muted); }
+
+        /* Pinned below the scroll area — you can always page without first
+           scrolling to the bottom of a long bio. */
+        .coach-dialog-nav {
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 1.25rem;
+          padding: 0.85rem 2rem;
+          border-top: 1px solid var(--border);
+          background: white;
+        }
+        .coach-dialog-nav button {
+          width: 40px;
+          height: 40px;
+          border: 0;
+          border-radius: 50%;
+          background: var(--surface-alt);
+          color: var(--baseline-navy);
+          font-size: 1.5rem;
+          line-height: 1;
+          font-family: inherit;
+          cursor: pointer;
+          transition: background 0.2s ease;
+        }
+        .coach-dialog-nav button:hover { background: var(--border); }
+        .coach-dialog-count {
+          font-size: 0.9rem;
+          color: var(--muted);
+        }
+
+        /* Coach responsive — the tile count per row steps down; tiles never
+           become full-width rows, which keeps the roster short on a phone.
+           Kept beside the coach rules rather than split across the page-wide
+           breakpoints below, since nothing else depends on these widths. */
+        @media (max-width: 1024px) {
+          .coach-gallery {
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 620px;
+          }
+        }
+        @media (max-width: 768px) {
+          .coaches-section { padding: 2.5rem 1.25rem; }
+          .coach-photo { width: 120px; height: 120px; }
+          .coach-photo-fallback { font-size: 2.1rem; }
+        }
+        @media (max-width: 560px) {
+          .coach-gallery {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            max-width: 400px;
+          }
+          .coach-photo { width: 110px; height: 110px; }
+          .coach-dialog-scroll { padding: 1.5rem; padding-right: 2.5rem; }
+          .coach-dialog-nav { padding: 0.75rem 1.5rem; }
+          .coach-dialog-body {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+          }
+          .coach-dialog .coach-photo { width: 120px; height: 120px; }
+          /* Side-by-side panels get too narrow for a time range to stay on
+             one line, so stack them once the dialog does. */
+          .coach-details { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+          .coach-tile-name { font-size: 0.98rem; }
+          .coach-name { font-size: 1.3rem; }
+        }
+
+        /* Short viewport (a laptop with a half-height window, landscape phone):
+           the headshot is the least essential thing on screen, so it yields
+           space before the bio and panels have to scroll. */
+        @media (max-height: 700px) {
+          .coach-dialog .coach-photo { width: 100px; height: 100px; }
+          .coach-dialog-scroll { padding: 1.5rem; padding-right: 2.5rem; }
+        }
+        @media (max-height: 560px) {
+          .coach-dialog .coach-photo { width: 76px; height: 76px; }
+          .coach-dialog-body { gap: 1rem; }
         }
 
         /* Why Train With Us */
@@ -1179,31 +1574,9 @@ export default function RallyAcademy() {
             grid-template-columns: 1fr;
           }
 
-          .curriculum-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-
-          .selling-points {
-            grid-template-columns: repeat(2, 1fr);
-          }
-
-          .signup-box-header {
-            flex-direction: column;
-            text-align: center;
-            gap: 1rem;
-          }
-
-          .instructions-list li {
-            white-space: normal;
-          }
-
-          .included-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-
-          .performance-points {
-            flex-direction: column;
-            align-items: center;
+          .labs-grid {
+            grid-template-columns: 1fr;
+            max-width: 420px;
           }
 
           .why-grid {
@@ -1224,18 +1597,6 @@ export default function RallyAcademy() {
         @media (max-width: 480px) {
           .academy-hero-title {
             font-size: 2rem;
-          }
-
-          .curriculum-grid {
-            grid-template-columns: 1fr;
-          }
-
-          .selling-points {
-            grid-template-columns: 1fr;
-          }
-
-          .included-grid {
-            grid-template-columns: 1fr;
           }
 
           .why-grid {

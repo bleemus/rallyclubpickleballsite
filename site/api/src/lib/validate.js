@@ -13,12 +13,18 @@ const FIELD_LIMITS = {
 
 const STATUSES = new Set(['New', 'Contacted', 'Scheduled', 'Closed', 'Spam']);
 
+// Which form a row came from. 'personal' is the 1:1 coaching request;
+// 'rally-start' is the beginner-program waitlist. Both share this table, the
+// anti-spam pipeline, and the admin dashboard.
+const REQUEST_TYPES = new Set(['personal', 'rally-start']);
+
 function s(v) {
   return typeof v === 'string' ? v.trim() : '';
 }
 
 function validateSubmission(body, allowedInstructorIds) {
   const errors = {};
+  const requestType = s(body.requestType) || 'personal';
   const name = s(body.name);
   const email = s(body.email).toLowerCase();
   const phone = s(body.phone);
@@ -28,6 +34,8 @@ function validateSubmission(body, allowedInstructorIds) {
   const goals = s(body.goals);
   const preferredTimes = s(body.preferredTimes);
   const notes = s(body.notes);
+
+  if (!REQUEST_TYPES.has(requestType)) errors.requestType = 'invalid';
 
   if (!name) errors.name = 'required';
   else if (name.length > FIELD_LIMITS.name) errors.name = 'too_long';
@@ -61,7 +69,7 @@ function validateSubmission(body, allowedInstructorIds) {
   return {
     ok: true,
     errors: null,
-    clean: { name, email, phone: phoneDigits, instructorId, duprOrSkill, goals, preferredTimes, notes }
+    clean: { requestType, name, email, phone: phoneDigits, instructorId, duprOrSkill, goals, preferredTimes, notes }
   };
 }
 
@@ -69,4 +77,4 @@ function validateStatus(status) {
   return STATUSES.has(status);
 }
 
-module.exports = { validateSubmission, validateStatus, STATUSES, FIELD_LIMITS };
+module.exports = { validateSubmission, validateStatus, STATUSES, REQUEST_TYPES, FIELD_LIMITS };
