@@ -470,7 +470,12 @@ export default function RallyStartWaitlistModal({ open, onClose }) {
           background: var(--surface-alt);
           border-radius: 6px;
         }
+        /* A legend is laid out on the fieldset's top edge, outside normal flow,
+           so the panel's padding-top can't push the checkboxes clear of it and
+           the two overlap. Floating it at full width puts it back in flow. */
         .rsw-fieldset legend {
+          float: left;
+          width: 100%;
           font-size: 0.85rem;
           font-weight: 600;
           color: var(--baseline-navy);
@@ -482,6 +487,7 @@ export default function RallyStartWaitlistModal({ open, onClose }) {
           color: var(--muted);
         }
         .rsw-checks {
+          clear: both;
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 0.4rem 0.75rem;

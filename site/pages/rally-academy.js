@@ -257,7 +257,6 @@ export default function RallyAcademy() {
                 Request Personal Training
               </button>
             </div>
-            <a href="#coaches" className="academy-hero-meet">Meet our coaches &rarr;</a>
           </div>
         </section>
 
@@ -434,9 +433,9 @@ export default function RallyAcademy() {
             </div>
 
             <p className="labs-note">
-              Both labs are led by Steve Horrell and booked through Joinable Events in
-              PicklePlanner. Sessions are posted a week at a time, so open the joinable
-              events page to find the current week&rsquo;s session and reserve your spot.
+              Sessions are posted a week at a time, so look for them in PicklePlanner
+              under Joinable Events to find the current week&rsquo;s session and reserve
+              your spot.
             </p>
 
             <div className="labs-secondary">
@@ -746,21 +745,6 @@ export default function RallyAcademy() {
 
         .academy-cta-button-pill:hover {
           box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28), 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .academy-hero-meet {
-          display: inline-block;
-          margin-top: 1.25rem;
-          color: var(--concrete-light);
-          text-decoration: none;
-          font-size: 0.95rem;
-          font-weight: 500;
-          border-bottom: 1px solid transparent;
-          transition: color 0.2s, border-color 0.2s;
-        }
-        .academy-hero-meet:hover {
-          color: white;
-          border-bottom-color: rgba(255, 255, 255, 0.6);
         }
 
         /* Section Titles */
