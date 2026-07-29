@@ -3,18 +3,27 @@ import { loadTurnstileScript, FALLBACK_TEST_SITE_KEY } from './turnstileClient';
 
 // Mirror site/api/src/lib/validate.js — keep these in sync.
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const FIELD_LIMITS = {
-  name: 100, email: 200, phone: 30, duprOrSkill: 50,
-  preferredTimes: 500, goals: 1000, notes: 1000
-};
+const FIELD_LIMITS = { name: 100, email: 200, phone: 30, duprOrSkill: 50, preferredTimes: 500, notes: 1000 };
+
+const SKILL_LEVELS = [
+  { value: 'Complete beginner', label: 'Complete beginner — never played' },
+  { value: 'Played a few times', label: 'Played a few times' }
+];
+
+// Order matters: the joined string is what an admin reads in the dashboard.
+const AVAILABILITY = [
+  'Weekday mornings',
+  'Weekday afternoons',
+  'Weekday evenings',
+  'Weekends'
+];
+
 const ERROR_MESSAGES = {
   name: { required: 'Please enter your name', too_long: 'Name is too long' },
   email: { required: 'Email is required', too_long: 'Email is too long', invalid: 'Enter a valid email address' },
   phone: { required: 'Phone is required', too_long: 'Phone number is too long', invalid: 'Enter a phone number with at least 10 digits' },
-  instructorId: { invalid: 'Please pick a valid instructor', too_long: 'Invalid selection' },
-  duprOrSkill: { required: 'Tell us your DUPR or skill level', too_long: 'Too long' },
-  preferredTimes: { required: 'Tell us your preferred days / times', too_long: 'Too long' },
-  goals: { too_long: 'Too long (max 1000 characters)' },
+  duprOrSkill: { required: 'Pick the option that fits you best', too_long: 'Too long' },
+  preferredTimes: { required: 'Pick at least one time that works for you', too_long: 'Too long' },
   notes: { too_long: 'Too long (max 1000 characters)' }
 };
 
@@ -43,13 +52,6 @@ function validateField(name, value) {
       if (!v) return 'required';
       if (v.length > FIELD_LIMITS.duprOrSkill) return 'too_long';
       return null;
-    case 'preferredTimes':
-      if (!v) return 'required';
-      if (v.length > FIELD_LIMITS.preferredTimes) return 'too_long';
-      return null;
-    case 'goals':
-      if (v.length > FIELD_LIMITS.goals) return 'too_long';
-      return null;
     case 'notes':
       if (v.length > FIELD_LIMITS.notes) return 'too_long';
       return null;
@@ -58,45 +60,25 @@ function validateField(name, value) {
   }
 }
 
-function validateAll(form) {
-  const errors = {};
-  for (const field of ['name', 'email', 'phone', 'duprOrSkill', 'preferredTimes', 'goals', 'notes']) {
-    const err = validateField(field, form[field]);
-    if (err) errors[field] = err;
-  }
-  return errors;
-}
+const EMPTY_FORM = { name: '', email: '', phone: '', duprOrSkill: '', notes: '', website: '' };
 
-export default function RequestTrainingModal({ open, onClose, instructors = [] }) {
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    instructorId: 'any',
-    duprOrSkill: '',
-    goals: '',
-    preferredTimes: '',
-    notes: '',
-    website: ''
-  });
+export default function RallyStartWaitlistModal({ open, onClose }) {
+  const [form, setForm] = useState(EMPTY_FORM);
+  const [availability, setAvailability] = useState([]);
   const [status, setStatus] = useState('form');
   const [errorMsg, setErrorMsg] = useState('');
   const [fieldErrors, setFieldErrors] = useState({});
   const [turnstileToken, setTurnstileToken] = useState('');
   const turnstileContainerRef = useRef(null);
   const turnstileWidgetIdRef = useRef(null);
-  const pageLoadAtRef = useRef(null);
+  const openedAtRef = useRef(null);
   const previousActiveRef = useRef(null);
-  const dialogRef = useRef(null);
 
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || FALLBACK_TEST_SITE_KEY;
-  const activeInstructors = instructors.filter(i => i && i.active !== false);
 
   const resetForm = useCallback(() => {
-    setForm({
-      name: '', email: '', phone: '', instructorId: 'any',
-      duprOrSkill: '', goals: '', preferredTimes: '', notes: '', website: ''
-    });
+    setForm(EMPTY_FORM);
+    setAvailability([]);
     setStatus('form');
     setErrorMsg('');
     setFieldErrors({});
@@ -106,11 +88,11 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
   useEffect(() => {
     if (!open) return undefined;
 
-    pageLoadAtRef.current = Date.now();
+    openedAtRef.current = Date.now();
     previousActiveRef.current = document.activeElement;
     document.body.style.overflow = 'hidden';
 
-    const onKey = (e) => {
+    const onKey = e => {
       if (e.key === 'Escape') onClose();
     };
     document.addEventListener('keydown', onKey);
@@ -139,7 +121,7 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
       try {
         turnstileWidgetIdRef.current = window.turnstile.render(turnstileContainerRef.current, {
           sitekey: siteKey,
-          callback: (token) => setTurnstileToken(token),
+          callback: token => setTurnstileToken(token),
           'error-callback': () => setTurnstileToken(''),
           'expired-callback': () => setTurnstileToken('')
         });
@@ -152,22 +134,35 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
 
   if (!open) return null;
 
-  const onChange = (e) => {
+  const onChange = e => {
     const { name, value } = e.target;
     setForm(prev => ({ ...prev, [name]: value }));
     if (fieldErrors[name]) setFieldErrors(prev => ({ ...prev, [name]: undefined }));
   };
 
-  const onBlur = (e) => {
+  const onBlur = e => {
     const { name, value } = e.target;
     const err = validateField(name, value);
     setFieldErrors(prev => ({ ...prev, [name]: err || undefined }));
   };
 
-  const onSubmit = async (e) => {
+  const toggleAvailability = option => {
+    setAvailability(prev => (prev.includes(option) ? prev.filter(o => o !== option) : [...prev, option]));
+    if (fieldErrors.preferredTimes) setFieldErrors(prev => ({ ...prev, preferredTimes: undefined }));
+  };
+
+  const onSubmit = async e => {
     e.preventDefault();
 
-    const clientErrors = validateAll(form);
+    const clientErrors = {};
+    for (const field of ['name', 'email', 'phone', 'duprOrSkill', 'notes']) {
+      const err = validateField(field, form[field]);
+      if (err) clientErrors[field] = err;
+    }
+    // Checkbox group, so it can't use validateField — the server sees it as
+    // preferredTimes, which is the key any server-side error comes back under.
+    if (availability.length === 0) clientErrors.preferredTimes = 'required';
+
     if (Object.keys(clientErrors).length > 0) {
       setFieldErrors(clientErrors);
       setErrorMsg('Please correct the highlighted fields and try again.');
@@ -178,8 +173,21 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
     setErrorMsg('');
     setFieldErrors({});
 
-    const elapsedMs = pageLoadAtRef.current ? Date.now() - pageLoadAtRef.current : 0;
-    const payload = { ...form, requestType: 'personal', elapsedMs, turnstileToken };
+    const elapsedMs = openedAtRef.current ? Date.now() - openedAtRef.current : 0;
+    const payload = {
+      requestType: 'rally-start',
+      name: form.name,
+      email: form.email,
+      phone: form.phone,
+      instructorId: 'any',
+      duprOrSkill: form.duprOrSkill,
+      preferredTimes: availability.join(', '),
+      goals: '',
+      notes: form.notes,
+      website: form.website,
+      elapsedMs,
+      turnstileToken
+    };
 
     try {
       const res = await fetch('/api/training-requests', {
@@ -214,34 +222,40 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
         return;
       }
       setStatus('form');
-      setErrorMsg("Something went wrong on our end. Please try again in a moment.");
+      setErrorMsg('Something went wrong on our end. Please try again in a moment.');
     } catch {
       setStatus('form');
       setErrorMsg("We couldn't reach the server. Please check your connection and try again.");
     }
   };
 
-  const onBackdropClick = (e) => {
+  const onBackdropClick = e => {
     if (e.target === e.currentTarget) onClose();
   };
 
   const submitDisabled = status === 'submitting' || !turnstileToken;
 
   return (
-    <div className="ptm-backdrop" onMouseDown={onBackdropClick} role="dialog" aria-modal="true" aria-labelledby="ptm-title">
-      <div className="ptm-dialog" ref={dialogRef}>
-        <button className="ptm-close" type="button" aria-label="Close" onClick={onClose}>×</button>
+    <div className="rsw-backdrop" onMouseDown={onBackdropClick} role="dialog" aria-modal="true" aria-labelledby="rsw-title">
+      <div className="rsw-dialog">
+        <button className="rsw-close" type="button" aria-label="Close" onClick={onClose}>×</button>
 
         {status === 'success' ? (
-          <div className="ptm-success">
-            <h2 id="ptm-title">Request Sent</h2>
-            <p>Thanks! We'll be in touch within 1–2 business days to schedule your session.</p>
-            <button type="button" className="ptm-primary-btn" onClick={onClose}>Close</button>
+          <div className="rsw-success">
+            <h2 id="rsw-title">You&rsquo;re on the list</h2>
+            <p>
+              Thanks! We&rsquo;ll email you as soon as we have enough players to form the next
+              Rally Start group, with the dates and times we land on.
+            </p>
+            <button type="button" className="rsw-primary-btn" onClick={onClose}>Close</button>
           </div>
         ) : (
           <>
-            <h2 id="ptm-title">Request Personal Training</h2>
-            <p className="ptm-lede">Tell us a little about you and we'll match you with a coach.</p>
+            <h2 id="rsw-title">Join the Rally Start Waitlist</h2>
+            <p className="rsw-lede">
+              No class is scheduled yet — we form a group once enough beginners sign up.
+              Tell us when you&rsquo;re free and we&rsquo;ll build the schedule around it.
+            </p>
 
             <form onSubmit={onSubmit} noValidate>
               <input
@@ -251,73 +265,73 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
                 autoComplete="off"
                 value={form.website}
                 onChange={onChange}
-                className="ptm-honeypot"
+                className="rsw-honeypot"
                 aria-hidden="true"
               />
 
-              <div className="ptm-row">
-                <label className="ptm-field">
+              <div className="rsw-row">
+                <label className="rsw-field">
                   <span>Name <em>*</em></span>
                   <input name="name" type="text" required maxLength={100} value={form.name} onChange={onChange} onBlur={onBlur} disabled={status === 'submitting'} aria-invalid={!!fieldErrors.name} />
-                  {fieldErrors.name && <small className="ptm-err">{errorText('name', fieldErrors.name)}</small>}
+                  {fieldErrors.name && <small className="rsw-err">{errorText('name', fieldErrors.name)}</small>}
                 </label>
-                <label className="ptm-field">
+                <label className="rsw-field">
                   <span>Email <em>*</em></span>
                   <input name="email" type="email" required maxLength={200} value={form.email} onChange={onChange} onBlur={onBlur} disabled={status === 'submitting'} aria-invalid={!!fieldErrors.email} />
-                  {fieldErrors.email && <small className="ptm-err">{errorText('email', fieldErrors.email)}</small>}
+                  {fieldErrors.email && <small className="rsw-err">{errorText('email', fieldErrors.email)}</small>}
                 </label>
               </div>
 
-              <div className="ptm-row">
-                <label className="ptm-field">
+              <div className="rsw-row">
+                <label className="rsw-field">
                   <span>Phone <em>*</em></span>
                   <input name="phone" type="tel" required maxLength={30} value={form.phone} onChange={onChange} onBlur={onBlur} disabled={status === 'submitting'} placeholder="(555) 555-5555" aria-invalid={!!fieldErrors.phone} />
-                  {fieldErrors.phone && <small className="ptm-err">{errorText('phone', fieldErrors.phone)}</small>}
+                  {fieldErrors.phone && <small className="rsw-err">{errorText('phone', fieldErrors.phone)}</small>}
                 </label>
-                <label className="ptm-field">
-                  <span>Instructor</span>
-                  <select name="instructorId" value={form.instructorId} onChange={onChange} disabled={status === 'submitting'}>
-                    <option value="any">Any trainer</option>
-                    {activeInstructors.map(i => (
-                      <option key={i.id} value={i.id}>{i.name}</option>
+                <label className="rsw-field">
+                  <span>Skill level <em>*</em></span>
+                  <select name="duprOrSkill" value={form.duprOrSkill} onChange={onChange} onBlur={onBlur} disabled={status === 'submitting'} aria-invalid={!!fieldErrors.duprOrSkill}>
+                    <option value="">Select one…</option>
+                    {SKILL_LEVELS.map(level => (
+                      <option key={level.value} value={level.value}>{level.label}</option>
                     ))}
                   </select>
-                  {fieldErrors.instructorId && <small className="ptm-err">{errorText('instructorId', fieldErrors.instructorId)}</small>}
+                  {fieldErrors.duprOrSkill && <small className="rsw-err">{errorText('duprOrSkill', fieldErrors.duprOrSkill)}</small>}
                 </label>
               </div>
 
-              <label className="ptm-field">
-                <span>DUPR / Skill level <em>*</em></span>
-                <input name="duprOrSkill" type="text" required maxLength={50} value={form.duprOrSkill} onChange={onChange} onBlur={onBlur} disabled={status === 'submitting'} placeholder="e.g. 3.5 or 'beginner'" aria-invalid={!!fieldErrors.duprOrSkill} />
-                {fieldErrors.duprOrSkill && <small className="ptm-err">{errorText('duprOrSkill', fieldErrors.duprOrSkill)}</small>}
-              </label>
+              <fieldset className="rsw-fieldset" aria-invalid={!!fieldErrors.preferredTimes}>
+                <legend>When could you play? <em>*</em> <span className="rsw-hint">Pick all that work</span></legend>
+                <div className="rsw-checks">
+                  {AVAILABILITY.map(option => (
+                    <label key={option} className="rsw-check">
+                      <input
+                        type="checkbox"
+                        checked={availability.includes(option)}
+                        onChange={() => toggleAvailability(option)}
+                        disabled={status === 'submitting'}
+                      />
+                      <span>{option}</span>
+                    </label>
+                  ))}
+                </div>
+                {fieldErrors.preferredTimes && <small className="rsw-err">{errorText('preferredTimes', fieldErrors.preferredTimes)}</small>}
+              </fieldset>
 
-              <label className="ptm-field">
-                <span>Preferred days / times <em>*</em></span>
-                <textarea name="preferredTimes" rows={2} maxLength={500} value={form.preferredTimes} onChange={onChange} onBlur={onBlur} disabled={status === 'submitting'} placeholder="e.g. weekday mornings, Wed evenings" aria-invalid={!!fieldErrors.preferredTimes} />
-                {fieldErrors.preferredTimes && <small className="ptm-err">{errorText('preferredTimes', fieldErrors.preferredTimes)}</small>}
-              </label>
-
-              <label className="ptm-field">
-                <span>Goals (optional)</span>
-                <textarea name="goals" rows={2} maxLength={1000} value={form.goals} onChange={onChange} onBlur={onBlur} disabled={status === 'submitting'} placeholder="What do you want to work on?" />
-                {fieldErrors.goals && <small className="ptm-err">{errorText('goals', fieldErrors.goals)}</small>}
-              </label>
-
-              <label className="ptm-field">
+              <label className="rsw-field">
                 <span>Anything else you&rsquo;d like us to know? (optional)</span>
                 <textarea name="notes" rows={2} maxLength={1000} value={form.notes} onChange={onChange} onBlur={onBlur} disabled={status === 'submitting'} />
-                {fieldErrors.notes && <small className="ptm-err">{errorText('notes', fieldErrors.notes)}</small>}
+                {fieldErrors.notes && <small className="rsw-err">{errorText('notes', fieldErrors.notes)}</small>}
               </label>
 
-              <div className="ptm-turnstile" ref={turnstileContainerRef} />
+              <div className="rsw-turnstile" ref={turnstileContainerRef} />
 
-              {errorMsg && <div className="ptm-error-banner">{errorMsg}</div>}
+              {errorMsg && <div className="rsw-error-banner">{errorMsg}</div>}
 
-              <div className="ptm-actions">
-                <button type="button" className="ptm-secondary-btn" onClick={onClose} disabled={status === 'submitting'}>Cancel</button>
-                <button type="submit" className="ptm-primary-btn" disabled={submitDisabled}>
-                  {status === 'submitting' ? 'Sending…' : 'Send Request'}
+              <div className="rsw-actions">
+                <button type="button" className="rsw-secondary-btn" onClick={onClose} disabled={status === 'submitting'}>Cancel</button>
+                <button type="submit" className="rsw-primary-btn" disabled={submitDisabled}>
+                  {status === 'submitting' ? 'Sending…' : 'Join the Waitlist'}
                 </button>
               </div>
             </form>
@@ -326,7 +340,7 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
       </div>
 
       <style jsx>{`
-        .ptm-backdrop {
+        .rsw-backdrop {
           position: fixed;
           inset: 0;
           background: rgba(15, 23, 42, 0.65);
@@ -337,7 +351,7 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
           padding: 1rem;
           overflow-y: auto;
         }
-        .ptm-dialog {
+        .rsw-dialog {
           background: white;
           color: var(--baseline-navy);
           border-radius: 16px;
@@ -347,9 +361,10 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
           position: relative;
           box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
           max-height: calc(100vh - 2rem);
+          max-height: calc(100dvh - 2rem);
           overflow-y: auto;
         }
-        .ptm-close {
+        .rsw-close {
           position: absolute;
           top: 0.75rem;
           right: 0.75rem;
@@ -362,7 +377,7 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
           padding: 0.25rem 0.5rem;
           border-radius: 6px;
         }
-        .ptm-close:hover {
+        .rsw-close:hover {
           background: var(--concrete-light);
           color: var(--baseline-navy);
         }
@@ -371,42 +386,43 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
           color: var(--baseline-navy);
           margin-bottom: 0.25rem;
         }
-        .ptm-lede {
+        .rsw-lede {
           color: var(--concrete);
           margin-bottom: 1.25rem;
           font-size: 0.95rem;
         }
-        .ptm-honeypot {
+        .rsw-honeypot {
           position: absolute;
           left: -9999px;
           width: 1px;
           height: 1px;
           opacity: 0;
         }
-        .ptm-row {
+        .rsw-row {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 0.75rem;
           margin-bottom: 0.75rem;
         }
-        .ptm-field {
+        .rsw-field {
           display: block;
           margin-bottom: 0.75rem;
         }
-        .ptm-field span {
+        .rsw-field span {
           display: block;
           font-size: 0.85rem;
           font-weight: 600;
           color: var(--baseline-navy);
           margin-bottom: 0.25rem;
         }
-        .ptm-field em {
+        .rsw-field em,
+        .rsw-fieldset em {
           color: var(--rally-orange);
           font-style: normal;
         }
-        .ptm-field input,
-        .ptm-field select,
-        .ptm-field textarea {
+        .rsw-field input,
+        .rsw-field select,
+        .rsw-field textarea {
           width: 100%;
           padding: 0.6rem 0.75rem;
           border: 1px solid var(--concrete-light);
@@ -417,7 +433,7 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
           background: white;
           box-sizing: border-box;
         }
-        .ptm-field select {
+        .rsw-field select {
           appearance: none;
           -webkit-appearance: none;
           -moz-appearance: none;
@@ -427,38 +443,81 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
           background-position: right 0.75rem center;
           background-size: 0.7rem auto;
         }
-        .ptm-field textarea {
+        .rsw-field textarea {
           resize: vertical;
           min-height: 60px;
           font-family: inherit;
         }
-        .ptm-field input:focus,
-        .ptm-field select:focus,
-        .ptm-field textarea:focus {
+        .rsw-field input:focus,
+        .rsw-field select:focus,
+        .rsw-field textarea:focus {
           outline: none;
           border-color: var(--baseline-navy);
           box-shadow: 0 0 0 3px rgba(71, 85, 105, 0.15);
         }
-        .ptm-field input[aria-invalid="true"],
-        .ptm-field textarea[aria-invalid="true"] {
+        .rsw-field input[aria-invalid="true"],
+        .rsw-field select[aria-invalid="true"],
+        .rsw-field textarea[aria-invalid="true"] {
           border-color: var(--danger);
         }
-        .ptm-field input[aria-invalid="true"]:focus,
-        .ptm-field textarea[aria-invalid="true"]:focus {
-          border-color: var(--danger);
-          box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+
+        /* Availability group — a surface-alt panel rather than a bare list, so
+           the four options read as one answer to one question. */
+        .rsw-fieldset {
+          border: 0;
+          margin-bottom: 0.75rem;
+          padding: 0.85rem 1rem 0.9rem;
+          background: var(--surface-alt);
+          border-radius: 6px;
         }
-        .ptm-err {
+        /* A legend is laid out on the fieldset's top edge, outside normal flow,
+           so the panel's padding-top can't push the checkboxes clear of it and
+           the two overlap. Floating it at full width puts it back in flow. */
+        .rsw-fieldset legend {
+          float: left;
+          width: 100%;
+          font-size: 0.85rem;
+          font-weight: 600;
+          color: var(--baseline-navy);
+          padding: 0;
+          margin-bottom: 0.5rem;
+        }
+        .rsw-hint {
+          font-weight: 400;
+          color: var(--muted);
+        }
+        .rsw-checks {
+          clear: both;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 0.4rem 0.75rem;
+        }
+        .rsw-check {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-size: 0.92rem;
+          cursor: pointer;
+        }
+        .rsw-check input {
+          width: 1rem;
+          height: 1rem;
+          accent-color: var(--rally-orange);
+          cursor: pointer;
+          flex-shrink: 0;
+        }
+
+        .rsw-err {
           display: block;
           color: var(--danger);
           font-size: 0.8rem;
           margin-top: 0.25rem;
         }
-        .ptm-turnstile {
+        .rsw-turnstile {
           margin: 0.75rem 0 0.5rem;
           min-height: 65px;
         }
-        .ptm-error-banner {
+        .rsw-error-banner {
           background: var(--danger-bg);
           color: var(--danger);
           border: 1px solid var(--danger-border);
@@ -467,13 +526,13 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
           margin-bottom: 0.75rem;
           font-size: 0.9rem;
         }
-        .ptm-actions {
+        .rsw-actions {
           display: flex;
           gap: 0.75rem;
           justify-content: flex-end;
           margin-top: 0.5rem;
         }
-        .ptm-primary-btn {
+        .rsw-primary-btn {
           background: var(--baseline-navy);
           color: white;
           border: none;
@@ -483,14 +542,11 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
           cursor: pointer;
           font-size: 1rem;
         }
-        .ptm-primary-btn:hover:not(:disabled) {
-          background: var(--baseline-navy);
-        }
-        .ptm-primary-btn:disabled {
+        .rsw-primary-btn:disabled {
           background: var(--concrete);
           cursor: not-allowed;
         }
-        .ptm-secondary-btn {
+        .rsw-secondary-btn {
           background: white;
           color: var(--baseline-navy);
           border: 1px solid var(--concrete-light);
@@ -500,35 +556,39 @@ export default function RequestTrainingModal({ open, onClose, instructors = [] }
           cursor: pointer;
           font-size: 1rem;
         }
-        .ptm-secondary-btn:hover:not(:disabled) {
+        .rsw-secondary-btn:hover:not(:disabled) {
           background: var(--concrete-light);
         }
-        .ptm-success {
+        .rsw-success {
           text-align: center;
           padding: 1rem 0;
         }
-        .ptm-success h2 {
+        .rsw-success h2 {
           margin-bottom: 0.75rem;
         }
-        .ptm-success p {
+        .rsw-success p {
           color: var(--baseline-navy);
           margin-bottom: 1.5rem;
         }
         @media (max-width: 600px) {
-          .ptm-backdrop {
+          .rsw-backdrop {
             padding: 0;
             align-items: stretch;
           }
-          .ptm-dialog {
+          .rsw-dialog {
             border-radius: 0;
             max-height: 100vh;
+            max-height: 100dvh;
             max-width: 100%;
             padding: 1.25rem 1rem;
           }
-          .ptm-row {
+          .rsw-row {
             grid-template-columns: 1fr;
             gap: 0;
             margin-bottom: 0;
+          }
+          .rsw-checks {
+            grid-template-columns: 1fr;
           }
           h2 {
             font-size: 1.25rem;

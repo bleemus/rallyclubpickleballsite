@@ -98,6 +98,140 @@
   max-width: 100%;
 }
 
+/* Wellness Program Access (Wellhub, Silver&Fit / Active&Fit).
+   Mirrors the A-List Seniors section's layout so the two read as a pair.
+   Wellhub carries .featuredProgram — the same orange-border treatment
+   .membershipCard.featured uses — because it is the priority promotion.
+
+   This is the one navy band in the page's white / surface-alt alternation.
+   Membership above it is white, A-List Seniors below it is surface-alt, so the
+   dark break both separates two otherwise-adjacent light sections and marks
+   this as the section worth stopping on. The cards stay white and keep their
+   dark body copy; only the section title and intro flip to light. */
+.wellnessSection {
+  padding: 3rem 2rem;
+  background: var(--baseline-navy);
+}
+
+.wellnessSection .sectionTitle {
+  color: var(--court-white);
+}
+
+.wellnessIntro {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.wellnessIntro p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.6;
+}
+
+.wellnessGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Deeper shadow than the light sections use — the stock 0.08 lift is invisible
+   against navy. */
+.wellnessCard {
+  position: relative;
+  background: var(--surface);
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.28);
+}
+
+.wellnessCard.featuredProgram {
+  border: 2px solid var(--rally-orange);
+}
+
+/* Flat eyebrow rather than the rotated pill the membership cards use — those
+   sit above a text title, whereas this sits above a wide partner wordmark in
+   its own brand pink, which a filled orange badge fights with. */
+.wellnessBadge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  margin-bottom: 0.85rem;
+}
+
+/* Holds a partner wordmark, optionally followed by text the mark doesn't
+   cover (e.g. "/ Active&Fit"). Flex keeps the two optically aligned; the
+   img is block so it contributes no inline baseline gap. */
+.wellnessTitle {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.wellnessTitle img {
+  display: block;
+}
+
+.titleSep {
+  color: var(--border);
+  font-weight: 400;
+}
+
+/* Partner wordmarks double as links out to each program's own site. Block so
+   the anchor contributes no inline baseline gap around the img. */
+.wellnessLogoLink {
+  display: block;
+  transition: opacity 0.2s;
+}
+
+.wellnessLogoLink:hover {
+  opacity: 0.7;
+}
+
+.wellnessCard p {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0 0 0.65rem;
+}
+
+.wellnessCard p:last-child {
+  margin-bottom: 0;
+}
+
+.wellnessCard .wellnessHelp {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* CTA centered on its own row at the foot of the card. The preceding <p> keeps
+   its own bottom margin once it is no longer :last-child, so this only tops up
+   the gap to the copy above. */
+.wellnessCta {
+  text-align: center;
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .wellnessSection {
+    padding: 2rem 1rem;
+  }
+
+  .wellnessCard {
+    padding: 1.25rem;
+  }
+}
+
 /* A-List Seniors Section */
 .specialProgramsSection {
   padding: 3rem 2rem;
@@ -116,11 +250,13 @@
   line-height: 1.6;
 }
 
+/* Padding matches the .seniorProgramCard boxes directly below it — this sits in
+   the same column at the same width, so a heavier inset read as misaligned. */
 .specialProgramsPricing {
   max-width: 800px;
   margin: 0 auto 2.5rem;
   background: white;
-  padding: 2rem;
+  padding: 1.25rem 1.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
@@ -128,8 +264,19 @@
 .specialProgramsPricing h3 {
   text-align: center;
   font-size: 1.3rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   color: var(--ink);
+}
+
+/* .membershipSummary carries its own 0 1rem inset for use inside the membership
+   cards; here it would double up on the box's padding. */
+.specialProgramsPricing .membershipSummary {
+  padding: 0;
+  margin-bottom: 0.75rem;
+}
+
+.specialProgramsPricing .membershipSummary:last-child {
+  margin-bottom: 0;
 }
 
 .seniorProgramsGrid {
@@ -235,7 +382,9 @@
   opacity: 1;
 }
 
-.signupFeeNote {
+/* Mobile fallback for a .tooltip asterisk — hidden while hover works, shown
+   under 768px where .tooltip::after is disabled. */
+.tierFootnote {
   display: none;
   font-size: 0.8rem;
   color: var(--muted);
@@ -244,7 +393,7 @@
 }
 
 @media (max-width: 768px) {
-  .signupFeeNote {
+  .tierFootnote {
     display: block;
   }
 
@@ -349,6 +498,89 @@
 
 .rateItem.baseRate .ratePrice {
   color: var(--concrete);
+}
+
+/* A-List membership tiers (Monthly / Annual / Family).
+   Matches the two-up price row this replaced: bare columns separated by hairline
+   rules, not panels. Keep .membershipCard at exactly 5 in-flow children — it is
+   `grid-template-rows: subgrid` with `grid-row: span 5`, so an extra child breaks
+   row alignment across both cards. */
+.aListTiers {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.aListTier {
+  text-align: center;
+}
+
+.tierDivider {
+  height: 5rem;
+  width: 1px;
+  background: var(--border);
+  align-self: center;
+}
+
+.aListTierLabel {
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.aListTier .price {
+  font-size: 2.1rem;
+}
+
+.aListTier .period {
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .tierDivider {
+    display: none;
+  }
+
+  .aListTiers {
+    gap: 0.75rem 1.5rem;
+  }
+
+  .aListTier .price {
+    font-size: 1.8rem;
+  }
+}
+
+.promoNote {
+  font-size: 0.72rem;
+  color: var(--azure-ink);
+  font-weight: 600;
+  margin-top: 0.35rem;
+}
+
+.promoWas {
+  text-decoration: line-through;
+  color: var(--muted);
+  font-weight: 400;
+  margin-right: 0.2rem;
+}
+
+/* Sole content of the Rally Reserve details, so it keeps panel presence and
+   matches .rateItem's treatment. */
+.bookingWindowNote {
+  font-size: 0.85rem;
+  color: var(--muted);
+  padding: 0.75rem 1rem;
+  background: var(--surface-alt);
+  border-radius: 6px;
+  line-height: 1.45;
+}
+
+.bookingWindowNote strong {
+  color: var(--ink);
 }
 
 /* Membership badges */

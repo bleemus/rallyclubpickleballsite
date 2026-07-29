@@ -12,6 +12,18 @@ export default function Home() {
   const [insideIndex, setInsideIndex] = useState(0);
   const [outsideIndex, setOutsideIndex] = useState(0);
 
+  // Promotional pricing that auto-expires on the visitor's clock. This is a static export,
+  // so the promo checks must run client-side (in useEffect) to react to the date passing
+  // WITHOUT a rebuild. Initial state assumes promos are active so the build-time HTML matches
+  // the first client render (no hydration mismatch); useEffect then corrects it if a promo
+  // window has closed. To change a price or window, edit the constants in the effect below.
+  const [pricing, setPricing] = useState({
+    monthlyPrice: 25,
+    monthlyPromo: true,
+    reservePromo: true,
+    priceLock: true,
+  });
+
   const insideImages = ['/inside1.jpg', '/inside2.jpg', '/inside3.jpg'];
   const outsideImages = ['/outside1.jpg', '/outside2.jpg'];
 
@@ -30,6 +42,21 @@ export default function Home() {
       setOutsideIndex((prev) => (prev + 1) % outsideImages.length);
     }, 5000);
     return () => clearInterval(timer);
+  }, []);
+
+  // Recompute promo status against the visitor's current date. Runs client-side only, so
+  // promos expire on their own without a redeploy. Update these two dates to reprice.
+  useEffect(() => {
+    const now = new Date();
+    const MONTHLY_PROMO_END = new Date(2026, 8, 1); // Sep 1, 2026 — A-List monthly ($25) & Rally Reserve ($20/hr) run "through August"
+    const PRICE_LOCK_END = new Date(2027, 7, 1);    // Aug 1, 2027 — A-List annual ($275) & family ($500) run "through next July"
+    const monthlyPromo = now < MONTHLY_PROMO_END;
+    setPricing({
+      monthlyPrice: monthlyPromo ? 25 : 35, // reverts to $35 once the promo ends
+      monthlyPromo,
+      reservePromo: now < MONTHLY_PROMO_END,
+      priceLock: now < PRICE_LOCK_END,
+    });
   }, []);
 
   const toggleFaq = (index) => {
@@ -89,7 +116,6 @@ export default function Home() {
               "name": "Rally Club Pickleball",
               "description": "Indoor pickleball facility in Glen Carbon, IL with 24/7 access",
               "url": "https://www.rallyclubpickleball.com",
-              "telephone": "(618) 931-0015",
               "email": "rally.club618@gmail.com",
               "address": {
                 "@type": "PostalAddress",
@@ -200,68 +226,87 @@ export default function Home() {
               <div className={styles.bestValueBadge}>BEST VALUE</div>
               <h3 className={styles.membershipTitle}>A-List</h3>
               <div className={styles.membershipPrice}>
-                <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', alignItems: 'flex-end', flexWrap: 'wrap' }}>
-                  <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.9rem', color: 'var(--muted)', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}>Monthly</div>
-                    <div className={styles.tooltip} data-tip="$20 one-time sign-up fee">
-                      <span className={styles.price}>$35</span>
-                      <span className={styles.period}>/mo*</span>
+                <div className={styles.aListTiers}>
+                  <div className={styles.aListTier}>
+                    <div className={styles.aListTierLabel}>Monthly</div>
+                    <div>
+                      {/* PROMO (expires Aug 2026): monthly is $25/mo "through August", then reverts to $35. Controlled by MONTHLY_PROMO_END in the pricing useEffect. */}
+                      <span className={styles.price}>${pricing.monthlyPrice}</span>
+                      <span className={styles.period}>/mo</span>
                     </div>
+                    {pricing.monthlyPromo && (
+                      <div className={styles.promoNote}><span className={styles.promoWas}>$35</span> promo thru Aug</div>
+                    )}
                   </div>
-                  <div style={{ height: '5rem', width: '1px', background: 'var(--border)', alignSelf: 'center' }}></div>
-                  <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.9rem', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}><span style={{ color: 'var(--muted)' }}>Annual</span> <span style={{ color: 'var(--azure-ink)' }}>&middot; Save 17%</span></div>
-                    <div className={styles.tooltip} data-tip="$20 one-time sign-up fee">
-                      <span className={styles.price}>$350</span>
+                  <div className={styles.tierDivider}></div>
+                  <div className={styles.aListTier}>
+                    <div className={styles.aListTierLabel}>Annual</div>
+                    <div>
+                      {/* PROMO (expires Jul 2027): annual is $275 "through next July". Controlled by PRICE_LOCK_END in the pricing useEffect. */}
+                      <span className={styles.price}>$275</span>
+                      <span className={styles.period}>/yr</span>
+                    </div>
+                    {pricing.priceLock && (
+                      <div className={styles.promoNote}>rate thru Jul 2027</div>
+                    )}
+                  </div>
+                  <div className={styles.tierDivider}></div>
+                  <div className={styles.aListTier}>
+                    <div className={styles.aListTierLabel}>Family</div>
+                    <div className={styles.tooltip} data-tip="Up to 3 adults, same household">
+                      {/* PROMO (expires Jul 2027): family is $500 "through next July". Controlled by PRICE_LOCK_END in the pricing useEffect. */}
+                      <span className={styles.price}>$500</span>
                       <span className={styles.period}>/yr*</span>
                     </div>
+                    {pricing.priceLock && (
+                      <div className={styles.promoNote}>rate thru Jul 2027</div>
+                    )}
                   </div>
                 </div>
-                <div className={styles.signupFeeNote}>*$20 one-time sign-up fee</div>
+                {/* Hover tooltips don't exist on touch, so .tierFootnote is the
+                    mobile fallback: hidden on desktop, shown under 768px. */}
+                <div className={styles.tierFootnote}>*Family: up to 3 adults, same household</div>
               </div>
-              <p className={styles.membershipSummary}>Reserve 10 days in advance.</p>
+              <p className={styles.membershipSummary}>Best court rates and most flexibility. Reserve 10 days in advance.</p>
               <div className={styles.membershipCta}>
-                <a href="https://square.link/u/oybkGt7O" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Join A-List</a>
+                <a href="https://rallyclub.pickleplanner.com/dashboard/membership/join" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Join A-List</a>
               </div>
               <div className={styles.pricingDetails}>
                 <h4>Court Rates:</h4>
                 <div className={styles.rateItem}>
-                  <span className={styles.rateTime}>Mon–Fri, Midnight – 4 PM</span>
+                  <span className={styles.rateTime}>Midnight – 4 PM</span>
                   <span className={styles.ratePrice}>$8/hr</span>
                 </div>
                 <div className={`${styles.rateItem} ${styles.baseRate}`}>
-                  <span className={styles.rateTime}>All Other Times<br /><span className={styles.rateTimeDetail}>Weekday Evenings &amp; Weekends</span></span>
+                  <span className={styles.rateTime}>4 PM – Midnight</span>
                   <span className={styles.ratePrice}>$16/hr</span>
                 </div>
               </div>
             </div>
             <div className={`${styles.membershipCard} ${styles.rallyReserve}`}>
-              <div className={styles.noCommitmentBadge}>NO COMMITMENT</div>
+              <div className={styles.noCommitmentBadge}>NO MEMBERSHIP</div>
               <h3 className={styles.membershipTitle}>Rally Reserve</h3>
               <div className={styles.membershipPrice}>
-                <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', alignItems: 'flex-end', flexWrap: 'wrap' }}>
-                  <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.9rem', color: 'var(--muted)', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}>Monthly</div>
-                    <div>
-                      <span className={styles.price}>$0</span>
-                      <span className={styles.period}>/mo</span>
-                    </div>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: '0.9rem', color: 'var(--muted)', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}>All-Day Court Rate</div>
+                  <div>
+                    {/* PROMO (expires Aug 2026): $20/hr all day "through August". Controlled by MONTHLY_PROMO_END in the pricing useEffect. */}
+                    <span className={styles.price}>$20</span>
+                    <span className={styles.period}>/hr</span>
                   </div>
+                  {pricing.reservePromo && (
+                    <div className={styles.promoNote}>promo thru Aug</div>
+                  )}
                 </div>
               </div>
-              <p className={styles.membershipSummary}>Reserve 5 days in advance.</p>
+              <p className={styles.membershipSummary}>Court rate only &mdash; no membership tiers. Roughly $5 per player for an hour of doubles.</p>
               <div className={styles.membershipCta}>
-                <a href="https://rallyclub.pickleplanner.com/dashboard/membership/join" className={`${styles.membershipButton} ${styles.secondary}`} target="_blank" rel="noopener noreferrer">Join Rally Reserve</a>
+                <a href="https://rallyclub.pickleplanner.com/dashboard/membership/join" className={`${styles.membershipButton} ${styles.secondary}`} target="_blank" rel="noopener noreferrer">Get Started on PicklePlanner</a>
               </div>
               <div className={styles.pricingDetails}>
-                <h4>Court Rates:</h4>
-                <div className={styles.rateItem}>
-                  <span className={styles.rateTime}>Mon–Fri, Midnight – 4 PM</span>
-                  <span className={styles.ratePrice}>$16/hr</span>
-                </div>
-                <div className={`${styles.rateItem} ${styles.baseRate}`}>
-                  <span className={styles.rateTime}>All Other Times<br /><span className={styles.rateTimeDetail}>Weekday Evenings &amp; Weekends</span></span>
-                  <span className={styles.ratePrice}>$28/hr</span>
+                <h4>Court Access:</h4>
+                <div className={styles.bookingWindowNote}>
+                  <strong>Reserve courts 5 AM – 10 PM.</strong> Outside those hours, Rally Reserve players can still join games booked by A-List members.
                 </div>
               </div>
             </div>
@@ -277,6 +322,60 @@ export default function Home() {
               <div className={`${styles.highlightBox} ${styles.payment}`}>
                 <p>Reserving player pays court costs & fees up front, it is up to them how their playing partners reimburse them</p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Wellness Program Access — Wellhub is the priority promotion, so it is
+            featured and listed first, ahead of Silver&Fit / Active&Fit. */}
+        <section id="wellness" className={styles.wellnessSection}>
+          <h2 className={styles.sectionTitle}>More Ways to Access The Rally Club</h2>
+          <div className={styles.wellnessIntro}>
+            <p>Your employer or health plan may already cover play at The Rally Club. If you&rsquo;re enrolled in one of these wellness programs, it&rsquo;s worth checking your benefits.</p>
+          </div>
+          <div className={styles.wellnessGrid}>
+            <div className={`${styles.wellnessCard} ${styles.featuredProgram}`}>
+              <div className={styles.wellnessBadge}>EMPLOYER BENEFIT</div>
+              <h3 className={styles.wellnessTitle}>
+                <Image
+                  src="/wellhub.svg"
+                  alt="Wellhub"
+                  width={141}
+                  height={26}
+                  style={{ objectFit: 'contain', width: '160px', height: 'auto' }}
+                />
+              </h3>
+              <p>Commonly offered through participating employers as part of employee wellness benefits &mdash; <strong>not limited to Medicare or Medicaid participants</strong>.</p>
+              <p>Check your eligibility through Wellhub, or ask your employer&rsquo;s HR department whether Wellhub is included in your benefits.</p>
+              <p className={styles.wellnessHelp}>The Rally Club has resources available to help you navigate signup &mdash; just ask.</p>
+              <div className={styles.wellnessCta}>
+                <a href="https://signup.gympass.com/company-search" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Look Up Your Organization</a>
+              </div>
+            </div>
+            <div className={styles.wellnessCard}>
+              <h3 className={styles.wellnessTitle}>
+                <a href="https://www.silverandfit.com" className={styles.wellnessLogoLink} target="_blank" rel="noopener noreferrer">
+                  <Image
+                    src="/silver-and-fit.svg"
+                    alt="Silver&amp;Fit"
+                    width={130}
+                    height={27}
+                    style={{ objectFit: 'contain', width: '140px', height: 'auto' }}
+                  />
+                </a>
+                <span className={styles.titleSep} aria-hidden="true">/</span>
+                <a href="https://www.activeandfit.com" className={styles.wellnessLogoLink} target="_blank" rel="noopener noreferrer">
+                  <Image
+                    src="/active-fit.svg"
+                    alt="Active&amp;Fit"
+                    width={165}
+                    height={34}
+                    style={{ objectFit: 'contain', width: '140px', height: 'auto' }}
+                  />
+                </a>
+              </h3>
+              <p>Silver&amp;Fit is now accepted, along with Active&amp;Fit for eligible participants under age 65.</p>
+              <p>Eligibility varies by health plan or employer, so check your benefits to confirm you&rsquo;re covered.</p>
             </div>
           </div>
         </section>
@@ -298,9 +397,9 @@ export default function Home() {
                 <Image
                   src="/silver_sneakers.png"
                   alt="Silver Sneakers Logo"
-                  width={230}
-                  height={80}
-                  style={{ objectFit: 'contain', maxWidth: '160px', height: 'auto' }}
+                  width={661}
+                  height={230}
+                  style={{ objectFit: 'contain', width: '160px', height: 'auto' }}
                 />
               </div>
               <div className={styles.seniorProgramInfo}>
@@ -314,9 +413,9 @@ export default function Home() {
                 <Image
                   src="/renew_active.svg"
                   alt="Renew Active Logo"
-                  width={140}
-                  height={45}
-                  style={{ objectFit: 'contain', maxWidth: '160px', height: 'auto' }}
+                  width={200}
+                  height={64}
+                  style={{ objectFit: 'contain', width: '140px', height: 'auto' }}
                 />
               </div>
               <div className={styles.seniorProgramInfo}>

@@ -47,6 +47,8 @@ function serialize(entity) {
     id: `${entity.partitionKey}/${entity.rowKey}`,
     partitionKey: entity.partitionKey,
     rowKey: entity.rowKey,
+    // Rows written before the waitlist form existed have no RequestType.
+    requestType: entity.RequestType || 'personal',
     name: entity.Name,
     email: entity.Email,
     phone: entity.Phone,
