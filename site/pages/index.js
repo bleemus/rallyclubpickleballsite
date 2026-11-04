@@ -273,13 +273,14 @@ export default function Home() {
               </div>
             </div>
           </div>
+          <p className={styles.ratesAsOf}>Rates as of November 2026. Subject to change.</p>
           <div className={styles.pricingNote}>
             <div className={styles.pricingHighlights}>
               <div className={`${styles.highlightBox} ${styles.registration}`}>
                 <p>All Players must register an account with <strong>PicklePlanner</strong> and sign waivers. Unregistered guests are <span className={styles.notPermitted}>NOT</span> permitted</p>
               </div>
               <div className={`${styles.highlightBox} ${styles.mixedPlay}`}>
-                <p>Mix & match <strong>A-List</strong> members and <strong>Rally Reserve</strong> players - the court rate is set by the membership tier</p>
+                <p>Mix & match <strong>A-List</strong> members and <strong>Rally Reserve</strong> players &mdash; the total court cost is based on <strong>each player&rsquo;s</strong> membership tier</p>
               </div>
               <div className={`${styles.highlightBox} ${styles.payment}`}>
                 <p>Reserving player pays court costs & fees up front, it is up to them how their playing partners reimburse them</p>

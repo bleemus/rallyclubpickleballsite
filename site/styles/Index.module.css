@@ -822,9 +822,16 @@
 }
 
 /* Pricing note section */
+.ratesAsOf {
+  margin-top: 1.25rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
 .pricingNote {
   max-width: 1200px;
-  margin: 2.5rem auto 0;
+  margin: 1.5rem auto 0;
 }
 
 .pricingHighlights {
