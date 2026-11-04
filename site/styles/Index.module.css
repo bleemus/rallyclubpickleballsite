@@ -554,33 +554,237 @@
   }
 }
 
-.promoNote {
-  font-size: 0.72rem;
-  color: var(--azure-ink);
+/* Small line under a card's price: A-List activation fee, Rally Reserve
+   "pay as you play". */
+.feeNote {
+  font-size: 0.8rem;
+  color: var(--muted);
   font-weight: 600;
-  margin-top: 0.35rem;
+  margin-top: 0.5rem;
 }
 
-.promoWas {
-  text-decoration: line-through;
+/* Per-player figure stacked under an hourly .ratePrice. */
+.perPlayer {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
   color: var(--muted);
-  font-weight: 400;
-  margin-right: 0.2rem;
+  text-align: right;
 }
 
-/* Sole content of the Rally Reserve details, so it keeps panel presence and
-   matches .rateItem's treatment. */
-.bookingWindowNote {
-  font-size: 0.85rem;
-  color: var(--muted);
-  padding: 0.75rem 1rem;
+.newTag {
+  display: inline-block;
+  font-style: normal;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--court-white);
+  background: var(--court-azure);
+  padding: 0.05rem 0.4rem;
+  border-radius: 999px;
+  vertical-align: 1px;
+}
+
+/* A-List value comparison (#compare). Sits between the white membership
+   section and the navy wellness band, so it takes the surface-alt fill. */
+.compareSection {
   background: var(--surface-alt);
-  border-radius: 6px;
-  line-height: 1.45;
+  padding: 3rem 2rem;
 }
 
-.bookingWindowNote strong {
+.compareHeader {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.compareHeader .sectionTitle {
+  margin-bottom: 0.75rem;
+}
+
+.compareAccent {
+  color: var(--rally-orange);
+}
+
+.compareIntro {
+  color: var(--muted);
+  font-size: 1.1rem;
+  margin-bottom: 1.25rem;
+}
+
+.saveBadge {
+  display: inline-block;
+  background: var(--court-azure);
+  color: var(--court-white);
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+}
+
+.saveBadge strong {
+  font-family: var(--font-mono);
+  font-size: 1.15em;
+}
+
+.compareTableWrap {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  background: var(--surface);
+  border: 2px solid var(--rally-orange);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.compareTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.compareTable th,
+.compareTable td {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+.compareTable thead th,
+.compareTable thead td {
+  border-top: none;
+}
+
+.compareTable thead th {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.compareTable thead th.compareUs {
+  background: var(--rally-orange);
+  color: var(--court-white);
+}
+
+.compareTable thead th.compareThem {
+  background: var(--surface-alt);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.compareTable tbody th {
+  text-align: left;
   color: var(--ink);
+  font-weight: 700;
+}
+
+.compareTable tbody th span,
+.compareTable tbody td span {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+.compareTable tbody th span {
+  font-weight: 400;
+}
+
+.compareTable tbody td strong {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 1.9rem;
+  letter-spacing: -0.02em;
+}
+
+.compareTable tbody td.compareUs {
+  background: color-mix(in srgb, var(--rally-orange) 7%, var(--surface));
+}
+
+.compareTable tbody td.compareUs strong {
+  color: var(--rally-orange);
+}
+
+.compareTable tbody td.compareThem strong {
+  color: var(--muted);
+  font-size: 1.5rem;
+}
+
+.compareCallouts {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.compareCallout {
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+}
+
+.compareCallout h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+}
+
+.compareCallout p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.compareCallout a {
+  color: var(--orange-ink);
+  font-weight: 600;
+}
+
+.compareCta {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.compareFootnote {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.5;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .compareSection {
+    padding: 2.5rem 1rem;
+  }
+
+  .compareCallouts {
+    grid-template-columns: 1fr;
+  }
+
+  .compareTable th,
+  .compareTable td {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .compareTable thead th {
+    font-size: 0.85rem;
+  }
+
+  .compareTable thead th.compareThem {
+    font-size: 0.75rem;
+  }
+
+  .compareTable tbody td strong {
+    font-size: 1.35rem;
+  }
+
+  .compareTable tbody td.compareThem strong {
+    font-size: 1.1rem;
+  }
 }
 
 /* Membership badges */
@@ -994,6 +1198,22 @@
 
 .contactButton:hover {
   background: var(--orange-ink);
+}
+
+.contactPhone {
+  margin-top: 1.25rem;
+  color: var(--muted);
+}
+
+.contactPhone a {
+  color: var(--ink);
+  font-weight: 700;
+  font-family: var(--font-mono);
+  text-decoration: none;
+}
+
+.contactPhone a:hover {
+  color: var(--rally-orange);
 }
 
 /* Lightbox */

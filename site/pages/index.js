@@ -12,18 +12,6 @@ export default function Home() {
   const [insideIndex, setInsideIndex] = useState(0);
   const [outsideIndex, setOutsideIndex] = useState(0);
 
-  // Promotional pricing that auto-expires on the visitor's clock. This is a static export,
-  // so the promo checks must run client-side (in useEffect) to react to the date passing
-  // WITHOUT a rebuild. Initial state assumes promos are active so the build-time HTML matches
-  // the first client render (no hydration mismatch); useEffect then corrects it if a promo
-  // window has closed. To change a price or window, edit the constants in the effect below.
-  const [pricing, setPricing] = useState({
-    monthlyPrice: 25,
-    monthlyPromo: true,
-    reservePromo: true,
-    priceLock: true,
-  });
-
   const insideImages = ['/inside1.jpg', '/inside2.jpg', '/inside3.jpg'];
   const outsideImages = ['/outside1.jpg', '/outside2.jpg'];
 
@@ -42,21 +30,6 @@ export default function Home() {
       setOutsideIndex((prev) => (prev + 1) % outsideImages.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
-
-  // Recompute promo status against the visitor's current date. Runs client-side only, so
-  // promos expire on their own without a redeploy. Update these two dates to reprice.
-  useEffect(() => {
-    const now = new Date();
-    const MONTHLY_PROMO_END = new Date(2026, 8, 1); // Sep 1, 2026 — A-List monthly ($25) & Rally Reserve ($20/hr) run "through August"
-    const PRICE_LOCK_END = new Date(2027, 7, 1);    // Aug 1, 2027 — A-List annual ($275) & family ($500) run "through next July"
-    const monthlyPromo = now < MONTHLY_PROMO_END;
-    setPricing({
-      monthlyPrice: monthlyPromo ? 25 : 35, // reverts to $35 once the promo ends
-      monthlyPromo,
-      reservePromo: now < MONTHLY_PROMO_END,
-      priceLock: now < PRICE_LOCK_END,
-    });
   }, []);
 
   const toggleFaq = (index) => {
@@ -116,10 +89,11 @@ export default function Home() {
               "name": "Rally Club Pickleball",
               "description": "Indoor pickleball facility in Glen Carbon, IL with 24/7 access",
               "url": "https://www.rallyclubpickleball.com",
-              "email": "rally.club618@gmail.com",
+              "email": "info@rallyclubpickleball.com",
+              "telephone": "+1-618-638-3019",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "1 Cottonwood Industrial Park",
+                "streetAddress": "1 Cottonwood Industrial Park, Ste 10",
                 "addressLocality": "Glen Carbon",
                 "addressRegion": "IL",
                 "postalCode": "62034",
@@ -186,7 +160,7 @@ export default function Home() {
                   "name": "How do I cancel or reschedule?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "You can cancel or reschedule in PicklePlanner up to 4 hours before your reservation. Within 4 hours of your start time, email rally.club618@gmail.com and we'll do what we can. Otherwise the booking is non-refundable."
+                    "text": "You can cancel or reschedule in PicklePlanner up to 4 hours before your reservation. Within 4 hours of your start time, email info@rallyclubpickleball.com or text/call 618-638-3019 and we'll do what we can. Otherwise the booking is non-refundable."
                   }
                 }
               ]
@@ -230,83 +204,71 @@ export default function Home() {
                   <div className={styles.aListTier}>
                     <div className={styles.aListTierLabel}>Monthly</div>
                     <div>
-                      {/* PROMO (expires Aug 2026): monthly is $25/mo "through August", then reverts to $35. Controlled by MONTHLY_PROMO_END in the pricing useEffect. */}
-                      <span className={styles.price}>${pricing.monthlyPrice}</span>
+                      <span className={styles.price}>$25</span>
                       <span className={styles.period}>/mo</span>
                     </div>
-                    {pricing.monthlyPromo && (
-                      <div className={styles.promoNote}><span className={styles.promoWas}>$35</span> promo thru Aug</div>
-                    )}
                   </div>
                   <div className={styles.tierDivider}></div>
                   <div className={styles.aListTier}>
                     <div className={styles.aListTierLabel}>Annual</div>
                     <div>
-                      {/* PROMO (expires Jul 2027): annual is $275 "through next July". Controlled by PRICE_LOCK_END in the pricing useEffect. */}
                       <span className={styles.price}>$275</span>
                       <span className={styles.period}>/yr</span>
                     </div>
-                    {pricing.priceLock && (
-                      <div className={styles.promoNote}>rate thru Jul 2027</div>
-                    )}
                   </div>
                   <div className={styles.tierDivider}></div>
                   <div className={styles.aListTier}>
                     <div className={styles.aListTierLabel}>Family</div>
                     <div className={styles.tooltip} data-tip="Up to 3 adults, same household">
-                      {/* PROMO (expires Jul 2027): family is $500 "through next July". Controlled by PRICE_LOCK_END in the pricing useEffect. */}
                       <span className={styles.price}>$500</span>
                       <span className={styles.period}>/yr*</span>
                     </div>
-                    {pricing.priceLock && (
-                      <div className={styles.promoNote}>rate thru Jul 2027</div>
-                    )}
                   </div>
                 </div>
                 {/* Hover tooltips don't exist on touch, so .tierFootnote is the
                     mobile fallback: hidden on desktop, shown under 768px. */}
                 <div className={styles.tierFootnote}>*Family: up to 3 adults, same household</div>
+                <div className={styles.feeNote}>One-time $20 activation fee</div>
               </div>
-              <p className={styles.membershipSummary}>Best court rates and most flexibility. Reserve 10 days in advance.</p>
+              <p className={styles.membershipSummary}>Best court rates and most flexibility. Reserve up to 15 days in advance, open 24/7/365.</p>
               <div className={styles.membershipCta}>
                 <a href="https://rallyclub.pickleplanner.com/dashboard/membership/join" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Join A-List</a>
               </div>
               <div className={styles.pricingDetails}>
                 <h4>Court Rates:</h4>
                 <div className={styles.rateItem}>
-                  <span className={styles.rateTime}>Midnight – 4 PM</span>
-                  <span className={styles.ratePrice}>$8/hr</span>
+                  <span className={styles.rateTime}>Daytime<br /><span className={styles.rateTimeDetail}>Daily, Midnight – 4 PM</span></span>
+                  <span className={styles.ratePrice}>$8/hr<span className={styles.perPlayer}>$2/player</span></span>
                 </div>
                 <div className={`${styles.rateItem} ${styles.baseRate}`}>
-                  <span className={styles.rateTime}>4 PM – Midnight</span>
-                  <span className={styles.ratePrice}>$16/hr</span>
+                  <span className={styles.rateTime}>Prime<br /><span className={styles.rateTimeDetail}>Daily, 4 PM – Midnight</span></span>
+                  <span className={styles.ratePrice}>$16/hr<span className={styles.perPlayer}>$4/player</span></span>
                 </div>
               </div>
             </div>
             <div className={`${styles.membershipCard} ${styles.rallyReserve}`}>
-              <div className={styles.noCommitmentBadge}>NO MEMBERSHIP</div>
+              <div className={styles.noCommitmentBadge}>NO COMMITMENT</div>
               <h3 className={styles.membershipTitle}>Rally Reserve</h3>
               <div className={styles.membershipPrice}>
-                <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: '0.9rem', color: 'var(--muted)', marginBottom: '0.25rem', textTransform: 'uppercase', fontWeight: '600' }}>All-Day Court Rate</div>
-                  <div>
-                    {/* PROMO (expires Aug 2026): $20/hr all day "through August". Controlled by MONTHLY_PROMO_END in the pricing useEffect. */}
-                    <span className={styles.price}>$20</span>
-                    <span className={styles.period}>/hr</span>
-                  </div>
-                  {pricing.reservePromo && (
-                    <div className={styles.promoNote}>promo thru Aug</div>
-                  )}
+                <div className={styles.aListTierLabel}>Membership</div>
+                <div>
+                  <span className={styles.price}>Free</span>
                 </div>
+                <div className={styles.feeNote}>Pay as you play</div>
               </div>
-              <p className={styles.membershipSummary}>Court rate only &mdash; no membership tiers. Roughly $5 per player for an hour of doubles.</p>
+              <p className={styles.membershipSummary}>No membership fee, just court time. Reserve up to 5 days in advance, or join any A-List member&rsquo;s reservation.</p>
               <div className={styles.membershipCta}>
                 <a href="https://rallyclub.pickleplanner.com/dashboard/membership/join" className={`${styles.membershipButton} ${styles.secondary}`} target="_blank" rel="noopener noreferrer">Get Started on PicklePlanner</a>
               </div>
               <div className={styles.pricingDetails}>
-                <h4>Court Access:</h4>
-                <div className={styles.bookingWindowNote}>
-                  <strong>Reserve courts 5 AM – 10 PM.</strong> Outside those hours, Rally Reserve players can still join games booked by A-List members.
+                <h4>Court Rates:</h4>
+                <div className={styles.rateItem}>
+                  <span className={styles.rateTime}>Daytime<br /><span className={styles.rateTimeDetail}>Mon–Fri, Midnight – 4 PM<br />Sat &amp; Sun, Noon – 4 PM <span className={styles.newTag}>New</span></span></span>
+                  <span className={styles.ratePrice}>$16/hr<span className={styles.perPlayer}>$4/player</span></span>
+                </div>
+                <div className={`${styles.rateItem} ${styles.baseRate}`}>
+                  <span className={styles.rateTime}>Prime<br /><span className={styles.rateTimeDetail}>All other times</span></span>
+                  <span className={styles.ratePrice}>$28/hr<span className={styles.perPlayer}>$7/player</span></span>
                 </div>
               </div>
             </div>
@@ -324,6 +286,54 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </section>
+
+        {/* A-List value comparison — from the Nov 2026 "Join the A-List" flyer.
+            Competitor rates are published hourly rates at other dedicated indoor
+            clubs in the Metro East; update them (and the footnote date) together. */}
+        <section id="compare" className={styles.compareSection}>
+          <div className={styles.compareHeader}>
+            <h2 className={styles.sectionTitle}>Join the A-List. Play for <span className={styles.compareAccent}>$2</span> a player.</h2>
+            <p className={styles.compareIntro}>Open 24/7/365. Book courts up to 15 days ahead.</p>
+            <div className={styles.saveBadge}>Save up to <strong>55%</strong> on court time</div>
+          </div>
+          <div className={styles.compareTableWrap}>
+            <table className={styles.compareTable}>
+              <thead>
+                <tr>
+                  <td></td>
+                  <th scope="col" className={styles.compareUs}>A-List Members</th>
+                  <th scope="col" className={styles.compareThem}>Other Metro East indoor clubs*</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Daytime court<span>Midnight – 4 PM, every day</span></th>
+                  <td className={styles.compareUs}><strong>$8/hr</strong><span>$2 per player</span></td>
+                  <td className={styles.compareThem}><strong>$18/hr</strong><span>$4.50 per player</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Prime court<span>4 PM – Midnight</span></th>
+                  <td className={styles.compareUs}><strong>$16/hr</strong><span>$4 per player</span></td>
+                  <td className={styles.compareThem}><strong>$26/hr</strong><span>$6.50 per player</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className={styles.compareCallouts}>
+            <div className={styles.compareCallout}>
+              <h3>Pays for itself fast</h3>
+              <p>A-List members save $10 every court hour. Play just <strong>3 hours a month</strong> and your $25 membership has paid for itself.</p>
+            </div>
+            <div className={styles.compareCallout}>
+              <h3>Free for qualifying seniors</h3>
+              <p>SilverSneakers&reg; and Renew Active&reg; members get A-List rates with <strong>no membership fee</strong>. <a href="#seniors">See A-List Seniors</a>.</p>
+            </div>
+          </div>
+          <div className={styles.compareCta}>
+            <a href="https://rallyclub.pickleplanner.com/dashboard/membership/join" className={styles.membershipButton} target="_blank" rel="noopener noreferrer">Join the A-List Today</a>
+          </div>
+          <p className={styles.compareFootnote}>*Based on published hourly court rates at other dedicated indoor pickleball facilities in the Metro East, as of November 2026. Per-player prices assume doubles (4 players). A-List requires a $25/month or $275/year membership plus a one-time $20 activation fee. Rates subject to change.</p>
         </section>
 
         {/* Wellness Program Access — Wellhub is the priority promotion, so it is
@@ -381,7 +391,7 @@ export default function Home() {
         </section>
 
         {/* A-List Seniors */}
-        <section className={styles.specialProgramsSection}>
+        <section id="seniors" className={styles.specialProgramsSection}>
           <h2 className={styles.sectionTitle}>A-List Seniors</h2>
           <div className={styles.specialProgramsIntro}>
             <p>Rally Club partners with Medicare and Medicaid programs to make pickleball accessible to more players. These special membership tiers require eligibility verification and admin approval.</p>
@@ -551,7 +561,7 @@ export default function Home() {
             <div className={styles.locationInfo}>
               <div className={styles.address}>
                 <h3>Visit Us</h3>
-                <p>1 Cottonwood Industrial Park<br />Glen Carbon, IL 62034</p>
+                <p>1 Cottonwood Industrial Park, Ste 10<br />Glen Carbon, IL 62034</p>
                 <p>Conveniently located a short drive from the intersection of IL-159 and Cottonwood Rd.</p>
               </div>
               <div className={styles.hours}>
@@ -643,7 +653,7 @@ export default function Home() {
               </button>
               {openFaq === 4 && (
                 <div className={styles.faqAnswer}>
-                  You can cancel or reschedule in PicklePlanner up to 4 hours before your reservation. Within 4 hours of your start time, email <a href="mailto:rally.club618@gmail.com" className={styles.faqLink}>rally.club618@gmail.com</a> and we'll do what we can. Otherwise the booking is non-refundable.
+                  You can cancel or reschedule in PicklePlanner up to 4 hours before your reservation. Within 4 hours of your start time, email <a href="mailto:info@rallyclubpickleball.com" className={styles.faqLink}>info@rallyclubpickleball.com</a> or text/call <a href="tel:+16186383019" className={styles.faqLink}>618-638-3019</a> and we'll do what we can. Otherwise the booking is non-refundable.
                 </div>
               )}
             </div>
@@ -653,7 +663,8 @@ export default function Home() {
         {/* Contact */}
         <section id="contact" className={styles.contact}>
           <h2 className={styles.contactTitle}>Have more questions?</h2>
-          <a href="mailto:rally.club618@gmail.com" className={styles.contactButton}>Contact Us</a>
+          <a href="mailto:info@rallyclubpickleball.com" className={styles.contactButton}>Email Us</a>
+          <p className={styles.contactPhone}>Or text or call <a href="tel:+16186383019">618-638-3019</a></p>
         </section>
 
         <SiteFooter />

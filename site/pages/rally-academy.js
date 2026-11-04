@@ -201,7 +201,7 @@ export default function RallyAcademy() {
                 "name": "Rally Club Pickleball",
                 "address": {
                   "@type": "PostalAddress",
-                  "streetAddress": "1 Cottonwood Industrial Park",
+                  "streetAddress": "1 Cottonwood Industrial Park, Ste 10",
                   "addressLocality": "Glen Carbon",
                   "addressRegion": "IL",
                   "postalCode": "62034",
