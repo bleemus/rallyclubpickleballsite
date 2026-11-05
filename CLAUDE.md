@@ -95,7 +95,8 @@ site/
 
 #### Main Landing Page (`pages/index.js`)
 - **Hero Section**: Reversed video background (`club_interior_reversed_optimized.mp4`)
-- **Membership Tiers**: A-List (Monthly / Annual / Family, promotional pricing) and Rally Reserve (court-rate-only, no membership tier). Signup via PicklePlanner; promo prices auto-expire — see the `pricing` state in `pages/index.js`.
+- **Membership Tiers**: A-List ($25/mo, $275/yr, Family $500/yr, one-time $20 activation fee; $8/hr daytime, $16/hr prime; 15-day booking window) and Rally Reserve (free; $16/hr daytime M–F midnight–4pm + Sat/Sun noon–4pm, $28/hr prime; 5-day window). Signup via PicklePlanner. Source of truth is the "Rally Club Pricing" flyer (Nov 2026 rates); prices are static in the JSX, with no promo/expiry logic.
+- **A-List comparison** (`#compare`): A-List rates vs. "other Metro East indoor clubs" ($18/$26 per hour), "save up to 55%", plus a dated footnote. If you change A-List or competitor rates, update the table, badge percentage, and footnote together.
 - **More Ways to Access The Rally Club** (`#wellness`): Wellness-program access. Wellhub is featured first (priority promotion), then a combined Silver&Fit / Active&Fit card. Separate from the Silver Sneakers "A-List Silver" senior-program card further down.
 - **Rally Academy Section**: Link to training programs
 - **Rally Experiences Section**: Link to corporate team building and private events
@@ -237,7 +238,8 @@ Meta descriptions, Open Graph/Twitter cards, canonical URLs, sitemap, and robots
 ## Important Notes
 - All players must be registered with PicklePlanner before playing
 - Rally Experiences contact: rental@rallyclubpickleball.com
-- General inquiries: rally.club618@gmail.com
+- General inquiries: info@rallyclubpickleball.com, text or call 618-638-3019
+- Address: 1 Cottonwood Industrial Park, Ste 10, Glen Carbon, IL 62034
 - **Contact is email-only** — the (618) 931-0015 number was deliberately removed from the site (CTA button, `LocalBusiness` JSON-LD). Don't reintroduce a phone number or `tel:` link.
 - Video files in `site/public/` are large — ensure they're optimized before committing
 - The `.claude/` directory is gitignored
