@@ -186,9 +186,10 @@ export default function Home() {
           <div className={styles.heroContent}>
             <h1 className={styles.heroTitle}>Play When You Want, with Who You Want &mdash; Anytime.</h1>
             <p className={styles.heroSubtitle}>Indoor pickleball in Glen Carbon &mdash; no contracts, 24/7 court access, book by the hour.</p>
-            <a href="https://rallyclub.pickleplanner.com/dashboard/reservation/make" className={styles.ctaButton} target="_blank" rel="noopener noreferrer">
-              Book a Court
+            <a href="https://rallyclub.pickleplanner.com/dashboard/reservation/make" className={`${styles.ctaButton} ${styles.heroCta}`} target="_blank" rel="noopener noreferrer">
+              Log In &amp; Book a Court
             </a>
+            <p className={styles.heroCtaNote}>Reservations are on PicklePlanner &mdash; rallyclub.pickleplanner.com</p>
           </div>
         </section>
 

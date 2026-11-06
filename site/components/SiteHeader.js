@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
+// Many players type the club's own domain when asked to log into PicklePlanner,
+// so every page carries an always-visible login button that goes straight there.
+const PICKLEPLANNER_LOGIN_URL = 'https://rallyclub.pickleplanner.com/dashboard/reservation/make';
+
 const NAV = [
   { href: '/#booking', label: 'Book a Court', key: 'book' },
   { href: '/#membership', label: 'Membership', key: 'membership' },
@@ -26,6 +30,10 @@ export default function SiteHeader({ active }) {
               <a key={n.key} href={n.href} className={`site-nav-link${active === n.key ? ' active' : ''}`}>{n.label}</a>
             ))}
           </nav>
+          <a href={PICKLEPLANNER_LOGIN_URL} className="site-login" target="_blank" rel="noopener noreferrer">
+            <span className="site-login-long">Log In to PicklePlanner</span>
+            <span className="site-login-short">Log In</span>
+          </a>
           <button className="site-burger" onClick={() => setOpen(!open)} aria-label="Toggle menu" aria-expanded={open}>
             <span className={`site-burger-box${open ? ' open' : ''}`}><i></i><i></i><i></i></span>
           </button>
@@ -46,6 +54,9 @@ export default function SiteHeader({ active }) {
         .site-nav-link { text-decoration: none; color: var(--muted); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
         .site-nav-link:hover, .site-nav-link.active { color: var(--rally-orange); }
         .site-nav-link.active { font-weight: 600; }
+        .site-login { margin-left: 1.75rem; flex-shrink: 0; background: var(--rally-orange); color: white; text-decoration: none; font-weight: 700; font-size: 1rem; padding: 0.65rem 1.25rem; border-radius: 8px; white-space: nowrap; transition: background 0.2s; }
+        .site-login:hover { background: var(--orange-ink); }
+        .site-login-short { display: none; }
         .site-burger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; z-index: 1001; }
         .site-burger-box { width: 25px; height: 20px; display: flex; flex-direction: column; justify-content: space-between; }
         .site-burger-box i { display: block; height: 3px; width: 100%; background: var(--rally-orange); border-radius: 2px; transition: all 0.3s ease; }
@@ -57,10 +68,19 @@ export default function SiteHeader({ active }) {
         .site-mobile-nav { display: flex; flex-direction: column; padding: 1.5rem; gap: 0.5rem; }
         .site-mobile-link { color: var(--ink); text-decoration: none; font-weight: 500; padding: 1rem; border: 1px solid var(--border); border-radius: 8px; text-align: center; transition: color 0.2s, border-color 0.2s; }
         .site-mobile-link:hover, .site-mobile-link.active { border-color: var(--rally-orange); color: var(--rally-orange); }
-        @media (max-width: 768px) {
+        /* The full nav plus the login button needs ~1150px; below that, collapse to the burger
+           so the login button never gets squeezed or wrapped. */
+        @media (max-width: 1150px) {
           .site-nav { display: none; }
           .site-burger { display: block; }
           .site-mobile { display: block; }
+          .site-login { margin-left: auto; margin-right: 0.5rem; }
+        }
+        @media (max-width: 480px) {
+          .site-header-inner { padding: 0.75rem 1rem; }
+          .site-logo span { display: none; }
+          .site-login-long { display: none; }
+          .site-login-short { display: inline; }
         }
       `}</style>
     </>

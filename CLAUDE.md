@@ -57,7 +57,7 @@ site/
 │   └── _document.js
 ├── components/
 │   ├── RequestTrainingModal.js  # Personal training request form (modal popup)
-│   ├── SiteHeader.js            # Shared site header / nav
+│   ├── SiteHeader.js            # Shared site header / nav + always-visible "Log In to PicklePlanner" button
 │   └── SiteFooter.js            # Shared site footer
 ├── data/
 │   └── instructors.json         # Coach roster: modal's instructor select + academy coach gallery
@@ -241,6 +241,7 @@ Meta descriptions, Open Graph/Twitter cards, canonical URLs, sitemap, and robots
 - General inquiries: info@rallyclubpickleball.com, text or call 618-638-3019
 - Address: 1 Cottonwood Industrial Park, Ste 10, Glen Carbon, IL 62034
 - **Contact is email-only** — the (618) 931-0015 number was deliberately removed from the site (CTA button, `LocalBusiness` JSON-LD). Don't reintroduce a phone number or `tel:` link.
+- **PicklePlanner login button**: many (often older) players type rallyclubpickleball.com when told to log into PicklePlanner, so `SiteHeader` carries a persistent orange login button on every page (shortens to "Log In" ≤480px), and the home hero CTA reads "Log In & Book a Court" with the PicklePlanner address underneath. Keep both. The header collapses to the burger at ≤1150px because the full nav plus the button doesn't fit below that.
 - Video files in `site/public/` are large — ensure they're optimized before committing
 - The `.claude/` directory is gitignored
 - No testing or linting frameworks currently configured
