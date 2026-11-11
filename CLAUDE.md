@@ -57,7 +57,7 @@ site/
 │   └── _document.js
 ├── components/
 │   ├── RequestTrainingModal.js  # Personal training request form (modal popup)
-│   ├── SiteHeader.js            # Shared site header / nav
+│   ├── SiteHeader.js            # Shared site header / nav + "Book a Court at PicklePlanner" button
 │   └── SiteFooter.js            # Shared site footer
 ├── data/
 │   └── instructors.json         # Coach roster: modal's instructor select + academy coach gallery
@@ -241,6 +241,7 @@ Meta descriptions, Open Graph/Twitter cards, canonical URLs, sitemap, and robots
 - General inquiries: info@rallyclubpickleball.com, text or call 618-638-3019
 - Address: 1 Cottonwood Industrial Park, Ste 10, Glen Carbon, IL 62034
 - **Contact is email-only** — the (618) 931-0015 number was deliberately removed from the site (CTA button, `LocalBusiness` JSON-LD). Don't reintroduce a phone number or `tel:` link.
+- **PicklePlanner book button**: many (often older) players type rallyclubpickleball.com when told to log into PicklePlanner, so `SiteHeader` carries an orange "Book a Court at PicklePlanner" button (shortens to "Book a Court" ≤480px), and the home hero CTA reads "Book a Court at PicklePlanner" with the PicklePlanner address underneath. Keep both. On the home page the header button is hidden until the hero CTA scrolls up past the header (`bookCtaWatchId="hero-book-cta"` → IntersectionObserver in `SiteHeader`); while hidden it collapses to zero width so the nav sits flush right, and on reveal it expands and slides the nav left. Every other page shows it always. The header collapses to the burger at ≤1150px because the full nav plus the button doesn't fit below that.
 - Video files in `site/public/` are large — ensure they're optimized before committing
 - The `.claude/` directory is gitignored
 - No testing or linting frameworks currently configured
