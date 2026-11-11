@@ -70,14 +70,17 @@ export default function SiteHeader({ active, bookCtaWatchId }) {
         .site-header { background: var(--court-white); border-bottom: 2px solid var(--border); position: fixed; top: 0; width: 100%; z-index: 1000; }
         .site-header-inner { max-width: 1200px; margin: 0 auto; padding: 0.75rem 2rem; display: flex; justify-content: space-between; align-items: center; }
         .site-logo { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--ink); font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: 0.01em; font-size: 1.05rem; }
-        .site-nav { display: flex; align-items: center; gap: 1.75rem; }
+        /* margin-left: auto packs the nav against the Book button (or the right edge while it's collapsed). */
+        .site-nav { display: flex; align-items: center; gap: 1.75rem; margin-left: auto; }
         .site-nav-link { text-decoration: none; color: var(--muted); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
         .site-nav-link:hover, .site-nav-link.active { color: var(--rally-orange); }
         .site-nav-link.active { font-weight: 600; }
-        .site-book { margin-left: 1.75rem; flex-shrink: 0; background: var(--rally-orange); color: white; text-decoration: none; font-weight: 700; font-size: 1rem; padding: 0.65rem 1.25rem; border-radius: 8px; white-space: nowrap; transition: background 0.2s, opacity 0.25s, visibility 0.25s; }
+        .site-book { margin-left: 1.75rem; flex-shrink: 0; max-width: 22rem; overflow: hidden; background: var(--rally-orange); color: white; text-decoration: none; font-weight: 700; font-size: 1rem; padding: 0.65rem 1.25rem; border-radius: 8px; white-space: nowrap; transition: background 0.2s, opacity 0.3s, visibility 0.3s, max-width 0.35s ease, margin 0.35s ease, padding 0.35s ease; }
         .site-book:hover { background: var(--orange-ink); }
-        /* Hidden keeps its layout slot so the nav doesn't jump when it fades in. */
-        .site-book.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        /* Hidden collapses to zero width so the nav sits flush right at the top of the page,
+           then slides left to make room as the button expands on scroll. */
+        .site-book.hidden { opacity: 0; visibility: hidden; pointer-events: none; max-width: 0; margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }
+        @media (prefers-reduced-motion: reduce) { .site-book { transition: background 0.2s; } }
         .site-book-short { display: none; }
         .site-burger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; z-index: 1001; }
         .site-burger-box { width: 25px; height: 20px; display: flex; flex-direction: column; justify-content: space-between; }
