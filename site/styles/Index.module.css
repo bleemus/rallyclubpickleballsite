@@ -1,6 +1,6 @@
 /* Hero */
 .hero {
-  margin-top: 66px;
+  margin-top: calc(66px + var(--promo-banner-h));
   height: 500px;
   display: flex;
   align-items: center;
@@ -981,6 +981,69 @@
 
 .programButtonSlate:hover {
   background: var(--baseline-navy);
+}
+
+/* Gift Cards */
+.giftSection {
+  padding: 0 2rem 4rem;
+  background: var(--court-white);
+}
+
+.giftPanel {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: var(--surface-alt);
+  border-radius: 6px;
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.giftEyebrow {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-ink);
+  margin-bottom: 0.4rem;
+}
+
+.giftTitle {
+  font-size: 1.75rem;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+}
+
+.giftDescription {
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 34rem;
+}
+
+.giftAction {
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.giftNote {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+@media (max-width: 768px) {
+  .giftPanel {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem 1.5rem;
+  }
+
+  .giftAction {
+    text-align: left;
+  }
 }
 
 /* Slideshow */

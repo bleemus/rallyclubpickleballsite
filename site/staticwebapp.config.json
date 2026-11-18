@@ -1,5 +1,7 @@
 {
   "routes": [
+    { "route": "/gift", "redirect": "https://app.squareup.com/gift/MLRWNHWZVQE4S/order", "statusCode": 302 },
+    { "route": "/gift-cards", "redirect": "https://app.squareup.com/gift/MLRWNHWZVQE4S/order", "statusCode": 302 },
     { "route": "/admin", "redirect": "/admin/", "statusCode": 301 },
     { "route": "/admin/*", "allowedRoles": ["admin"] },
     { "route": "/api/manage/*", "allowedRoles": ["admin"] },

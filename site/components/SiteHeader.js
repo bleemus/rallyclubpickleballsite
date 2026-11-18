@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import HolidayGiftBanner from './HolidayGiftBanner';
 
 // Many players type the club's own domain when asked to log into PicklePlanner,
 // so the header carries a "Book a Court" button that goes straight there.
@@ -40,6 +41,7 @@ export default function SiteHeader({ active, bookCtaWatchId }) {
   return (
     <>
       <header className="site-header">
+        <HolidayGiftBanner />
         <div className="site-header-inner">
           <a href="/" className="site-logo">
             <Image src="/logo-transparent.png" alt="Rally Club Pickleball" width={40} height={40} style={{ objectFit: 'contain' }} />
@@ -88,7 +90,7 @@ export default function SiteHeader({ active, bookCtaWatchId }) {
         .site-burger-box.open i:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
         .site-burger-box.open i:nth-child(2) { opacity: 0; }
         .site-burger-box.open i:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
-        .site-mobile { position: fixed; top: 62px; left: 0; right: 0; bottom: 0; background: var(--court-white); z-index: 999; transform: translateX(100%); transition: transform 0.3s ease; overflow-y: auto; display: none; }
+        .site-mobile { position: fixed; top: calc(62px + var(--promo-banner-h)); left: 0; right: 0; bottom: 0; background: var(--court-white); z-index: 999; transform: translateX(100%); transition: transform 0.3s ease; overflow-y: auto; display: none; }
         .site-mobile.open { transform: translateX(0); }
         .site-mobile-nav { display: flex; flex-direction: column; padding: 1.5rem; gap: 0.5rem; }
         .site-mobile-link { color: var(--ink); text-decoration: none; font-weight: 500; padding: 1rem; border: 1px solid var(--border); border-radius: 8px; text-align: center; transition: color 0.2s, border-color 0.2s; }

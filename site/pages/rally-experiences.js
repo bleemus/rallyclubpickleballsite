@@ -319,7 +319,7 @@ export default function RallyExperiences() {
         /* Hero Section */
         .events-hero {
           background: var(--baseline-navy);
-          padding: 5rem 2rem 4rem;
+          padding: calc(5rem + var(--promo-banner-h)) 2rem 4rem;
           text-align: center;
         }
 
