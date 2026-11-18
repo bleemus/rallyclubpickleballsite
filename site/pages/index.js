@@ -5,6 +5,7 @@ import Link from 'next/link';
 import styles from '../styles/Index.module.css';
 import SiteHeader from '../components/SiteHeader';
 import SiteFooter from '../components/SiteFooter';
+import { GIFT_CARD_URL } from '../components/giftCards';
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState(null);
@@ -475,6 +476,25 @@ export default function Home() {
               <a href="/rally-experiences" className={styles.programButtonOrange}>
                 Plan Your Event
               </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Gift Cards */}
+        <section id="gift-cards" className={styles.giftSection}>
+          <div className={styles.giftPanel}>
+            <div className={styles.giftText}>
+              <p className={styles.giftEyebrow}>Gift Cards</p>
+              <h2 className={styles.giftTitle}>Give the Gift of Pickleball</h2>
+              <p className={styles.giftDescription}>
+                Pick an amount, add a personal note, and send a Rally Club eGift card by email, right away or on the day you choose.
+              </p>
+            </div>
+            <div className={styles.giftAction}>
+              <a href={GIFT_CARD_URL} className={styles.programButtonOrange} target="_blank" rel="noopener noreferrer">
+                Buy a Gift Card
+              </a>
+              <p className={styles.giftNote}>Secure checkout through Square</p>
             </div>
           </div>
         </section>

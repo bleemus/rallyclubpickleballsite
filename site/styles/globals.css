@@ -8,6 +8,8 @@
   --concrete: #63666B;
   --concrete-light: #EDEDEA;
   --court-white: #FFFFFF;
+  /* Height of the seasonal banner inside the fixed header; HolidayGiftBanner overrides it while shown. */
+  --promo-banner-h: 0px;
 
   /* Semantic aliases */
   --ink: var(--baseline-navy);

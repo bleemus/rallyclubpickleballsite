@@ -714,7 +714,7 @@ export default function RallyAcademy() {
 
         /* Hero Section */
         .academy-hero {
-          margin-top: 62px;
+          margin-top: calc(62px + var(--promo-banner-h));
           padding: 3.25rem 2rem;
           background: var(--baseline-navy);
           color: white;

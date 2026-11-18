@@ -71,7 +71,7 @@ export default function Merch() {
 
         .merch-landing {
           min-height: calc(100vh - 180px);
-          margin-top: 62px;
+          margin-top: calc(62px + var(--promo-banner-h));
           display: flex;
           align-items: center;
           justify-content: center;
